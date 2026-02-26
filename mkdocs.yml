@@ -1,0 +1,63 @@
+site_name: 空白阴影的笔记本
+site_author: 空白阴影
+site_url: ''
+
+repo_url: https://github.com/kbyy123/notebook.git
+repo_name: kbyy123/notebook
+use_directory_urls: false    # 加上这句后才能显示用 html img 相对路径插入的图片
+
+theme:
+  name: material
+  language: zh  # 设置为中文
+  custom_dir: overrides
+  features:
+    - content.action.edit
+    - content.action.view      # 在页面右上角添加“编辑此页”或“查看源码”的按钮
+    - content.code.copy        # 代码块一键复制
+    - content.code.annotate    # 注释气泡 
+    - content.footnote.tooltips
+    - navigation.footer        # 在页面底部显示“上一篇/下一篇”导航
+    - navigation.indexes       # 允许点击分类大类名直接进入该目录的 index.md
+    - navigation.path          # 在页面顶部显示当前页面的路径
+    - navigation.prune         # 性能优化
+    - navigation.tabs           
+    - navigation.top
+    - navigation.tracking
+    - search.share
+    - toc.follow               # 右侧目录随滚动高亮
+    - content.code.copy        # 代码块一键复制
+
+extra_css:
+  - css/custom.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex:       # LaTeX 数学公式支持
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - md_in_html  # 核心：允许在 <div> 标签内解析 Markdown    
+  - pymdownx.superfences       # 支持更复杂的代码块嵌套
+  - pymdownx.details           # 支持折叠块 (Admonitions)
+  
+
+extra_javascript:
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - js/katex.js
+  - https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js
+  # - https://polyfill.io/v3/polyfill.min.js?features=es6
+  # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - js/typed.js
+
+nav:
+  - 🏫主页: index.md
+  - 📊数学: 
+    - math/index.md
+    - 多变量微积分:
+      - math/multivariable-calculus/index.md
+      - math/multivariable-calculus/1.md
+      - math/multivariable-calculus/2.md
+      - math/multivariable-calculus/3.md

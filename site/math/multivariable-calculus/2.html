@@ -1,0 +1,1515 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+        <link rel="prev" href="1.html">
+      
+      
+        <link rel="next" href="3.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>多变量微分 - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              多变量微分
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📊数学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多变量微积分
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    多变量微积分
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    向量与矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多变量微分
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多变量微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二元函数的绘制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        偏导与微分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="偏导与微分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        偏导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性近似与全微分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链式法则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二阶偏导与混合偏导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二元函数泰勒公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量化导数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量化导数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nabla算子与梯度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方向导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极值与最值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="极值与最值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无约束极值与最值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无约束极值与最值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二阶导检验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        有约束极值与最值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        受限变量微分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="受限变量微分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非独立变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        隐函数求导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    重积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二元函数的绘制
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        偏导与微分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="偏导与微分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        偏导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        线性近似与全微分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        链式法则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二阶偏导与混合偏导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二元函数泰勒公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        向量化导数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="向量化导数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nabla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nabla算子与梯度
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方向导数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极值与最值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="极值与最值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无约束极值与最值
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无约束极值与最值">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二阶导检验
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        有约束极值与最值
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        受限变量微分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="受限变量微分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非独立变量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        隐函数求导
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏫主页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📊数学
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    多变量微积分
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook.git/edit/master/docs/math/multivariable-calculus/2.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook.git/raw/master/docs/math/multivariable-calculus/2.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">多变量微分</h1>
+<h2 id="_2">二元函数的绘制</h2>
+<p>对于双变量函数 <span class="arithmatex">\(f(x,y)\)</span>，如果想画出其图像，有两种绘制方法：
+- <strong>三维立体图</strong>：令 <span class="arithmatex">\(z=f(x,y)\)</span>，将该函数画在空间直角坐标系中．
+- <strong>二维等高线图</strong>：令 <span class="arithmatex">\(f(x,y)=C\)</span>，<span class="arithmatex">\(C\)</span> 为任意常数，通过取值不同的 <span class="arithmatex">\(C\)</span> 画出多条等高线图得到函数的图像．</p>
+<h2 id="_3">偏导与微分</h2>
+<h3 id="_4">偏导数</h3>
+<p>当有多个自变量时，因变量对某一个自变量的导数称为偏导数．</p>
+<p>对于二元函数，当 <span class="arithmatex">\(x,y\)</span> 无关时，将 <span class="arithmatex">\(y\)</span> 固定（视为常数），<span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 的偏导数
+$$
+f_{x}=\dfrac{\partial{f}}{\partial{x}}=\lim_{\Delta x \to 0}\dfrac{f(x_{0}+\Delta x,y_{0})-f(x_{0},y_{0})}{\Delta x}
+$$
+<span class="arithmatex">\(f\)</span> 对 <span class="arithmatex">\(y\)</span> 的偏导数同理．</p>
+<h3 id="_5">线性近似与全微分</h3>
+<p>在一元函数中，我们可以通过在某点处通过切线来进行<strong>线性近似</strong>．在 <span class="arithmatex">\((x_{0},f(x_{0}))\)</span> 处，我们有切线方程
+$$
+y=f'(x_{0})(x-x_{0})+f(x_{0})
+$$
+当 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(x_{0}\)</span> 相差不大时，其误差较小可忽略，将函数值用线性近似得到
+$$
+\Delta f = f(x)-f(x_{0})\approx f'(x_{0})(x-x_{0})
+$$
+两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}}\)</span>
+$$
+df=f'(x_{0})dx
+$$
+即为一元函数的微分．</p>
+<blockquote>
+<p>注意：
+<span class="arithmatex">\(\Delta f\)</span> 是质点在曲面上移动时 <span class="arithmatex">\(z\)</span> 坐标的真实改变量．
+<span class="arithmatex">\(df\)</span> 是质点在切平面上移动时，<span class="arithmatex">\(z\)</span> 坐标的近似改变量．</p>
+</blockquote>
+<p>当 <span class="arithmatex">\(f\)</span> 是关于独立变量 <span class="arithmatex">\(x,y\)</span> 的二元函数 <span class="arithmatex">\(z=f(x,y)\)</span> 时，其仍可以用线性近似，只不过由切线换成了<strong>切平面</strong>．在 <span class="arithmatex">\(f(x_{0},y_{0})\)</span> 处，固定 <span class="arithmatex">\(y\)</span>，其在平行于 <span class="arithmatex">\(xOz\)</span> 平面内的切线方程为
+$$
+\begin{cases} z=f_{x}(x_{0},y_{0})(x-x_{0})+f(x_{0},y_{0}) \ \
+y=y_{0}
+\end{cases}
+$$
+同理，固定 <span class="arithmatex">\(x\)</span>，其在平行于 <span class="arithmatex">\(yOz\)</span> 平面内的切线方程为
+$$
+\begin{cases} z=f_{y}(x_{0},y_{0})(y-y_{0})+f(x_{0},y_{0}) \ \
+x=x_{0}
+\end{cases}
+$$
+当 <span class="arithmatex">\(x,y\)</span> 同时变化时，<span class="arithmatex">\(f\)</span> 的变化量应该是这两种变化的叠加，找到过这两条直线的切平面
+$$
+z=f_{x}(x_{0},y_{0})(x-x_{0})+f_{y}(x_{0},y_{0})(y-y_{0})+f(x_{0},y_{0})
+$$
+因此得到
+$$
+\Delta f\approx f_{x}\Delta x+f_{y}\Delta y
+$$
+两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}, y \to y_{0}}\)</span>
+$$
+df=f_{x}dx+f_{y}dy
+$$
+即为全微分方程．</p>
+<h3 id="_6">链式法则</h3>
+<p>由上节，对于二元函数 <span class="arithmatex">\(f(x,y)\)</span> 有
+$$
+df=f_{x}dx+f_{y}dy
+$$
+若 <span class="arithmatex">\(x,y\)</span> 可参数化，即 <span class="arithmatex">\(x=x(t),y=y(t)\)</span>，则代入
+$$
+dx=\dfrac{dx}{dt}dt \quad dy=\dfrac{dy}{dt}dt
+$$
+得到
+$$
+\begin{aligned}
+{df}&amp;=\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}dt+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt}dt\
+&amp;=(\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt})dt
+\end{aligned}
+$$
+则
+$$
+\begin{aligned}
+f'(t)&amp;=\dfrac{df}{dt}\
+&amp;=\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt}
+\end{aligned}
+$$
+即 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(t\)</span> 的全导数公式，其符合<strong>链式法则</strong>．</p>
+<p>当参数关系变得复杂时仍成立．如 <span class="arithmatex">\(w=f(x,y),x=x(u,v),y=y(u,v)\)</span>，则
+$$
+\begin{aligned}
+dw &amp;=f_{x}dx+f_{y}dy \
+&amp;=f_{x}(x_{u}du+x_{v}dv)+f_{y}({y_u}du+y_{v}dv) \
+&amp;=(f_{x}x_{u}+f_{y}{y_u})du+(f_{x}x_{v}+f_{y}{y_v})dv
+\end{aligned}
+$$
+根据全微分公式，有
+$$
+\begin{cases}
+\dfrac{\partial{w}}{\partial{u}}=f_{x}x_{u}+f_{y}{y_u} \
+\dfrac{\partial{w}}{\partial{v}}=f_{x}x_{v}+f_{y}{y_v} 
+\end{cases}
+$$</p>
+<h3 id="_7">二阶偏导与混合偏导</h3>
+<p>与一元函数类似，多元函数偏导后仍然是关于自变量的函数，可以继续偏导得到二阶偏导数；对于二元函数，一般将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{xx}\)</span>，关于 <span class="arithmatex">\(y\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{yy}\)</span>．</p>
+<p><span class="arithmatex">\(f\)</span> 先对 <span class="arithmatex">\(x\)</span> 再对 <span class="arithmatex">\(y\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{xy}\)</span>，先对 <span class="arithmatex">\(y\)</span> 再对 <span class="arithmatex">\(x\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{yx}\)</span>．只要这两个偏导数存在且连续，则必有 <span class="arithmatex">\(f_{xy}=f_{yx}\)</span>．</p>
+<h3 id="_8">二元函数泰勒公式</h3>
+<p>一元函数的泰勒公式本质是多项式拟合，通过在某点处函数值与各阶导数值来拟合函数在该点附近的函数值．对于二元函数，泰勒公式同样适用．不妨将二元函数 <span class="arithmatex">\(f(x,y)\)</span> 在 <span class="arithmatex">\((x_{0},y_{0})\)</span> 处用多项式拟合，展开到二阶，设
+$$
+f(x,y)=A+B(x-x_0)+C(y-y_0)+D(x-x_0)^{2}+E(x-x_0)(y-y_0)+F(y-y_0)^{2}+\cdots
+$$
+代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies A=f(x_0,y_0)\)</span>．</p>
+<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求偏导，得到
+$$
+f_x(x,y)=B+2D(x-x_0)+E(y-y_0)+\cdots
+$$
+代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies B=f_x(x_0,y_0)\)</span>
+同理，<span class="arithmatex">\(C=f_y(x_0,y_0)\)</span>．</p>
+<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求二阶偏导，得到
+$$
+f_{xx}(x,y)=2D+\cdots
+$$
+代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies D=\dfrac{1}{2}f_{xx}(x_0,y_0)\)</span>．
+同理得到 <span class="arithmatex">\(E=f_{xy}(x_0,y_0),F=\dfrac{1}{2}f_{yy}(x_0,y_0)\)</span>．</p>
+<p>因此，可以得到二元函数 <span class="arithmatex">\(f=(x,y)\)</span> 的二阶泰勒展开为
+$$
+\begin{aligned}
+f(x,y) &amp;= f(x_0,y_0)+f_x(x-x_0)+f_y(y-y_0) \
+&amp;+\dfrac{1}{2}f_{xx}(x-x_0)^{2}+f_{xy}(x-x_0)(y-y_0)+\dfrac{1}{2}f_{yy}(y-y_0)^{2} + \cdots
+\end{aligned}
+$$</p>
+<h2 id="_9">向量化导数</h2>
+<h3 id="nabla">Nabla算子与梯度</h3>
+<p>若 <span class="arithmatex">\(w\)</span> 是关于独立变量 <span class="arithmatex">\(x,y,z\)</span> 的三元函数 <span class="arithmatex">\(w=w(x,y,z)\)</span>，且 <span class="arithmatex">\(x,y,z\)</span> 均可关于 <span class="arithmatex">\(t\)</span> 参数化，则由链式法则
+$$
+\dfrac{dw}{dt}=\dfrac{\partial{w}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{w}}{\partial{y}}\dfrac{dy}{dt}+\dfrac{\partial{w}}{\partial{z}}\dfrac{dz}{dt}
+$$
+为了简化公式，我们引入Nabla算子，符号为 <span class="arithmatex">\(\nabla\)</span>，在空间直角坐标系中是一个向量，其分量是各轴方向的偏导数算子：
+$$
+\nabla= \langle{\dfrac{\partial{}}{\partial{x}},\dfrac{\partial{}}{\partial{y}},\dfrac{\partial{}}{\partial{z}}}\rangle
+$$
+则有
+$$
+\nabla w=\langle{\dfrac{\partial{w}}{\partial{x}},\dfrac{\partial{w}}{\partial{y}},\dfrac{\partial{w}}{\partial{z}}}\rangle
+$$
+根据质点运动学，有
+$$
+\boldsymbol{r}=\langle{x,y,z}\rangle
+$$
+则有
+$$
+\dfrac{d\boldsymbol{r}}{dt}=\langle{\dfrac{dx}{dt},\dfrac{dy}{dt},\dfrac{dz}{dt}}\rangle
+$$
+最后可以简化为
+$$
+\dfrac{dw}{dt}=\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}
+$$
+其中，<span class="arithmatex">\(\nabla w\)</span> 称为 <span class="arithmatex">\(w\)</span> 的<strong>梯度</strong>．梯度总是垂直于 <span class="arithmatex">\(w=c\)</span> 这个曲面（或曲线）．下面给出证明．</p>
+<p>已知 <span class="arithmatex">\(\dfrac{dw}{dt}=\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}\)</span>，而当 <span class="arithmatex">\(w=c\)</span> 时，<span class="arithmatex">\(dw=0\)</span>，则有
+$$
+\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}=\nabla w \cdot\boldsymbol{v}=0
+$$
+因此有 <span class="arithmatex">\(\nabla w\perp \boldsymbol{v}\)</span>．</p>
+<p>对于一个曲线，在某点处 <span class="arithmatex">\(\nabla w\)</span> 与其速度向量垂直，则 <span class="arithmatex">\(\nabla w\)</span> 必然在该点处与该曲线垂直；
+对于一个曲面，在某点处 <span class="arithmatex">\(\nabla w\)</span> 与其在该点处的任意速度向量垂直，而该点处的速度向量均在该点的切平面上，则 <span class="arithmatex">\(\nabla w\)</span> 是该点处切平面的一个法向量，其与该曲面垂直．</p>
+<p>因此，必然有 <span class="arithmatex">\(\nabla w \perp\)</span> 曲面 <span class="arithmatex">\(w=c\)</span>．</p>
+<h3 id="_10">方向导数</h3>
+<p>函数 <span class="arithmatex">\(f(x,y)\)</span> 关于 <span class="arithmatex">\(x,y\)</span> 的偏导数 <span class="arithmatex">\(f_{x}, f_{y}\)</span> 刻画了 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\(x,y\)</span> 轴方向上的变化率．而方向并不拘泥于两个坐标轴，我们可以求出某点在任意方向上的导数．</p>
+<p>在 <span class="arithmatex">\(xOy\)</span> 平面内任取某一方向单位向量 <span class="arithmatex">\(\hat{u}=\langle{a,b}\rangle \quad (a^{2}+b^{2}=1)\)</span>，在该方向上导数为 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}}\)</span></p>
+<p>（<span class="arithmatex">\(s\)</span> 为在 <span class="arithmatex">\(xOy\)</span> 平面上的路径，<span class="arithmatex">\(ds\)</span> 为在 <span class="arithmatex">\(xOy\)</span> 平面上的路径微元，其满足 <span class="arithmatex">\(ds = \sqrt{ (dx)^{2}+(dy)^{2} }\)</span>）</p>
+<p>（本质上任意导数定义都是如此，函数值变化量的微分比去移动路径长度的微分；如沿 <span class="arithmatex">\(x\)</span> 轴导数为 <span class="arithmatex">\(\dfrac{dw}{dx}\)</span>，<span class="arithmatex">\(dx\)</span> 就是路径长度）</p>
+<p>则有
+$$
+\begin{aligned}
+\left. \dfrac{dw}{ds} \right|<em>{\hat{u}}&amp;=f</em>{x}\dfrac{dx}{ds}+f_{y}\dfrac{dy}{ds} \
+&amp;=\nabla f\cdot \dfrac{d\boldsymbol{r}}{ds}
+\end{aligned}
+$$
+由质点运动学可知，<span class="arithmatex">\(\dfrac{d\boldsymbol{r}}{ds}\)</span> 为单位切向量，在这里即为 <span class="arithmatex">\(\hat{u}\)</span>，因此 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}}=\nabla f \cdot \hat{u}\)</span>．</p>
+<p>则 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}} =|\nabla f|\cos{\theta}\)</span>．
+- <span class="arithmatex">\(\theta=0\)</span>，此时方向导数取得最大值．也就是说梯度的方向是方向导数最大的方向，也就是函数值增长最快的方向．从直觉上也符合，因为垂直于等高线的方向是最陡峭的．
+- <span class="arithmatex">\(\theta=90^\circ\)</span>，此时方向导数为 <span class="arithmatex">\(0\)</span>，也就是函数变化率为 <span class="arithmatex">\(0\)</span>，再次印证了梯度垂直于等高线．
+- <span class="arithmatex">\(\theta = 180^\circ\)</span>，此时方向导数取得最小值，其为函数值减少最快的方向．</p>
+<h2 id="_11">极值与最值</h2>
+<h3 id="_12">无约束极值与最值</h3>
+<p>与一元函数类似，对于二元函数 <span class="arithmatex">\(f(x,y)\)</span>，<span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极值的必要条件是 <span class="arithmatex">\(f_x(x_0,y_0)=f_y(x_0,y_0)=0\)</span>．</p>
+<h4 id="_13">二阶导检验</h4>
+<p>不妨考虑函数 <span class="arithmatex">\(w=ax^2+bxy+cy^2\)</span>，在驻点 <span class="arithmatex">\((0,0)\)</span> 处的极值性．</p>
+<p>当 <span class="arithmatex">\(a\ne 0\)</span> 时，我们将 <span class="arithmatex">\(x^2\)</span> 的系数 <span class="arithmatex">\(a\)</span> 提出，并且对 <span class="arithmatex">\(x\)</span> 进行配方，得到
+$$
+\begin{aligned}
+w&amp;=a(x^2+\frac{b}{a}xy+\frac{c}{a}y^2) \
+&amp;=a(x+\frac{b}{2a}y)^2+(c-\frac{b^2}{4a})y^2 \
+&amp;=\frac{1}{4a}\left[ 4a^2(x+\frac{b}{2a}y)^2+(4ac-b^2)y^2\right]
+\end{aligned}
+$$
+1. 当 <span class="arithmatex">\(4ac-b^2&gt;0\)</span> 时，<span class="arithmatex">\([\,]\)</span> 内的值总是非负；若 <span class="arithmatex">\(a&gt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最小值；若 <span class="arithmatex">\(a&lt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最大值．
+2. 当 <span class="arithmatex">\(4ac-b^2&lt;0\)</span> 时，<span class="arithmatex">\(4a^2(x+\dfrac{b}{2a}y)^2\)</span> 的值恒正，而 <span class="arithmatex">\((4ac-b^2)y^2\)</span> 的值恒负；当 <span class="arithmatex">\(x,y\)</span> 取不同值时，<span class="arithmatex">\(w\)</span> 即可能为正数也可能为负数，因此 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处为鞍点．
+3. 当 <span class="arithmatex">\(4ac-b^2=0\)</span> 时，有 <span class="arithmatex">\(w=a(x+\dfrac{b}{2a}y)^2\)</span>，此时在直线 <span class="arithmatex">\(x=-\dfrac{b}{2a}y\)</span> 上均有 <span class="arithmatex">\(w=0\)</span>；其余位置 <span class="arithmatex">\(w\)</span> 与 <span class="arithmatex">\(a\)</span> 同号．</p>
+<p>把该结论推广到一般的二元函数：由泰勒公式可知，在驻点处将 <span class="arithmatex">\(f(x,y)\)</span> 展开到二阶，由于 <span class="arithmatex">\(f_x=0,f_y=0\)</span> 因此
+$$
+f(x,y) -f(x_0,y_0)\approx \dfrac{1}{2}f_{xx}(x-x_0)^{2}+f_{xy}(x-x_0)(y-y_0)+\dfrac{1}{2}f_{yy}(y-y_0)^{2} 
+$$</p>
+<p>记 <span class="arithmatex">\(A=f_{xx}(x_0,y_0),B=f_{xy}(x_0,y_0),C=f_{yy}(x_0,y_0)\)</span>，则有
+$$
+\Delta f \approx \frac{1}{2}A\Delta x^{2}+B\Delta x \Delta y + \frac{1}{2}C\Delta y^{2}
+$$
+根据之前的推导
+1. 当 <span class="arithmatex">\(AC-B^2&gt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 与 <span class="arithmatex">\(A\)</span> 同号；当 <span class="arithmatex">\(A&gt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 在任何方向都为正数，即 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极小值；当 <span class="arithmatex">\(A&lt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 在任何方向都为负数，即 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极大值．
+2. 当 <span class="arithmatex">\(AC-B^2&lt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 可正可负，为鞍点．
+3. 当 <span class="arithmatex">\(AC-B^2=0\)</span> 时，存在一条过 <span class="arithmatex">\((x_0,y_0)\)</span> 的直线满足直线上均有 <span class="arithmatex">\(\Delta f=0\)</span>；此时想判断极值需要泰勒展开到更高级项，即二阶导无法判断．</p>
+<h3 id="_14">有约束极值与最值</h3>
+<p>对于二元函数 <span class="arithmatex">\(f(x,y)\)</span>，当其自变量 <span class="arithmatex">\(x,y\)</span> 受到约束 <span class="arithmatex">\(g(x,y)=C\)</span> 时：</p>
+<p>在 <span class="arithmatex">\((x_0,y_0)\)</span> 处，<span class="arithmatex">\(f\)</span> 的坐标向量的运动方向必须与 <span class="arithmatex">\(g(x,y)=C\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处切线方向共线；如果方向不共线 <span class="arithmatex">\(f\)</span> 会脱离约束 <span class="arithmatex">\(g(x,y)=C\)</span>．</p>
+<blockquote>
+<p>例：<span class="arithmatex">\(f(x,y) = x^2+y^2\)</span>，约束为 <span class="arithmatex">\(g(x,y)=xy=1\)</span>．
+在点 <span class="arithmatex">\((1,1)\)</span> 处，为了保证 <span class="arithmatex">\(f\)</span> 的坐标向量 <span class="arithmatex">\(\boldsymbol{r}=\langle x,y\rangle\)</span> 在移动 <span class="arithmatex">\(ds\)</span> 后仍然在约束 <span class="arithmatex">\(g(x,y)=xy=1\)</span> 上，必有移动方向朝 <span class="arithmatex">\((1,-1)\)</span> 方向或 <span class="arithmatex">\((-1,1)\)</span> 方向．</p>
+</blockquote>
+<p>当 <span class="arithmatex">\(f\)</span> 取得极值时，在可移动的合法方向 <span class="arithmatex">\(\hat{u}\)</span> 上必有方向导数为 <span class="arithmatex">\(0\)</span>，即 <span class="arithmatex">\(\left. \dfrac{df}{ds} \right|_{\hat{u}} = 0\)</span>．</p>
+<p>而 <span class="arithmatex">\(\left. \dfrac{df}{ds} \right|_{\hat{u}}=\nabla f\cdot \hat{u}\)</span>，因此对于每一个合法方向 <span class="arithmatex">\(\hat{u}\)</span>，都有 <span class="arithmatex">\(\nabla f\cdot \hat{u}=0\)</span>；而 <span class="arithmatex">\(\hat{u}\)</span> 是 <span class="arithmatex">\(g=C\)</span> 的切线方向，所有的 <span class="arithmatex">\(\hat{u}\)</span> 构成了 <span class="arithmatex">\(g=C\)</span> 的切平面，即 <span class="arithmatex">\(\nabla f\)</span> 垂直于 <span class="arithmatex">\(g=C\)</span> 的切平面．</p>
+<p>又因为 <span class="arithmatex">\(\nabla g\)</span> 也垂直于 <span class="arithmatex">\(g=C\)</span> 的切平面，因此 <span class="arithmatex">\(\nabla f // \nabla g\)</span>．</p>
+<p>因此，<span class="arithmatex">\(\exists \lambda\)</span>，使得 <span class="arithmatex">\(\nabla f = \lambda \nabla g\)</span>．得到方程
+$$
+\begin{cases}
+f_x = \lambda g_x \
+f_y = \lambda g_y \
+g(x,y) = C
+\end{cases}
+$$
+解出 <span class="arithmatex">\(x,y,\lambda\)</span> 即可得到极值点．</p>
+<p>上述方法称为<strong>拉格朗日乘数法</strong>．注意该方法无法判断得到的极值点是极大值还是极小值．</p>
+<h2 id="_15">受限变量微分</h2>
+<h3 id="_16">非独立变量</h3>
+<p>若 <span class="arithmatex">\(f(x,y) = x + y\)</span>，则 <span class="arithmatex">\(\dfrac{\partial f}{\partial x} = 1\)</span>；令 <span class="arithmatex">\(x = u, y = u+v\)</span>，则 <span class="arithmatex">\(f(u,v) = 2u + v\)</span>，<span class="arithmatex">\(\dfrac{\partial f}{\partial u} = 2\)</span>．</p>
+<p>我们得到 <span class="arithmatex">\(x=u\)</span> 但是 <span class="arithmatex">\(\dfrac{\partial f}{\partial x} \ne \dfrac{\partial f}{\partial u}\)</span>．</p>
+<p>出现上述问题的原因是：求 <span class="arithmatex">\(\dfrac{\partial f}{\partial x}\)</span> 时，我们把 <span class="arithmatex">\(y\)</span> 看作常数；求 <span class="arithmatex">\(\dfrac{\partial f}{\partial u}\)</span> 时，我们把 <span class="arithmatex">\(v\)</span> 看作常数，也就是把 <span class="arithmatex">\(y-x\)</span> 看做常数，<span class="arithmatex">\(v\)</span> 固定时 <span class="arithmatex">\(y\)</span> 仍可以变化，因而得到的结果也就不同．</p>
+<p>我们用 <span class="arithmatex">\(\left( \dfrac{\partial f}{\partial x} \right)_y\)</span> 表示在 <span class="arithmatex">\(y\)</span> 固定时对 <span class="arithmatex">\(x\)</span> 的偏导数，<span class="arithmatex">\(\left( \dfrac{\partial f}{\partial u} \right)_v\)</span> 表示在 <span class="arithmatex">\(v\)</span> 固定时对 <span class="arithmatex">\(u\)</span> 的偏导数．则有
+$$
+\left( \dfrac{\partial f}{\partial u} \right)_v =
+\left( \dfrac{\partial f}{\partial x} \right)_v \ne \left( \dfrac{\partial f}{\partial x} \right)_y
+$$
+因此当变量之间不是独立关系时，求偏导数时需要明确哪个变量被固定．</p>
+<h3 id="_17">隐函数求导</h3>
+<p>对于隐函数 <span class="arithmatex">\(g(x,y,z)=0\)</span>，如果 <span class="arithmatex">\(g_z \ne 0\)</span>，且 <span class="arithmatex">\(z\)</span> 可表示为 <span class="arithmatex">\(x,y\)</span> 的函数 <span class="arithmatex">\(z=z(x,y)\)</span>，即 <span class="arithmatex">\(g(x,y,f(x,y))=0\)</span>．应如何求出 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span> 和 <span class="arithmatex">\(\dfrac{\partial z}{\partial y}\)</span>？</p>
+<p>对 <span class="arithmatex">\(g\)</span> 求微分，由全微分得到
+$$
+g_x dx + g_y dy + g_z dz = 0
+$$
+对于 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span>，由于 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 是独立变量，因此求 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span> 时，<span class="arithmatex">\(y\)</span> 固定，<span class="arithmatex">\(dy=0\)</span>，得到
+$$
+g_x dx + g_z \dfrac{\partial z}{\partial x} dx = 0 \Rightarrow \dfrac{\partial z}{\partial x} = -\dfrac{g_x}{g_z}
+$$
+同理，求 <span class="arithmatex">\(\dfrac{\partial z}{\partial y}\)</span> 时，<span class="arithmatex">\(x\)</span> 固定，<span class="arithmatex">\(dx=0\)</span>，得到
+$$
+g_y dy + g_z \dfrac{\partial z}{\partial y} dy = 0 \Rightarrow \dfrac{\partial z}{\partial y} = -\dfrac{g_y}{g_z}
+$$</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="1.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 向量与矩阵">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                向量与矩阵
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="3.html" class="md-footer__link md-footer__link--next" aria-label="下一页: 重积分">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                重积分
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+    
+  </body>
+</html>

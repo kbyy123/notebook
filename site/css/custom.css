@@ -1,0 +1,9 @@
+/* 隐藏面包屑导航中的第一个节点（通常是主页） */
+.md-breadcrumbs__list li:nth-child(1) {
+    display: none;
+}
+
+/* 隐藏第一个节点后的分隔符 */
+.md-breadcrumbs__list li:nth-child(2) ::before {
+    display: none;
+}
