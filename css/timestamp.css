@@ -1,0 +1,19 @@
+/* 页脚时间戳 */
+/* 适配插件默认类名 */
+.md-source-file {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--md-default-fg-color--lighter);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.75rem;
+  display: flex;       
+  flex-wrap: wrap;
+  gap: 2rem;           
+}
+
+/* 内部图标与文字的对齐 */
+.custom-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}

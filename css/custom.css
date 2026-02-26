@@ -1,0 +1,18 @@
+/* 隐藏路径中的第一个节点（根节点/主页） */
+.md-path__list > .md-path__item:first-child {
+    display: none;
+}
+
+
+/* 居中内容 */
+.center-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 针对盒子模型（如警告框）的居中 */
+}
+
+.center-content .admonition {
+    width: 80%;         /* 限制宽度，防止长条框太难看 */
+    text-align: left;    /* 框内文字保持左对齐比较美观 */
+}

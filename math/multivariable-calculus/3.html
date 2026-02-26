@@ -1,0 +1,1489 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+        <link rel="prev" href="2.html">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>重积分 - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              重积分
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    📊数学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多变量微积分
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    多变量微积分
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    向量与矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多变量微分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    重积分
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="3.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    重积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二重积分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直角坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任意换元
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三重积分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直角坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        柱面坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        球面坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二重积分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直角坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        极坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        任意换元
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三重积分
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三重积分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        直角坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        柱面坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        球面坐标
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏫主页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    📊数学
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    多变量微积分
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook.git/edit/master/docs/math/multivariable-calculus/3.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook.git/raw/master/docs/math/multivariable-calculus/3.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">重积分</h1>
+<h2 id="_2">二重积分</h2>
+<h3 id="_3">理解</h3>
+<p>在单变量积分中，我们可以将定积分 <span class="arithmatex">\(\displaystyle\int_a^b f(x) dx\)</span> 看作函数 <span class="arithmatex">\(y=f(x)\)</span> 在区间 <span class="arithmatex">\([a,b]\)</span> 上与 <span class="arithmatex">\(x\)</span> 轴围成的面积．在二重积分中，我们可以将 <span class="arithmatex">\(\displaystyle\iint_R f(x,y)\, dA\)</span> 看作函数 <span class="arithmatex">\(z=f(x,y)\)</span> 在区域 <span class="arithmatex">\(R\)</span> 上与 <span class="arithmatex">\(xy\)</span> 平面围成的体积；但如果用这种理解方式就难以形象理解三重积分，因此我们可以将 <span class="arithmatex">\(f(x,y)\)</span> 看作一个“密度”，二重积分就是求区域 <span class="arithmatex">\(R\)</span> 的总面质量．</p>
+<h3 id="_4">计算</h3>
+<h4 id="_5">直角坐标</h4>
+<p>对于给定的区域 <span class="arithmatex">\(R\)</span>，如果采用直角坐标系，面积微元可以用矩形近似，即 <span class="arithmatex">\(dA = dx\, dy\)</span>；
+我们可以先固定住 <span class="arithmatex">\(x\)</span>，求出在 <span class="arithmatex">\(x\)</span> 给定的情况下 <span class="arithmatex">\(y\)</span> 的积分，即 <span class="arithmatex">\(S(x) = \displaystyle\int f(x,y)dy\)</span>；
+再对 <span class="arithmatex">\(x\)</span> 进行积分，得到 <span class="arithmatex">\(\displaystyle\iint_R f(x,y)\, dxdy=\int_{x_{min}}^{x_{max}} S(x) dx\)</span>，即</p>
+<div class="arithmatex">\[
+\iint_R f(x,y)\, dxdy=\int_{x_{min}}^{x_{max}} \left( \int_{y_{min}}^{y_{max}} f(x,y) dy \right) dx
+\]</div>
+<p>将二重积分转化为二次积分．</p>
+<p>例1：计算 <span class="arithmatex">\(\displaystyle\iint_R (1 -x^2 - y^2) dA\)</span>，其中 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(0 \le x \le 1, 0 \le y \le 1\)</span> 围成的区域．</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\iint_R (1 -x^2 - y^2) dA &amp;= \int_0^1 \left( \int_0^1 (1 -x^2 - y^2) dy \right) dx \\
+&amp;= \int_0^1 \left[ y - x^2 y - \frac{y^3}{3} \right]_0^1 dx \\
+&amp;= \int_0^1 \left(1 - x^2 - \frac{1}{3} \right) dx \\
+&amp;= \int_0^1 \left( \frac{2}{3} - x^2\right) dx \\
+&amp;= \left[ \frac{2}{3}x - \frac{x^3}{3} \right]_0^1 \\
+&amp;= \frac{1}{3}.
+\end{aligned}
+\]</div>
+<p>例2：计算 <span class="arithmatex">\(\displaystyle\iint_R (1 - x^2 - y^2) dA\)</span>，其中 <span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(x^2 + y^2 \le 1\)</span> 在第一象限围成的区域．</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\iint_R (1 - x^2 - y^2) dA &amp;= \int_{0}^1 \left( \int_{0}^{\sqrt{1-x^2}} (1 - x^2 - y^2) dy \right) dx \\
+&amp;= \int_{0}^1 \left[ y - x^2 y - \frac{y^3}{3} \right]_0^{\sqrt{1-x^2}} dx \\
+&amp;= \int_{0}^1 \left[ \sqrt{1-x^2} - x^2 \sqrt{1-x^2} - \frac{(1-x^2)^{\frac{3}{2}}}{3} \right] dx \\
+&amp;=\frac{2}{3} \int_{0}^1 (1-x^2)^{\frac{3}{2}} dx \\
+\end{aligned}
+\]</div>
+<p>令 <span class="arithmatex">\(x=\sin{\theta}\)</span>，则</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\frac{2}{3}\int_0^1(1-x^2)^{\frac{3}{2}} dx &amp;=
+\frac{2}{3}\int_0^{\frac{\pi}{2}}
+\cos ^3\theta \, d\sin \theta \\
+&amp;= \frac{2}{3}\int_0^{\frac{\pi}{2}}\cos ^4\theta\, d\theta \\
+&amp;= \frac{2}{3} \cdot \frac{3}{4} \cdot \frac{1}{2} \cdot \ \frac{\pi}{2}\\
+&amp;= \frac{\pi}{8}.
+\end{aligned}
+\]</div>
+<p>例3：计算 <span class="arithmatex">\(\displaystyle\int_0^1 \int_x^{\sqrt x}\frac{e^y}{y}dy\, dx\)</span>．</p>
+<p>由于内部积分积不出，我们可以利用二重积分对 <span class="arithmatex">\(x,y\)</span> 积分顺序不影响结果的性质，交换积分顺序．
+<img alt="" src="assets/file-20260224110825501.png" />
+积分区域为 <span class="arithmatex">\(y=x\)</span> 与 <span class="arithmatex">\(y=\sqrt x\)</span> 在 <span class="arithmatex">\(x=0\)</span> 和 <span class="arithmatex">\(x=1\)</span> 围成的区域．交换积分顺序后，积分区域为 <span class="arithmatex">\(x=y^2\)</span> 与 <span class="arithmatex">\(x=y\)</span> 在 <span class="arithmatex">\(y=0\)</span> 和 <span class="arithmatex">\(y=1\)</span> 围成的区域．因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\int_0^1 \int_x^{\sqrt x}\frac{e^y}{y}dy\, dx &amp;=
+\int_0^1 \int_{y^2}^{y} \frac{e^y}{y} dx\, dy \\
+&amp;= \int_0^1 \frac{e^y}{y}(y-y^2) dy \\
+&amp;= \int_0^1 e^y (1-y) dy \\
+&amp;= \left[ -ye^y+2e^y \right]_0^1 \\
+&amp;= e - 2.
+\end{aligned}
+\]</div>
+<h4 id="_6">极坐标</h4>
+<p>上述例2中，积分区域 <span class="arithmatex">\(R\)</span> 是一个圆，含有圆的积分通常可以使用极坐标计算化简．
+<img alt="" src="assets/file-20260224111242440.png" />
+如图所示，在极坐标中，面积微元 <span class="arithmatex">\(\Delta A\)</span> 在 <span class="arithmatex">\(\Delta r\)</span> 和 <span class="arithmatex">\(\Delta \theta\)</span> 足够小时可近似看作矩形，长宽分别为 <span class="arithmatex">\(r\Delta \theta\)</span> 和 <span class="arithmatex">\(\Delta r\)</span>，取极限 <span class="arithmatex">\(\Delta r,\Delta \theta \to 0\)</span>，得到 <span class="arithmatex">\(dA = r\, dr\, d\theta\)</span>．</p>
+<p>一般来说，使用极坐标计算二重积分时先对 <span class="arithmatex">\(r\)</span> 积分，因为 <span class="arithmatex">\(r\)</span> 一般是被 <span class="arithmatex">\(\theta\)</span> 表示的，对于给定的 <span class="arithmatex">\(\theta\)</span>，<span class="arithmatex">\(r\in [r_{min}, r_{max}]\)</span>；再对 <span class="arithmatex">\(\theta\)</span> 积分，<span class="arithmatex">\(\theta \in [\theta_{min}, \theta_{max}]\)</span>；<span class="arithmatex">\(\theta\)</span> 的取值范围一般是常数区间，如 <span class="arithmatex">\([0,\dfrac{\pi}{2}]\)</span> 或 <span class="arithmatex">\([0,2\pi]\)</span> 等．  </p>
+<p>由此，例2中二重积分的计算可以化简为</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\iint_R (1 - x^2 - y^2) dA &amp;= \int_0^{\frac{\pi}{2}} \int_0^1 (1 - r^2) r\, dr\, d\theta \\
+&amp;= \int_0^{\frac{\pi}{2}} \left[ \frac{r^2}{2} - \frac{r^4}{4} \right]_0^1 d\theta \\
+&amp;= \int_0^{\frac{\pi}{2}} \frac{1}{4} d\theta \\
+&amp;= \frac{\pi}{8}.
+\end{aligned}
+\]</div>
+<h4 id="_7">任意换元</h4>
+<p>例1：计算 <span class="arithmatex">\(\displaystyle\iint_R dx\, dy\)</span>，其中 <span class="arithmatex">\(R\)</span> 是椭圆 <span class="arithmatex">\(\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} \le 1\)</span> 围成的区域．</p>
+<p>我们能很自然地想到令 <span class="arithmatex">\(u = \dfrac{x}{a}, v = \dfrac{y}{b}\)</span>，则椭圆变为单位圆 <span class="arithmatex">\(u^2 + v^2 \le 1\)</span>．<span class="arithmatex">\(dx\,dy=ab\, du\, dv\)</span>．因此</p>
+<div class="arithmatex">\[
+\iint_R dx\, dy = \iint_{u^2 + v^2 \le 1} ab\, du\, dv = ab \iint_{u^2 + v^2 \le 1} du\, dv = ab \cdot \pi = \pi ab.
+\]</div>
+<p>当 <span class="arithmatex">\(x,y\)</span> 与 <span class="arithmatex">\(u,v\)</span> 之间为正比例关系时，<span class="arithmatex">\(dx\,dy\)</span> 与 <span class="arithmatex">\(du\, dv\)</span> 之间只相差一个比例系数；如果 <span class="arithmatex">\(x,y\)</span> 与 <span class="arithmatex">\(u,v\)</span> 之间的关系更复杂会怎么用？</p>
+<p>例2：当 <span class="arithmatex">\(u=3x-2y,v=x+y\)</span> 时，求 <span class="arithmatex">\(dx\,dy\)</span> 与 <span class="arithmatex">\(du\, dv\)</span> 之间的关系．</p>
+<p>由于 <span class="arithmatex">\(u,v\)</span> 是 <span class="arithmatex">\(x,y\)</span> 的线性组合，可以将 <span class="arithmatex">\(u,v\)</span> 写成矩阵形式：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+u \\
+v
+\end{bmatrix} =
+\begin{bmatrix}3 &amp; -2 \\
+1 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}x \\
+y
+\end{bmatrix}
+\]</div>
+<p>我们通过图像来观察 <span class="arithmatex">\(dx\,dy\)</span> 与 <span class="arithmatex">\(du\, dv\)</span> 之间的关系．
+<img alt="" src="assets/file-20260224122303669.png" />
+根据[[#线性变换]]的知识，我们只需关注 <span class="arithmatex">\(\hat{i},\hat{j}\)</span> 的变化．</p>
+<div class="arithmatex">\[
+\begin{bmatrix}3 &amp; -2 \\
+1 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}1 \\
+0
+\end{bmatrix}
+=
+\begin{bmatrix}3 \\
+1
+\end{bmatrix}, \quad
+\begin{bmatrix}3 &amp; -2 \\
+1 &amp; 1
+\end{bmatrix}
+\begin{bmatrix}0 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}-2 \\
+1
+\end{bmatrix}
+\]</div>
+<p>变换后面积由 <span class="arithmatex">\(\hat{i},\hat{j}\)</span> 张成的单位正方形变为 <span class="arithmatex">\(\begin{bmatrix}3 \\1\end{bmatrix}, \begin{bmatrix}-2 \\ 1\end{bmatrix}\)</span> 张成的平行四边形．因此 <span class="arithmatex">\(du\, dv\)</span> 与 <span class="arithmatex">\(dx\, dy\)</span> 之间的关系为 <span class="arithmatex">\(du\, dv =  \begin{vmatrix}3 &amp; -2 \\
+1 &amp; 1
+\end{vmatrix}  dx\, dy = 5\, dx\, dy\)</span>．</p>
+<p>将其推广到一般情况：由估值公式</p>
+<div class="arithmatex">\[
+\begin{cases}
+\Delta u \approx u_x \Delta x + u_y \Delta y\\ \Delta v \approx v_x \Delta x + v_y \Delta y
+\end{cases}
+ \quad \mathrm{i.e.} \quad
+\begin{bmatrix}\Delta u \\
+\Delta v
+\end{bmatrix} \approx
+\begin{bmatrix}u_x &amp; u_y \\
+v_x &amp; v_y
+\end{bmatrix}
+\begin{bmatrix}\Delta x \\
+\Delta y
+\end{bmatrix}
+\]</div>
+<p>取 极限 <span class="arithmatex">\(\Delta x, \Delta y \to 0\)</span>，得到</p>
+<div class="arithmatex">\[
+\begin{bmatrix}du \\ dv
+\end{bmatrix} =
+\begin{bmatrix}u_x &amp; u_y \\
+v_x &amp; v_y
+\end{bmatrix}
+\begin{bmatrix}dx \\ dy
+\end{bmatrix}
+\]</div>
+<p>定义 <span class="arithmatex">\(J =\dfrac{\partial(u,v)}{\partial(x,y)}= \begin{vmatrix}u_x &amp; u_y \\ v_x &amp; v_y\end{vmatrix}\)</span> 为变换的雅可比行列式(Jacobian determinant)．则有 <span class="arithmatex">\(du\, dv = |J|\, dx\, dy\)</span>．</p>
+<p>比如极坐标换元 <span class="arithmatex">\(x=r\cos\theta, y=r\sin\theta\)</span>，则</p>
+<div class="arithmatex">\[
+J = \dfrac{\partial(x,y)}{\partial(u,v)}=
+\begin{vmatrix}
+\cos\theta &amp; -r\sin\theta \\
+\sin\theta &amp; r\cos\theta
+\end{vmatrix}
+=r(\cos^2\theta+\sin^2\theta) = r
+\]</div>
+<p>因此 <span class="arithmatex">\(dx\,dy=|J|dr\,d\theta = rdr\,d\theta\)</span>．</p>
+<h3 id="_8">应用</h3>
+<ol>
+<li>计算区域 <span class="arithmatex">\(R\)</span> 的面积：<span class="arithmatex">\(\mathrm{Area}=\displaystyle\iint_R 1\, dA\)</span>；亦或是将 <span class="arithmatex">\(\delta\)</span> 视为面密度函数 <span class="arithmatex">\(\delta = \delta(x,y)\)</span>，则 <span class="arithmatex">\(\mathrm{Mass}=\displaystyle\iint_R \delta\, dA\)</span>．</li>
+<li>计算给定函数在一个区域内的平均值．如 <span class="arithmatex">\(f\)</span> 在区域 <span class="arithmatex">\(R\)</span> 内的平均值为 <span class="arithmatex">\(\displaystyle\bar{f}=\dfrac{1}{\mathrm{Area}} \iint_R f\, dA\)</span>．</li>
+<li>计算给定函数在一个区域内密度加权平均值．如 <span class="arithmatex">\(f\)</span> 在区域 <span class="arithmatex">\(R\)</span> 内的密度加权平均值为 <span class="arithmatex">\(\displaystyle\bar{f}=\dfrac{\displaystyle\iint_R f\, \delta \, dA}{\displaystyle\iint_R\delta \, dA}  =\dfrac{1}{\mathrm{Mass}} \iint_R f\, \delta \, dA\)</span>．</li>
+</ol>
+<p>典型的例子就是求质心坐标：当 <span class="arithmatex">\(f=x\)</span> 时求的 <span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\(R\)</span> 内的密度加权平均值，即质心横坐标 <span class="arithmatex">\(\bar{x}\)</span>；<span class="arithmatex">\(y\)</span> 同理．</p>
+<div class="arithmatex">\[
+\bar{x} = \dfrac{1}{\mathrm{Mass}} \iint_R x\,\delta \,dA, \quad \bar{y} = \dfrac{1}{\mathrm{Mass}} \iint_R y\, \delta \,dA.
+\]</div>
+<ol>
+<li>计算转动惯量(Moment of Inertia)：对于一个质点，转动惯量 <span class="arithmatex">\(I=mr^2\)</span>；对于有多质点的系统，<span class="arithmatex">\(I=\sum mr^2\)</span>；而对于一个连续分布的系统，其本质就是求 <span class="arithmatex">\(r^2\)</span> 的密度加权和，即 <span class="arithmatex">\(I =\displaystyle \iint_R r^2\, \delta \, dA\)</span>．<blockquote>
+<p><span class="arithmatex">\(I\)</span> 可以理解为做旋转运动的惯性大小，类似于直线运动中的 <span class="arithmatex">\(m\)</span>．</p>
+<p>动能 <span class="arithmatex">\(E_k = \dfrac{1}{2} m v^2=\dfrac{1}{2} m\omega^2r^2 = \dfrac{1}{2}I\omega^2\)</span>，其中 <span class="arithmatex">\(\omega\)</span> 是角速度．</p>
+<p>角动量 <span class="arithmatex">\(\tau = I\alpha\)</span>，其中 <span class="arithmatex">\(\tau\)</span> 是力矩，<span class="arithmatex">\(\alpha\)</span> 是角加速度．这个公式类似于直线运动中的 <span class="arithmatex">\(F=ma\)</span>．</p>
+</blockquote>
+</li>
+</ol>
+<p>例1：对于半径为 <span class="arithmatex">\(a\)</span> 的圆盘 <span class="arithmatex">\(x^2 + y^2 \le a^2\)</span>，其 <span class="arithmatex">\(\delta = 1\)</span>，求其关于 <span class="arithmatex">\(z\)</span> 轴的转动惯量 <span class="arithmatex">\(I_z\)</span>．</p>
+<div class="arithmatex">\[
+I_z = \iint_R r^2\, \delta \, dA = \iint_R r^2\, dA.
+\]</div>
+<p>使用极坐标计算：</p>
+<div class="arithmatex">\[
+I_z = \int_0^{2\pi} \int_0^a r^2 \cdot r\, dr\, d\theta = \int_0^{2\pi} d\theta \int_0^a r^3\, dr = 2\pi \cdot \frac{a^4}{4} = \frac{\pi a^4}{2}.
+\]</div>
+<p>例2：对于半径为 <span class="arithmatex">\(a\)</span> 的圆盘 <span class="arithmatex">\(x^2 + y^2 \le a^2\)</span>，其 <span class="arithmatex">\(\delta = 1\)</span>，求其关于圆周上某点的转动惯量 <span class="arithmatex">\(I\)</span>．</p>
+<p><img alt="" src="assets/file-20260224120846159.png" />
+不妨将该点放在原点，而将圆盘放置在 <span class="arithmatex">\((x-a)^2+y^2 \le a^2\)</span>．
+当 <span class="arithmatex">\(\theta\)</span> 固定时，<span class="arithmatex">\(r\)</span> 的取值范围为 <span class="arithmatex">\(0 \le r \le 2a\cos{\theta}\)</span>；<span class="arithmatex">\(\theta\)</span> 的取值范围为 <span class="arithmatex">\(-\dfrac{\pi}{2} \le \theta \le \dfrac{\pi}{2}\)</span>．因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+I &amp;= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \int_0^{2a\cos{\theta}} r^2 \cdot r\, dr\, d\theta \\
+&amp;= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} d\theta \int_0^{2a\cos{\theta}} r^3\, dr \\
+&amp;= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} 4a^4 \cos^4{\theta} \, d\theta \\
+&amp;= 4a^4 \cdot \frac{3}{4} \cdot \frac{1}{2} \cdot \pi \\
+&amp;= \frac{3\pi a^4}{2}.
+\end{aligned}
+\]</div>
+<h2 id="_9">三重积分</h2>
+<h3 id="_10">理解</h3>
+<p><span class="arithmatex">\(\displaystyle\iiint _RfdV\)</span>，其中 <span class="arithmatex">\(f = f(x,y,z)\)</span>，<span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(xyz\)</span> 空间中的一个区域，<span class="arithmatex">\(dV\)</span> 是体积微元．可以将 <span class="arithmatex">\(f\)</span> 看作体密度，三重积分的结果就是区域 <span class="arithmatex">\(R\)</span> 的总质量．</p>
+<h3 id="_11">计算</h3>
+<h4 id="_12">直角坐标</h4>
+<p><span class="arithmatex">\(dV = dx\, dy\, dz\)</span>，因此三重积分可以写成</p>
+<div class="arithmatex">\[
+\iiint_R f(x,y,z)\, dV = \iiint_R f(x,y,z)\, dx\, dy\, dz.
+\]</div>
+<p>若对于给定的 <span class="arithmatex">\(x,y\)</span>，<span class="arithmatex">\(z\)</span> 的取值范围为 <span class="arithmatex">\([z_{min}, z_{max}]\)</span>，则可以先对 <span class="arithmatex">\(z\)</span> 积分将三重积分化为二重积分，再用计算二重积分的方法计算．</p>
+<p>例：计算三重积分 <span class="arithmatex">\(\displaystyle\iiint_R xdV\)</span>，其中 <span class="arithmatex">\(R\)</span> 是由 <span class="arithmatex">\(x+y+2z=2\)</span> 和三个坐标面围成的区域．</p>
+<p>对于给定 <span class="arithmatex">\(x,y\)</span>，<span class="arithmatex">\(z\)</span> 的取值范围为 <span class="arithmatex">\(0 \le z \le \dfrac{2-x-y}{2}\)</span>；对于给定的 <span class="arithmatex">\(x\)</span>，<span class="arithmatex">\(y\)</span> 的取值范围为 <span class="arithmatex">\(0 \le y \le 2-x\)</span>；<span class="arithmatex">\(x\)</span> 的取值范围为 <span class="arithmatex">\(0 \le x \le 2\)</span>．因此</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\iiint_R xdV &amp;= \int_0^2 \int_0^{2-x} \int_0^{\frac{2-x-y}{2}} x\, dz\, dy\, dx \\
+&amp;= \int_0^2 \int_0^{2-x} \frac{2-x-y}{2}x  dy\, dx \\
+&amp;= \int_0^2 \left[\frac{x(2-x)y}{2} -\frac{xy^2}{4}  \right]_0^{2-x}dx \\
+&amp;= \frac{1}{4} \int_0^2 x(2-x)^2  dx \\
+&amp;\xlongequal{区间再现}\frac{1}{4} \int_0^2 x^2(2-x)  dx  \\
+&amp;= \frac{1}{4}\left[ \frac{2x^3}{3} - \frac{x^4}{4} \right]_0^2 \\
+&amp;= \frac{1}{3}.
+\end{aligned}\]</div>
+<h4 id="_13">柱面坐标</h4>
+<p>将 <span class="arithmatex">\(x,y\)</span> 通过极坐标换元，<span class="arithmatex">\(z\)</span> 保持不变，即 <span class="arithmatex">\(x=r\cos\theta, y=r\sin\theta, z=z\)</span>．则 <span class="arithmatex">\(dV =dS\,dz= r\, dr\, d\theta\, dz\)</span>．因此三重积分可以写成
+$$</p>
+<div class="arithmatex">\[\begin{aligned}
+\iiint_R f(x,y,z)\, dV &amp;= \iiint_R f(r\cos\theta, r\sin\theta, z)\, r\, dr\, d\theta\, dz \\
+&amp;= \int_{\theta_1}^{\theta_2}\int_{r_1(\theta)}^{r_2(\theta)} \int_{z_1(r,\theta)}^{z_2(r,\theta)} f(r\cos\theta, r\sin\theta, z)\, r\, dz\, dr\, d\theta
+\end{aligned}\]</div>
+<p>$$
+例：计算三重积分 <span class="arithmatex">\(\displaystyle\iiint_R ze^{x^2+y^2}dV\)</span>，其中 <span class="arithmatex">\(R\)</span> 是由 <span class="arithmatex">\(z=2\)</span> 和 <span class="arithmatex">\(z=\sqrt{x^2+y^2}\)</span> 围成的区域．</p>
+<p>对于给定的 <span class="arithmatex">\(x,y\)</span>，<span class="arithmatex">\(z\)</span> 的取值范围为 <span class="arithmatex">\(\sqrt{x^2+y^2} \le z \le 2\)</span>，即 <span class="arithmatex">\(r \le z \le 2\)</span>；区域 <span class="arithmatex">\(R\)</span> 在 <span class="arithmatex">\(xy\)</span> 平面上的投影是 <span class="arithmatex">\(x^2+y^2 \le 4\)</span>，即 <span class="arithmatex">\(0 \le r \le 2\)</span>；<span class="arithmatex">\(\theta\)</span> 的取值范围为 <span class="arithmatex">\(0 \le \theta \le 2\pi\)</span>．因此
+$$</p>
+<p>\begin{aligned}
+\iiint_R ze^{x^2+y^2}dV &amp;= \int_0^{2\pi}d\theta \int_0^2 rdr\int_r^2 ze^{r^2} dz \
+&amp;= \int_0^{2\pi}d\theta \int_0^2 re^{r^2} \cdot \frac{4-r^2}{2} dr \
+&amp;=\frac{\pi}{2} \int_0^2 (4-r^2)e^{r^2} dr^2 \
+&amp;=\frac{\pi}{2} \left[ (5-r^2)e^{r^2}\right]^2_0 \
+&amp;= \frac{\pi}{2}(e^4 - 5).
+\end{aligned}$$</p>
+<h4 id="_14">球面坐标</h4>
+<p>用 <span class="arithmatex">\(\rho\)</span> 表示到原点的距离，<span class="arithmatex">\(\phi\)</span> 表示与 <span class="arithmatex">\(z\)</span> 轴的夹角，<span class="arithmatex">\(\theta\)</span> 表示在 <span class="arithmatex">\(xy\)</span> 平面上的投影与 <span class="arithmatex">\(x\)</span> 轴的夹角．则</p>
+<div class="arithmatex">\[
+\begin{cases}
+x = \rho\sin\phi\cos\theta \\
+y = \rho\sin\phi\sin\theta \\
+z = \rho\cos\phi
+\end{cases}
+\]</div>
+<p><img alt="" src="assets/file-20260226101347270.png" />
+我们先无视球壳厚度，取球面上的一个面积微元；如图，长方形的长宽分别为 <span class="arithmatex">\(\rho\sin\phi\Delta\theta\)</span> 和 <span class="arithmatex">\(\rho\Delta\phi\)</span>，因此面积微元 <span class="arithmatex">\(\Delta S = \rho^2 \sin\phi \Delta\theta \Delta\phi\)</span>；再考虑球壳的厚度 <span class="arithmatex">\(\Delta\rho\)</span>，得到体积微元 <span class="arithmatex">\(dV = \rho^2 \sin\phi\, d\rho\, d\phi\, d\theta\)</span>．</p>
+<p>因此</p>
+<div class="arithmatex">\[
+\displaystyle\iiint_R f(x,y,z)\, dV = \iiint_R f(\rho\sin\phi\cos\theta,\rho\sin\phi\sin\theta,\rho\cos\phi)\, \rho^2 \sin\phi\, d\rho\, d\phi\, d\theta.
+\]</div>
+<h3 id="_15">应用</h3>
+<p>例：在原点处有一质量为 <span class="arithmatex">\(m\)</span> 的质点，求其与质量分布均匀均匀球体 <span class="arithmatex">\(x^2+y^2+(z-a)^2 \le a^2\)</span>，密度为 <span class="arithmatex">\(\delta\)</span> 的球体的万有引力．</p>
+<p>对于球体在 <span class="arithmatex">\((x,y,z)\)</span> 处质量微元 <span class="arithmatex">\(\Delta M\)</span>，其万有引力大小为 <span class="arithmatex">\(|\boldsymbol{F}| = \dfrac{G\Delta M m}{\rho^2}\)</span>，方向为 <span class="arithmatex">\(\langle\dfrac{x,y,z}{\rho}\rangle\)</span>，即 <span class="arithmatex">\(\boldsymbol{F} = \dfrac{G\Delta M m}{\rho^2}\cdot \dfrac{\langle x,y,z\rangle}{\rho} = \dfrac{G\Delta M m}{\rho^3}\langle x,y,z\rangle\)</span>．</p>
+<p>我们先只考虑一个分量的影响．对于 <span class="arithmatex">\(z\)</span> 分量，有 <span class="arithmatex">\(\boldsymbol{F}_z = \dfrac{G\Delta M m}{\rho^3}z\)</span>．又因为 <span class="arithmatex">\(\Delta M = \delta \Delta V\)</span> 因此</p>
+<div class="arithmatex">\[
+\boldsymbol{F}_z = Gm\iiint_R\frac{z}{\rho^3}\delta dV
+\]</div>
+<p>用球面坐标换元得到</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\boldsymbol{F}_z &amp;= Gm\iiint_R\frac{z}{\rho^3}\delta dV \\
+&amp;= Gm\iiint_R \frac{\rho\cos\phi}{\rho^3}\delta \cdot \rho^2 \sin\phi\, d\rho\, d\phi\, d\theta \\
+&amp;= Gm\iiint_R \delta \cdot \cos\phi \sin\phi \,d\rho \,d\phi\, d\theta \\
+&amp;=Gm\int_0^{2\pi} d\theta \int_0^{\frac{\pi}{2}} \cos\phi \sin\phi\, d\phi \int_0^{2a\cos\phi} \delta d\rho\\
+&amp;=Gm\cdot 2\pi\cdot\delta \cdot \int_0^{\frac{\pi}{2}} \cos\phi \sin\phi\, d\phi \cdot \int_0^{2a\cos\phi} d\rho\\
+&amp;=4Gm\pi a\delta \int_0^{\frac{\pi}{2}} \cos^2\phi \sin\phi\, d\phi\\
+&amp;=4Gm\pi a\delta \left[-\frac{\cos^3\phi}{3}\right]_0^{\frac{\pi}{2}}\\
+&amp;=\frac{4Gm\pi a\delta}{3}.
+\end{aligned}
+\]</div>
+<p>又因为 <span class="arithmatex">\(M=\dfrac{4}{3}\pi a^3\delta\)</span>，所以 <span class="arithmatex">\(\boldsymbol{F}_z = \dfrac{GMm}{a^2}\)</span>．而这正是质量为 <span class="arithmatex">\(M\)</span> 的球体在球心处产生的万有引力大小．</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 19:28:09 CST">2026年2月26日 19:28:09</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 15:01:29 CST">2026年2月26日 15:01:29</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="2.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: 多变量微分">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                多变量微分
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+    
+  </body>
+</html>
