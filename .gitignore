@@ -1,0 +1,10 @@
+/site/
+
+/venv/
+
+requirements.txt
+
+*.otf
+*.zip
+!docs/fonts/*.ttf
+!docs/fonts/*.woff2

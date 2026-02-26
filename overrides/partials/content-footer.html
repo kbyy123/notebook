@@ -1,0 +1,11 @@
+{% if page and page.meta %}
+<div class="md-source-file">
+    <span class="custom-date">
+        :material-clock-edit-outline: **最后更新：** {{ page.config.plugins['git-revision-date-localized'].get_localized_date(page.file.abs_src_path, 'update') }}
+    </span>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp; <span class="custom-date">
+        :material-clock-plus-outline: **创建于：** {{ page.config.plugins['git-revision-date-localized'].get_localized_date(page.file.abs_src_path, 'create') }}
+    </span>
+</div>
+{% endif %}

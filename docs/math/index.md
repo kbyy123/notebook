@@ -8,7 +8,7 @@ hide:
 
     包含微积分
     
-##  内容
+## Table of Contents
 
 - [多变量微积分](multivariable-calculus/index.md)
 

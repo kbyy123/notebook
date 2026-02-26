@@ -26,22 +26,28 @@ theme:
     - search.share
     - toc.follow               # 右侧目录随滚动高亮
     - content.code.copy        # 代码块一键复制
-
-extra_css:
-  - css/custom.css
-  - https://unpkg.com/katex@0/dist/katex.min.css
+  font:
+    text: false
+    code: JetBrains Mono
 
 markdown_extensions:
   - admonition
   - pymdownx.arithmatex:       # LaTeX 数学公式支持
       generic: true
+      smart_dollar: true  # 关键：防止 Markdown 引擎干扰美元符号内的内容
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - md_in_html  # 核心：允许在 <div> 标签内解析 Markdown    
   - pymdownx.superfences       # 支持更复杂的代码块嵌套
   - pymdownx.details           # 支持折叠块 (Admonitions)
-  
+
+extra_css:
+  - css/custom.css
+  - css/timestamp.css
+  - css/home.css
+  - css/font.css
+  - https://unpkg.com/katex@0/dist/katex.min.css
 
 extra_javascript:
   - https://unpkg.com/katex@0/dist/katex.min.js
@@ -51,6 +57,15 @@ extra_javascript:
   # - https://polyfill.io/v3/polyfill.min.js?features=es6
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - js/typed.js
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true  # 开启创建时间
+      type: datetime              # 显示完整日期时间
+      locale: zh                  # 使用中文界面
+      timezone: Asia/Shanghai     # 设置时区
+  - changelog
 
 nav:
   - 🏫主页: index.md

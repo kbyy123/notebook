@@ -6,6 +6,7 @@ document$.subscribe(({ body }) => {
         { left: "\\(", right: "\\)", display: false },
         { left: "\\[", right: "\\]", display: true }
       ],
+      ignoredClasses: ["no-math"],
       throwOnError: false,
       strict: "ignore"
     })

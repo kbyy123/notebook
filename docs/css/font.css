@@ -1,0 +1,70 @@
+/* ============================================================
+   1. 字体声明 (Font Declaration)
+   说明：告诉浏览器本地字体文件的位置。
+   路径 ../fonts/ 表示从当前 css 文件夹向上跳一级，再进入 fonts 文件夹。
+   ============================================================ */
+@font-face {
+  font-family: 'LXGW WenKai Screen';
+  /* 确保文件名与你文件夹中的 .ttf 文件名大小写完全一致 */
+  src: url('../fonts/LXGWWenKaiMonoScreen.ttf') format('truetype');
+  font-display: swap; /* 性能优化：字体加载前先用系统字体占位，防止白屏 */
+}
+
+/* ============================================================
+   2. 全局变量与正文设置 (Global & Body Styles)
+   说明：定义基础字号、行高及首选字体序列。
+   ============================================================ */
+:root {
+  /* 定义主题基础字号变量 */
+  --md-typeset-font-size: 0.9rem; 
+}
+
+body, .md-typeset {
+  /* 字体序列：代码优先用 JetBrains Mono，正文用霞鹜文楷，最后是系统备选 */
+  font-family: 'JetBrains Mono', 'LXGW WenKai Screen', "Microsoft YaHei", sans-serif;
+  font-size: 0.8rem; /* 按照你的要求调小正文字号 */
+  line-height: 1.6;  /* 增加行高，提升阅读舒适度 */
+}
+
+/* ============================================================
+   3. 提示框适配 (Admonition Styles)
+   说明：针对 !!! success, !!! note 等提示框的字体微调。
+   ============================================================ */
+/* 调整提示框内部正文的大小 */
+.md-typeset .md-admonition, 
+.md-typeset .admonition {
+  font-size: 0.8rem;      
+  line-height: 1.6;     
+}
+
+/* 调整提示框标题的大小 */
+.md-typeset .admonition-title, 
+.md-typeset summary {
+  font-size: 0.8rem !important;
+  font-weight: 700; /* 加粗标题，使其在小字号下依然醒目 */
+}
+
+/* ============================================================
+   4. 代码块适配 (Code Styles)
+   说明：针对行内代码和块级代码的字号调整。
+   ============================================================ */
+/* 调整行内代码 (如 `code`) 字号 */
+.md-typeset code {
+  font-size: 0.85em; 
+}
+
+/* 调整大块代码区域 (Code blocks) 字号 */
+.md-typeset pre code {
+  font-size: 0.9em;  
+  font-family: 'JetBrains Mono', monospace !important; /* 强制代码使用等宽字体 */
+}
+
+/* ============================================================
+   5. 页脚时间戳适配 (Footer Timestamp)
+   说明：确保页面底部的时间戳也同步使用新字体。
+   ============================================================ */
+.md-source-file {
+  font-family: 'LXGW WenKai Screen', sans-serif;
+  font-size: 0.75rem; /* 页脚信息通常比正文略小 */
+  color: var(--md-default-fg-color--light);
+}
