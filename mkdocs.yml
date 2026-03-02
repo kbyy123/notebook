@@ -47,6 +47,7 @@ extra_css:
   - css/timestamp.css
   - css/home.css
   - css/font.css
+  - css/copyright.css
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 extra_javascript:
@@ -76,3 +77,12 @@ nav:
       - math/multivariable-calculus/1.md
       - math/multivariable-calculus/2.md
       - math/multivariable-calculus/3.md
+      - math/multivariable-calculus/4.md
+  - 💡数据结构与算法:
+    - data-structure/index.md
+    - LeetCode:
+      - data-structure/leetcode/index.md
+      - data-structure/leetcode/1.md
+      - data-structure/leetcode/2.md
+      - data-structure/leetcode/3.md
+      - data-structure/leetcode/4.md

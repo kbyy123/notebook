@@ -43,10 +43,22 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -188,6 +200,25 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -205,25 +236,6 @@
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  🏫主页
-
-      </a>
-    </li>
   
 
       
@@ -276,6 +288,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -305,7 +344,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -327,14 +366,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -380,7 +419,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -402,14 +441,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -784,33 +823,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🏫主页
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -1156,159 +1168,159 @@
 <h1 id="_1">多变量微分</h1>
 <h2 id="_2">二元函数的绘制</h2>
 <p>对于双变量函数 <span class="arithmatex">\(f(x,y)\)</span>，如果想画出其图像，有两种绘制方法：
-- <strong>三维立体图</strong>：令 <span class="arithmatex">\(z=f(x,y)\)</span>，将该函数画在空间直角坐标系中．
-- <strong>二维等高线图</strong>：令 <span class="arithmatex">\(f(x,y)=C\)</span>，<span class="arithmatex">\(C\)</span> 为任意常数，通过取值不同的 <span class="arithmatex">\(C\)</span> 画出多条等高线图得到函数的图像．</p>
+- 三维立体图：令 <span class="arithmatex">\(z=f(x,y)\)</span>，将该函数画在空间直角坐标系中．
+- 二维等高线图：令 <span class="arithmatex">\(f(x,y)=C\)</span>，<span class="arithmatex">\(C\)</span> 为任意常数，通过取值不同的 <span class="arithmatex">\(C\)</span> 画出多条等高线图得到函数的图像．</p>
 <h2 id="_3">偏导与微分</h2>
 <h3 id="_4">偏导数</h3>
 <p>当有多个自变量时，因变量对某一个自变量的导数称为偏导数．</p>
-<p>对于二元函数，当 <span class="arithmatex">\(x,y\)</span> 无关时，将 <span class="arithmatex">\(y\)</span> 固定（视为常数），<span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 的偏导数
-$$
+<p>对于二元函数，当 <span class="arithmatex">\(x,y\)</span> 无关时，将 <span class="arithmatex">\(y\)</span> 固定（视为常数），<span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 的偏导数</p>
+<div class="arithmatex">\[
 f_{x}=\dfrac{\partial{f}}{\partial{x}}=\lim_{\Delta x \to 0}\dfrac{f(x_{0}+\Delta x,y_{0})-f(x_{0},y_{0})}{\Delta x}
-$$
-<span class="arithmatex">\(f\)</span> 对 <span class="arithmatex">\(y\)</span> 的偏导数同理．</p>
+\]</div>
+<p><span class="arithmatex">\(f\)</span> 对 <span class="arithmatex">\(y\)</span> 的偏导数同理．</p>
 <h3 id="_5">线性近似与全微分</h3>
-<p>在一元函数中，我们可以通过在某点处通过切线来进行<strong>线性近似</strong>．在 <span class="arithmatex">\((x_{0},f(x_{0}))\)</span> 处，我们有切线方程
-$$
+<p>在一元函数中，我们可以通过在某点处通过切线来进行<strong>线性近似</strong>．在 <span class="arithmatex">\((x_{0},f(x_{0}))\)</span> 处，我们有切线方程</p>
+<div class="arithmatex">\[
 y=f'(x_{0})(x-x_{0})+f(x_{0})
-$$
-当 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(x_{0}\)</span> 相差不大时，其误差较小可忽略，将函数值用线性近似得到
-$$
+\]</div>
+<p>当 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(x_{0}\)</span> 相差不大时，其误差较小可忽略，将函数值用线性近似得到</p>
+<div class="arithmatex">\[
 \Delta f = f(x)-f(x_{0})\approx f'(x_{0})(x-x_{0})
-$$
-两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}}\)</span>
-$$
+\]</div>
+<p>两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}}\)</span></p>
+<div class="arithmatex">\[
 df=f'(x_{0})dx
-$$
-即为一元函数的微分．</p>
+\]</div>
+<p>即为一元函数的微分．</p>
 <blockquote>
 <p>注意：
 <span class="arithmatex">\(\Delta f\)</span> 是质点在曲面上移动时 <span class="arithmatex">\(z\)</span> 坐标的真实改变量．
 <span class="arithmatex">\(df\)</span> 是质点在切平面上移动时，<span class="arithmatex">\(z\)</span> 坐标的近似改变量．</p>
 </blockquote>
-<p>当 <span class="arithmatex">\(f\)</span> 是关于独立变量 <span class="arithmatex">\(x,y\)</span> 的二元函数 <span class="arithmatex">\(z=f(x,y)\)</span> 时，其仍可以用线性近似，只不过由切线换成了<strong>切平面</strong>．在 <span class="arithmatex">\(f(x_{0},y_{0})\)</span> 处，固定 <span class="arithmatex">\(y\)</span>，其在平行于 <span class="arithmatex">\(xOz\)</span> 平面内的切线方程为
-$$
-\begin{cases} z=f_{x}(x_{0},y_{0})(x-x_{0})+f(x_{0},y_{0}) \ \
+<p>当 <span class="arithmatex">\(f\)</span> 是关于独立变量 <span class="arithmatex">\(x,y\)</span> 的二元函数 <span class="arithmatex">\(z=f(x,y)\)</span> 时，其仍可以用线性近似，只不过由切线换成了<strong>切平面</strong>．在 <span class="arithmatex">\(f(x_{0},y_{0})\)</span> 处，固定 <span class="arithmatex">\(y\)</span>，其在平行于 <span class="arithmatex">\(xOz\)</span> 平面内的切线方程为</p>
+<div class="arithmatex">\[
+\begin{cases} z=f_{x}(x_{0},y_{0})(x-x_{0})+f(x_{0},y_{0}) \\ \\
 y=y_{0}
 \end{cases}
-$$
-同理，固定 <span class="arithmatex">\(x\)</span>，其在平行于 <span class="arithmatex">\(yOz\)</span> 平面内的切线方程为
-$$
-\begin{cases} z=f_{y}(x_{0},y_{0})(y-y_{0})+f(x_{0},y_{0}) \ \
+\]</div>
+<p>同理，固定 <span class="arithmatex">\(x\)</span>，其在平行于 <span class="arithmatex">\(yOz\)</span> 平面内的切线方程为</p>
+<div class="arithmatex">\[
+\begin{cases} z=f_{y}(x_{0},y_{0})(y-y_{0})+f(x_{0},y_{0}) \\ \\
 x=x_{0}
 \end{cases}
-$$
-当 <span class="arithmatex">\(x,y\)</span> 同时变化时，<span class="arithmatex">\(f\)</span> 的变化量应该是这两种变化的叠加，找到过这两条直线的切平面
-$$
+\]</div>
+<p>当 <span class="arithmatex">\(x,y\)</span> 同时变化时，<span class="arithmatex">\(f\)</span> 的变化量应该是这两种变化的叠加，找到过这两条直线的切平面</p>
+<div class="arithmatex">\[
 z=f_{x}(x_{0},y_{0})(x-x_{0})+f_{y}(x_{0},y_{0})(y-y_{0})+f(x_{0},y_{0})
-$$
-因此得到
-$$
+\]</div>
+<p>因此得到</p>
+<div class="arithmatex">\[
 \Delta f\approx f_{x}\Delta x+f_{y}\Delta y
-$$
-两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}, y \to y_{0}}\)</span>
-$$
+\]</div>
+<p>两边同时取极限 <span class="arithmatex">\(\lim_{x \to x_{0}, y \to y_{0}}\)</span></p>
+<div class="arithmatex">\[
 df=f_{x}dx+f_{y}dy
-$$
-即为全微分方程．</p>
+\]</div>
+<p>即为全微分方程．</p>
 <h3 id="_6">链式法则</h3>
-<p>由上节，对于二元函数 <span class="arithmatex">\(f(x,y)\)</span> 有
-$$
+<p>由上节，对于二元函数 <span class="arithmatex">\(f(x,y)\)</span> 有</p>
+<div class="arithmatex">\[
 df=f_{x}dx+f_{y}dy
-$$
-若 <span class="arithmatex">\(x,y\)</span> 可参数化，即 <span class="arithmatex">\(x=x(t),y=y(t)\)</span>，则代入
-$$
+\]</div>
+<p>若 <span class="arithmatex">\(x,y\)</span> 可参数化，即 <span class="arithmatex">\(x=x(t),y=y(t)\)</span>，则代入</p>
+<div class="arithmatex">\[
 dx=\dfrac{dx}{dt}dt \quad dy=\dfrac{dy}{dt}dt
-$$
-得到
-$$
+\]</div>
+<p>得到</p>
+<div class="arithmatex">\[
 \begin{aligned}
-{df}&amp;=\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}dt+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt}dt\
+{df}&amp;=\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}dt+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt}dt\\
 &amp;=(\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt})dt
 \end{aligned}
-$$
-则
-$$
+\]</div>
+<p>则</p>
+<div class="arithmatex">\[
 \begin{aligned}
-f'(t)&amp;=\dfrac{df}{dt}\
+f'(t)&amp;=\dfrac{df}{dt}\\
 &amp;=\dfrac{\partial{f}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{f}}{\partial{y}}\dfrac{dy}{dt}
 \end{aligned}
-$$
-即 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(t\)</span> 的全导数公式，其符合<strong>链式法则</strong>．</p>
-<p>当参数关系变得复杂时仍成立．如 <span class="arithmatex">\(w=f(x,y),x=x(u,v),y=y(u,v)\)</span>，则
-$$
+\]</div>
+<p>即 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(t\)</span> 的全导数公式，其符合<strong>链式法则</strong>．</p>
+<p>当参数关系变得复杂时仍成立．如 <span class="arithmatex">\(w=f(x,y),x=x(u,v),y=y(u,v)\)</span>，则</p>
+<div class="arithmatex">\[
 \begin{aligned}
-dw &amp;=f_{x}dx+f_{y}dy \
-&amp;=f_{x}(x_{u}du+x_{v}dv)+f_{y}({y_u}du+y_{v}dv) \
+dw &amp;=f_{x}dx+f_{y}dy \\
+&amp;=f_{x}(x_{u}du+x_{v}dv)+f_{y}({y_u}du+y_{v}dv) \\
 &amp;=(f_{x}x_{u}+f_{y}{y_u})du+(f_{x}x_{v}+f_{y}{y_v})dv
 \end{aligned}
-$$
-根据全微分公式，有
-$$
+\]</div>
+<p>根据全微分公式，有</p>
+<div class="arithmatex">\[
 \begin{cases}
-\dfrac{\partial{w}}{\partial{u}}=f_{x}x_{u}+f_{y}{y_u} \
+\dfrac{\partial{w}}{\partial{u}}=f_{x}x_{u}+f_{y}{y_u} \\
 \dfrac{\partial{w}}{\partial{v}}=f_{x}x_{v}+f_{y}{y_v} 
 \end{cases}
-$$</p>
+\]</div>
 <h3 id="_7">二阶偏导与混合偏导</h3>
 <p>与一元函数类似，多元函数偏导后仍然是关于自变量的函数，可以继续偏导得到二阶偏导数；对于二元函数，一般将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{xx}\)</span>，关于 <span class="arithmatex">\(y\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{yy}\)</span>．</p>
 <p><span class="arithmatex">\(f\)</span> 先对 <span class="arithmatex">\(x\)</span> 再对 <span class="arithmatex">\(y\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{xy}\)</span>，先对 <span class="arithmatex">\(y\)</span> 再对 <span class="arithmatex">\(x\)</span> 的二阶偏导数记为 <span class="arithmatex">\(f_{yx}\)</span>．只要这两个偏导数存在且连续，则必有 <span class="arithmatex">\(f_{xy}=f_{yx}\)</span>．</p>
 <h3 id="_8">二元函数泰勒公式</h3>
-<p>一元函数的泰勒公式本质是多项式拟合，通过在某点处函数值与各阶导数值来拟合函数在该点附近的函数值．对于二元函数，泰勒公式同样适用．不妨将二元函数 <span class="arithmatex">\(f(x,y)\)</span> 在 <span class="arithmatex">\((x_{0},y_{0})\)</span> 处用多项式拟合，展开到二阶，设
-$$
+<p>一元函数的泰勒公式本质是多项式拟合，通过在某点处函数值与各阶导数值来拟合函数在该点附近的函数值．对于二元函数，泰勒公式同样适用．不妨将二元函数 <span class="arithmatex">\(f(x,y)\)</span> 在 <span class="arithmatex">\((x_{0},y_{0})\)</span> 处用多项式拟合，展开到二阶，设</p>
+<div class="arithmatex">\[
 f(x,y)=A+B(x-x_0)+C(y-y_0)+D(x-x_0)^{2}+E(x-x_0)(y-y_0)+F(y-y_0)^{2}+\cdots
-$$
-代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies A=f(x_0,y_0)\)</span>．</p>
-<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求偏导，得到
-$$
+\]</div>
+<p>代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies A=f(x_0,y_0)\)</span>．</p>
+<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求偏导，得到</p>
+<div class="arithmatex">\[
 f_x(x,y)=B+2D(x-x_0)+E(y-y_0)+\cdots
-$$
-代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies B=f_x(x_0,y_0)\)</span>
+\]</div>
+<p>代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies B=f_x(x_0,y_0)\)</span>
 同理，<span class="arithmatex">\(C=f_y(x_0,y_0)\)</span>．</p>
-<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求二阶偏导，得到
-$$
+<p>将 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(x\)</span> 求二阶偏导，得到</p>
+<div class="arithmatex">\[
 f_{xx}(x,y)=2D+\cdots
-$$
-代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies D=\dfrac{1}{2}f_{xx}(x_0,y_0)\)</span>．
+\]</div>
+<p>代入 <span class="arithmatex">\(x=x_0,y=y_0 \implies D=\dfrac{1}{2}f_{xx}(x_0,y_0)\)</span>．
 同理得到 <span class="arithmatex">\(E=f_{xy}(x_0,y_0),F=\dfrac{1}{2}f_{yy}(x_0,y_0)\)</span>．</p>
-<p>因此，可以得到二元函数 <span class="arithmatex">\(f=(x,y)\)</span> 的二阶泰勒展开为
-$$
+<p>因此，可以得到二元函数 <span class="arithmatex">\(f=(x,y)\)</span> 的二阶泰勒展开为</p>
+<div class="arithmatex">\[
 \begin{aligned}
-f(x,y) &amp;= f(x_0,y_0)+f_x(x-x_0)+f_y(y-y_0) \
+f(x,y) &amp;= f(x_0,y_0)+f_x(x-x_0)+f_y(y-y_0) \\
 &amp;+\dfrac{1}{2}f_{xx}(x-x_0)^{2}+f_{xy}(x-x_0)(y-y_0)+\dfrac{1}{2}f_{yy}(y-y_0)^{2} + \cdots
 \end{aligned}
-$$</p>
+\]</div>
 <h2 id="_9">向量化导数</h2>
 <h3 id="nabla">Nabla算子与梯度</h3>
-<p>若 <span class="arithmatex">\(w\)</span> 是关于独立变量 <span class="arithmatex">\(x,y,z\)</span> 的三元函数 <span class="arithmatex">\(w=w(x,y,z)\)</span>，且 <span class="arithmatex">\(x,y,z\)</span> 均可关于 <span class="arithmatex">\(t\)</span> 参数化，则由链式法则
-$$
+<p>若 <span class="arithmatex">\(w\)</span> 是关于独立变量 <span class="arithmatex">\(x,y,z\)</span> 的三元函数 <span class="arithmatex">\(w=w(x,y,z)\)</span>，且 <span class="arithmatex">\(x,y,z\)</span> 均可关于 <span class="arithmatex">\(t\)</span> 参数化，则由链式法则</p>
+<div class="arithmatex">\[
 \dfrac{dw}{dt}=\dfrac{\partial{w}}{\partial{x}}\dfrac{dx}{dt}+\dfrac{\partial{w}}{\partial{y}}\dfrac{dy}{dt}+\dfrac{\partial{w}}{\partial{z}}\dfrac{dz}{dt}
-$$
-为了简化公式，我们引入Nabla算子，符号为 <span class="arithmatex">\(\nabla\)</span>，在空间直角坐标系中是一个向量，其分量是各轴方向的偏导数算子：
-$$
+\]</div>
+<p>为了简化公式，我们引入Nabla算子，符号为 <span class="arithmatex">\(\nabla\)</span>，在空间直角坐标系中是一个向量，其分量是各轴方向的偏导数算子：</p>
+<div class="arithmatex">\[
 \nabla= \langle{\dfrac{\partial{}}{\partial{x}},\dfrac{\partial{}}{\partial{y}},\dfrac{\partial{}}{\partial{z}}}\rangle
-$$
-则有
-$$
+\]</div>
+<p>则有</p>
+<div class="arithmatex">\[
 \nabla w=\langle{\dfrac{\partial{w}}{\partial{x}},\dfrac{\partial{w}}{\partial{y}},\dfrac{\partial{w}}{\partial{z}}}\rangle
-$$
-根据质点运动学，有
-$$
+\]</div>
+<p>根据质点运动学，有</p>
+<div class="arithmatex">\[
 \boldsymbol{r}=\langle{x,y,z}\rangle
-$$
-则有
-$$
+\]</div>
+<p>则有</p>
+<div class="arithmatex">\[
 \dfrac{d\boldsymbol{r}}{dt}=\langle{\dfrac{dx}{dt},\dfrac{dy}{dt},\dfrac{dz}{dt}}\rangle
-$$
-最后可以简化为
-$$
+\]</div>
+<p>最后可以简化为</p>
+<div class="arithmatex">\[
 \dfrac{dw}{dt}=\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}
-$$
-其中，<span class="arithmatex">\(\nabla w\)</span> 称为 <span class="arithmatex">\(w\)</span> 的<strong>梯度</strong>．梯度总是垂直于 <span class="arithmatex">\(w=c\)</span> 这个曲面（或曲线）．下面给出证明．</p>
-<p>已知 <span class="arithmatex">\(\dfrac{dw}{dt}=\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}\)</span>，而当 <span class="arithmatex">\(w=c\)</span> 时，<span class="arithmatex">\(dw=0\)</span>，则有
-$$
+\]</div>
+<p>其中，<span class="arithmatex">\(\nabla w\)</span> 称为 <span class="arithmatex">\(w\)</span> 的<strong>梯度</strong>．梯度总是垂直于 <span class="arithmatex">\(w=c\)</span> 这个曲面（或曲线）．下面给出证明．</p>
+<p>已知 <span class="arithmatex">\(\dfrac{dw}{dt}=\nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}\)</span>，而当 <span class="arithmatex">\(w=c\)</span> 时，<span class="arithmatex">\(dw=0\)</span>，则有</p>
+<div class="arithmatex">\[
 \nabla w \cdot \dfrac{d\boldsymbol{r}}{dt}=\nabla w \cdot\boldsymbol{v}=0
-$$
-因此有 <span class="arithmatex">\(\nabla w\perp \boldsymbol{v}\)</span>．</p>
+\]</div>
+<p>因此有 <span class="arithmatex">\(\nabla w\perp \boldsymbol{v}\)</span>．</p>
 <p>对于一个曲线，在某点处 <span class="arithmatex">\(\nabla w\)</span> 与其速度向量垂直，则 <span class="arithmatex">\(\nabla w\)</span> 必然在该点处与该曲线垂直；
 对于一个曲面，在某点处 <span class="arithmatex">\(\nabla w\)</span> 与其在该点处的任意速度向量垂直，而该点处的速度向量均在该点的切平面上，则 <span class="arithmatex">\(\nabla w\)</span> 是该点处切平面的一个法向量，其与该曲面垂直．</p>
 <p>因此，必然有 <span class="arithmatex">\(\nabla w \perp\)</span> 曲面 <span class="arithmatex">\(w=c\)</span>．</p>
@@ -1317,14 +1329,14 @@ $$
 <p>在 <span class="arithmatex">\(xOy\)</span> 平面内任取某一方向单位向量 <span class="arithmatex">\(\hat{u}=\langle{a,b}\rangle \quad (a^{2}+b^{2}=1)\)</span>，在该方向上导数为 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}}\)</span></p>
 <p>（<span class="arithmatex">\(s\)</span> 为在 <span class="arithmatex">\(xOy\)</span> 平面上的路径，<span class="arithmatex">\(ds\)</span> 为在 <span class="arithmatex">\(xOy\)</span> 平面上的路径微元，其满足 <span class="arithmatex">\(ds = \sqrt{ (dx)^{2}+(dy)^{2} }\)</span>）</p>
 <p>（本质上任意导数定义都是如此，函数值变化量的微分比去移动路径长度的微分；如沿 <span class="arithmatex">\(x\)</span> 轴导数为 <span class="arithmatex">\(\dfrac{dw}{dx}\)</span>，<span class="arithmatex">\(dx\)</span> 就是路径长度）</p>
-<p>则有
-$$
+<p>则有</p>
+<div class="arithmatex">\[
 \begin{aligned}
-\left. \dfrac{dw}{ds} \right|<em>{\hat{u}}&amp;=f</em>{x}\dfrac{dx}{ds}+f_{y}\dfrac{dy}{ds} \
+\left. \dfrac{dw}{ds} \right|_{\hat{u}}&amp;=f_{x}\dfrac{dx}{ds}+f_{y}\dfrac{dy}{ds} \\
 &amp;=\nabla f\cdot \dfrac{d\boldsymbol{r}}{ds}
 \end{aligned}
-$$
-由质点运动学可知，<span class="arithmatex">\(\dfrac{d\boldsymbol{r}}{ds}\)</span> 为单位切向量，在这里即为 <span class="arithmatex">\(\hat{u}\)</span>，因此 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}}=\nabla f \cdot \hat{u}\)</span>．</p>
+\]</div>
+<p>由质点运动学可知，<span class="arithmatex">\(\dfrac{d\boldsymbol{r}}{ds}\)</span> 为单位切向量，在这里即为 <span class="arithmatex">\(\hat{u}\)</span>，因此 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}}=\nabla f \cdot \hat{u}\)</span>．</p>
 <p>则 <span class="arithmatex">\(\left. \dfrac{dw}{ds} \right|_{\hat{u}} =|\nabla f|\cos{\theta}\)</span>．
 - <span class="arithmatex">\(\theta=0\)</span>，此时方向导数取得最大值．也就是说梯度的方向是方向导数最大的方向，也就是函数值增长最快的方向．从直觉上也符合，因为垂直于等高线的方向是最陡峭的．
 - <span class="arithmatex">\(\theta=90^\circ\)</span>，此时方向导数为 <span class="arithmatex">\(0\)</span>，也就是函数变化率为 <span class="arithmatex">\(0\)</span>，再次印证了梯度垂直于等高线．
@@ -1334,26 +1346,28 @@ $$
 <p>与一元函数类似，对于二元函数 <span class="arithmatex">\(f(x,y)\)</span>，<span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极值的必要条件是 <span class="arithmatex">\(f_x(x_0,y_0)=f_y(x_0,y_0)=0\)</span>．</p>
 <h4 id="_13">二阶导检验</h4>
 <p>不妨考虑函数 <span class="arithmatex">\(w=ax^2+bxy+cy^2\)</span>，在驻点 <span class="arithmatex">\((0,0)\)</span> 处的极值性．</p>
-<p>当 <span class="arithmatex">\(a\ne 0\)</span> 时，我们将 <span class="arithmatex">\(x^2\)</span> 的系数 <span class="arithmatex">\(a\)</span> 提出，并且对 <span class="arithmatex">\(x\)</span> 进行配方，得到
-$$
+<p>当 <span class="arithmatex">\(a\ne 0\)</span> 时，我们将 <span class="arithmatex">\(x^2\)</span> 的系数 <span class="arithmatex">\(a\)</span> 提出，并且对 <span class="arithmatex">\(x\)</span> 进行配方，得到</p>
+<div class="arithmatex">\[
 \begin{aligned}
-w&amp;=a(x^2+\frac{b}{a}xy+\frac{c}{a}y^2) \
-&amp;=a(x+\frac{b}{2a}y)^2+(c-\frac{b^2}{4a})y^2 \
+w&amp;=a(x^2+\frac{b}{a}xy+\frac{c}{a}y^2) \\
+&amp;=a(x+\frac{b}{2a}y)^2+(c-\frac{b^2}{4a})y^2 \\
 &amp;=\frac{1}{4a}\left[ 4a^2(x+\frac{b}{2a}y)^2+(4ac-b^2)y^2\right]
 \end{aligned}
-$$
-1. 当 <span class="arithmatex">\(4ac-b^2&gt;0\)</span> 时，<span class="arithmatex">\([\,]\)</span> 内的值总是非负；若 <span class="arithmatex">\(a&gt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最小值；若 <span class="arithmatex">\(a&lt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最大值．
-2. 当 <span class="arithmatex">\(4ac-b^2&lt;0\)</span> 时，<span class="arithmatex">\(4a^2(x+\dfrac{b}{2a}y)^2\)</span> 的值恒正，而 <span class="arithmatex">\((4ac-b^2)y^2\)</span> 的值恒负；当 <span class="arithmatex">\(x,y\)</span> 取不同值时，<span class="arithmatex">\(w\)</span> 即可能为正数也可能为负数，因此 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处为鞍点．
-3. 当 <span class="arithmatex">\(4ac-b^2=0\)</span> 时，有 <span class="arithmatex">\(w=a(x+\dfrac{b}{2a}y)^2\)</span>，此时在直线 <span class="arithmatex">\(x=-\dfrac{b}{2a}y\)</span> 上均有 <span class="arithmatex">\(w=0\)</span>；其余位置 <span class="arithmatex">\(w\)</span> 与 <span class="arithmatex">\(a\)</span> 同号．</p>
-<p>把该结论推广到一般的二元函数：由泰勒公式可知，在驻点处将 <span class="arithmatex">\(f(x,y)\)</span> 展开到二阶，由于 <span class="arithmatex">\(f_x=0,f_y=0\)</span> 因此
-$$
+\]</div>
+<ol>
+<li>当 <span class="arithmatex">\(4ac-b^2&gt;0\)</span> 时，<span class="arithmatex">\([\,]\)</span> 内的值总是非负；若 <span class="arithmatex">\(a&gt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最小值；若 <span class="arithmatex">\(a&lt;0\)</span>，则 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处取得最大值．</li>
+<li>当 <span class="arithmatex">\(4ac-b^2&lt;0\)</span> 时，<span class="arithmatex">\(4a^2(x+\dfrac{b}{2a}y)^2\)</span> 的值恒正，而 <span class="arithmatex">\((4ac-b^2)y^2\)</span> 的值恒负；当 <span class="arithmatex">\(x,y\)</span> 取不同值时，<span class="arithmatex">\(w\)</span> 即可能为正数也可能为负数，因此 <span class="arithmatex">\(w\)</span> 在 <span class="arithmatex">\((0,0)\)</span> 处为鞍点．</li>
+<li>当 <span class="arithmatex">\(4ac-b^2=0\)</span> 时，有 <span class="arithmatex">\(w=a(x+\dfrac{b}{2a}y)^2\)</span>，此时在直线 <span class="arithmatex">\(x=-\dfrac{b}{2a}y\)</span> 上均有 <span class="arithmatex">\(w=0\)</span>；其余位置 <span class="arithmatex">\(w\)</span> 与 <span class="arithmatex">\(a\)</span> 同号．</li>
+</ol>
+<p>把该结论推广到一般的二元函数：由泰勒公式可知，在驻点处将 <span class="arithmatex">\(f(x,y)\)</span> 展开到二阶，由于 <span class="arithmatex">\(f_x=0,f_y=0\)</span> 因此</p>
+<div class="arithmatex">\[
 f(x,y) -f(x_0,y_0)\approx \dfrac{1}{2}f_{xx}(x-x_0)^{2}+f_{xy}(x-x_0)(y-y_0)+\dfrac{1}{2}f_{yy}(y-y_0)^{2} 
-$$</p>
-<p>记 <span class="arithmatex">\(A=f_{xx}(x_0,y_0),B=f_{xy}(x_0,y_0),C=f_{yy}(x_0,y_0)\)</span>，则有
-$$
+\]</div>
+<p>记 <span class="arithmatex">\(A=f_{xx}(x_0,y_0),B=f_{xy}(x_0,y_0),C=f_{yy}(x_0,y_0)\)</span>，则有</p>
+<div class="arithmatex">\[
 \Delta f \approx \frac{1}{2}A\Delta x^{2}+B\Delta x \Delta y + \frac{1}{2}C\Delta y^{2}
-$$
-根据之前的推导
+\]</div>
+<p>根据之前的推导
 1. 当 <span class="arithmatex">\(AC-B^2&gt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 与 <span class="arithmatex">\(A\)</span> 同号；当 <span class="arithmatex">\(A&gt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 在任何方向都为正数，即 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极小值；当 <span class="arithmatex">\(A&lt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 在任何方向都为负数，即 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\((x_0,y_0)\)</span> 处取得极大值．
 2. 当 <span class="arithmatex">\(AC-B^2&lt;0\)</span> 时，<span class="arithmatex">\(\Delta f\)</span> 可正可负，为鞍点．
 3. 当 <span class="arithmatex">\(AC-B^2=0\)</span> 时，存在一条过 <span class="arithmatex">\((x_0,y_0)\)</span> 的直线满足直线上均有 <span class="arithmatex">\(\Delta f=0\)</span>；此时想判断极值需要泰勒展开到更高级项，即二阶导无法判断．</p>
@@ -1366,42 +1380,42 @@ $$
 </blockquote>
 <p>当 <span class="arithmatex">\(f\)</span> 取得极值时，在可移动的合法方向 <span class="arithmatex">\(\hat{u}\)</span> 上必有方向导数为 <span class="arithmatex">\(0\)</span>，即 <span class="arithmatex">\(\left. \dfrac{df}{ds} \right|_{\hat{u}} = 0\)</span>．</p>
 <p>而 <span class="arithmatex">\(\left. \dfrac{df}{ds} \right|_{\hat{u}}=\nabla f\cdot \hat{u}\)</span>，因此对于每一个合法方向 <span class="arithmatex">\(\hat{u}\)</span>，都有 <span class="arithmatex">\(\nabla f\cdot \hat{u}=0\)</span>；而 <span class="arithmatex">\(\hat{u}\)</span> 是 <span class="arithmatex">\(g=C\)</span> 的切线方向，所有的 <span class="arithmatex">\(\hat{u}\)</span> 构成了 <span class="arithmatex">\(g=C\)</span> 的切平面，即 <span class="arithmatex">\(\nabla f\)</span> 垂直于 <span class="arithmatex">\(g=C\)</span> 的切平面．</p>
-<p>又因为 <span class="arithmatex">\(\nabla g\)</span> 也垂直于 <span class="arithmatex">\(g=C\)</span> 的切平面，因此 <span class="arithmatex">\(\nabla f // \nabla g\)</span>．</p>
-<p>因此，<span class="arithmatex">\(\exists \lambda\)</span>，使得 <span class="arithmatex">\(\nabla f = \lambda \nabla g\)</span>．得到方程
-$$
+<p>又因为 <span class="arithmatex">\(\nabla g\)</span> 也垂直于 <span class="arithmatex">\(g=C\)</span> 的切平面，因此 <span class="arithmatex">\(\nabla f \parallel \nabla g\)</span>．</p>
+<p>因此，<span class="arithmatex">\(\exists \lambda\)</span>，使得 <span class="arithmatex">\(\nabla f = \lambda \nabla g\)</span>．得到方程</p>
+<div class="arithmatex">\[
 \begin{cases}
-f_x = \lambda g_x \
-f_y = \lambda g_y \
+f_x = \lambda g_x \\
+f_y = \lambda g_y \\
 g(x,y) = C
 \end{cases}
-$$
-解出 <span class="arithmatex">\(x,y,\lambda\)</span> 即可得到极值点．</p>
+\]</div>
+<p>解出 <span class="arithmatex">\(x,y,\lambda\)</span> 即可得到极值点．</p>
 <p>上述方法称为<strong>拉格朗日乘数法</strong>．注意该方法无法判断得到的极值点是极大值还是极小值．</p>
 <h2 id="_15">受限变量微分</h2>
 <h3 id="_16">非独立变量</h3>
 <p>若 <span class="arithmatex">\(f(x,y) = x + y\)</span>，则 <span class="arithmatex">\(\dfrac{\partial f}{\partial x} = 1\)</span>；令 <span class="arithmatex">\(x = u, y = u+v\)</span>，则 <span class="arithmatex">\(f(u,v) = 2u + v\)</span>，<span class="arithmatex">\(\dfrac{\partial f}{\partial u} = 2\)</span>．</p>
 <p>我们得到 <span class="arithmatex">\(x=u\)</span> 但是 <span class="arithmatex">\(\dfrac{\partial f}{\partial x} \ne \dfrac{\partial f}{\partial u}\)</span>．</p>
 <p>出现上述问题的原因是：求 <span class="arithmatex">\(\dfrac{\partial f}{\partial x}\)</span> 时，我们把 <span class="arithmatex">\(y\)</span> 看作常数；求 <span class="arithmatex">\(\dfrac{\partial f}{\partial u}\)</span> 时，我们把 <span class="arithmatex">\(v\)</span> 看作常数，也就是把 <span class="arithmatex">\(y-x\)</span> 看做常数，<span class="arithmatex">\(v\)</span> 固定时 <span class="arithmatex">\(y\)</span> 仍可以变化，因而得到的结果也就不同．</p>
-<p>我们用 <span class="arithmatex">\(\left( \dfrac{\partial f}{\partial x} \right)_y\)</span> 表示在 <span class="arithmatex">\(y\)</span> 固定时对 <span class="arithmatex">\(x\)</span> 的偏导数，<span class="arithmatex">\(\left( \dfrac{\partial f}{\partial u} \right)_v\)</span> 表示在 <span class="arithmatex">\(v\)</span> 固定时对 <span class="arithmatex">\(u\)</span> 的偏导数．则有
-$$
+<p>我们用 <span class="arithmatex">\(\left( \dfrac{\partial f}{\partial x} \right)_y\)</span> 表示在 <span class="arithmatex">\(y\)</span> 固定时对 <span class="arithmatex">\(x\)</span> 的偏导数，<span class="arithmatex">\(\left( \dfrac{\partial f}{\partial u} \right)_v\)</span> 表示在 <span class="arithmatex">\(v\)</span> 固定时对 <span class="arithmatex">\(u\)</span> 的偏导数．则有</p>
+<div class="arithmatex">\[
 \left( \dfrac{\partial f}{\partial u} \right)_v =
 \left( \dfrac{\partial f}{\partial x} \right)_v \ne \left( \dfrac{\partial f}{\partial x} \right)_y
-$$
-因此当变量之间不是独立关系时，求偏导数时需要明确哪个变量被固定．</p>
+\]</div>
+<p>因此当变量之间不是独立关系时，求偏导数时需要明确哪个变量被固定．</p>
 <h3 id="_17">隐函数求导</h3>
 <p>对于隐函数 <span class="arithmatex">\(g(x,y,z)=0\)</span>，如果 <span class="arithmatex">\(g_z \ne 0\)</span>，且 <span class="arithmatex">\(z\)</span> 可表示为 <span class="arithmatex">\(x,y\)</span> 的函数 <span class="arithmatex">\(z=z(x,y)\)</span>，即 <span class="arithmatex">\(g(x,y,f(x,y))=0\)</span>．应如何求出 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span> 和 <span class="arithmatex">\(\dfrac{\partial z}{\partial y}\)</span>？</p>
-<p>对 <span class="arithmatex">\(g\)</span> 求微分，由全微分得到
-$$
+<p>对 <span class="arithmatex">\(g\)</span> 求微分，由全微分得到</p>
+<div class="arithmatex">\[
 g_x dx + g_y dy + g_z dz = 0
-$$
-对于 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span>，由于 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 是独立变量，因此求 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span> 时，<span class="arithmatex">\(y\)</span> 固定，<span class="arithmatex">\(dy=0\)</span>，得到
-$$
+\]</div>
+<p>对于 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span>，由于 <span class="arithmatex">\(x\)</span> 与 <span class="arithmatex">\(y\)</span> 是独立变量，因此求 <span class="arithmatex">\(\dfrac{\partial z}{\partial x}\)</span> 时，<span class="arithmatex">\(y\)</span> 固定，<span class="arithmatex">\(dy=0\)</span>，得到</p>
+<div class="arithmatex">\[
 g_x dx + g_z \dfrac{\partial z}{\partial x} dx = 0 \Rightarrow \dfrac{\partial z}{\partial x} = -\dfrac{g_x}{g_z}
-$$
-同理，求 <span class="arithmatex">\(\dfrac{\partial z}{\partial y}\)</span> 时，<span class="arithmatex">\(x\)</span> 固定，<span class="arithmatex">\(dx=0\)</span>，得到
-$$
+\]</div>
+<p>同理，求 <span class="arithmatex">\(\dfrac{\partial z}{\partial y}\)</span> 时，<span class="arithmatex">\(x\)</span> 固定，<span class="arithmatex">\(dx=0\)</span>，得到</p>
+<div class="arithmatex">\[
 g_y dy + g_z \dfrac{\partial z}{\partial y} dy = 0 \Rightarrow \dfrac{\partial z}{\partial y} = -\dfrac{g_y}{g_z}
-$$</p>
+\]</div>
 
 
 
@@ -1409,6 +1423,38 @@ $$</p>
 
 
 
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 19:28:09 CST">2026年2月26日 19:28:09</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 15:01:29 CST">2026年2月26日 15:01:29</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
 
@@ -1505,6 +1551,8 @@ $$</p>
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
       

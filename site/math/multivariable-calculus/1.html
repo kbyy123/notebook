@@ -43,10 +43,22 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -188,6 +200,25 @@
   
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
     
   
   
@@ -205,25 +236,6 @@
         </a>
       </li>
     
-  
-
-      
-        
-  
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../index.html" class="md-tabs__link">
-        
-  
-  
-    
-  
-  🏫主页
-
-      </a>
-    </li>
   
 
       
@@ -276,6 +288,33 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -305,7 +344,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -327,14 +366,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -380,7 +419,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
@@ -402,14 +441,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -706,33 +745,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../index.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    🏫主页
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -1006,10 +1018,10 @@
 <p>在平面直角坐标系中，可以将任意向量分解为 <span class="arithmatex">\(x\hat{\imath}+y\hat{\jmath}\)</span> 的形式，同时可以用坐标 <span class="arithmatex">\(\langle{x,y}\rangle\)</span> 来表达该向量。空间直角坐标系同理。根据勾股定理，平面直角坐标系中向量模长为 <span class="arithmatex">\(\sqrt{ x^{2}+y^{2} }\)</span>，空间直角坐标系中为 <span class="arithmatex">\(\sqrt{ x^{2}+y^{2}+z^{2} }\)</span>．</p>
 <h3 id="_4">计算</h3>
 <p>记 <span class="arithmatex">\(\boldsymbol{u}=\langle x_{1},y_{1},z_{1}\rangle ,\boldsymbol{v}=\langle x_{2},y_{2},z_{2}\rangle ,\boldsymbol{w}=\langle x_{3},y_{3},z_{3}\rangle\)</span>．</p>
-<p><strong>加法</strong>：<span class="arithmatex">\(\boldsymbol{u}+\boldsymbol{v}\)</span> 表示将 <span class="arithmatex">\(\boldsymbol{u}\)</span> 的终止位置与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 的起始位置连接后，由 <span class="arithmatex">\(\boldsymbol{u}\)</span> 的起始位置指向 <span class="arithmatex">\(\boldsymbol{v}\)</span> 的向量．
-$$
+<p><strong>加法</strong>：<span class="arithmatex">\(\boldsymbol{u}+\boldsymbol{v}\)</span> 表示将 <span class="arithmatex">\(\boldsymbol{u}\)</span> 的终止位置与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 的起始位置连接后，由 <span class="arithmatex">\(\boldsymbol{u}\)</span> 的起始位置指向 <span class="arithmatex">\(\boldsymbol{v}\)</span> 的向量．</p>
+<div class="arithmatex">\[
 \boldsymbol{u}+\boldsymbol{v}=\langle x_{1}+x_{2},y_{1}+y_{2},z_{1}+z_{2}\rangle
-$$</p>
+\]</div>
 <p><strong>数乘</strong>：<span class="arithmatex">\(\lambda \boldsymbol{u}\)</span> 表示与 <span class="arithmatex">\(\boldsymbol{u}\)</span> 方向相同，模长为其 <span class="arithmatex">\(\lambda\)</span> 倍的向量．若 <span class="arithmatex">\(\lambda &lt; 0\)</span>，表示为反向．
 $$
 \lambda \boldsymbol{u}=\langle \lambda x_{1},\lambda y_{1},\lambda z_{1}\rangle
@@ -1020,47 +1032,40 @@ $$
 $$
 得到的结果是一个标量．
 可以用点乘计算两个向量之间的夹角 <span class="arithmatex">\(\cos{\theta}=\dfrac{\boldsymbol{u} \cdot \boldsymbol{v}}{|\boldsymbol{u}||\boldsymbol{v}|}\)</span>．</p>
-<p><strong>叉乘</strong>：仅适用于三维向量计算，得到的结果是一个向量．
-$$
-\boldsymbol{u}\times \boldsymbol{v}= \begin{vmatrix} \hat{\imath} &amp; \hat{\jmath} &amp; \hat{k} \
-x_{1} &amp; y_{1} &amp; z_{1} \
-x_{2} &amp; y_{2} &amp; z_{2} \end{vmatrix}
-$$
-通过计算，叉乘后模长为 <span class="arithmatex">\(\pm|\boldsymbol{u}||\boldsymbol{v}|\sin{\theta}\)</span>，方向垂直于 <span class="arithmatex">\(\boldsymbol{u}\)</span> 与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 形成的平面，且遵守右手螺旋定则：四指弯曲，在四指螺旋方向上先经过 <span class="arithmatex">\(\boldsymbol{u}\)</span> 再经过 <span class="arithmatex">\(\boldsymbol{v}\)</span>（<span class="arithmatex">\(\boldsymbol{u}\)</span> 与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 夹角小于等于 <span class="arithmatex">\(\pi\)</span>），则大拇指指向的方向为叉乘向量的方向．</p>
+<p><strong>叉乘</strong>：仅适用于三维向量计算，得到的结果是一个向量．</p>
+<div class="arithmatex">\[
+\boldsymbol{u}\times \boldsymbol{v}= \begin{vmatrix} \hat{\imath} &amp; \hat{\jmath} &amp; \hat{k} \\ x_{1} &amp; y_{1} &amp; z_{1} \\ x_{2} &amp; y_{2} &amp; z_{2} \end{vmatrix}
+\]</div>
+<p>通过计算，叉乘后模长为 <span class="arithmatex">\(\pm|\boldsymbol{u}||\boldsymbol{v}|\sin{\theta}\)</span>，方向垂直于 <span class="arithmatex">\(\boldsymbol{u}\)</span> 与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 形成的平面，且遵守右手螺旋定则：四指弯曲，在四指螺旋方向上先经过 <span class="arithmatex">\(\boldsymbol{u}\)</span> 再经过 <span class="arithmatex">\(\boldsymbol{v}\)</span>（<span class="arithmatex">\(\boldsymbol{u}\)</span> 与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 夹角小于等于 <span class="arithmatex">\(\pi\)</span>），则大拇指指向的方向为叉乘向量的方向．</p>
 <p>由于其模长为 <span class="arithmatex">\(\pm|\boldsymbol{u}||\boldsymbol{v}|\sin{\theta}\)</span>，恰好为 <span class="arithmatex">\(\boldsymbol{u}\)</span> 与 <span class="arithmatex">\(\boldsymbol{v}\)</span> 形成的平行四边形面积，因此叉乘也多用于求面积．</p>
-<p><strong>混合积</strong>：仅适用于三维向量计算，得到的结果是一个标量．
-$$
-(\boldsymbol{u}\times \boldsymbol{v})\cdot \boldsymbol{w}=\begin{vmatrix} x_{1} &amp; y_{1} &amp; z_{1} \ x_{2} &amp; y_{2} &amp; z_{2} \ x_{3} &amp; y_{3} &amp; z_{3}
- \end{vmatrix}
-$$
-混合积的绝对值恰好是由 <span class="arithmatex">\(\boldsymbol{u},\boldsymbol{v,\boldsymbol{w}}\)</span> 三个向量作为邻边形成的平行六面体体积．下面给出简单证明：</p>
+<p><strong>混合积</strong>：仅适用于三维向量计算，得到的结果是一个标量．</p>
+<div class="arithmatex">\[
+(\boldsymbol{u}\times \boldsymbol{v})\cdot \boldsymbol{w}=\begin{vmatrix} x_{1} &amp; y_{1} &amp; z_{1} \\ x_{2} &amp; y_{2} &amp; z_{2} \\ x_{3} &amp; y_{3} &amp; z_{3} \end{vmatrix}
+\]</div>
+<p>混合积的绝对值恰好是由 <span class="arithmatex">\(\boldsymbol{u},\boldsymbol{v,\boldsymbol{w}}\)</span> 三个向量作为邻边形成的平行六面体体积．下面给出简单证明：</p>
 <p>设 <span class="arithmatex">\(\boldsymbol{n}\)</span> 是在 <span class="arithmatex">\(\boldsymbol{u},\boldsymbol{v}\)</span> 方向上的单位向量，则有 <span class="arithmatex">\(\boldsymbol{n} = \dfrac{\boldsymbol{u} \times\boldsymbol{v}}{|\boldsymbol{u}\times\boldsymbol{v}|}\)</span>．
 则 <span class="arithmatex">\(\boldsymbol{w}\)</span> 在 <span class="arithmatex">\(\boldsymbol{n}\)</span> 上的投影长度为 <span class="arithmatex">\(\pm|\boldsymbol{w}|\cos{\theta}=\pm|\boldsymbol{w}||\boldsymbol{n}|\cos{\theta}=\pm\boldsymbol{w}\cdot\boldsymbol{n}\)</span>．
-而平行六面体底面积为 <span class="arithmatex">\(|\boldsymbol{u} \times\boldsymbol{v}|\)</span>，因此 
-$$
+而平行六面体底面积为 <span class="arithmatex">\(|\boldsymbol{u} \times\boldsymbol{v}|\)</span>，因此 </p>
+<div class="arithmatex">\[
 V=Sh=\pm|\boldsymbol{u} \times\boldsymbol{v}|\cdot \boldsymbol{w} \cdot\dfrac{\boldsymbol{u} \times\boldsymbol{v}}{|\boldsymbol{u}\times\boldsymbol{v}|}=\pm(\boldsymbol{u} \times\boldsymbol{v})\cdot \boldsymbol{w}=|(\boldsymbol{u} \times\boldsymbol{v})\cdot \boldsymbol{w}|
-$$</p>
+\]</div>
 <h2 id="_5">矩阵</h2>
 <h3 id="_6">相关概念</h3>
-<p>对于线性方程组
-$$
-\begin{cases}
-u_{1}=2x_{1}+3x_{2}+3x_{3} \
-u_{2}=2x_{1}+4x_{2}+5x_{3} \
-u_{3}=x_{1}+x_{2}+2x_{3}
-\end{cases}
-$$
-其可以写成矩阵的形式
-$$
-\begin{bmatrix} 2&amp;3&amp;3 \
-2&amp;4&amp;5 \
+<p>对于线性方程组</p>
+<div class="arithmatex">\[
+\begin{cases}u_{1}=2x_{1}+3x_{2}+3x_{3} \\ u_{2}=2x_{1}+4x_{2}+5x_{3} \\ u_{3}=x_{1}+x_{2}+2x_{3}\end{cases}
+\]</div>
+<p>其可以写成矩阵的形式</p>
+<div class="arithmatex">\[
+\begin{bmatrix} 2&amp;3&amp;3 \\
+2&amp;4&amp;5 \\
 1&amp;1&amp;2 \end{bmatrix}
-\begin{bmatrix} x_{1} \
-x_{2} \
-x_{3} \end{bmatrix}=\begin{bmatrix} u_{1} \
-u_{2} \
+\begin{bmatrix} x_{1} \\
+x_{2} \\
+x_{3} \end{bmatrix}=\begin{bmatrix} u_{1} \\
+u_{2} \\
 u_{3} \end{bmatrix}
-$$</p>
+\]</div>
 <h3 id="_7">计算</h3>
 <p>对于矩阵的计算，其规则是：</p>
 <ul>
@@ -1078,34 +1083,34 @@ $$</p>
 <h3 id="_10">平面方程</h3>
 <p>对于一个平面而言，与其平行的方向有无数个，而其法向量方向仅有 <span class="arithmatex">\(2\)</span> 个，因此我们习惯于用法向量作为平面最大的特征．</p>
 <p>当法向量给定后，平面的方向确定，此时平面只有一个自由度，即其与原点的相对位置。若此时给定一个平面上的点，即可确定这个平面．</p>
-<p>对于法向量 <span class="arithmatex">\(\boldsymbol{N}=\langle a,b,c)\)</span>与定点 <span class="arithmatex">\(P_{0}(x_{0},y_{0},z_{0})\)</span>，任取平面上不与 <span class="arithmatex">\(P_{0}\)</span> 重合的一点 <span class="arithmatex">\(P(x,y,z)\)</span>，有
-$$
+<p>对于法向量 <span class="arithmatex">\(\boldsymbol{N}=\langle a,b,c)\)</span>与定点 <span class="arithmatex">\(P_{0}(x_{0},y_{0},z_{0})\)</span>，任取平面上不与 <span class="arithmatex">\(P_{0}\)</span> 重合的一点 <span class="arithmatex">\(P(x,y,z)\)</span>，有</p>
+<div class="arithmatex">\[
 \overrightarrow{P_{0}P}\cdot \boldsymbol{N}=0
-$$
-即平面方程
-$$
+\]</div>
+<p>即平面方程</p>
+<div class="arithmatex">\[
 a(x-x_{0})+b(y-y_{0})+c(y-y_{0})=0
-$$
-相反的，对于平面
-$$
+\]</div>
+<p>相反的，对于平面</p>
+<div class="arithmatex">\[
 ax+by+cz=d
-$$
-我们也可以得到其法向量为 <span class="arithmatex">\(\boldsymbol{N}=\langle a,b,c\rangle\)</span>．</p>
+\]</div>
+<p>我们也可以得到其法向量为 <span class="arithmatex">\(\boldsymbol{N}=\langle a,b,c\rangle\)</span>．</p>
 <h3 id="_11">直线方程</h3>
 <p>对于一个直线而言，其方向只有两个，所以选取直线的方向与直线上一点就可以确定这个平面．</p>
-<p>不妨直线上两点 <span class="arithmatex">\(Q_{0}=(x_{0},y_{0},z_{0}),Q_{1}=(x_{1},y_{1},z_{1})\)</span>．对于直线上任意一点 <span class="arithmatex">\(Q(x,y,z)\)</span>，必定有
-$$
+<p>不妨直线上两点 <span class="arithmatex">\(Q_{0}=(x_{0},y_{0},z_{0}),Q_{1}=(x_{1},y_{1},z_{1})\)</span>．对于直线上任意一点 <span class="arithmatex">\(Q(x,y,z)\)</span>，必定有</p>
+<div class="arithmatex">\[
 \overrightarrow{Q_{0}Q}=t\overrightarrow{Q_{0}Q_{1}} \quad t\in \mathbb{R} 
-$$
-则有
-$$
+\]</div>
+<p>则有</p>
+<div class="arithmatex">\[
 \begin{cases}
-x(t)=x_{0}+(x_{1}-x_{0})t \
-y(t)=y_{0}+(y_{1}-y_{0})t \
+x(t)=x_{0}+(x_{1}-x_{0})t \\
+y(t)=y_{0}+(y_{1}-y_{0})t \\
 z(t)=z_{0}+(z_{1}-z_{0})t
 \end{cases}
-$$
-其中 <span class="arithmatex">\(t\)</span> 是参数，方向向量 <span class="arithmatex">\(\boldsymbol{v}=\langle x_{1}-x_{0},y_{1}-y_{0},z_{1}-z_{0}\rangle\)</span>．</p>
+\]</div>
+<p>其中 <span class="arithmatex">\(t\)</span> 是参数，方向向量 <span class="arithmatex">\(\boldsymbol{v}=\langle x_{1}-x_{0},y_{1}-y_{0},z_{1}-z_{0}\rangle\)</span>．</p>
 <h3 id="_12">质点运动学</h3>
 <p>对于平面或空间内的一个质点，若其坐标可被参数化（即可被写成关于 <span class="arithmatex">\(t\)</span> 的参数方程，在坐标系中可以看作是沿某曲线运动），那么该质点的位置、轨迹可以完全由 <span class="arithmatex">\(t\)</span> 决定，定义位置向量 <span class="arithmatex">\(\boldsymbol{r}(t)\)</span>，可以构建出质点运动学体系．</p>
 <p><strong>位置向量</strong>：<span class="arithmatex">\(\boldsymbol{r}(t)=x(t)\hat{\imath}+y(t)\hat{\jmath}+z(t)\hat{k}=\langle x(t),y(t),z(t)\rangle\)</span> </p>
@@ -1125,6 +1130,38 @@ $$
 
 
 
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 19:28:09 CST">2026年2月26日 19:28:09</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年2月26日 15:01:29 CST">2026年2月26日 15:01:29</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
 
@@ -1221,6 +1258,8 @@ $$
         <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
       
         <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
       
