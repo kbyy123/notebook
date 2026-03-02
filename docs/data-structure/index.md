@@ -10,6 +10,6 @@ hide:
     
 ## Table of Contents
 
-- [LeetCode](leetCode/index.md)
+- [LeetCode](LeetCode/index.md)
 
     

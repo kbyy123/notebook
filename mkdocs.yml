@@ -41,6 +41,8 @@ markdown_extensions:
   - md_in_html  # 核心：允许在 <div> 标签内解析 Markdown    
   - pymdownx.superfences       # 支持更复杂的代码块嵌套
   - pymdownx.details           # 支持折叠块 (Admonitions)
+  - pymdownx.tabbed:
+      alternate_style: true
 
 extra_css:
   - css/custom.css
@@ -81,8 +83,8 @@ nav:
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:
-      - data-structure/leetcode/index.md
-      - data-structure/leetcode/1.md
-      - data-structure/leetcode/2.md
-      - data-structure/leetcode/3.md
-      - data-structure/leetcode/4.md
+      - data-structure/LeetCode/index.md
+      - data-structure/LeetCode/1.md
+      - data-structure/LeetCode/2.md
+      - data-structure/LeetCode/3.md
+      - data-structure/LeetCode/4.md
