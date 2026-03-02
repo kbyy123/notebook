@@ -1,0 +1,26 @@
+/* 强制页脚版权区域居中 */
+.md-copyright {
+    display: flex;                /* 启用弹性布局 */
+    flex-direction: column;       /* 元素垂直排列 */
+    align-items: center;          /* 水平居中 */
+    justify-content: center;      /* 垂直居中 */
+    width: 100%;                  /* 占满宽度确保居中基准 */
+    text-align: center;           /* 文字居中 */
+    margin: 1rem 0;               /* 上下留一点间距 */
+    font-family: 'LXGW WenKai Screen', sans-serif; /* 使用你下载的字体 */
+}
+
+/* 调整 CC 协议图标与文字的间距 */
+.md-copyright__highlight {
+    display: flex;
+    flex-direction: column;       /* 图标在上，文字在下 */
+    align-items: center;
+    gap: 8px;                     /* 图标和文字之间的间距 */
+    margin-bottom: 8px;           /* 与下方年份的间距 */
+}
+
+/* 确保图标大小合适 */
+.md-copyright__highlight img {
+    max-width: 88px;
+    height: auto;
+}

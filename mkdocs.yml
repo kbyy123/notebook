@@ -84,7 +84,5 @@ nav:
     - data-structure/index.md
     - LeetCode:
       - data-structure/LeetCode/index.md
-      - data-structure/LeetCode/1.md
-      - data-structure/LeetCode/2.md
-      - data-structure/LeetCode/3.md
       - data-structure/LeetCode/4.md
+      - data-structure/LeetCode/5.md
