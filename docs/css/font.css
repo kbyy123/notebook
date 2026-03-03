@@ -37,6 +37,11 @@ body, .md-typeset {
   line-height: 1.6;     
 }
 
+.md-typeset details {
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
 /* 调整提示框标题的大小 */
 .md-typeset .admonition-title, 
 .md-typeset summary {
@@ -57,6 +62,10 @@ body, .md-typeset {
 .md-typeset pre code {
   font-size: 0.9em;  
   font-family: 'JetBrains Mono', monospace !important; /* 强制代码使用等宽字体 */
+}
+
+.md-typeset details pre code {
+  font-size: 0.9em;
 }
 
 /* ============================================================
