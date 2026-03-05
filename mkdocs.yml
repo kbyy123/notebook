@@ -84,5 +84,8 @@ nav:
     - data-structure/index.md
     - LeetCode:
       - data-structure/LeetCode/index.md
-      - data-structure/LeetCode/4.md
-      - data-structure/LeetCode/5.md
+      - data-structure/LeetCode/linked-list.md
+      - data-structure/LeetCode/binary-tree.md
+    - 基础数据结构:
+      - data-structure/fds/index.md
+      - data-structure/fds/string.md

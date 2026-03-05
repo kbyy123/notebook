@@ -30,27 +30,27 @@
 
 !!! note "过程"
     === "初始状态"
-        ![image-20260302140746656](4.assets/image-20260302140746656.png)
+        ![image-20260302140746656](linked-list.assets/image-20260302140746656.png)
 
     === "中间状态1"
     	用cur指向需要修改的结点，pre指向上一结点，nxt储存下一结点．
-        ![image-20260302140937930](4.assets/image-20260302140937930.png)
+        ![image-20260302140937930](linked-list.assets/image-20260302140937930.png)
     
     === "中间状态2"
     	将cur指针反转．
-        ![image-20260302141031169](4.assets/image-20260302141031169.png)
+        ![image-20260302141031169](linked-list.assets/image-20260302141031169.png)
     
     === "中间状态3"
     	将pre指向当前结点cur．
-        ![image-20260302141211536](4.assets/image-20260302141211536.png)
+        ![image-20260302141211536](linked-list.assets/image-20260302141211536.png)
     
     === "中间状态4"
     	将cur指向下一结点nxt．
-        ![image-20260302141226653](4.assets/image-20260302141226653.png)
+        ![image-20260302141226653](linked-list.assets/image-20260302141226653.png)
     
     === "迭代"
     	重复直到cur为空．
-        ![image-20260302141329772](4.assets/image-20260302141329772.png)
+        ![image-20260302141329772](linked-list.assets/image-20260302141329772.png)
     
     初始时cur指向head，pre作为cur的前驱指向nullptr，这样可以将head的next修改成nullptr；最后cur为空，pre指向新链表的头结点，返回pre．
 
@@ -72,15 +72,15 @@ ListNode* reverseList(ListNode* head) {
 !!! note "过程"
 	=== "反转目标链表"
 		将2~4的链表反转．此时结点2指向nullptr，pre指向结点4，cur指向结点5．
-		![image-20260302143644492](4.assets/image-20260302143644492.png)
+		![image-20260302143644492](linked-list.assets/image-20260302143644492.png)
 
 	=== "修改前后结点"
 		我们需要把结点2指向剩余的部分，即cur；把反转部分的上一个结点（记作p0）接到反转后的新头结点上，即pre．
 		结点2可以用 `p0->next` 表示．
-		![image-20260302143705565](4.assets/image-20260302143705565.png)
+		![image-20260302143705565](linked-list.assets/image-20260302143705565.png)
 	=== "处理特殊情况"
 		如果 `left == 1` 呢，p0应该是谁？我们可以加入一个哨兵结点，这样p0就存在了．
-		![image-20260302143730055](4.assets/image-20260302143730055.png)
+		![image-20260302143730055](linked-list.assets/image-20260302143730055.png)
 		将p0从dummy开始右移 `left - 1` 步，即可称为目标链表的前一个结点．
 
 时间复杂度 $O(n)$，空间复杂度 $O(1)$．
@@ -108,12 +108,12 @@ ListNode* reverseBetween(ListNode* head, int left, int right) {
 对于每次循环：
 !!! note "过程"
 	=== "反转链表"
-		![image-20260302144702645](4.assets/image-20260302144702645.png)
+		![image-20260302144702645](linked-list.assets/image-20260302144702645.png)
 	=== "修改前后结点"
-		![image-20260302144733881](4.assets/image-20260302144733881.png)
+		![image-20260302144733881](linked-list.assets/image-20260302144733881.png)
 	=== "更新p0"
 		p0要成为下一组反转链表的前一个结点，也就是前一组反转链表反转后的尾结点、反转前的头结点，因此在对这一组反转后、修改前后结点前存下 `p0->next`，修改后将p0更新．
-		![image-20260302144755281](4.assets/image-20260302144755281.png)
+		![image-20260302144755281](linked-list.assets/image-20260302144755281.png)
 
 时间复杂度 $O(n)$，空间复杂度 $O(1)$．
 ```cpp
@@ -147,7 +147,7 @@ ListNode* reverseKGroup(ListNode* head, int k) {
 25题在 k = 2 时的特解，由于只有2，完全可以不用链表反转的模板而是直接模拟修改．参考**灵茶山艾府**的图解：
 
 ??? note "图解"
-	![image](4.assets/4c041a89-7aed-4d0e-996d-eebbd6362b9c.png)
+	![image](linked-list.assets/4c041a89-7aed-4d0e-996d-eebbd6362b9c.png)
 	
 时间复杂度 $O(n)$，空间复杂度 $O(1)$．
 
@@ -258,10 +258,10 @@ ListNode* doubleIt(ListNode* head) {
 
 	=== "结点数 $n$ 为奇数时"
 		设 $n=2k+1$，由于快指针初始在头结点，因此在走 $k$ 步后会到达第 $2k+1$ 个结点即尾结点，此时慢指针到达第 $k+1$ 个结点，因为 $k+1=\dfrac{1}{2}(1+2k+1)$，即为中间结点．
-		![image-20260302152439639](4.assets/image-20260302152439639.png)
+		![image-20260302152439639](linked-list.assets/image-20260302152439639.png)
 	=== "结点数 $n$ 为偶数时"
 		设 $n=2k$，快指针走 $k$步后会到达第 $2k+1$ 个结点即空结点，此时慢指针到达第 $k+1$ 个结点，因为 $k+1=\lceil \dfrac{1}{2}(1+2k) \rceil$，即为第二个中间结点．
-		![image-20260302153324795](4.assets/image-20260302153324795.png)
+		![image-20260302153324795](linked-list.assets/image-20260302153324795.png)
 
 时间复杂度 $O(n)$，空间复杂度 $O(1)$．
 
@@ -286,7 +286,7 @@ ListNode* middleNode(ListNode* head) {
 ??? proof "时间复杂度证明"
 	不妨设共有 $n$ 个结点，其中环内有 $k$ 个结点．
 	最坏情况下，入环时快指针恰好位于慢指针前方，此时需要 $k-1$ 步才能追上．因此慢指针在环内步数不超过 $k-1$ 步，总共步数不超过 $n-1$ 步，即 $O(n)$．
-	![image-20260302154003248](4.assets/image-20260302154003248.png)
+	![image-20260302154003248](linked-list.assets/image-20260302154003248.png)
 
 ```cpp
 bool hasCycle(ListNode *head) {
@@ -344,15 +344,15 @@ ListNode *detectCycle(ListNode *head) {
 !!! note "过程"
 	=== "得到相向双指针"
 		通过取中间结点+反转得到两个朝中间结点的链表和双指针．
-		![image-20260302155444380](4.assets/image-20260302155444380.png)
+		![image-20260302155444380](linked-list.assets/image-20260302155444380.png)
 	=== "将双指针交错"
 		将 `head1` 指向 `head2`，`head2` 指向 `head1->next`．
-		![image-20260302155459315](4.assets/image-20260302155459315.png)
+		![image-20260302155459315](linked-list.assets/image-20260302155459315.png)
 	=== "移动双指针"
 		将 `head1` 移至 `head1->next`，`head2` 移至 `head2->next`．
 		由于前面会将 `next` 更新，因此要提前存下来．
 		当 `head2` 指向中间结点时，若长度为奇数则此时双指针均指向中间结点，可以结束；若长度为偶数则还剩中间结点和其前一结点，但其前一结点本来就指向中间结点，因此也可以结束．
-		![image-20260302155537645](4.assets/image-20260302155537645.png)
+		![image-20260302155537645](linked-list.assets/image-20260302155537645.png)
 
 时间复杂度 $O(n)$，空间复杂度 $O(1)$．
 
