@@ -1,6 +1,9 @@
 - "2026":
   - "2026-03-05":
     - newpage: 
+        text: Huffman树
+        href: /data-structure/fds/tree.html
+    - newpage: 
         text: 前缀函数与KMP
         href: /data-structure/fds/string.html
   - "2026-03-03":
