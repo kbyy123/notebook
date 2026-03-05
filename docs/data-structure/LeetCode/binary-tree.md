@@ -167,7 +167,7 @@ int sumNumbers(TreeNode* root, int num = 0) {
 
 时间复杂度 $O(n\log n)$，空间复杂度为 $O(n)$．
 
-??? proof "时间复杂度证明"
+??? question "时间复杂度证明"
 	如果不考虑排序，时间复杂度是 $O(n)$ 的，因为无论是dfs还是创建插入 `vector` 都只遍历了一次．
 
 	若考虑排序，那么我们应该考虑最坏情况下多少个结点可以在同一坐标．
@@ -258,7 +258,7 @@ bool isBalanced(TreeNode* root) {
 
 接下来我们对删除条件进行深入剖析：
 
-!!! proof "删除条件证明"
+!!! question "删除条件证明"
 
     对于叶结点，由于经过其的根到叶路径只有一条，如果该路径和小于 `limit`，就应该删除自身；即递给叶结点时若有 `limit > val` 就应该删除自身．
 
