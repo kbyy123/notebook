@@ -4,7 +4,6 @@
 
     + 时间：2026/1 - 至今
     + 课程：无固定课程
-    + 
     + 参考材料：
     	+ [OI Wiki](https://oi-wiki.org/)
     	+ [Algorithms for Competitive Programming](https://cp-algorithms.com/)
