@@ -1,4 +1,8 @@
 - "2026":
+  - "2026-03-08":
+    - newpage: 
+        text: 数的表示与计算
+        href: /computer-system/computer-architecture/number.html
   - "2026-03-05":
     - newpage: 
         text: Huffman树
