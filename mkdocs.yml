@@ -90,3 +90,9 @@ nav:
       - data-structure/fds/index.md
       - data-structure/fds/string.md
       - data-structure/fds/tree.md
+  - 💻计算机系统:
+    - computer-system/index.md
+    - 体系结构:
+      - computer-system/computer-architecture/index.md
+      - computer-system/computer-architecture/C.md
+      - computer-system/computer-architecture/number.md

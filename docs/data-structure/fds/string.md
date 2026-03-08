@@ -148,7 +148,7 @@ $$
 \overbrace{\underbrace{s_0 ~ s_1}_j ~ s_2 ~ s_3}^{\pi[i]} ~ \dots ~ \overbrace{s_{i-3} ~ s_{i-2} ~ \underbrace{s_{i-1} ~ s_{i}}_j}^{\pi[i]} ~ s_{i+1}
 $$
 
-若 $s[j] = s[i+1]$，那么此时就有 $\pi[i+1]=j+1$，否则，我们将继续上述过程，找到仅次于 $j$ 的满足真前后缀相等的长度 $j'$，如此反复直到相等或是 $j=0$．当 $j=0$ 时，我们就要比较 $s[0]$ 与 $s[i+1]$，若相等则 $\pi[i+1]=1，否则 $\pi[i+1]=0$．
+若 $s[j] = s[i+1]$，那么此时就有 $\pi[i+1]=j+1$，否则，我们将继续上述过程，找到仅次于 $j$ 的满足真前后缀相等的长度 $j'$，如此反复直到相等或是 $j=0$．当 $j=0$ 时，我们就要比较 $s[0]$ 与 $s[i+1]$，若相等则 $\pi[i+1]=1$，否则 $\pi[i+1]=0$．
 
 那我们应该如何找到这个 $j$？由于这是一个递归过程，因此只要能在 $\pi[i]$ 中找到 $j$，就能在 $j$ 中找到 $j'$．
 
@@ -214,7 +214,7 @@ std::vector<int> kmp(const std::string &pattern, const std::string &text) {
     #include <cstring>
     #include <iostream>
     #include <vector>
-
+    
     std::vector<int> prefix_function(const std::string &s) {
         int n = s.size();
         std::vector<int> pi(n);
@@ -229,7 +229,7 @@ std::vector<int> kmp(const std::string &pattern, const std::string &text) {
         }
         return pi;
     }
-
+    
     int main() {
         std::string text, pattern;
         std::cin >> text >> pattern;
