@@ -16,3 +16,21 @@
     width: 80%;         /* 限制宽度，防止长条框太难看 */
     text-align: left;    /* 框内文字保持左对齐比较美观 */
 }
+
+/* 仅针对“块级公式”所在的段落进行间距压缩 */
+/* 增加判断：只有当段落唯一的子元素内部含有 .katex-display 时才生效 */
+.md-typeset p:has(> .arithmatex > .katex-display):only-child {
+    margin-top: 0.4em;
+    margin-bottom: 0.4em;
+}
+
+/* 确保不会误伤普通的行内公式所在的段落 */
+.md-typeset p:has(> .arithmatex:not(:has(.katex-display))) {
+    margin-top: 1.2em; /* 恢复 Material 主题默认段落间距 */
+    margin-bottom: 1.2em;
+}
+
+/* 针对块级公式本身的微调 */
+.md-typeset .arithmatex .katex-display {
+    margin: 0.2em 0; 
+}
