@@ -90,6 +90,7 @@ nav:
       - math/linear-algebra/index.md
       - math/linear-algebra/introduction.md
       - math/linear-algebra/linear-equation.md
+      - math/linear-algebra/vector-space.md
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:

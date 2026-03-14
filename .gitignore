@@ -8,3 +8,5 @@ requirements.txt
 *.zip
 !docs/fonts/*.ttf
 !docs/fonts/*.woff2
+
+/docs/.obsidian/
