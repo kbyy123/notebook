@@ -3,6 +3,8 @@
    说明：告诉浏览器本地字体文件的位置。
    路径 ../fonts/ 表示从当前 css 文件夹向上跳一级，再进入 fonts 文件夹。
    ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;800&display=swap');
+
 @font-face {
   font-family: 'LXGW WenKai Screen';
   /* 确保文件名与你文件夹中的 .ttf 文件名大小写完全一致 */
@@ -86,6 +88,7 @@ body, .md-typeset {
   --heading-accent: #0f766e;
   --heading-main: #134e4a;
   --heading-sub: #0f172a;
+  --heading-font: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
 }
 
 [data-md-color-scheme="slate"] {
@@ -100,7 +103,7 @@ body, .md-typeset {
 .md-typeset h4,
 .md-typeset h5,
 .md-typeset h6 {
-  font-family: 'LXGW WenKai Screen', "Microsoft YaHei", sans-serif;
+  font-family: var(--heading-font);
   letter-spacing: 0.02em;
   line-height: 1.3;
 }
