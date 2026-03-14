@@ -1,0 +1,2252 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>CS106L - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12.04%202.5%209.53%205h5zM4%207v13h16V7zm8-7%205%205h3a2%202%200%200%201%202%202v13a2%202%200%200%201-2%202H4a2%202%200%200%201-2-2V7a2%202%200%200%201%202-2h3zM7%2018v-4h5v4zm7-1v-7h4v7zm-8-5V9h5v3z%22/%3E%3C/svg%3E');--md-admonition-icon--proof:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22m368.5%2018.3-50.1%2050.1%20125.3%20125.3%2050.1-50.1c21.9-21.9%2021.9-57.3%200-79.2l-46.1-46.1c-21.9-21.9-57.3-21.9-79.2%200m-89.2%2078.9-.5.1-144.1%2043.2c-19.9%206-35.7%2021.2-42.3%2041L3.8%20445.8c-2.9%208.7-1.9%2018.2%202.5%2026l155.4-155.4c-1.1-4-1.6-8.1-1.6-12.4%200-26.5%2021.5-48%2048-48s48%2021.5%2048%2048-21.5%2048-48%2048c-4.3%200-8.5-.6-12.4-1.6L40.3%20505.7c7.8%204.4%2017.2%205.4%2026%202.5l264.3-88.6c19.7-6.6%2035-22.4%2041-42.3l43.2-144.1.1-.5L279.4%2097.2z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css">
+    
+      <link rel="stylesheet" href="../../css/copyright.css">
+    
+      <link rel="stylesheet" href="../../css/icon.css">
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#cs106l" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CS106L
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../data-structure/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💡数据结构与算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../computer-system/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💻计算机系统
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook.git" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../math/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../data-structure/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💡数据结构与算法
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../computer-system/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻计算机系统
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#typesandstructs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TypesAndStructs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypesAndStructs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        语言差别
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        结构体
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pair" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        pair
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命名空间/库
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        using
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#auto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        auto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initializationandreferences" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        InitializationAndReferences
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="InitializationAndReferences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        引用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        左值与右值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#const" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        const
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        编译
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Streams
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Streams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        抽象
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流是什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        层级结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buffer-flush" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buffer &amp; flush
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cin-getline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cin &amp;&amp; getline()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stringstream" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        stringstream
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取消同步
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输出文件流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        输入文件流
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模板
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STL
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="STL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::vector
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stddeque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::deque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::set
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdunordered_mapset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::unordered_map/set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迭代器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="迭代器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迭代器操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        迭代器类型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        头文件与源文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        析构函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问权限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#const-static" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        const &amp;&amp; static
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        操作符
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="操作符">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        重载运算符
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        友元函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类型转换操作符
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自增自减
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raii" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        智能指针（基于RAII）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="智能指针（基于RAII）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdshared_ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::shared_ptr
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="std::shared_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdunique_ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        std::unique_ptr
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="std::unique_ptr">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        初始化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        继承
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="继承">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多继承
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问权限
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        析构函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚函数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="虚函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        虚函数表
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        纯虚函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-the-diamond-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 灾难现场：菱形继承 (The Diamond Problem)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-virtual-public" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 救星降临：虚继承 (virtual public)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Java 是怎么看待这个烂摊子的？
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook.git/edit/master/docs/language/cpp/temp.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook.git/raw/master/docs/language/cpp/temp.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="cs106l">CS106L</h1>
+<h2 id="typesandstructs">TypesAndStructs</h2>
+<h3 id="_1">语言差别</h3>
+<p>编译型语言（cpp）：先编译得到.exe再运行，编译时检查错误（Compile Time Error）</p>
+<p>解释型语言（Python）：一句句运行，运行时检查错误（Runtime Time Error）</p>
+<h3 id="_2">结构体</h3>
+<p>结构体初始化：直接用变量名 = { }，其中内容按照结构体定义顺序，= 可省略</p>
+<h3 id="pair">pair</h3>
+<p>含两个变量的结构体：std::pair</p>
+<p>pair本质是模板</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">pair</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
+<span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="_3">命名空间/库</h3>
+<p>命名空间：不同的库中可能会使用相同的函数名，因此将库放在一个命名空间下，防止冲突</p>
+<p>一般一个命名空间里有多个库，比如std对应string, utility, iostream</p>
+<p>std：常用的命名空间 不要使用using namespace std 不好的编程习惯</p>
+<p>使用std时需要include相关库文件</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1"> =&gt; std::string</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="c1"> =&gt; std::pair</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> =&gt; std::cout, std::endl</span>
+</code></pre></div>
+<h3 id="using">using</h3>
+<p>可以使用using A = B，给B起别名A，类似typedef</p>
+<h3 id="auto">auto</h3>
+<p>auto可以自动推断类型（但一定要确定，比如函数返回值、遍历的迭代器）</p>
+<p>可以使用：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solveQuadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="o">==&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
+</code></pre></div>
+<p>不能使用：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="o">==&gt;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="initializationandreferences">InitializationAndReferences</h2>
+<h3 id="_4">初始化</h3>
+<p><strong>直接初始化</strong>：比如 <code>int numOne = 12.0</code> 和 <code>int numTwo(12.0)</code> 都是可以初始化的，会把float强制转化为int，这个过程叫<strong>narrowing conversion</strong>，将一个数据转换为另一种取值范围更小、可能导致精度丢失或数据溢出的类型</p>
+<p><strong>标准初始化</strong>：大括号 <code>int numOne{12.0}</code> 此时cpp会报错，改成12后可以编译</p>
+<ul>
+<li>好处：安全、普遍存在</li>
+</ul>
+<p>例如：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ages</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Charlie&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
+</code></pre></div>
+<p>以及之前结构体的初始化也是这种方法（省略括号的形式）</p>
+<p><strong>结构化绑定（cpp17）</strong>：类似python，可以将返回值打包成元组</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tuple&gt;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getClassInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">className</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;CS106L&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">buildingName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Thornton 110&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">language</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;C++&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">className</span><span class="p">,</span><span class="w"> </span><span class="n">buildingName</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="p">};</span>
+<span class="p">}</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">className</span><span class="p">,</span><span class="w"> </span><span class="n">buildingName</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getClassInfo</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>或者 <code>auto [id, name] : courseMap</code> 这类</p>
+<h3 id="_5">引用</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+
+<span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Output: 10</span>
+</code></pre></div>
+<p>类型后加&amp;表示引用，表明该变量和原始变量是同一个，这样可以便于传入函数修改值、减少复制开销</p>
+<p>如果我们并没有修改内容的需求，为了防止误修改内容，可以加上const</p>
+<h3 id="_6">左值与右值</h3>
+<p>左值：可以出现在表达式左侧、拥有实际内存地址的对象</p>
+<p>右值：只能出现在表达式右侧，在表达式求值后不持久存在</p>
+<p>注意：在右边的也可能是左值</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// x是左值，10是右值</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// x y都是左值</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// 左值拥有实际内存地址，传入引用合法</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// 右值不具有实际内存地址，不能作为引用传入</span>
+</code></pre></div>
+<h3 id="const">const</h3>
+<p>加上const的变量无法修改，包括基本变量与容器。</p>
+<p>不能声明一个对const变量的非const的引用，可以声明一个const变量的const引用</p>
+<h3 id="_7">编译</h3>
+<p>使用g++编译：g++ -std=c++23 main.cpp -o main</p>
+<p>g++：编译命令</p>
+<p>-std=c++23：c++版本</p>
+<p>main.cpp：源文件</p>
+<p>-o：表示给可执行文件起一个名字，main为名字</p>
+<h2 id="streams">Streams</h2>
+<h3 id="_8">抽象</h3>
+<p>抽象：提供接口，不需要关注怎么实现，只需要怎么用
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">fout</span><span class="p">(</span><span class="s">&quot;data.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 创建一个 data.txt 文件</span>
+<span class="n">fout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;I&#39;m writing to this file&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 写入内容</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">iftream</span><span class="w"> </span><span class="n">fin</span><span class="p">(</span><span class="s">&quot;data.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输入文件流</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">first_input</span><span class="p">;</span>
+<span class="n">fin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">student_input</span><span class="p">;</span>
+</code></pre></div></p>
+<h3 id="_9">流</h3>
+<h4 id="_10">流是什么</h4>
+<p>stream是读写数据的抽象接口，隐藏了数据来源（键盘、文件、网络）和去向（屏幕、硬盘）</p>
+<ul>
+<li>统一接口：可以使用一致的界面（如 &lt;&lt; 和 &gt;&gt;）来读写数据</li>
+<li>类型转换：将外部字符串转化为程序内部的实际数据类型</li>
+</ul>
+<h4 id="_11">层级结构</h4>
+<ul>
+<li>
+<p>基础：ios_base，维护流的状态信息（如是否出错 failbit、到达末尾 eofbit）和控制信息</p>
+</li>
+<li>
+<p>输入流：用提取运算符&gt;&gt;从源头读取</p>
+</li>
+<li>输出流：用插入运算符&lt;&lt;发送到目的地</li>
+</ul>
+<h4 id="buffer-flush">buffer &amp; flush</h4>
+<ul>
+<li>
+<p><strong>buffer</strong>：字符数组会先存储在一个中间缓冲区中，这样能提高效率</p>
+</li>
+<li>
+<p><strong>flush</strong>：将缓冲区清空</p>
+</li>
+</ul>
+<p>什么时候会flush？</p>
+<ul>
+<li>手动触发：使用 std::flush 或 std::endl（换行+flush）</li>
+<li>程序结束：退出时会自动清空</li>
+<li>缓冲区满：存不下了强制清空</li>
+<li>交互触发：cin需要获取输入时，会自动刷新cout缓冲区</li>
+</ul>
+<h4 id="cin-getline">cin &amp;&amp; getline()</h4>
+<p>std::cin &gt;&gt; 会自动跳过开头的空格（包括制表符换行符），也就是从第一个非空字符开始读取，直到读到空格</p>
+<p>注意：cin会自动判断需要输入的类型并且只接收需要的类型。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 输入：3.14</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// 由于 a 是int类型，cin遇到 . 后停止，此时a读入3；然后给b读入，由于b是double，读入.14合法，b会得到0.14</span>
+</code></pre></div>
+<p>如果一个非空白字符合法字符都没读取到，就会触发failbit：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 输入：1abc，由于abc不符合int，因此给a输入1后就会自动结束a的输入，剩下的abc还在缓冲区</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+
+<span class="c1">// 输入：abc，此时第一个非空白字符就不合法，输入完全失败，输入流触发failbit状态，后续的所有cin都会被跳过</span>
+<span class="c1">// 同时a会变为0</span>
+</code></pre></div>
+<p>std::getline(std::cin（或者其他输入流）, string s, char delim = '\n') 会读取一整行的内容，直到遇到delim为止（此时它会把\n吞掉，也就是缓冲区不再有\n但是字符串也没有s）。注意它不会像cin一样自动忽略开头的空格、制表符、换行符，也就是说开头的空格也会读进去，并且如果第一个字符就是\n的话会得到一个空字符串</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//例如输入：3.14\nRachel Fernandez\n</span>
+<span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="p">,</span><span class="w"> </span><span class="n">tao</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">pi</span><span class="p">;</span><span class="w"> </span><span class="c1">// 此时pi输入3.14，然后遇到\n，cin结束，此时buffer首字符是\n</span>
+<span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">);</span><span class="w"> </span><span class="c1">// getline在缓冲区遇到 \n，结束读入并将这个换行删除，name读入空字符串</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">tao</span><span class="p">;</span><span class="w"> </span><span class="c1">// 此时字符类型与double不匹配，发生failbit</span>
+
+<span class="c1">// 如何修复？对于上面的例子，直接读两次getline即可；但是如果cin是因为空格、制表符停住的，这样做就会出问题。所以尽量不要把cin和getline混用</span>
+</code></pre></div>
+<h4 id="stringstream">stringstream</h4>
+<p>stringstream同时继承了istream和ostream的所有特性，也就是可以使用&gt;&gt;和&lt;&lt;．</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 初始化</span>
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">initial_quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">Bjarne</span><span class="w"> </span><span class="n">Stroustrup</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">easy</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">shoot</span><span class="w"> </span><span class="n">yourself</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">foot</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="nf">ss</span><span class="p">(</span><span class="n">initial_quote</span><span class="p">);</span><span class="w"> </span><span class="c1">// 或者 ss &lt;&lt; initial_quote;</span>
+
+<span class="c1">// 接着可以像cin一样提取输入</span>
+
+<span class="n">ss</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">last</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">language</span><span class="p">;</span>
+
+<span class="c1">// 如果使用 ss &gt;&gt; extracted_quote; 那么就只会读到 makes</span>
+<span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="n">extracted_quote</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="_12">取消同步</h4>
+<ul>
+<li><code>std::ios::sync_with_stdio(false)</code>：默认情况下，C++流会与C的标准输入输出（printf）同步，也就是可以交替使用cout和printf而不会出现输出顺序混乱，但是代价是C++流必须做很多检查工作，降低性能；关闭同步流后性能提升，但是不能混用流输出和printf</li>
+<li><code>cin.tie(NULL)</code>：默认情况下cin和cout是绑定的，也就是cin读取数据前程序会flush cout的缓冲区，这样用户能即时看到屏幕上的提示文字；关闭绑定后，cin时cout不再自动刷新，要把所有输入输完才会一起输出</li>
+<li>注意：频繁清空缓冲区会降低速度，因此开启以上两条后不要用 std::endl 来换行而是 \n，因为前者会强制清空缓冲区</li>
+</ul>
+<h4 id="_13">输出文件流</h4>
+<p><code>std::ofstream</code> 创建一个关联到文件的输出流，可以将流写入文件</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">ofs</span><span class="p">(</span><span class="s">&quot;hello.txt&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 如果文件成功打开，将数据写入文件</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ofs</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ofs</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello CS106L&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 关闭对该文件的输出流</span>
+<span class="w">    </span><span class="n">ofs</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">ofs</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;this will not get written&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ofs</span><span class="p">.</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;hello.txt&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// 如果想要以追加而非覆盖形式写入，open时加入参数 ofs.open(&quot;hello.txt&quot;, std::ios::app)</span>
+<span class="w">    </span><span class="c1">// 同时可以用 std::ofstream ofs(&quot;hello.txt&quot;, std::ios::app)</span>
+
+<span class="w">    </span><span class="n">ofs</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;this will though! It’s open again&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_14">输入文件流</h4>
+<p><code>std::ifstream</code> 创建一个关联到文件的输入流，将文件内容以流读出</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">inputFileStreamExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 构造时关联文件：创建一个输入文件流并尝试打开 &quot;input.txt&quot; </span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">ifs</span><span class="p">(</span><span class="s">&quot;input.txt&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. 检查流是否成功打开，读取文件第一行</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ifs</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">ifs</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Read from the file: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span><span class="err">、</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 3. 再次检查并读取下一行 </span>
+<span class="w">    </span><span class="c1">// 注意：流内部的指针已经移动，所以这次会读取文件的第二行 </span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ifs</span><span class="p">.</span><span class="n">is_open</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">lineTwo</span><span class="p">;</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">ifs</span><span class="p">,</span><span class="w"> </span><span class="n">lineTwo</span><span class="p">);</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Read from the file: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">lineTwo</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_15">容器</h2>
+<h3 id="_16">模板</h3>
+<p>模板（template）允许我们写与数据类型无关的代码，类似Java里的泛型，可以实现代码复用</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IntVector</span><span class="w"> </span><span class="p">{};</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DoubleVector</span><span class="w"> </span><span class="p">{};</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">StringVector</span><span class="w"> </span><span class="p">{};</span>
+<span class="o">==&gt;</span>
+<span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">vector</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>模板也可以运用于函数：函数模板</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;typeinfo&gt;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="n">T</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;The input type is &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">typeid</span><span class="p">(</span><span class="n">T</span><span class="p">).</span><span class="n">name</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 显式模板实例化</span>
+<span class="k">template</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">sum</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">);</span>
+<span class="k">template</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">sum</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="p">);</span>
+<span class="k">template</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="stl">STL</h3>
+<p>STL：Standard Template Library，所有的STL容器都是模板。stl是std的真子集</p>
+<p>STL包含：容器、迭代器、仿函数、算法</p>
+<h4 id="stdvector">std::vector</h4>
+<div class="highlight"><pre><span></span><code><span class="c1">// 初始化</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="c1">// 空vector</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// 初始有n个0的vector</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="c1">// 初始有n个k的vector</span>
+
+<span class="c1">// 方法</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">k</span><span class="p">);</span><span class="w"> </span><span class="c1">// 尾插</span>
+<span class="n">v</span><span class="p">.</span><span class="n">pop_back</span><span class="p">();</span><span class="w"> </span><span class="c1">// 尾删</span>
+<span class="n">v</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span><span class="w"> </span><span class="c1">// 清空</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span><span class="w"> </span><span class="c1">// 判空</span>
+<span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// 访问，无边界检查，可能有未定义行为</span>
+<span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// 访问，会进行边界检查，更安全</span>
+</code></pre></div>
+<p>PS：对STL的遍历尽量用 <code>for (auto const&amp; elem : v)</code> 遍历</p>
+<h4 id="stddeque">std::deque</h4>
+<p>deque比vector多了 <code>push_front</code> <code>pop_front</code>。deque与vector不同，其空间是由一段段等大、连续的数据块组成的，不同数据块不连续而块内连续，因此如果当前数据块满了只需要再申请一个数据块即可。</p>
+<h4 id="stdmap">std::map</h4>
+<p>字典（键值对），底层结构是红黑树，要做到有序因此K必须定义&lt;运算</p>
+<p><code>std::unordered_map&lt;std::ifstream, int&gt; map</code> 错误，因为 <code>ifstream</code> 无法比较</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Chris&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;CS106L&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Keith&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Nick&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">51</span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;Sean&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">},</span>
+<span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">sean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">[</span><span class="s">&quot;Sean&quot;</span><span class="p">];</span><span class="w"> </span><span class="c1">// 35</span>
+<span class="n">map</span><span class="p">[</span><span class="s">&quot;Chris&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31</span><span class="p">;</span>
+
+<span class="c1">//方法</span>
+<span class="n">m</span><span class="p">.</span><span class="n">insert</span><span class="p">({</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">});</span><span class="w"> </span><span class="c1">// 添加键值对</span>
+<span class="n">m</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="n">m</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">k</span><span class="p">);</span><span class="w"> </span><span class="c1">// 删除键</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="c1">// 返回匹配键的数量，为0或1</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="c1">// C++20新增，返回布尔值</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+</code></pre></div>
+<p>map是 std::pair<const K, V> 的容器，const是因为要维护有序性，因此K不能随便改</p>
+<p>遍历：</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="p">;</span>
+
+<span class="c1">// 用pair</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">kv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">map</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// kv 是 std::pair&lt;const std::string, int&gt;</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kv</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 用结构化绑定</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">map</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// key: const std::string&amp;</span>
+<span class="w">    </span><span class="c1">// value: const int&amp;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="stdset">std::set</h4>
+<p>大体方法和map类似，可以看作无值的map，底层是红黑树</p>
+<h4 id="stdunordered_mapset">std::unordered_map/set</h4>
+<p>底层是哈希表，元素不再有序，因此更快，但是空间占用更多。此时K要满足有哈希函数以及判等。</p>
+<p><code>std::unordered_map&lt;std::ifstream, int&gt; map</code> 错误，因为 <code>ifstream</code> 无哈希函数</p>
+<p>默认负载因子（元素个数/桶个数）大于1时重新哈希</p>
+<p>获取、修改负载因子：</p>
+<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">lf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">load_factor</span><span class="p">();</span>
+<span class="n">map</span><span class="p">.</span><span class="n">max_load_factor</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="_17">迭代器</h2>
+<h3 id="_18">迭代器操作</h3>
+<p>对于STL容器，我们可以用 <code>for (const auto&amp; elem : container)</code> 来遍历，本质是因为这些容器有<strong>迭代器</strong>。</p>
+<p>因为有些容器不好遍历，因此有了迭代器，方便遍历容器。可以将迭代器看作是容器的专属指针（其与指针用法高度统一）</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="c1">// 首元素迭代器</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="c1">// 尾元素后一个元素的迭代器</span>
+<span class="o">++</span><span class="n">it</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指向下一个元素</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span><span class="w"> </span><span class="c1">// 解引用</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="o">-&gt;</span><span class="n">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// 如果是装有struct的容器，可以像指针一样用-&gt;访问</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">())</span><span class="w"> </span><span class="c1">// 比较</span>
+
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">container</span><span class="p">)</span>
+<span class="c1">// 等价于</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>迭代器的数据类型：<code>std::container&lt;&gt;::iterator</code></p>
+<p>++it 和 it++ 区别：</p>
+<ul>
+<li>++it：迭代器自增，然后返回移动后的迭代器引用</li>
+<li>it++：先记录当前迭代器的状态，将迭代器向前移动一位，返回的是<strong>移动前</strong>的那个副本</li>
+</ul>
+<p>前者效率更高．</p>
+<h3 id="_19">迭代器类型</h3>
+<ul>
+<li>输入迭代器：读取元素，<code>auto elem = *it</code></li>
+</ul>
+<p>例子：流迭代器 <code>std::istream_iterator</code></p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Enter numbers (Ctrl + D to stop):</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 输入流迭代器（从 cin 读取 int）</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">start</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// 结束迭代器：默认构造的迭代器，代表“流的尽头”（End-of-stream iterator），如 Ctrl+D</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">istream_iterator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">end</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 此处是vector的构造函数：vector(InputIterator first, InputIterator last) </span>
+<span class="w">    </span><span class="c1">// 把 [first, last) 区间的元素全部拷贝进 vector</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">numbers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39; &#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>输出迭代器：写入元素，<code>*it = elem</code></li>
+</ul>
+<p>例子：<code>std::back_insert_iterator</code>，适用于有 push_back 的容器</p>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<span class="c1">// 创建一个绑定到 v 的后插迭代器</span>
+<span class="n">std</span><span class="o">::</span><span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">out_it</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"> </span>
+
+<span class="o">*</span><span class="n">out_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// 相当于执行 v.push_back(10) </span>
+<span class="o">*</span><span class="n">out_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="c1">// 相当于执行 v.push_back(20)</span>
+</code></pre></div>
+<ul>
+<li>前向迭代器，可以让迭代器往前走 <code>++it</code>，所有迭代器都属于这一类</li>
+<li>双向迭代器：可以往后走，如 <code>std::map</code> <code>std::set</code> 的迭代器属于这一类</li>
+<li>随机访问迭代器：可以随便加减</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// 5 ahead</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">it3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2 back</span>
+
+<span class="c1">// Get 3rd element</span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
+<span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</code></pre></div>
+<p>为什么需要不同迭代器类型？</p>
+<ul>
+<li>为所有容器提供一个统一的抽象</li>
+<li>C++在设计时避免提供较慢的方法，比如vector可以一下跳多步（因为其本身就支持随机访问），因此可以有随机访问迭代器；而map这类想要跳多步必须得一步一步跳过去，随机访问迭代器和双向迭代器没有本质区别</li>
+<li>部分STL库算法要求必须有特定迭代器，比如 <code>std::sort</code> 要求必须有随机访问迭代器，所以对vector排序合法，对unordered_map排序不合法（因为sort通常使用快排，需要频繁地跳跃，不支持随机访问性能开销会很大，为了防止程序员写出低效代码，C++直接禁止了sort对非随机访问迭代器的使用）</li>
+</ul>
+<p><code>iterator</code> 只是一个类型别名，在不同的容器中有不同的实现方法。</p>
+<h2 id="_20">类</h2>
+<h3 id="_21">头文件与源文件</h3>
+<p>头文件（.hpp）：定义接口、声明（定义类，以及只写部分类方法的定义）</p>
+<p>源文件（.cpp）：实现方法（如头文件中未实现的方法）</p>
+<h3 id="_22">构造函数</h3>
+<p>无返回类型，与类名相同，声明类对象时会自动调用．默认情况下编译器会提供一个空构造函数，当我们手写了任意构造函数后，编译器就不会提供了．</p>
+<p>在 <code>.h</code> 文件中</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BUPTID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idNumber</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 构造函数接口</span>
+<span class="w">    </span><span class="n">BUPTID</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">idNumber</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getID</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>在 <code>.cpp</code> 文件中</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;BUPTID.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+
+<span class="c1">// 使用类时要类似命名空间</span>
+<span class="c1">// 参数化构造函数</span>
+<span class="n">BUPTID</span><span class="o">::</span><span class="n">BUPTID</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">idNumber</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">idNumder</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 成员初始化列表</span>
+<span class="n">BUPTID</span><span class="o">::</span><span class="n">BUPTID</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">idNumber</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">{</span><span class="n">name</span><span class="p">},</span><span class="w"> </span><span class="n">idNumber</span><span class="p">{</span><span class="n">idNumber</span><span class="p">}</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="c1">// 默认构造函数</span>
+<span class="n">BUPTID</span><span class="o">::</span><span class="n">BUPTID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;kbyy&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">idNumber</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">114514</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">BUPTID</span><span class="o">::</span><span class="n">getName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">BUPTID</span><span class="o">::</span><span class="n">getID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idNumber</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_23">析构函数</h3>
+<p>当一个对象超出作用域或手动delete时，析构函数会自动调用</p>
+<p>无返回类型，函数名为~+类名，无需参数，不可重载，只能有一个</p>
+<h3 id="_24">访问权限</h3>
+<p>不涉及继承，<code>protected</code> 与 <code>private</code> 没区别，我们此处只讨论 <code>private</code> 和 <code>public</code>．</p>
+<p><code>private</code> 只在类内部可访问，注意只要在类内部，尽管是不同对象也是可访问的．</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// this-&gt;n 可访问</span>
+<span class="w">    </span><span class="n">Person</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="c1">// other.n 可访问，本质是因为该函数还在Person类内部，尽管不是相同对象但还在类内部就是可访问private1</span>
+<span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Person</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">n</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+
+<span class="w">    </span><span class="c1">// this-&gt;n 和 other.n 均可访问</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">set</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Person</span><span class="o">&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span><span class="w"> </span>
+</code></pre></div>
+<h3 id="const-static">const &amp;&amp; static</h3>
+<p>const：在类的内部，修饰类成员变量表示不可变；修饰函数表示该函数不可改变成员变量（此时要加到函数名后）</p>
+<p>static：不绑定到实例上，可以直接用类名调用．其中静态变量不能在类内初始化（C++17后可以类内初始化，用 <code>inline static size_t student_total</code>）．静态成员不能使用非静态成员</p>
+<p>如果是使用 new 来申请了类数组的内存，如 <code>Student *psa = new Student[16]</code>，那么释放内存时最好加上中括号 <code>delete []psa</code>，这样才能给每一个对象调用析构函数，否则只会给第一个对象调用．</p>
+<p><img alt="image-20260311122601420" src="temp.assets/image-20260311122601420.png" /></p>
+<h3 id="_25">操作符</h3>
+<h4 id="_26">重载运算符</h4>
+<p><code>类名 operator运算符(const 类名 &amp;t) const</code> 重载运算符</p>
+<p>例如：+运算符与+=运算符，+=要返回本身，也就是*this</p>
+<p><img alt="image-20260311123125545" src="temp.assets/image-20260311123125545.png" /></p>
+<p><img alt="image-20260311123305459" src="temp.assets/image-20260311123305459.png" /></p>
+<p>对于加减乘除这些，运算符传入的参数也可以不是当前类的另一个对象，比如</p>
+<p><img alt="image-20260311123545674" src="temp.assets/image-20260311123545674.png" /></p>
+<h4 id="_27">友元函数</h4>
+<p>我们之前重载的加号，必须要求第一个是类对象才能调用，比如 <code>time_t + m</code> 是合法的，因为 <code>time_t</code> 作为一个类成员具有重载的加号；而 <code>m + time_t</code> 是不合法的，因为 <code>m</code> 作为一个int类型不具有重载的加号．此时可以用友元函数解决．</p>
+<p>友元函数定义在类的内部，但是不是类的成员．该函数的特点在于：可以访问类内部成员，但是操作的主体不一定为类成员（类成员函数的参数默认有一个this），比如我们直接写 <code>MyTime operator+(int m, const MyTime&amp; t)</code>，编译器会认为参数有三个：this、m、t，不符合双目运算符．在其前加上friend成为友元函数，默认操作主体就可以不是类成员了</p>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">MyTime</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>同理，<code>cout &lt;&lt;</code> 的原理是：cout作为一个 <code>ostream</code> 对象，其有双目运算符 <code>&lt;&lt;</code>，可以将右边的打印后返回一个值，而返回的这个值仍然是 <code>ostream</code> 对象，此时还可以连锁 <code>&lt;&lt;</code> 输出．而该运算符的第一个参数不是time对象，因此必须使用友元函数重载运算符</p>
+<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Mytime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">hours</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;hours and &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">minutes</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; minutes.&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="_28">类型转换操作符</h4>
+<p>如果我们想把我们的对象转化成其他类型，可以自己写转化函数．转化函数不用写返回类型，因为返回类型只能是转化的类型，分为隐式转化和显式转化，用关键字 <code>explicit</code> 区分．如果是显式转化，就必须将函数写出来．</p>
+<div class="highlight"><pre><span></span><code><span class="k">operator</span><span class="w"> </span><span class="kt">int</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">explicit</span><span class="w"> </span><span class="k">operator</span><span class="w"> </span><span class="kt">float</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">MyTime</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 隐式转换</span>
+<span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">t1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 显式转换</span>
+</code></pre></div>
+<p>如果想要把其他类型转化成对象类型，可以借助构造函数．</p>
+<div class="highlight"><pre><span></span><code><span class="n">MyTime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">hours</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">minutes</span><span class="p">{</span><span class="n">m</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// PS：虽然和</span>
+<span class="n">MyTime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// 看起来等价，但是用初始化列表是更好的，因为初始化列表不用经历创建（带着垃圾值）再重新赋值的过程，</span>
+</code></pre></div>
+<p>或者也可以重载赋值运算符 <code>=</code></p>
+<div class="highlight"><pre><span></span><code><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>注意：当我们执行初始化时，调用的是构造函数；而创建完后再赋值，调用的是赋值运算符．</p>
+<div class="highlight"><pre><span></span><code><span class="n">Mytime</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="c1">// 构造函数</span>
+
+<span class="n">Mytime</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
+<span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="c1">// 赋值运算符</span>
+</code></pre></div>
+<h4 id="_29">自增自减</h4>
+<p>语法规定：前置自增不带参数，后置自增带一个int．</p>
+<p>前置返回引用，后置返回对象．因为后置返回时对象已经变了，如果用引用返回的话就是返回自增后的值了</p>
+<p><img alt="image-20260311151932622" src="temp.assets/image-20260311151932622.png" /></p>
+<h3 id="raii">智能指针（基于RAII）</h3>
+<p>智能指针将指针封装在一个模板类里，当类对象的“被指向计数”为0时，析构函数会自动调用 <code>delete</code>．</p>
+<p>智能指针一般在栈上创建，而它指向的对象一般在堆上创建，而栈上内存会自动销毁，我们可以通过栈内存自动销毁调用智能指针的析构函数来自动销毁堆上的内存．</p>
+<h4 id="stdshared_ptr">std::shared_ptr</h4>
+<p>shared_ptr 可以实现多个指针指向同一对象，与原生指针最接近</p>
+<h5 id="_30">初始化</h5>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mt1</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">mt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">);</span>
+
+<span class="c1">// 注意：智能指针本质不是指针，因此 std::shared_ptr&lt;MyTime&gt; mt1 = new MyTime(10); 是不合法的</span>
+<span class="c1">// 同理 MyTime *mt1 = std::make_shared&lt;MyTime&gt;(1, 70); 也是不合法的  </span>
+</code></pre></div>
+<h5 id="_31">方法</h5>
+<p>可以和原生的指针一样使用 <code>*</code> 解引用和 <code>-&gt;</code> 访问成员．</p>
+<p><code>shared_ptr</code> 有一个 <code>use_count()</code> 方法，可以返回该指针指向的成员目前被多少指针指向．</p>
+<h4 id="stdunique_ptr">std::unique_ptr</h4>
+<p>unique_ptr 保证一个对象只能被一个指针指向，不管其他指针是什么类型（shared_ptr也是）．</p>
+<h5 id="_32">初始化</h5>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">mt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">);</span><span class="w"> </span><span class="c1">// 特殊：这个方法是 C++17 才有的</span>
+
+<span class="c1">// 由于只能被一个指向，因此需要用 move 方法将 mt1 移除</span>
+<span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">mt1</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="_33">继承</h3>
+<p>派生类可以继承基类，自动获得基类的属性、方法，并以此进行修改</p>
+<p>使用 <code>class Derived : (public/protected/private) Base {};</code> 来定义继承关系，默认为private继承</p>
+<h4 id="_34">多继承</h4>
+<p><strong>多层继承</strong>：子类还可以继续被继承</p>
+<p><strong>多个继承</strong>：一个子类可以有多个父类（容易出问题，特别是父类有相同的爷爷类时）</p>
+<h4 id="_35">访问权限</h4>
+<p><strong>基类本身访问权限</strong>（默认为private）：</p>
+<ul>
+<li>public：公开</li>
+<li>protected：类内、子类可以访问</li>
+<li>private：只有类内可以访问</li>
+</ul>
+<p><strong>三种继承方式效果</strong>（默认为private）：</p>
+<ul>
+<li>public继承：基类的public到了子类还是public，protect到了子类还是protected（<code>is-a</code>关系，不改变隐私度）</li>
+<li>protected继承：基类的public到了子类变成protected</li>
+<li>private继承：基类的public和protected到了子类变成private</li>
+</ul>
+<p><img alt="image-20260310220644359" src="temp.assets/image-20260310220644359.png" /></p>
+<h4 id="_36">构造函数</h4>
+<p>子类的构造函数过程：</p>
+<ul>
+<li>申请内存</li>
+<li>
+<p>父类构造函数执行</p>
+</li>
+<li>
+<p>子类构造函数执行</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 调用父类构造函数也可以用成员参数化列表进行uniform initialization</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Derived</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">Base</span><span class="p">{</span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">},</span><span class="w"> </span><span class="n">c</span><span class="p">{</span><span class="n">c</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<h4 id="_37">析构函数</h4>
+<p>与构造函数相反，先调用子类析构函数，再调用父类．</p>
+<h4 id="_38">虚函数</h4>
+<p>在C++中，我们可以用父类的变量类型来接受子类（向上转型）．</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">n</span><span class="p">){}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Person</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Student</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">Person</span><span class="p">{</span><span class="n">n</span><span class="p">},</span><span class="w"> </span><span class="n">id</span><span class="p">{</span><span class="n">i</span><span class="p">}{}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Name: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;. ID: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 该函数的p既可以接收 Person 也可以接受 Student</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">printObjectInfo</span><span class="p">(</span><span class="n">Person</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">p</span><span class="p">.</span><span class="n">print</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Student</span><span class="w"> </span><span class="n">stu</span><span class="p">(</span><span class="s">&quot;lin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2025&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">printObjectInfo</span><span class="p">(</span><span class="n">stu</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Person</span><span class="w"> </span><span class="o">*</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Student</span><span class="p">(</span><span class="s">&quot;zhou&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2025&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">p</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+<span class="w">        </span><span class="k">delete</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>上述main函数的两个print分别是什么结果？</p>
+<p><strong>答案</strong>：只打印出了名字，也就是说只调用了父类的print．我们设计printObjectInfo接受父类，是希望利用向上转型让其可以接受所有子类对象并根据子类对象自己的方法打印，但是和我们的设计不符合</p>
+<p>在父类的 print 前加上 virtual（也可以在子类函数后加上override，即 void print() override {}），此时打印结果为</p>
+<div class="highlight"><pre><span></span><code><span class="nl">Name</span><span class="p">:</span><span class="w"> </span><span class="n">lin</span><span class="p">.</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="mi">2025</span>
+<span class="nl">Name</span><span class="p">:</span><span class="w"> </span><span class="n">zhou</span><span class="p">.</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="mi">2025</span>
+</code></pre></div>
+<h5 id="_39">虚函数</h5>
+<p>基类的函数声明前加上 <code>virtual</code> 关键字，将对象从静态绑定变成动态绑定．</p>
+<blockquote>
+<p>静态绑定：编译阶段决定调用什么函数</p>
+<p>动态绑定：运行时决定调用什么函数</p>
+</blockquote>
+<p>我们可以类比Java语法：</p>
+<blockquote>
+<p>在Java中，我们写 <code>Parent p = new Child();</code> 然后调用 <code>p.doSomething()</code>，JVM在运行时会查看 <code>p</code> 的动态类型，发现其为 Child，因此它会调用 Child Override的该方法，而不是父类的该方法．</p>
+<p>在C++中，我们写 <code>Base* p = new Derived();</code> （注意 C++ 多态必须通过<strong>指针</strong>或<strong>引用</strong>来实现），此时如果父类的该方法有 <code>virtual</code> 关键字，就会变得和Java一样了；反之它只会调用父类的该方法而不是子类覆写的．</p>
+<p>也就是说，我们可以看作Java的所有方法都是virtual的．</p>
+</blockquote>
+<p>析构函数一定是虚函数，要不然只删除父类而不删除子类的部分会出问题．</p>
+<p><strong>注意</strong>：<code>printObjectInfo</code> 中，如果我们使用<strong>值传递</strong>而非<strong>引用传递/指针传递</strong>，即使是虚函数也会调用父类的 <code>print</code>．因为在内存中，我们是先创建父类的内存，然后子类内存跟在父类后面；当我们用父类对象接受子类的值传递时，由于父类对象的大小更小，只能复制到子类对象的父类内存部分，导致子类对象退化为父类对象，因而只能调用父类的方法．</p>
+<h5 id="_40">虚函数表</h5>
+<p>当类里声明了至少一个虚函数时，编译器就会在编译时为这个类生成一张虚函数表．表里记着该类所有虚函数的<strong>真实内存地址</strong>（即在代码段中的位置），记录该类的对象要调用哪个方法．当实例化一个对象时，编译器会给对象加入一个虚函数表指针（<strong>vptr</strong>），指向该类的虚函数表．</p>
+<h4 id="_41">纯虚函数</h4>
+<p><strong>纯虚函数</strong>：如果虚函数后面加上了 = 0，则为纯虚函数，如 <code>virtual void func() = 0</code> 表示这个函数在当前类中<strong>没有实现</strong>，只是一个接口．只要类包含了一个纯虚函数，该类就成为抽象类，无法实例化，等价于Java里的 <code>abstract class</code>．如果一个类中只有函数且有纯虚函数，我们可以把他看作Java里的 <code>interface</code>．</p>
+<p>子类只有把所有纯虚函数都完成实现后才能实例化．</p>
+<blockquote>
+<p>补充 Java 抽象类与接口的区别：</p>
+<ul>
+<li>抽象类可以有普通的成员变量，接口只能有全局静态常量</li>
+<li>抽象类可以有构造函数，接口不能有</li>
+<li>抽象类只能单继承（子类只能 <code>extend</code> 一个类），而接口可以多实现（子类可以 <code>implement</code> 多个接口）</li>
+<li>架构哲学：抽象类是 "is-a"，接口是 "can-do"</li>
+</ul>
+</blockquote>
+<p>#### 虚继承</p>
+<p>来自Gemini3.1pro：</p>
+<blockquote>
+<h3 id="1-the-diamond-problem">1. 灾难现场：菱形继承 (The Diamond Problem)</h3>
+<p>假设我们正在设计一个动物园系统：</p>
+<ol>
+<li><strong>老祖宗</strong>：<code>Animal</code>（动物），有一个成员变量 <code>int life;</code>（生命值）。</li>
+<li><strong>大伯</strong>：<code>Mammal</code>（哺乳动物），继承自 <code>Animal</code>。</li>
+<li><strong>二伯</strong>：<code>Bird</code>（鸟类），继承自 <code>Animal</code>。</li>
+<li><strong>孙子</strong>：<code>Bat</code>（蝙蝠），蝙蝠既是哺乳动物，又长着翅膀会飞，所以 C++ 允许它同时继承 <code>Mammal</code> 和 <code>Bird</code>。</li>
+</ol>
+<p><strong>代码写出来是这样的：</strong></p>
+<p>C++</p>
+<div class="highlight"><pre><span></span><code>class Animal { public: int life; };
+class Mammal : public Animal {};
+class Bird : public Animal {};
+class Bat : public Mammal, public Bird {};
+</code></pre></div>
+<p><strong>灾难发生了：</strong> 当你创建一个蝙蝠对象 <code>Bat b;</code>，然后试图给它扣血 <code>b.life = 10;</code> 时，<strong>编译器直接崩溃报错了（Ambiguous 歧义）！</strong></p>
+<p>为什么？因为在物理内存中，<code>Bat</code> 的肚子里装了一个完整的 <code>Mammal</code>，又装了一个完整的 <code>Bird</code>。而这两个伯伯肚子里<strong>各有一个 <code>Animal</code></strong>。 也就是说，这只蝙蝠有<strong>两份 <code>life</code></strong>！当你喊 <code>b.life</code> 时，电脑根本不知道你要扣哪一份血。</p>
+<hr />
+<h3 id="2-virtual-public">2. 救星降临：虚继承 (virtual public)</h3>
+<p>为了解决这个问题，C++ 引入了 <code>virtual</code> 关键字放在继承链上：</p>
+<p>C++</p>
+<div class="highlight"><pre><span></span><code>class Animal { public: int life; };
+// 注意这里的 virtual
+class Mammal : virtual public Animal {}; 
+class Bird : virtual public Animal {};
+class Bat : public Mammal, public Bird {};
+</code></pre></div>
+<p><strong>加上 <code>virtual</code> 后发生了什么？</strong> 你这是在向编译器下达一份特殊的声明：</p>
+<blockquote>
+<p>“听着，<code>Animal</code> 是一个<strong>共享祖先</strong>。不管未来有哪个子孙同时继承了你们俩，<strong>整个家族里只能保留一份 <code>Animal</code> 的实例（一份 <code>life</code>）！</strong>”</p>
+</blockquote>
+<p>现在，<code>Bat</code> 对象在内存中只包含一份独立的 <code>Animal</code> 数据，<code>Mammal</code> 和 <code>Bird</code> 会通过特殊的内部指针共同指向这一份数据。当你再次调用 <code>b.life = 10;</code> 时，毫无歧义，完美运行。</p>
+<h3 id="3-java">3. Java 是怎么看待这个烂摊子的？</h3>
+<p>如果你带着 Java 的思维来看这段 C++ 历史，你会发现 Java 的设计者极为聪明：</p>
+<ul>
+<li>Java 设计者看了一眼 C++ 虚继承底层那极其复杂的指针偏移逻辑，摇了摇头说：“这太容易写出 Bug 了，而且会让内存结构变得无比复杂。”</li>
+<li>于是 <strong>Java 直接在语法层面一刀切：封杀了类的多重继承（只允许 <code>extends</code> 一个类）</strong>。</li>
+<li>那么蝙蝠既像哺乳动物又像鸟怎么办？Java 规定：<strong>把“鸟”变成一个接口（Interface）</strong>。接口里不准存成员变量（没有 <code>life</code>），只有纯粹的行为规范。</li>
+<li><strong>没有数据，就没有数据重复的烦恼。</strong> 这就是为什么 Java 允许无限实现接口（<code>implements</code>），却只允许单继承的原因。</li>
+</ul>
+</blockquote>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年3月14日 15:41:42 CST">2026年3月14日 15:41:42</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年3月14日 15:41:42 CST">2026年3月14日 15:41:42</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="md-copyright__highlight">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+      <span>本站内容遵循 CC BY-SA 4.0 协议</span>
+    </a>
+  </div>
+  &copy; 2026 kbyy123
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+    
+  </body>
+</html>
