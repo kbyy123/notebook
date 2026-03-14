@@ -29,6 +29,10 @@ theme:
   font:
     text: false
     code: JetBrains Mono
+  icon:
+    admonition: 
+      example: material/bulletin-board
+      proof: fontawesome/solid/pen-nib
 
 markdown_extensions:
   - admonition
@@ -50,6 +54,7 @@ extra_css:
   - css/home.css
   - css/font.css
   - css/copyright.css
+  - css/icon.css
   - https://unpkg.com/katex@0/dist/katex.min.css
 
 extra_javascript:
@@ -80,6 +85,10 @@ nav:
       - math/multivariable-calculus/2.md
       - math/multivariable-calculus/3.md
       - math/multivariable-calculus/4.md
+    - 线性代数:
+      - math/linear-algebra/index.md
+      - math/linear-algebra/introduction.md
+      - math/linear-algebra/linear-equation.md
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:
