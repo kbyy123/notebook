@@ -49,10 +49,10 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - css/custom.css
+  - css/custom.css?v=20260314
   - css/timestamp.css
   - css/home.css
-  - css/font.css
+  - css/font.css?v=20260314
   - css/copyright.css
   - css/icon.css
   - https://unpkg.com/katex@0/dist/katex.min.css
@@ -74,6 +74,7 @@ plugins:
       locale: zh                  # 使用中文界面
       timezone: Asia/Shanghai     # 设置时区
   - changelog
+  - statistics
 
 nav:
   - 🏫主页: index.md
