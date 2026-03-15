@@ -107,3 +107,7 @@ nav:
       - computer-system/computer-architecture/index.md
       - computer-system/computer-architecture/C.md
       - computer-system/computer-architecture/number.md
+  - 📝编程语言:
+    - C++:
+      - language/cpp/compile.md
+      - language/cpp/temp.md

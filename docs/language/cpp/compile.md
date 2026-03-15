@@ -4,7 +4,7 @@
 为了提高大型项目的编译效率，我们可以将一个项目拆分为多个文件，并用头文件将源文件连接起来．例如，我们有 `mul.hpp` 定义了 `mul` 函数的接口，`mul.cpp` 定义了 `mul` 函数的实现，`main.cpp` 作为函数入口调用了 `mul` 函数．我们只需要将 `main.cpp` 和 `mul.cpp` 都 `#include "mul.cpp"`，在编译过程中会将他们连接起来，就可以正常调用 `mul` 函数了．
 
 ## 编译过程
-C++的编译与C语言过程类似，可参考[C语言的编译过程](computer-system/computer-architecture/C.html#_1)．
+C++的编译与C语言过程类似，可参考[C语言的编译过程](../../computer-system/computer-architecture/C.md#_1)．
 
 此处我们以具体的代码与命令行来演示．
 
