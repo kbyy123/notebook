@@ -55,11 +55,11 @@ extra_css:
   - css/font.css?v=20260314
   - css/copyright.css
   - css/icon.css
-  - https://unpkg.com/katex@0/dist/katex.min.css
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 extra_javascript:
-  - https://unpkg.com/katex@0/dist/katex.min.js
-  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - js/katex.js
   - https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js
   # - https://polyfill.io/v3/polyfill.min.js?features=es6

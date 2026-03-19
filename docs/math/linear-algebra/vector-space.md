@@ -10,8 +10,8 @@ $n$ 维实列向量构成的全体向量集合称为向量空间 $\mathbb{R}^{n}
 
 1. 满足加法交换律： $\boldsymbol{x}+\boldsymbol{y}=\boldsymbol{y}+\boldsymbol{x}$
 2. 满足加法结合律： $(\boldsymbol{x}+\boldsymbol{y})+\boldsymbol{z}=\boldsymbol{x}+(\boldsymbol{y}+\boldsymbol{z})$
-3. 存在加法单位元 $\boldsymbol{0}$ 使得对任意元素 $\boldsymbol{x}$：$\boldsymbol{x}+boldsymbol{0}=\boldsymbol{x}$
-4. 对任意元素 $\boldsymbol{x}$ 存在加法逆元 $-\boldsymbol{x}$：$\boldsymbol{x}+(-\boldsymbol{x})=boldsymbol{0}$
+3. 存在加法单位元 $\boldsymbol{0}$ 使得对任意元素 $\boldsymbol{x}$：$\boldsymbol{x}+\boldsymbol{0}=\boldsymbol{x}$
+4. 对任意元素 $\boldsymbol{x}$ 存在加法逆元 $-\boldsymbol{x}$：$\boldsymbol{x}+(-\boldsymbol{x})=\boldsymbol{0}$
 5. 对在乘法单位元 $1$ 使得对任意元素 $\boldsymbol{x}$：$1\cdot \boldsymbol{x}=\boldsymbol{x}$
 6. 满足数乘结合律：$(c_{1}c_{2})\boldsymbol{x}=c_{1}(c_{2}\boldsymbol{x})$
 7. 满足向量分配律：$c(\boldsymbol{x}+\boldsymbol{y})=c\boldsymbol{x}+c\boldsymbol{y}$
@@ -321,7 +321,8 @@ $$
 
 ## 矩阵的四个子空间
 
-![image-20260319161951906](vector-space.assets/image-20260319161951906.png)
+![image-20260319161951906](assets/image-20260319161951906.png)
+
 1. $\mathbb{R}^{n}$ 的一个子空间：行空间 $C(A^{T})$．
 2. $\mathbb{R}^{m}$ 的一个子空间：列空间 $C(A)$．
 3. $\mathbb{R}^{n}$ 的一个子空间：零空间 $N(A)$．
@@ -347,4 +348,4 @@ $$
 ### 左零空间 $N(A^{T)}$
 左零空间是所有满足 $A^{T}\boldsymbol{y}=0$ 的向量 $\boldsymbol{y}$ 构成的，显然 $\boldsymbol{y}$ 为 $m$ 维向量，因此左零空间是 $\mathbb{R}^{m}$ 的子空间．
 
-对于 $A^{T}\boldsymbol{y}=0$，两边同时转置得到 $\boldsymbol{y}^{T}A=0$，其可以看作是对 $A$ 左乘的行向量得到的零空间，因此称为左零空间．与列空间类似，$A$ 的左零空间与 $R$ 不一样，但维数相同，均为 $m-r$；
+对于 $A^{T}\boldsymbol{y}=0$，两边同时转置得到 $\boldsymbol{y}^{T}A=0$，其可以看作是对 $A$ 左乘的行向量得到的零空间，因此称为左零空间．与列空间类似，$A$ 的左零空间与 $R$ 不一样，但维数相同，均为 $m-r$．

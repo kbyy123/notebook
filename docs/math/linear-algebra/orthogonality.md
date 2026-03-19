@@ -14,7 +14,7 @@
 
 现在我们可以解释 Big Picture 中的直角了：也就是两空间互为正交补．
 
-![image-20260319184214679](orthogonality.assets/image-20260319184214679.png)
+![image-20260319184214679](assets/image-20260319184214679.png)
 
 ## 投影
 在进入投影部分前，我们先思考一下：为什么需要投影？
@@ -23,7 +23,7 @@
 ### 投影到直线
 我们先从投影到直线这种简单情况说起．在 $\mathbb{R}^{n}$ 空间中给定两个向量 $\boldsymbol{a,b}$，求 $\boldsymbol{b}$ 在 $\boldsymbol{a}$ 上的投影．我们记录该投影为 $\boldsymbol{p}$，而将原向量与投影向量的误差即为 $\boldsymbol{e}$，即 $\boldsymbol{b=p+e}$．
 
-![image-20260319193700138](orthogonality.assets/image-20260319193700138.png)
+![image-20260319193700138](assets/image-20260319193700138.png)
 
 不妨设 $\boldsymbol{p}=\boldsymbol{a}\hat{x}$，因此 $\boldsymbol{e}=\boldsymbol{b}-\boldsymbol{a}\hat{x}$，其中 $\hat{x}$ 为常数．我们有 $\boldsymbol{e}\perp\boldsymbol{a}$，即 $\boldsymbol{a}^{T}(\boldsymbol{b}-\boldsymbol{a}\hat{x})=0$，$\hat{x}\boldsymbol{a}^{T}\boldsymbol{a}=\boldsymbol{a}^{T}\boldsymbol{b}$．因此
 
@@ -53,7 +53,7 @@ $$
 接下来我们考虑一般情况．由于投影的目的是得到方程组的近似解，因此我们通常是将任意向量 $\boldsymbol{b}$ 投影到 $A$ 的列空间上．记住这个视角，我们会发现最后得到的公式只不过是把向量 $\boldsymbol{a}$ 替换为了矩阵 $A$．
 
 为了方便理解，我们讨论三维空间的情况．不妨设 $A$ 是一个 $3\times2$ 的矩阵，其有两个线性无关的向量 $\boldsymbol{a}_{1},\boldsymbol{a}_{2}$（视他们为 $C(A)$ 的基），即 $A=[\boldsymbol{a}_{1},\boldsymbol{a}_{2}]$．$A$ 的向量空间是过原点的平面．$\boldsymbol{b}$ 是三维空间内的一个任意向量．同样，我们记 $\boldsymbol{b}$ 在 $C(A)$ 的投影为 $\boldsymbol{p}$，误差为 $\boldsymbol{e}$，即 $\boldsymbol{b=p+e}$．
-![](assets/orthogonality/file-20260319193711153.png)
+![image-20260319205806295](assets/image-20260319205806295.png)
  由于 $\boldsymbol{p}$ 在 $C(A)$ 内，因此 $\boldsymbol{p}$ 可以分解为基的线性组合，即 $\boldsymbol{p}=\boldsymbol{a}_{1}\hat{x_{1}}+\boldsymbol{a}_{2}\hat{x_{2}}=A\boldsymbol{\hat{x}}$，因此 $\boldsymbol{e=b-p=b-}A\boldsymbol{\hat{x}}$．我们知道 $\boldsymbol{e}$ 与 $C(A)$ 正交，这等价于 $\boldsymbol{e}$ 与 $C(A)$ 的基 $\boldsymbol{a}_{1}, \boldsymbol{a}_{2}$ 正交，即 
 
 $$
@@ -97,14 +97,14 @@ $$
 	有的人可能会用乘积逆的运算法则，将矩阵化简为 $P=A(A^{T}A)^{-1}A^{T}=AA^{-1}(A^{T})^{-1}A^{T}=I$．不能这么做的原因是我们只假设了 $A$ 列向量无关即列满秩，因此 $A^{T}A$ 是可逆方阵，而 $A$ 与 $A^{T}$ 可能不是方阵，因此分别不可逆．
 	
 	当然，如果 $A$ 是方阵，再加上 $A$ 为列满秩矩阵，我们得到 $A$ 本身即为可逆矩阵，此时 $P=I$ 就是正确的了．从直观上理解，$A$ 的列空间充满了整个 $\mathbb{R}^{m}$，因此任何向量往 $C(A)$ 投影都会得到其本身．
-
-???+ question "为什么列满秩矩阵 $A$ 满足 $A^{T}A$ 可逆"
-
-	首先 $A^TA$ 必然为方阵．如果 $A^{T}A$ 可逆，那么 $A^{T}A\boldsymbol{x=0}$ 只有零解，这是充要的．因此我们可以转化问证明 $A^{T}A\boldsymbol{x=0}$ 只有零解．
 	
-	两边同时左乘 $\boldsymbol{x}^{T}$ 得到 $\boldsymbol{x}^{T}A^{T}A\boldsymbol{x}=0$，即 $(A\boldsymbol{x})^{T}(A\boldsymbol{x})=0$．由于 $A\boldsymbol{x}$ 为列向量，因此该式子说明 $A\boldsymbol{x}$ 模长为 $0$，即 $A\boldsymbol{x=0}$．
+	???+ question "为什么列满秩矩阵 $A$ 满足 $A^{T}A$ 可逆"
 	
-	由于 $A$ 列满秩，因此当且仅当 $\boldsymbol{x=0}$ 有 $A\boldsymbol{x=0}$．这说明当且仅当 $\boldsymbol{x=0}$ 有 $A^{T}A\boldsymbol{x}=0$，即 $A^{T}A\boldsymbol{x}=0$ 只有零解，得证．
+		首先 $A^TA$ 必然为方阵．如果 $A^{T}A$ 可逆，那么 $A^{T}A\boldsymbol{x=0}$ 只有零解，这是充要的．因此我们可以转化问证明 $A^{T}A\boldsymbol{x=0}$ 只有零解．
+		
+		两边同时左乘 $\boldsymbol{x}^{T}$ 得到 $\boldsymbol{x}^{T}A^{T}A\boldsymbol{x}=0$，即 $(A\boldsymbol{x})^{T}(A\boldsymbol{x})=0$．由于 $A\boldsymbol{x}$ 为列向量，因此该式子说明 $A\boldsymbol{x}$ 模长为 $0$，即 $A\boldsymbol{x=0}$．
+		
+		由于 $A$ 列满秩，因此当且仅当 $\boldsymbol{x=0}$ 有 $A\boldsymbol{x=0}$．这说明当且仅当 $\boldsymbol{x=0}$ 有 $A^{T}A\boldsymbol{x}=0$，即 $A^{T}A\boldsymbol{x}=0$ 只有零解，得证．
 
 我们观察到 $P=A(A^{T}A)^{-1}A^{T}$ 与 $P=\dfrac{\boldsymbol{a}\boldsymbol{a}^{T}}{\boldsymbol{a}^{T}\boldsymbol{a}}$ 很相似，都是内积作为分母而内积作为分子．当 $A$ 只有一列时，其退化为后者．
 
@@ -124,7 +124,6 @@ $$
 考虑用直线拟合二维坐标系上三点：$(1,1),(2,2),(3,2)$．不妨设直线方程为 $y=C+Dx$，则我们有 
 
 $$
-
 \begin{bmatrix}
  1 & 1 \\
  2 & 3 \\
@@ -140,13 +139,11 @@ $$
  2 \\
  2 
 \end{bmatrix}
-
 $$
 
 与上文记号相统一，此处 
 
 $$
-
 A=\begin{bmatrix}
  1 & 1 \\
  2 & 3 \\
@@ -162,13 +159,11 @@ A=\begin{bmatrix}
  2 \\
  2 
 \end{bmatrix}
-
 $$
 
 显然方程组无解．因此我们考虑求解 $A^{T}A\boldsymbol{x}=A^{T}\boldsymbol{b}$．不妨将 $A$ 与 $\boldsymbol{b}$ 拼起来得到增广矩阵 $[A,\boldsymbol{b}]$，方便一起计算，我们有 
 
 $$
-
 \begin{bmatrix}
  1 & 1 & 1 \\
  1 & 2 & 3 
@@ -183,13 +178,11 @@ $$
  3 & 6 & 5 \\
  6 & 14 & 11 
 \end{bmatrix}
-
 $$
 
 此时我们求解 
 
 $$
-
 \begin{bmatrix}
  3 & 6 \\
  6 & 14 
@@ -203,18 +196,15 @@ $$
  5 \\
  11 
 \end{bmatrix}
-
 $$
 
 得到
 
 $$
-
 \begin{cases}
 C=\dfrac{2}{3} \\
 D=\dfrac{1}{2}
 \end{cases}
-
 $$
 
 因此最佳拟合直线为 $y=\dfrac{2}{3}+\dfrac{1}{2}x$．
