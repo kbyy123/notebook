@@ -645,7 +645,22 @@ class Person {
 
 ### const && static
 
-const：在类的内部，修饰类成员变量表示不可变；修饰函数表示该函数不可改变成员变量（此时要加到函数名后）
+const：在类的内部，修饰类成员变量表示不可变；修饰函数表示该函数不可改变成员变量（此时要加到函数名后）；如果一个函数传入的参数是一个 `const` 类，那么这个函数不能调用该类的非 `const` 方法．所以建议给所有不改变成员变量的方法加上 const．
+
+（const 方法的 this 指针是 `const T* const`，非 const 方法的 this 指针是 `T* const`）
+
+- Objects marked as const can only make use of the **const** **interface**
+- The **const interface** are the functions that are const in an object
+
+```cpp
+void printVec(const Vector<int>& v) {
+    // 此处的 size() 和 at() 必须为 const 方法
+	for (size_t i = 0; i < v.size(); i++) {
+        std::cout << v.at(i) << ' ';
+    }
+    std::cout << std::endl;
+}
+```
 
 static：不绑定到实例上，可以直接用类名调用．其中静态变量不能在类内初始化（C++17后可以类内初始化，用 `inline static size_t student_total`）．静态成员不能使用非静态成员
 

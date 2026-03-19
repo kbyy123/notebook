@@ -1,4 +1,8 @@
 - "2026":
+  - "2026-03-19":
+    - newpage: 
+        text: 向量空间的正交
+        href: /math/linear-algebra/orthogonality.html
   - "2026-03-08":
     - newpage: 
         text: 数的表示与计算

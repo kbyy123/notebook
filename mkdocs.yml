@@ -91,6 +91,7 @@ nav:
       - math/linear-algebra/introduction.md
       - math/linear-algebra/linear-equation.md
       - math/linear-algebra/vector-space.md
+      - math/linear-algebra/orthogonality.md
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:
@@ -111,3 +112,4 @@ nav:
     - C++:
       - language/cpp/compile.md
       - language/cpp/temp.md
+  
