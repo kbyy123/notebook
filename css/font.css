@@ -3,13 +3,21 @@
    说明：告诉浏览器本地字体文件的位置。
    路径 ../fonts/ 表示从当前 css 文件夹向上跳一级，再进入 fonts 文件夹。
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap');
 
 @font-face {
   font-family: 'LXGW WenKai Screen';
   /* 确保文件名与你文件夹中的 .ttf 文件名大小写完全一致 */
   src: url('../fonts/LXGWWenKaiMonoScreen.ttf') format('truetype');
   font-display: swap; /* 性能优化：字体加载前先用系统字体占位，防止白屏 */
+}
+
+/* 仅用于中文字符，确保正文中文优先走 LXGW WenKai */
+@font-face {
+  font-family: 'LXGW WenKai Screen CJK';
+  src: url('../fonts/LXGWWenKaiMonoScreen.ttf') format('truetype');
+  font-display: swap;
+  unicode-range: U+2E80-2EFF, U+2F00-2FDF, U+3000-303F, U+31C0-31EF, U+3200-32FF, U+3300-33FF, U+3400-4DBF, U+4E00-9FFF, U+F900-FAFF, U+FF00-FFEF;
 }
 
 /* ============================================================
@@ -22,8 +30,8 @@
 }
 
 body, .md-typeset {
-  /* 字体序列：代码优先用 JetBrains Mono，正文用霞鹜文楷，最后是系统备选 */
-  font-family: 'JetBrains Mono', 'LXGW WenKai Screen', "Microsoft YaHei", sans-serif;
+  /* 英文优先 Source Serif 4，中文字符优先 LXGW WenKai */
+  font-family: 'Source Serif 4', 'LXGW WenKai Screen CJK', 'Noto Serif SC', 'LXGW WenKai Screen', 'Georgia', 'Times New Roman', serif;
   font-size: 0.9rem; /* 按照你的要求调小正文字号 */
   line-height: 1.6;  /* 增加行高，提升阅读舒适度 */
 }
@@ -35,19 +43,19 @@ body, .md-typeset {
 /* 调整提示框内部正文的大小 */
 .md-typeset .md-admonition, 
 .md-typeset .admonition {
-  font-size: 0.8rem;      
+  font-size: 0.9rem;      
   line-height: 1.6;     
 }
 
 .md-typeset details {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 /* 调整提示框标题的大小 */
 .md-typeset .admonition-title, 
 .md-typeset summary {
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
   font-weight: 700; /* 加粗标题，使其在小字号下依然醒目 */
 }
 
