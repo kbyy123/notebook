@@ -56,44 +56,45 @@ $$
 
 我们将结点 $a,b$ 换成权值为他们和的结点 $c$．此时含有 $n$ 个结点的问题被简化为含有 $n-1$ 个结点的子问题．我们对这个子问题继续重复如上步骤：选出最小权值的两点合并成一点变为 $n-2$ 个结点的子问题．直到集合中只剩下一个结点为止，该结点即为最优树的根节点．把合并的操作反向，把根节点逐渐拆回去，得到一棵最优树，该树即为 Huffman 树．
 
-```cpp
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
+???+ code "代码"
+    ```cpp
+    struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
 
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-};
+        TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    };
 
-struct CompareNode {
-    bool operator()(TreeNode* a, TreeNode* b) const{
-        return a->val > b->val; 
-    }
-};
-
-TreeNode* buildHuffmanTree(const std::vector<int>& weights) {
-    struct Cmp {
-        bool operator()(TreeNode* a, TreeNode* b) const {
-            return a->val > b->val;
+    struct CompareNode {
+        bool operator()(TreeNode* a, TreeNode* b) const{
+            return a->val > b->val; 
         }
     };
 
-    std::priority_queue<TreeNode*, std::vector<TreeNode*>, Cmp> pq;
+    TreeNode* buildHuffmanTree(const std::vector<int>& weights) {
+        struct Cmp {
+            bool operator()(TreeNode* a, TreeNode* b) const {
+                return a->val > b->val;
+            }
+        };
 
-    for (int w : weights)
-        pq.push(new TreeNode(w));
+        std::priority_queue<TreeNode*, std::vector<TreeNode*>, Cmp> pq;
 
-    while (pq.size() > 1) {
-        auto left = pq.top(); pq.pop();
-        auto right = pq.top(); pq.pop();
+        for (int w : weights)
+            pq.push(new TreeNode(w));
 
-        auto parent = new TreeNode(left->val + right->val);
-        parent->left = left;
-        parent->right = right;
+        while (pq.size() > 1) {
+            auto left = pq.top(); pq.pop();
+            auto right = pq.top(); pq.pop();
 
-        pq.push(parent);
+            auto parent = new TreeNode(left->val + right->val);
+            parent->left = left;
+            parent->right = right;
+
+            pq.push(parent);
+        }
+
+        return pq.top();
     }
-
-    return pq.top();
-}
-```
+    ```

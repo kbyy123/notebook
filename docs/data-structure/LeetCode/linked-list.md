@@ -68,6 +68,7 @@ ListNode* reverseList(ListNode* head) {
     return pre; 
 }
 ```
+
 ### [92. 反转链表 II](https://leetcode.cn/problems/reverse-linked-list-ii/)
 !!! note "过程"
 	=== "反转目标链表"

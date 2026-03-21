@@ -10,3 +10,5 @@ requirements.txt
 !docs/fonts/*.woff2
 
 /docs/.obsidian/
+
+/docs/LatexSuite/
