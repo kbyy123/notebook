@@ -329,43 +329,6 @@ int inputFileStreamExample() {
 
 ## 容器
 
-
-
-### 模板
-
-模板（template）允许我们写与数据类型无关的代码，类似Java里的泛型，可以实现代码复用
-
-```cpp
-class IntVector {};
-class DoubleVector {};
-class StringVector {};
-==>
-template <typename T>
-class vector {
-    ...
-}
-```
-
-模板也可以运用于函数：函数模板
-
-```cpp
-#include <iostream>
-#include <typeinfo>
-
-template<typename T>
-T sum(T x, T y) {
-    std::cout << "The input type is " << typeid(T).name() << std::endl;
-    return x + y;
-}
-
-// 显式模板实例化
-template double sum<double>(double, double);
-template char sum<>(char, char);
-template int sum(int, int);
-```
-
-
-
 ### STL
 
 STL：Standard Template Library，所有的STL容器都是模板。stl是std的真子集
@@ -1011,6 +974,43 @@ Name: zhou. ID: 2025
 > - 于是 **Java 直接在语法层面一刀切：封杀了类的多重继承（只允许 `extends` 一个类）**。
 > - 那么蝙蝠既像哺乳动物又像鸟怎么办？Java 规定：**把“鸟”变成一个接口（Interface）**。接口里不准存成员变量（没有 `life`），只有纯粹的行为规范。
 > - **没有数据，就没有数据重复的烦恼。** 这就是为什么 Java 允许无限实现接口（`implements`），却只允许单继承的原因。
+
+## 模板
+
+### 函数模板
+
+模板（template）允许我们写与数据类型无关的代码，类似Java里的泛型，可以实现代码复用
+
+```cpp
+class IntVector {};
+class DoubleVector {};
+class StringVector {};
+==>
+template <typename T>
+class vector {
+    ...
+}
+```
+
+模板可以运用于函数：函数模板
+
+```cpp
+#include <iostream>
+#include <typeinfo>
+
+template<typename T>
+T sum(T x, T y) {
+    std::cout << "The input type is " << typeid(T).name() << std::endl;
+    return x + y;
+}
+
+// 显式模板实例化
+template double sum<double>(double, double);
+template char sum<>(char, char);
+template int sum(int, int);
+```
+
+### 类模板
 
 
 

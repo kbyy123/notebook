@@ -1,10 +1,10 @@
 /* 示例块 (Example) - 设为清爽的翠绿色 */
-.admonition.example {
+/* .admonition.example {
   border-left-color: #00bfa5;
 }
 .admonition.example > .admonition-title {
   background-color: rgba(0, 191, 165, 0.1);
-}
+} */
 
 /* 为 code 类型关联图标 + 配置颜色 */
 .md-typeset .admonition.code,

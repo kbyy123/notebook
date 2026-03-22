@@ -62,6 +62,7 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - js/katex.js
+  - js/heading-number-normalize.js
   - https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js
   # - https://polyfill.io/v3/polyfill.min.js?features=es6
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
@@ -77,9 +78,13 @@ plugins:
   - changelog
   - statistics
   - enumerate-headings:
-      first_level: 2
-      heading_depth: 4
+      increment_across_pages: false
+      toc_depth: 6
       strict: false
+      exclude:
+        - math/index.md
+        - data-structure/index.md
+        - computer-system/index.md
 
 nav:
   - 🏫主页: index.md
@@ -98,9 +103,12 @@ nav:
       - math/linear-algebra/vector-space.md
       - math/linear-algebra/orthogonality.md
       - math/linear-algebra/determinant.md
-      - math/linear-algebra/eigenvalue.md
     - 离散数学:
+      - math/discrete-math/index.md
       - math/discrete-math/Chap1.md
+      - math/discrete-math/set.md
+      - math/discrete-math/proof.md
+      - math/discrete-math/induction.md
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:
@@ -117,8 +125,8 @@ nav:
       - computer-system/computer-architecture/index.md
       - computer-system/computer-architecture/C.md
       - computer-system/computer-architecture/number.md
-  - 📝编程语言:
-    - C++:
-      - language/cpp/compile.md
-      - language/cpp/temp.md
+  # - 📝编程语言:
+  #   - C++:
+  #     - language/cpp/compile.md
+  #     - language/cpp/temp.md
   

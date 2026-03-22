@@ -19,7 +19,10 @@ Strong induction is similar to simple induction, except that instead of just ass
 
 Strong induction can't prove statements which weak induction can't, because strong induction is just the "sum" of weak inductions. But it can make proofs easier.
 
-!!! example "Prove: Every natural number > 1 can be written as a product of one or more primes"
+!!! example "Use Strong Induction"
+
+    Prove: Every natural number > 1 can be written as a product of one or more primes.
+
     Let $P(n)$ be the proposition that $n$ can be written as a product of one or more primes.
 
     1. Base Case: $n=2$, and clearly $P(2)$ is true, because $2$ is a prime number.

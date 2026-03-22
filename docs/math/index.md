@@ -12,5 +12,6 @@ hide:
 
 - [多变量微积分](multivariable-calculus/index.md)
 - [线性代数](linear-algebra/index.md)
+- [离散数学](discrete-math/index.md)
 
     

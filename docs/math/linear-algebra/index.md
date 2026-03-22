@@ -13,16 +13,8 @@
 
     + 时间：2026/3 - 
     + 课程：[MIT18.06 10sp](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
-    + 教材：Introduction to Linear Algebra, 5th Edition
+    + 教材：Introduction to Linear Algebra (5th Edition), Gilbert Strang
 
     参考资料：
 
     + [线性代数学习笔记](https://www.cnblogs.com/crab-in-the-northeast/p/19294700/linear-algebra)（来自高中同学的大学同学，写得太好了，参考了许多内容）
-
-!!! success "目录"
-
-    - [x] [导引](introduction.md)
-    - [x] [解线性方程组](linear-equation.md)
-
-
-    
