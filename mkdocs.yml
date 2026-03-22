@@ -50,12 +50,12 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - css/custom.css?v=20260314
+  - css/custom.css?v=20260322
   - css/timestamp.css
   - css/home.css
-  - css/font.css?v=20260319
+  - css/font.css?v=20260322
   - css/copyright.css
-  - css/icon.css
+  - css/icon.css?v=20260322
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
 
 extra_javascript:
