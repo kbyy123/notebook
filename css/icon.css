@@ -1,16 +1,47 @@
 /* 示例块 (Example) - 设为清爽的翠绿色 */
-.admonition.example {
+/* .admonition.example {
   border-left-color: #00bfa5;
 }
 .admonition.example > .admonition-title {
   background-color: rgba(0, 191, 165, 0.1);
+} */
+
+/* 为 code 类型关联图标 + 配置颜色 */
+.md-typeset .admonition.code,
+.md-typeset details.code {
+  border-left-color: #3d3636;
+  border-color: #9e9e9e;
 }
 
-/* 证明块 (Proof) - 浅灰色风格 */
-.admonition.proof {
-  border-left-color: #9e9e9e; /* 侧边条颜色：中灰色 */
+.md-typeset .admonition.code > .admonition-title,
+.md-typeset details.code > summary {
+  background-color: rgba(158, 158, 158, 0.1);
+  border-bottom: 1px solid rgba(158, 158, 158, 0.2);
 }
-.admonition.proof > .admonition-title {
-  background-color: rgba(158, 158, 158, 0.1); /* 标题栏背景：极浅灰 */
-  border-bottom: 1px solid rgba(158, 158, 158, 0.2); /* 可选：增加一条细线区分标题和内容 */
+
+.md-typeset .admonition.code > .admonition-title::before,
+.md-typeset details.code > summary::before {
+  -webkit-mask-image: var(--md-admonition-icon--code);
+  mask-image: var(--md-admonition-icon--code);
+  background-color: #616161;
+}
+
+/* 为 proof 类型关联图标 + 配置颜色 */
+.md-typeset .admonition.proof,
+.md-typeset details.proof {
+  border-left-color: #6d4c41;
+  border-color: #8d6e63;
+}
+
+.md-typeset .admonition.proof > .admonition-title,
+.md-typeset details.proof > summary {
+  background-color: rgba(141, 110, 99, 0.12);
+  border-bottom: 1px solid rgba(141, 110, 99, 0.22);
+}
+
+.md-typeset .admonition.proof > .admonition-title::before,
+.md-typeset details.proof > summary::before {
+  -webkit-mask-image: var(--md-admonition-icon--proof);
+  mask-image: var(--md-admonition-icon--proof);
+  background-color: #6d4c41;
 }
