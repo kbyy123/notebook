@@ -118,6 +118,11 @@ nav:
       - math/discrete-math/set.md
       - math/discrete-math/proof.md
       - math/discrete-math/induction.md
+    - 概率论:
+      - math/probability/index.md
+      - math/probability/counting.md
+      - math/probability/core-probability.md
+      - math/probability/random-variables.md
   - 💡数据结构与算法:
     - data-structure/index.md
     - LeetCode:

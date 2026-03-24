@@ -26,10 +26,16 @@ compound proposition(复合命题): Propositions that formed from existing propo
 <img src="Chap1.assets/image-20260321150533321.png" alt="image-20260321150533321" style="zoom:50%;" />
 </div>
 
-**exclusive or**(异或): $p\oplus q$.
+**XOR**(exclusive or, 异或): $p\oplus q$.
 <div style="text-align: center; margin-top: 15px;">
 <img src="Chap1.assets/image-20260321150545867.png" alt="image-20260321150545867" style="zoom:50%;" />
 </div>
+
+???+ tip "Supplement"
+
+	**NOR**(not or, 或非): $p \downarrow q \equiv \neg(p \vee q)$.
+
+	**NAND**(not and, 与非): $p \mid q \equiv \neg(p \wedge q)$.
 
 **conditional statement**(implication, 蕴含): $p\to q$ .
 <div style="text-align: center; margin-top: 15px;">
@@ -37,13 +43,13 @@ compound proposition(复合命题): Propositions that formed from existing propo
 </div>
 The statement p is called the **hypothesis**(假设), q is called the **conclusion**(结论).
 
-!!! note "Related Conditional Statements"
+!!! info "Related Conditional Statements"
 
 	+ converse(逆命题): $q\to p$
 	+ inverse(否命题): $\neg p\to\neg q$
 	+ contrapositive(逆否命题): $\neg q \to \neg p$
 
-!!! note "Equivalent Forms in English"
+!!! abstract "Equivalent Forms in English"
 
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321150150685.png" alt="image-20260321150150685" style="zoom:50%;" />
@@ -52,7 +58,7 @@ The statement p is called the **hypothesis**(假设), q is called the **conclusi
 	**Implication Law**: $p\to q\equiv \neg p \vee q$
 
 
-biconditional(equivalence, 等价): $p\leftrightarrow q$​.
+**biconditional**(equivalence, 等价): $p\leftrightarrow q$​.
 
 <div style="text-align: center; margin-top: 15px;">
 <img src="Chap1.assets/image-20260321152151178.png" alt="image-20260321152151178" style="zoom:50%;" />
@@ -65,13 +71,13 @@ biconditional(equivalence, 等价): $p\leftrightarrow q$​.
 </div>
 
 #### Bit Expression
-**bit**: a binary digit 0(false) or 1(true). 
+**bit**: A binary digit 0 (false) or 1 (true). 
 
-boolean variable: a variable whose value is either true or false. A boolean variable can be represented by a bit.
+boolean variable: A variable whose value is either true or false. A boolean variable can be represented by a bit.
 
-bit string: a sequence of bits. The length of bit string is the number of bits.
+bit string: A sequence of bits. The length of bit string is the number of bits.
 
-bit operations: logical operations used on bits. Bitwise operations are bit operations used on strings with same length and operate for their every bit.
+bit operations: Logical operations used on bits. Bitwise operations are bit operations used on strings with same length and operate for their every bit.
 
 + bitwise OR
 + bitwise AND
@@ -122,10 +128,12 @@ The compound propositions $p$ and $q$ are called **logically equivalent** if $p\
 
 ### Using De Morgan’s Laws
 De Morgan's Laws:
+
 + $\neg(p\wedge q)\equiv\neg p \vee \neg q$
 + $\neg(p\vee q)\equiv\neg p \wedge \neg q$
 
 Extension:
+
 + $\neg(\bigvee_{i=1}^{n}p_{i})=\bigwedge_{i=1}^{n}\neg p_{i}$
 + $\neg(\bigwedge_{i=1}^{n}p_{i})=\bigvee_{i=1}^{n}\neg p_{i}$
 
@@ -160,7 +168,10 @@ Extension:
 	1. Elimination of $\to$ and $\leftrightarrow$: Replace $P\to Q$ with $\neg P \vee Q$, $P\leftrightarrow Q$ with $(P\to Q)\wedge(Q \to P)$.
 	2. De Morgan's Laws: Move negations inward so they only apply to atomic variables.
 	3. Double Negation Law: Replace $\neg \neg P$ with $P$.
-	4. Distributive Laws: To get DNF, Distribute $\wedge$ over $\vee$; To get CNF, Distribute $\vee$ over $\wedge$.
+	4. Distributive Laws: 
+   
+      	+ To get DNF, Distribute $\wedge$ over $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$ 
+    	+ To get CNF, Distribute $\vee$ over $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$  
 
 **The problem**: DNF/CNF are not unique.
 
@@ -196,6 +207,7 @@ Minterms are conventionally denoted by $m_i$, where the subscript $i$ is the dec
 	> How to construct PDNF?
 
 	Method 1: The Truth Table Method 
+
 	1. Construct the complete truth table for the formula.
 	2. Write the minterm for each true rows.
 	3. Connect the minterms with disjunction.
@@ -205,6 +217,7 @@ Minterms are conventionally denoted by $m_i$, where the subscript $i$ is the dec
 	</div>
 
 	Method 2: The Equivalence Calculus Method
+
 	1. Transform the formula into DNF
 	2. If a simple conjunction is missing a variable (say $R$), multiply it by a tautology($R \vee \neg R$), then expand it using the Distributive law.
 	3. Remove duplicate minterms using the Idempotent law($A \vee A \equiv A$).
@@ -234,6 +247,7 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 	> How to construct PCNF?
 
 	Method 1: The Truth Table Method 
+
 	1. Construct the complete truth table for the formula.
 	2. Write the maxterm for each false rows.
 	3. Connect the maxterms with conjunction.
@@ -243,6 +257,7 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 	</div>
 
 	Method 2: The Equivalence Calculus Method
+	
 	1. Transform the formula into CNF
 	2. If a simple disjunction is missing a variable (say $R$), multiply it by a contradiction($R \wedge \neg R$), then expand it using the Distributive law.
 	3. Remove duplicate maxterms using the Idempotent law($A \wedge A \equiv A$).
@@ -258,12 +273,15 @@ predicate(谓词): Propositions which contain variables. When its variables boun
 We can also regard predicate as propositional function. The result of applying a predicate $P$ to a constant $a$ is the proposition $P(a)$, to a variable $x$ is the proposition form $P(x)$.
 ### Quantifiers
 **universal quantifiers**(全称量词): $\forall$.
+
 $\forall xP(x)$ means: "For all $x$, $P(x)$".
 
 **existential quantifiers**(存在量词): $\exists$.
+
 $\exists xP(x)$ means: "For some $x$, $P(x)$".
 
-**uniqueness quantifiers**(唯一存在量词): $\exists!$
+**uniqueness quantifiers**(唯一存在量词): $\exists!$.
+
 $\exists!xP(x)$ means: "There is one and only one $x$ such that $P(x)$".
 
 > The uniqueness quantifier is not really need as it can be expressed with universal quantifiers and existential quantifiers:
@@ -279,18 +297,17 @@ If the domain of discourse is null, then
 + $\forall xP(x)=\bigwedge_{i=1}^{n}P(i)$.
 + $\exists xP(x)=\bigvee_{i=1}^{n}P(i)$.
 #### Quantifiers with Restricted Domains
-> Universal Quantifier:
++ Universal Quantifier:
 
-Rule: For a universal quantifier, a restricted domain is expressed using **implication**($\to$).
+	+ Rule: For a universal quantifier, a restricted domain is expressed using **implication**($\to$).
 
-Example: $\forall x \in S, P(x)\equiv\forall x (x \in S \to P(x))$.
+	+ Example: $\forall x \in S, P(x)\equiv\forall x (x \in S \to P(x))$.
 
++ Existential Quantifier:
 
-> Existential Quantifier:
+	+ Rule: For an existential quantifier, a restricted domain is expressed using **conjunction** ($\wedge$).
 
-Rule: For an existential quantifier, a restricted domain is expressed using **conjunction** ($\wedge$).
-
-Example: $\exists x \in S, P(x)\equiv\exists x (x \in S \wedge P(x))$.
+	+ Example: $\exists x \in S, P(x)\equiv\exists x (x \in S \wedge P(x))$.
 
 ### Property of Quantifiers
 #### Binding Variables

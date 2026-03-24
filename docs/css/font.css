@@ -26,7 +26,8 @@
    ============================================================ */
 :root {
   /* 定义主题基础字号变量 */
-  --md-typeset-font-size: 0.9rem; 
+  --md-typeset-font-size: 0.9rem;
+  --strong-text-color: #1f6f8b;
 }
 
 body, .md-typeset {
@@ -34,6 +35,20 @@ body, .md-typeset {
   font-family: 'Source Serif 4', 'LXGW WenKai Screen CJK', 'Noto Serif SC', 'LXGW WenKai Screen', 'Georgia', 'Times New Roman', serif;
   font-size: 0.9rem; /* 按照你的要求调小正文字号 */
   line-height: 1.6;  /* 增加行高，提升阅读舒适度 */
+}
+
+[data-md-color-scheme="slate"] {
+  --strong-text-color: #9fd6e1;
+}
+
+/* Markdown 加粗文本着色 */
+.md-typeset p strong,
+.md-typeset li strong,
+.md-typeset td strong,
+.md-typeset blockquote strong,
+.md-typeset .admonition strong,
+.md-typeset details strong {
+  color: var(--strong-text-color);
 }
 
 /* ============================================================
@@ -101,16 +116,16 @@ body, .md-typeset {
    说明：让 Markdown 标题（# ~ ######）在视觉上更醒目。
    ============================================================ */
 :root {
-  --heading-accent: #0f766e;
-  --heading-main: #134e4a;
-  --heading-sub: #0f172a;
+  --heading-accent: #2f8ea1;
+  --heading-main: #1f6f8b;
+  --heading-sub: #0f4f73;
   --heading-font: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
 }
 
 [data-md-color-scheme="slate"] {
-  --heading-accent: #5eead4;
-  --heading-main: #ccfbf1;
-  --heading-sub: #e2e8f0;
+  --heading-accent: #6fb8c6;
+  --heading-main: #9fd6e1;
+  --heading-sub: #d7ecf2;
 }
 
 .md-typeset h1,
