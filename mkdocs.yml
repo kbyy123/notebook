@@ -55,7 +55,7 @@ extra_css:
   - css/custom.css?v=20260322
   - css/timestamp.css
   - css/home.css
-  - css/font.css?v=20260325
+  - css/font.css?v=20261325
   - css/copyright.css
   - css/icon.css?v=20260322
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
