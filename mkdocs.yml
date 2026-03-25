@@ -55,7 +55,7 @@ extra_css:
   - css/custom.css?v=20260322
   - css/timestamp.css
   - css/home.css
-  - css/font.css?v=20260322
+  - css/font.css?v=20260325
   - css/copyright.css
   - css/icon.css?v=20260322
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
@@ -145,4 +145,7 @@ nav:
   #   - C++:
   #     - language/cpp/compile.md
   #     - language/cpp/temp.md
-  
+  - 📦杂项:
+    - misc/index.md
+    - 电路与电子学基础:
+      - misc/circuit/circuit.md

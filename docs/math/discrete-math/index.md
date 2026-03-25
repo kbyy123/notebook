@@ -2,7 +2,7 @@
 
 !!! abstract "概要"
 
-    + 时间：2026春夏学期
+    + 时间：2025-2026春夏学期
     + 学分：2
     + 授课老师：李文璟
     + 教材：Discrete Mathematics and Its Applications (Eighth Edition), Kenneth H.Rosen
