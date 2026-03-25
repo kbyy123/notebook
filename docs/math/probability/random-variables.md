@@ -250,6 +250,7 @@ $$
 	\end{aligned}
 	$$
 
+#### 泊松分布近似二项分布
 由于泊松分布计算公式简洁，当因此当二项分布 $n$ 较大（>20）而 $p$ 较小（<0.05）时，我们可以用泊松分布来近似二项分布．
 
 若 $p$ 稍微大一些，如 $p=0.5$，对于二项分布而言期望为 $0.5p$ 而方差为 $0.25p$，而泊松分布只能模拟期望与方差相差不大的分布．当 $p$ 较大时，我们考虑使用正态分布近似．
@@ -257,27 +258,27 @@ $$
 ### 几何分布
 对于有 $p$ 的概率成功的试验，不断进行直到该试验成功，设 $X$ 为到成功时的试验次数，则 $X$ 服从**几何分布**，记作 $X\sim \text{Geo}(p)$．
 
-PMF：$P(X=x)=(1-p)^{1-x}\cdot p,x=1,2,\cdots$．
+**PMF**：$P(X=x)=(1-p)^{1-x}\cdot p,x=1,2,\cdots$．
 
-期望：$\text{E}[X]=\dfrac{1}{p}$．
+**期望**：$\text{E}[X]=\dfrac{1}{p}$．
 
-方差：$\text{Var}(X)=\dfrac{1-p}{p^{2}}$．
+**方差**：$\text{Var}(X)=\dfrac{1-p}{p^{2}}$．
 ### 负二项分布
 对于有 $p$ 的概率成功的试验，不断进行直到该试验成功 $r$ 次，设 $X$ 为到成功 $r$ 时的试验次数，则 $X$ 服从**负二项分布**，记作 $X\sim \text{NegBin}(r,p)$．
 
-PMF：$P(X=x)=\dbinom{x-1}{r-1}p^{r}(1-p)^{x-r},x=r,r+1,\cdots$．
+**PMF**：$P(X=x)=\dbinom{x-1}{r-1}p^{r}(1-p)^{x-r},x=r,r+1,\cdots$．
 
-期望：$\text{E}[X]=\dfrac{r}{p}$．
+**期望**：$\text{E}[X]=\dfrac{r}{p}$．
 
-方差：$\text{Var}(X)=\dfrac{r(1-p)}{p^{2}}$．
+**方差**：$\text{Var}(X)=\dfrac{r(1-p)}{p^{2}}$．
 ### 超几何分布
 从包含 $K$ 个成功个体的总体 $N$ 中，不放回地抽取大小为 $n$ 的样本．设 $X$ 为 $n$ 个样本中成功个体的数量，则 $X$ 服从**超几何分布**，记作 $X\sim \text{HyperGeom}(N,K,n)$．
 
-PMF：$P(X=x)=\dfrac{\dbinom{K}{x}\cdot\dbinom{N-K}{n-x}}{\dbinom{N}{n}},x=N-K+n,\cdots,K$．
+**PMF**：$P(X=x)=\dfrac{\dbinom{K}{x}\cdot\dbinom{N-K}{n-x}}{\dbinom{N}{n}},x=N-K+n,\cdots,K$．
 
-期望：$\text{E}[X]=n\cdot\dfrac{K}{N}$．
+**期望**：$\text{E}[X]=n\cdot\dfrac{K}{N}$．
 
-方差：$\text{Var}(X)=n\cdot\dfrac{K}{N}(1-\cfrac{K}{N})\dfrac{N-n}{N-1}$．
+**方差**：$\text{Var}(X)=n\cdot\dfrac{K}{N}(1-\cfrac{K}{N})\dfrac{N-n}{N-1}$．
 
 若超几何分布的抽取数量 $n$ 远小于成功个体数 $K$ 与失败个体数 $N-K$，那么抽取对后续概率改变可忽略不计，即近似视为二项分布 $\text{Bin}(n, \dfrac{K}{N})$．
 
@@ -310,7 +311,7 @@ $$
 ### 均匀分布
 若连续随机变量 $X$ 在取值范围 $(a,b)$ 内等可能的取任何值，则称 $X$ 服从**均匀分布**，记作 $X\sim \text{Uni}(a,b)$．
 
-PDF：
+**PDF**：
 
 $$
 f(x)=\begin{cases}
@@ -319,7 +320,7 @@ f(x)=\begin{cases}
 \end{cases}
 $$
 
-CDF：
+**CDF**：
 
 $$
 F(x)=\begin{cases}
@@ -329,9 +330,9 @@ F(x)=\begin{cases}
 \end{cases}
 $$
 
-期望：$\text{E}[X]=\dfrac{a+b}{2}$．
+**期望**：$\text{E}[X]=\dfrac{a+b}{2}$．
 
-方差：$\text{Var}(X)=\dfrac{(b-a)^{2}}{12}$​．
+**方差**：$\text{Var}(X)=\dfrac{(b-a)^{2}}{12}$​．
 
 <div style="text-align: center">
 <img src="random-variables.assets/file-20260324210512950.png" style="zoom: 67%;" />
@@ -340,7 +341,7 @@ $$
 ### 指数分布
 如果一个事件是按照泊松分布发生的，用连续随机变量 $X$ 衡量直到下一个事件发生所需的时间，则称 $X$ 服从**指数分布**，记作 $X\sim\text{Exp}(\lambda)$，其中 $\lambda>0$，是泊松分布中的同一参数．
 
-PDF：
+**PDF**：
 
 $$
 f(x)=\begin{cases}
@@ -349,7 +350,7 @@ f(x)=\begin{cases}
 \end{cases}
 $$
 
-CDF：
+**CDF**：
 
 $$
 F(x)=\begin{cases}
@@ -360,9 +361,9 @@ $$
 
 同时有：$\text{P}(X>x)=\min (e^{-\lambda x},1)$．
 
-期望：$\text{E}[X]=\dfrac{1}{\lambda}$．
+**期望**：$\text{E}[X]=\dfrac{1}{\lambda}$．
 
-方差：$\text{Var}(X)=\dfrac{1}{\lambda^{2}}$．
+**方差**：$\text{Var}(X)=\dfrac{1}{\lambda^{2}}$．
 
 <div style="text-align: center">
 <img src="random-variables.assets/file-20260325090613108.png" style="zoom: 60%;" />
@@ -384,3 +385,103 @@ $$
 
 也就是说，在等待 $t_{0}$ 时间后，再等待 $t$ 时间等到的概率其实和一开始直接等待 $t$ 时间的概率相等；即从大于 $0$ 的任意时间开始等相同的时间，等到的概率都是相等的．
 ### 正态分布
+**正态分布**（或称高斯分布）是一个非常常见的连续概率分布，其在自然界中经常出现．实际上世界上许多事物并非正态分布，但科学家仍常常用正态分布来近似建模．因为如果我们只知道一个随机变量的均值和方差，那么正态分布是在满足这两个条件下熵最大的分布，即信息最少、最不带额外主观假设、最保守的一种建模选择．
+
+设连续随机变量 $X$ 服从正态分布，记作 $X\sim N(\mu,\sigma^{2})$，其中 $\mu$ 为期望，$\sigma^{2}$ 为方差，简称 $X$ 为正态变量．
+
+**PDF**：
+
+$$
+f(x)=\dfrac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}},x\in (-\infty,+\infty) 
+$$
+
+正态分布的PDF关于 $x=\mu$ 对称，并在 $x=\mu$ 处取得最大值 $\dfrac{1}{\sqrt{2\pi}\sigma}$．
+
+**期望**：$\text{E}[X]=\mu$．
+
+**方差**：$\text{Var}(X)=\sigma^{2}$．
+
+如果正态变量 $Y=aX+b$，由于 $\text{E}[Y]=a\text{E}[X]+b=a\mu +b$，$\text{Var}(Y)=a^{2}\text{Var}(X)=a^{2}\sigma^{2}$，则 $Y\sim N(a\mu +b,a^{2}\sigma^{2})$．
+
+#### 标准正态分布
+由于正态分布的PDF积分结果无法用初等函数表示，因此我们希望能有一个标准的正态分布，使得其他所有正态分布都能转化为标准正态分布，此时我们只需要研究标准正态分布即可．
+
+记正态变量为 $Z$，则称 $Z\sim N(0,1)$ 为 $Z$ 服从**标准正态分布**．
+
++ PDF：$\varphi (x) = \dfrac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}},x\in (-\infty,+\infty)$
++ CDF：$\Phi(x) = \displaystyle\int_{- \infty}^x \dfrac{1}{\sqrt{2\pi}}e^{-\frac{t^2}{2}} \text{d} t$
+
+#### 转化为标准正态分布
+对于任意正态分布 $X\sim N(\mu,\sigma^{2})$，令正态变量 $Z=\dfrac{X-\mu}{\sigma}$，则 $Z\sim N(\dfrac{1}{\sigma}\mu-\dfrac{\mu}{\sigma},\dfrac{1}{\sigma^2}\cdot\sigma^{2})$，即 $Z\sim N(0,1)$，$Z$ 服从标准正态分布．记 $\Phi(x)$ 为其CDF．
+
+$$
+\begin{aligned}
+\text{P}(X\leq x)&=\text{P}(X-\mu \leq x-\mu) \\
+&=\text{P}(\dfrac{X-\mu}{\sigma}\leq \dfrac{x-\mu}{\sigma}) \\
+&=\text{P}(Z\leq \dfrac{x-\mu}{\sigma}) \\
+&=\Phi\left( \dfrac{x-\mu}{\sigma} \right) 
+\end{aligned}
+$$
+
+我们将任意正态分布计算转化为了标准正态分布计算，接下来查表即可．
+
+??? info "标准正态分布表"
+
+	<div style="text-align: center">
+	<img src="random-variables.assets/file-20260325125210847.png" style="zoom: 60%;" />
+	</div>
+
+#### 三 σ 法则
+若$X \sim N(\mu, \sigma^2)$，则：
+
+$$
+\text{P}(|X-\mu|<k\sigma)=\Phi(k)-\Phi(-k)=2\Phi(k)-1 
+$$
+
+当 $k = 1, 2, 3$ 时，其值分别为$0.6826, 0.9544, 0.9974$，即三 $\sigma$ 法则：几乎所有的值都在平均值正负三个标准差的范围内．
+
+#### 正态分布近似二项分布
+当二项分布的 $p$ 较大时，泊松分布近似不再准确，我们可以使用正态分布来近似．
+
+如图，对于二项分布 $X\sim \text{Bin}(100, 0.5)$，如果使用正态分布 $Y\sim N(50,25)$ 近似，其整体近似结果表现十分好．
+
+<div style="text-align: center">
+<img src="random-variables.assets/file-20260325143550050.png" style="zoom: 30%;" />
+</div>
+
+不过需要注意的是，正态分布是连续分布而二项分布是离散分布，我们必须使用**连续性校正**来离散化正态分布．
+
+当我们想求 $\text{P}(X\geq 55)$ 时，如果使用 $\text{P}(Y\geq55)$ 来估计，结果会有一定差距．这是因为我们将连续分布离散化时，实际上 $55$ 对应的是以 $55$ 为中心、宽度为 $1$ 的矩形，即 $54.5\sim 55.5$．如果使用 $\text{P}(Y\geq55)$ 来估计，那么 $X=55$ 的概率实际上只计算了一半；用于补足这缺少的一半，我们应该使用 $\text{P}(Y\geq54.5)$ 来估计．
+
+<div style="display: flex; justify-content: center;">
+  <table style="border-collapse: collapse; text-align: center; font-size: 16px;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #999; padding: 16px 24px;">离散（二项式）概率问题</th>
+        <th style="border: 1px solid #999; padding: 16px 24px;">等效的连续概率问题</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(X=6)$</td>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(5.5\leq Y \leq 6.5)$</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(X\geq6)$</td>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(Y\geq 5.5)$</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(X>6)$</td>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(Y\geq 6.5)$</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(X<6)$</td>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(Y\leq 5.5)$</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(X\leq6)$</td>
+        <td style="border: 1px solid #999; padding: 16px 24px;">$\text{P}(Y\leq 6.5)$</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
