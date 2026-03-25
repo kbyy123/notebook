@@ -34,7 +34,7 @@
 
 + 包含：$A\subset B$ 称为 $B$ 包含 $A$，指事件 $A$ 发生必然导致事件 $B$ 发生．
 + 互斥事件：$A\cap B=\emptyset$．
-+ 对立事件：$A\cap B=\emptyset$ 且 $A\cup B=S$．
++ 对立事件：$A\cap B=\emptyset$ 且 $A\cup B=S$．此时记 $A=\overline{B}，\overline{A}=B$．
 
 **概率**：
 
