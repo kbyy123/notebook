@@ -87,6 +87,7 @@ plugins:
         - math/index.md
         - data-structure/index.md
         - computer-system/index.md
+        - misc/index.md
   # - enumerate-headings:
   #     increment_across_pages: false
   #     toc_depth: 6
