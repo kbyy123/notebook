@@ -28,6 +28,7 @@
   /* 定义主题基础字号变量 */
   --md-typeset-font-size: 0.9rem;
   --strong-text-color: #1f6f8b;
+  --md-code-font-family: 'Consolas', 'SFMono-Regular', 'Liberation Mono', 'Menlo', monospace;
 }
 
 body, .md-typeset {
@@ -81,6 +82,7 @@ body, .md-typeset {
 /* 调整行内代码 (如 `code`) 字号 */
 .md-typeset code {
   font-size: 0.85em; 
+  font-family: var(--md-code-font-family);
 }
 
 /* 行内代码空格友好：适合你已手动加空格的写法，避免看起来过松
@@ -94,7 +96,7 @@ body, .md-typeset {
 /* 调整大块代码区域 (Code blocks) 字号 */
 .md-typeset pre code {
   font-size: 0.9em;  
-  font-family: 'JetBrains Mono', monospace !important; /* 强制代码使用等宽字体 */
+  font-family: var(--md-code-font-family) !important; /* 强制代码使用等宽字体 */
 }
 
 .md-typeset details pre code {
@@ -206,3 +208,4 @@ body, .md-typeset {
     font-size: 0.8rem;
     line-height: 1.45;
 }
+
