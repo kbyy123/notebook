@@ -2,8 +2,9 @@ site_name: 空白阴影的笔记本
 site_author: 空白阴影
 site_url: ''
 
-repo_url: https://github.com/kbyy123/notebook.git
+repo_url: https://github.com/kbyy123/notebook
 repo_name: kbyy123/notebook
+edit_uri: blob/main/docs/
 use_directory_urls: false    # 加上这句后才能显示用 html img 相对路径插入的图片
 
 theme:
@@ -28,7 +29,7 @@ theme:
     - content.code.copy        # 代码块一键复制
   font:
     text: false
-    code: JetBrains Mono
+    code: false
   icon:
     admonition: 
       example: material/bulletin-board
@@ -55,7 +56,7 @@ extra_css:
   - css/custom.css?v=20260322
   - css/timestamp.css
   - css/home.css
-  - css/font.css?v=20261325
+  - css/font.css?v=20260328
   - css/copyright.css
   - css/icon.css?v=20260322
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
@@ -88,6 +89,7 @@ plugins:
         - data-structure/index.md
         - computer-system/index.md
         - misc/index.md
+        - data-structure/LeetCode/
   # - enumerate-headings:
   #     increment_across_pages: false
   #     toc_depth: 6
@@ -136,6 +138,9 @@ nav:
       - data-structure/fds/index.md
       - data-structure/fds/string.md
       - data-structure/fds/tree.md
+    - 算法竞赛:
+      - data-structure/competitive-algo/index.md
+      - data-structure/competitive-algo/template.md
   - 💻计算机系统:
     - computer-system/index.md
     - 体系结构:

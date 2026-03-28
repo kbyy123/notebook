@@ -1,4 +1,4 @@
-# The Foundations: Logic and Proofs
+# Chap1: The Foundations: Logic and Proofs
 
 ## Propositional Logic
 ### Propositions
@@ -142,8 +142,8 @@ Extension:
 
 > satisfiability = contingency + tautology
 
-### Normal Form
-**Simple Disjunction**/Basic Sum(简单析取式): A disjunction with finite proposition variables or their negation.
+### 范式
+<!-- **Simple Disjunction**/Basic Sum(简单析取式): A disjunction with finite proposition variables or their negation.
 
 + $\neg P \vee Q \vee R$, $\neg P \vee P$.
 
@@ -264,7 +264,138 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
+	</div> -->
+
+**简单析取式/基本和**: 仅由有限个命题变元或其否定的**析取**构成的析取式．
+
++ $\neg P \vee Q \vee R$, $\neg P \vee P$.
+
+**简单合取式/基本积**: 仅由有限个命题变元或其否定的**合取**构成的合取式．
+
++ $\neg Q \wedge R \wedge Q$, $\neg P \wedge P$.
+
+**析取范式/DNF**(Disjunctive Normal Form): 由有限个**简单合取式的析取**构成的析取式．
+
++ $P\vee (P\wedge Q)\vee(\neg P\wedge \neg Q\wedge \neg R)$, $P\vee Q\vee R$.
+
+**合取范式/CNF**(Conjunctive Normal Form): 由有限个**简单析取式的析取**构成的合取式．
+
++ $(P \vee Q) \wedge \neg Q \wedge (Q \vee \neg R \vee S)$, $P \wedge Q \wedge R$.
+
+!!! quote "范式存在性定理"
+
+	任意一个命题公式均存在与之等值的析取范式和合取范式．
+	
+	证明（构造法）:
+	
+	1. 利用蕴含等值式消去公式中的 $\to$ 和 $\leftrightarrow$：
+		+ $P\to Q \equiv \neg P \vee Q$． 
+		+ $P\leftrightarrow Q \equiv (P\to Q)\wedge(Q \to P)$．
+	2. 利用德摩根律将公式中的 $\neg$ 移到命题变元之前，用双重否定律消去两个连续的 $\neg$．
+	3. 用分配律将公式化为基本积的析取（DNF）或基本和的合取（CNF）．   
+      	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
+    	+ 为了得到CNF, 将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
+
+问题在于，以这种方法得到的DNF/CNF不是唯一的．
+#### 主析取范式
+
+**极小项**：$n$ 个命题变项的极小项是这 $n$ 个变元均出现一次的合取，并且保证每个变项或其否定二者仅出现一个．
+
+???+ example "例"
+
+	公式中出现 $P,Q,R$ 三个命题变项:
+	
+	+ $P \wedge Q \wedge\neg R$ 是极小项.
+	+ $P \wedge Q$ 不是极小项，因为没出现 $R$.
+	+ $P \wedge Q \wedge R \wedge \neg P$ 不是极小项，因为 $P$ 出现两次.
+
+对于每一个极小项 $n$ 个变项的赋值中，只有一个赋值使其为真，其余 $2^{n-1}$ 个赋值使其为假．
+
+编码：若极小项对应赋值为 $a_1a_2\cdots a_n$（二进制数，为每一项的成真赋值），对应的十进制数为 $k \in [0,2^n-1]$，记作 $m_{a_1a_2\cdots a_n}$ 或 $m_k$．
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap1.assets/image-20260321171540400.png" alt="image-20260321171540400" style="zoom:50%;" />
+</div>
+
+**主析取范式**（Principal DNF）: 若干不同的极小项组成的析取式．
+
++ $(P\wedge Q)\vee(\neg P \wedge R)$ 是析取范式，但不是主析取范式．
++ $(P \wedge Q \wedge \neg R)\vee(\neg P \wedge Q \wedge R)$ 是主析取范式，并且也是析取范式．
+
+!!! quote "定理"
+
+	命题公式的主析取范式是由赋值为真对应的极小项的析取组成的．
+
+	任何一个命题公式均存在一个与之等值的主析取范式，而且是唯一的．
+
+	> 如何构造主析取范式?
+
+	法一：真值表法
+
+	1. 为命题公式构建真值表．
+	2. 将每一个结果为真的行用极小项表示出来．
+	3. 用析取连接极小项，即为主析取范式．
+
+	<div style="text-align: center; margin-top: 15px;">
+	<img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
 	</div>
+
+	法二：等值演算法
+
+	1. 将公式化为析取范式，并将一些矛盾式、永真式、重复项消去．
+	2. 若析取范式的简单合取式项缺少命题变项（如 $R$），添加一个永真式（$R \vee \neg R$）然后用分配律打开．
+	3. 用幂等律将重复的极小项删去（$A \vee A \equiv A$）．
+
+	<div style="text-align: center; margin-top: 15px;">
+	<img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
+	</div>
+
+#### 主合取范式
+**极大项**：$n$ 个命题变项的极大项是这 $n$ 个变元均出现一次的析取，并且保证每个变项或其否定二者仅出现一个．
+
+对于每一个极大项 $n$ 个变项的赋值中，只有一个赋值使其为假，其余 $2^{n-1}$ 个赋值使其为真．
+
+编码：若极小项对应赋值为 $a_1a_2\cdots a_n$（二进制数，为每一项的成假赋值），对应的十进制数为 $k \in [0,2^n-1]$，记作 $M_{a_1a_2\cdots a_n}$ 或 $M_k$．
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap1.assets/image-20260321175039694.png" alt="image-20260321175039694" style="zoom:50%;" />
+</div>
+
+**主合取范式**（Principal CNF）：若干不同的极大项组成的合取式．
+
+!!! quote "定理"
+
+	命题公式的主合取范式是由赋值为假对应的极大项的合取组成的．
+
+	任何一个命题公式均存在一个与之等值的主合取范式，而且是唯一的．
+
+	> 如何构造 PCNF?
+
+	法一：真值表法
+
+	1. 为命题公式构建真值表．
+	2. 将每一个结果为假的行用极大项表示出来．
+	3. 用合取连接极大项，即为主合取范式．
+
+	<div style="text-align: center; margin-top: 15px;">
+	<img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
+	</div>
+
+	法二：等值演算法
+
+	1. 将公式化为合取范式，并将一些矛盾式、永真式、重复项消去．
+	2. 若合取范式的简单析取式项缺少命题变项（如 $R$），添加一个永假式（$R \vee \neg R$）然后用分配律打开．
+	3. 用幂等律将重复的极大项删去（$A \vee A \equiv A$）．
+
+	<div style="text-align: center; margin-top: 15px;">
+	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
+	</div>
+
+总结：主析取范式和主合取范式都是求一个命题公式等价形式的方法．
+
+主析取范式是将该命题公式所有为真的取值全部凑出来（极小项，一个极小项对应一个为真的取值）并析取；如果我们的赋值是原命题公式的成真赋值，那么一定可以对应让某一个极小项为真，从而主析取范式为真．
+
+主合取范式是将该命题公式所有为假的取值全部凑出来（极大项，一个极大项对应一个为假的取值）并合取；如果我们的赋值是原命题的成真赋值，那么它不会让任何一个极大项为假，从而主合取范式为真；反之如果是原命题的成假赋值，其一定会对应一个极大项为假，从而主合取范式为假．
 
 ## Predicates and Quantifiers
 ### Predicates
@@ -340,7 +471,13 @@ De Morgan's Laws for Quantifiers:
 <img src="Chap1.assets/image-20260321204423340.png" alt="image-20260321204423340" style="zoom:50%;" />
 </div>
 
-> Supplement:
+If there are more quantifiers, we can use De Morgan's Laws recursively:
+
+$$
+\neg \forall x\exists yP(x,y)\equiv \exists x\neg \exists yP(x,y) \equiv  \exists x\forall y\neg P(x,y)  
+$$
+
+<!-- > Supplement:
 > 
 > + $∀x(A(x)∧B(x))≡∀xA(x)∧∀xB(x)$
 >+ $∃x(A(x)∨B(x))≡∃xA(x)∨∃xB(x)$
@@ -348,7 +485,135 @@ De Morgan's Laws for Quantifiers:
 > But notice that the following formula can only be derived in one direction:
 > 
 > + $∀x(A(x)∨B(x)) ⇐∀xA(x)∨∀xB(x)$
-> + $∃x(A(x)∧B(x))​⇒∃xA(x)∧∃xB(x)$
+> + $∃x(A(x)∧B(x))​⇒∃xA(x)∧∃xB(x)$ -->
 #### Some Shorthands
 + $\exists x\exists y\exists  z\,P(x,y,z) \leftrightarrow_{\text{def}}\exists xyz\,P(x,y,z)$.
 +  $\forall  x\forall  y\forall   z\,P(x,y,z) \leftrightarrow_{\text{def}}\forall xyz\,P(x,y,z)$.
+
+### 一阶逻辑合式公式
+#### 相关概念
+**个体常项**（Constant）：表示具体的特定对象，一般用 $a,b,c$ 表示．
+
+**个体变项**（Variable）：表示不确定的泛指对象，常与量词、谓词一起出现，一般用 $x,y,z$ 表示．
+
+**项**（Term）：个体常项、个体变项，以及以项为自变量的函数．
+
+**原子公式**（Atomic Formula）：以项为自变量的谓词．
+
+**合式公式**：原子公式，以及有限次利用原子公式和逻辑运算符（$A\wedge B,A\vee B,A\to B$ 等）、量词与个体变项（$\exists xA,\forall xA$ 等）规则形成的符号串．
+
+#### 量词辖域与变项
+**指导变项**：紧跟在量词后的个体变项．
+
++ $\exists {\color{red}x}(F(x)\wedge\forall {\color{green}y}(G(y)\to H(x,y)))$．
+
+**量词辖域**：在 $\exists xA,\forall xA$ 中，$A$ 是量词的辖域（也就是指导变项后紧跟的整个括号内的内容）．
+
++ $\exists x{\color{red}F(x)}\wedge\forall y{\color{green}(G(y)\to H(x,y))}$．
++ $\exists x\color{red}(F(x)\wedge\forall y(G(y)\to H(x,y)))$．
+
+**约束出现**：在辖域中与指导变项同名的变项．
+
++ $\exists {\color{red}x}(F({\color{red}x})\wedge\forall {\color{green}y}(G({\color{green}y})\to H({\color{red}x},{\color{green}y})))$．
+
+**自由出现**：既非指导变项又非约束出现．
+
++ $\forall y(G(y)\to H({\color{blue}x},y))$．
+
+**闭式**：无自由出现的变项．
+
++ $F(a),\exists xF(x)$ 是闭式．
++ $F(x),\forall y(G(y)\to H(x,y))$ 不是闭式．
+
+### 一阶逻辑等值式
+等值：$A\Leftrightarrow B$．$A\Leftrightarrow B$ 当且仅当 $A\leftrightarrow B$ 是永真式．如 $\neg\forall xF(x) \Leftrightarrow \exists x \neg F(x)$．
+
+#### 量词辖域收缩与扩张
+假设 $B$ 中不含 $x$ 的出现：
+
+**析取/合取式**直接提出/放入括号，不需要改变符号．
+
++ $\forall x(A(x)\vee B)\Leftrightarrow \forall xA(x)\vee B$．
++ $\forall x(A(x)\wedge B)\Leftrightarrow \forall xA(x)\wedge B$．
++ $\exists  x(A(x)\vee B)\Leftrightarrow \exists xA(x)\vee B$．
++ $\exists  x(A(x)\wedge B)\Leftrightarrow \exists  xA(x)\wedge B$．
+
+可以推出结论：$\forall xP(x)\wedge \exists yQ(y) \Leftrightarrow \forall x \exists y(P(x)\wedge Q(y))$．该结论对任意量词组合、合取析取均成立，也就是说合取析取式的原子命题变量如果无关，可以直接提出量词成为[前束范式](#454)．事实上，由于[换名规则](#453)，也可以推出 $\forall xP(x)\wedge \exists xQ(x)$ 与上式等值．
+
+**蕴含式**：若为前件则提出/放入括号时量词变号，若为后件则无需变号．
+
++ $\forall x(A(x)\to B)\Leftrightarrow \exists xA(x)\to B$．
++ $\forall x(B\to A(x))\Leftrightarrow B\to\forall x A(x)$．
++ $\exists  x(A(x)\to B)\Leftrightarrow \forall  xA(x)\to B$．
++ $\exists  x(B\to A(x))\Leftrightarrow B\to\exists x A(x)$．
+
+???+ quote "蕴含式的证明（以全称量词为例）"
+
+	$$
+	\begin{aligned}
+	&\forall x (A(x)\to B) \\
+	&\Leftrightarrow \forall x(\neg A(x) \vee B) \\
+	&\Leftrightarrow \forall x\neg A(x) \vee B \\
+	&\Leftrightarrow \neg \exists xA(x) \vee B  \\
+	&\Leftrightarrow \exists xA(x)\to B  
+	\end{aligned}
+	$$
+
+	直观理解：对于所有 $x$，只要有 $A(x)$ 就有 $B$，那么如果我存在一个满足 $A(x)$ 的 $x$，我就一定能推出 $B$．
+		
+	$$
+	\begin{aligned}
+	&\forall x(B\to A(x)) \\
+	&\Leftrightarrow  \forall x(\neg B \vee A(x)) \\
+	&\Leftrightarrow \neg B\vee \forall xA(x) \\
+	&\Leftrightarrow B\to \forall xA(x)     
+	\end{aligned}
+	$$
+
+	直观理解：对于所有 $x$，如果 $B$ 满足了，它们都会满足 $A$，那么如果有条件 $B$，必然有所有 $x$ 都满足 $A(x)$．
+
+#### 量词分配
+全称量词对合取可分配，对析取单向推出：
+
++ $∀x(A(x)∧B(x))≡∀xA(x)∧∀xB(x)$
++ $∀x(A(x)∨B(x))⇐∀xA(x)∨∀xB(x)$
+
+存在量词对析取可分配，对合取单向推出：
+
++ $∃x(A(x)∨B(x))≡∃xA(x)∨∃xB(x)$
++ $∃x(A(x)∧B(x))​⇒∃xA(x)∧∃xB(x)$
+
+蕴含式的量词分配：
+
++ $\forall xA(x)\to\exists xB(x) \Leftrightarrow \exists x(A(x)\to B(x))$．
++ $\exists  xA(x)\to\forall  xB(x)\Rightarrow \forall  x(A(x)\to B(x))$．
++ $\forall x(A(x)\to B(x))\Rightarrow \forall xA(x)\to \forall xB(x)$．
++ $\forall x(A(x)\leftrightarrow  B(x))\Rightarrow \forall xA(x)\leftrightarrow \forall xB(x)$．
+
+#### 换名规则
+可以把某个指导变项和其量词辖域中所有同名的约束变项, 都换成新的个体变项符号；也可以把某个自由变项的所有出现, 都换成新的个体变项符号．
+
+如：
+
++ $\forall xA(x)\wedge \forall xB(x)\Leftrightarrow \forall xA(x)\wedge \forall yB(y)$．
++ $\forall xA(x)\wedge B(x) \Leftrightarrow \forall  xA(x)∧B(y)$
+
+#### 前束范式
+**前束范式**：量词均在合式公式的开头，且它们的辖域延伸到整个公式末尾．
+
+
+**存在性定理**：谓词逻辑合式公式均存在与之等值的前束范式．合式公式的前束范式是不唯一的．
+
+???+ example "例"
+
+	$$
+	\begin{aligned}
+	&(\exists xP(x)\wedge \forall yQ(y))\to \exists xR(x) \\
+	&\Leftrightarrow (\exists xP(x)\wedge \forall yQ(y))\to \exists zR(z) \quad \text{换名规则} \\
+	&\Leftrightarrow \exists x(P(x)\wedge \forall yQ(y)) \to \exists zR(z) \quad \text{辖域扩张}\\
+	&\Leftrightarrow \exists x\forall y(P(x)\wedge Q(y))\to \exists zR(z) \quad \text{辖域扩张}\\
+	&\Leftrightarrow \forall x(\forall y (P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\exists xA(x)\to B \Leftrightarrow \forall x(A(x)\to B)     \\
+	&\Leftrightarrow \forall x\exists   y((P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\forall xA(x)\to B \Leftrightarrow \exists  x(A(x)\to B)\\
+	&\Leftrightarrow \forall x\forall y\exists z((P(x)\wedge Q(y))\to R(z)) \quad \text{辖域扩张}:B\to \exists xA(x)\Leftrightarrow \exists x(B\to A(x))   
+	\end{aligned}
+	$$

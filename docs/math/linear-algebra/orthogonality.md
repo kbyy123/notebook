@@ -14,7 +14,10 @@
 
 现在我们可以解释 Big Picture 中的直角了：也就是两空间互为正交补．
 
-![image-20260319184214679](assets/image-20260319184214679.png)
+
+<div style="text-align: center">
+<img src="assets/image-20260319184214679.png" alt="image-20260319184214679" style="zoom:50%;" />
+</div>
 
 ## 投影
 在进入投影部分前，我们先思考一下：为什么需要投影？
@@ -23,7 +26,9 @@
 ### 投影到直线
 我们先从投影到直线这种简单情况说起．在 $\mathbb{R}^{n}$ 空间中给定两个向量 $\boldsymbol{a,b}$，求 $\boldsymbol{b}$ 在 $\boldsymbol{a}$ 上的投影．我们记录该投影为 $\boldsymbol{p}$，而将原向量与投影向量的误差即为 $\boldsymbol{e}$，即 $\boldsymbol{b=p+e}$．
 
-![image-20260319193700138](assets/image-20260319193700138.png)
+<div style="text-align: center">
+<img src="assets/image-20260319193700138.png" alt="image-20260319193700138" style="zoom:67%;" />
+</div>
 
 不妨设 $\boldsymbol{p}=\boldsymbol{a}\hat{x}$，因此 $\boldsymbol{e}=\boldsymbol{b}-\boldsymbol{a}\hat{x}$，其中 $\hat{x}$ 为常数．我们有 $\boldsymbol{e}\perp\boldsymbol{a}$，即 $\boldsymbol{a}^{T}(\boldsymbol{b}-\boldsymbol{a}\hat{x})=0$，$\hat{x}\boldsymbol{a}^{T}\boldsymbol{a}=\boldsymbol{a}^{T}\boldsymbol{b}$．因此
 
@@ -53,9 +58,12 @@ $$
 接下来我们考虑一般情况．由于投影的目的是得到方程组的近似解，因此我们通常是将任意向量 $\boldsymbol{b}$ 投影到 $A$ 的列空间上．记住这个视角，我们会发现最后得到的公式只不过是把向量 $\boldsymbol{a}$ 替换为了矩阵 $A$．
 
 为了方便理解，我们讨论三维空间的情况．不妨设 $A$ 是一个 $3\times2$ 的矩阵，其有两个线性无关的向量 $\boldsymbol{a}_{1},\boldsymbol{a}_{2}$（视他们为 $C(A)$ 的基），即 $A=[\boldsymbol{a}_{1},\boldsymbol{a}_{2}]$．$A$ 的向量空间是过原点的平面．$\boldsymbol{b}$ 是三维空间内的一个任意向量．同样，我们记 $\boldsymbol{b}$ 在 $C(A)$ 的投影为 $\boldsymbol{p}$，误差为 $\boldsymbol{e}$，即 $\boldsymbol{b=p+e}$．
-![image-20260319205806295](assets/image-20260319205806295.png)
- 由于 $\boldsymbol{p}$ 在 $C(A)$ 内，因此 $\boldsymbol{p}$ 可以分解为基的线性组合，即 $\boldsymbol{p}=\boldsymbol{a}_{1}\hat{x_{1}}+\boldsymbol{a}_{2}\hat{x_{2}}=A\boldsymbol{\hat{x}}$，因此 $\boldsymbol{e=b-p=b-}A\boldsymbol{\hat{x}}$．我们知道 $\boldsymbol{e}$ 与 $C(A)$ 正交，这等价于 $\boldsymbol{e}$ 与 $C(A)$ 的基 $\boldsymbol{a}_{1}, \boldsymbol{a}_{2}$ 正交，即 
 
+<div style="text-align: center">
+<img src="assets/image-20260319205806295.png" alt="image-20260319205806295" style="zoom: 67%;" />
+</div>
+
+ 由于 $\boldsymbol{p}$ 在 $C(A)$ 内，因此 $\boldsymbol{p}$ 可以分解为基的线性组合，即 $\boldsymbol{p}=\boldsymbol{a}_{1}\hat{x_{1}}+\boldsymbol{a}_{2}\hat{x_{2}}=A\boldsymbol{\hat{x}}$，因此 $\boldsymbol{e=b-p=b-}A\boldsymbol{\hat{x}}$．我们知道 $\boldsymbol{e}$ 与 $C(A)$ 正交，这等价于 $\boldsymbol{e}$ 与 $C(A)$ 的基 $\boldsymbol{a}_{1}, \boldsymbol{a}_{2}$ 正交，即 
 $$
 \begin{cases}
 \boldsymbol{a}_{1}^{T}(\boldsymbol{b}-A\boldsymbol{\hat{x}})=\boldsymbol{0} \\ 
@@ -82,7 +90,7 @@ $$
 A^{T}\left(\boldsymbol{b}-A\boldsymbol{\hat{x}}\right)=\boldsymbol{0}
 $$
 
-也就是 $\boldsymbol{e}$ 在 $A$ 的左零空间中．这与我们的直觉相符合，因为 $\boldsymbol{e}$ 与 $A$ 的列空间正交．
+也就是 $\boldsymbol{e}$ 在 $A$ 的左零空间中．这与我们的直觉相符合，因为 $\boldsymbol{e}$ 与 $A$ 的列空间正交．实际上，我们可以直接根据 $\boldsymbol{e}$ 在 $N(A^T)$ 中而写出这个式子．
 
 我们将方程打开得到 $A^{T}A\boldsymbol{\hat{x}}=A^{T}\boldsymbol{b}$．我们知道这个方程一定有解．也就是说，当方程组 $A\boldsymbol{x=b}$ 无解时，我们给方程组两边左乘 $A^{T}$，就可以让方程组可解，得到近似解．
 
@@ -117,6 +125,13 @@ $$
 即投影向量等于本身，符合直觉．
 
 当我们将 $\boldsymbol{b}$ 投影到 $C(A)$ 时，剩余分量 $\boldsymbol{e}$ 为 $N(A^{T})$ 内的向量，该向量对应的投影矩阵为 $I-P$，因为 $\boldsymbol{b}=P\boldsymbol{b}+(I-P)\boldsymbol{b}$．
+
+在前一节的 Big Picture 中，我们将 $\boldsymbol{x}$ 分解成行空间分量 $\boldsymbol{x}_{row}$ 与零空间分量 $\boldsymbol{x}_{null}$；在本节中，我们将 $\boldsymbol{b}$ 分解成列空间分量 $\boldsymbol{p}$ 与左零空间分量 $\boldsymbol{e}$．
+
+<div style="text-align: center">
+    <img src="orthogonality.assets/image-20260326115601613.png" alt="image-20260326115601613" style="zoom:40%;" />
+</div>
+
 
 ## 最小二乘法
 投影矩阵最广泛的应用就是**最小二乘法**．当我们想用直线近似几个离散点时，我们本质上是解一个线性方程组：这个线性方程组只有两个变量，分别为直线的斜率与截距；而会有多个方程限制，因此我们基本上无法满足所有方程．退而求其次，我们选择拟合误差最小的直线，而这本质上就是将数据点投影到我们的拟合直线上．
@@ -211,10 +226,19 @@ $$
 
 ???+ question "为什么误差最小"
 
-	向量在列空间的投影是以垂线形式得到的最小误差 $\boldsymbol{e}$，但这并不代表我们在最小二乘中的误差是点到直线的垂直距离．实际上，由于 $\boldsymbol{e=b-}A\boldsymbol{\hat{x}}$，而 $\boldsymbol{b}$ 是我们的真实值（观测值），$A\boldsymbol{\hat{x}}_{i}$ 是我们计算出来的拟合值，他们的关系仅仅是代数加减．因此误差最小的误差指的是**真实观测值 $y_i$** 与**拟合值 $\hat{y}_i$** 之间在纵向上的**竖直距离偏差**，而不是从数据点向拟合直线作垂线所得到的几何最短距离．
+	向量在列空间的投影是以垂线形式得到的最小误差 $\boldsymbol{e}$，但这并不代表我们在最小二乘中的误差是点到直线的垂直距离．实际上，由于 $\boldsymbol{e=b-}A\boldsymbol{\hat{x}}$，而 $\boldsymbol{b}$ 是我们的真实值（观测值），$(A\boldsymbol{\hat{x}})_{i}$ 是我们计算出来的拟合值，他们的关系仅仅是代数加减．因此误差最小的误差指的是**真实观测值 $y_i$** 与**拟合值 $\hat{y}_i$** 之间的**竖直距离偏差**，而不是从数据点向拟合直线作垂线所得到的几何最短距离．
 	
-	对于每一点拟合值 $\boldsymbol{p}_{i}=P\boldsymbol{b}_{i}$，我们在列空间内定义的误差最小其实是 $\boldsymbol{b}_{i}$ 与 $\boldsymbol{p}_{i}$ 的距离最小，即 $\boldsymbol{e}^{2}$ 最小，也就是说我们所指的误差是指 
+	对于空间内任意一个 $\boldsymbol{b}$，其有两个分量：在 $A$ 列空间上的分量 $\boldsymbol{p}$ 与在 $A$ 左零空间上的分量  $\boldsymbol{e}$．由于列空间与左零空间正交，由勾股定理，对于我们的拟合向量 $A\boldsymbol{x}$，误差为
 	
 	$$
-	\sum\left(\boldsymbol{b}_{i}-A\boldsymbol{x}_{i}\right)=\sum \boldsymbol{e}^2_{i}
+	\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|A\boldsymbol{x}-\boldsymbol{p}\|^{2}+\|\boldsymbol{e}\|^{2}
 	$$
+	
+	我们无法改变 $\|\boldsymbol{e^{2}}\|$ 的大小，只能通过调整 $\boldsymbol{x}$ 来让 $\|A\boldsymbol{x}-\boldsymbol{p}\|$ 最小，即 $A\boldsymbol{x=p}$，此时 $\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|\boldsymbol{e}\|^{2}$．
+	
+	而转化为坐标系中，由于 $\boldsymbol{e}$ 是一个 $3$ 维向量，因此 $\|\boldsymbol{e}^{2}\|=e_{1}^{2}+e_{2}^{2}+e_{3}^{2}$，即为竖直距离偏差平方和．
+	
+	实际上，我们也可以通过对 $E=\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=(C+D-1)^{2}+(C+2D-2)^{2}+(C+3D-2)^{2}$ 求偏导来计算极值，得到的结果与使用线性代数得到的结果一样．
+
+接下来我们将其扩展到直线拟合 $m$ 个点的情况．
+
