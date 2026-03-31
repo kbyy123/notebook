@@ -1021,7 +1021,7 @@
   <span class="md-ellipsis">
     
   
-    行列式[TBD]
+    行列式
   
 
     
@@ -1710,7 +1710,7 @@
 
 <h1 id="_1">解线性方程组</h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 4504 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 15 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"/></svg></span> 约 4247 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"/></svg></span> 预计阅读时间 14 分钟</p>
 </div>
 <p>本章默认 <span class="arithmatex">\(n=m\)</span>，先从方阵的消元入手，之后扩展到所有矩阵．</p>
 <h2 id="1-gauss-jordan">1. Gauss-Jordan 消元</h2>
@@ -1742,14 +1742,16 @@ for i in [n, 1]:
 我们发现消元过程中只涉及行交换、行倍加操作，而行变换不改变方程组的解且可以用左乘变换矩阵来表示，这为 <span class="arithmatex">\(LU\)</span> 分解打下了基础．</p>
 <h2 id="2">2. 矩阵乘法</h2>
 <h3 id="21">2.1 视角</h3>
-<p>由于矩阵可以看作列向量、行向量拼起来，矩阵乘法也可以看作是矩阵与向量的乘法拼起来．对于 <span class="arithmatex">\(A\cdot B =C\)</span> 而言，其必须有 <span class="arithmatex">\(A\)</span> 的列数等于 <span class="arithmatex">\(B\)</span> 的行数（因为 <span class="arithmatex">\(B\)</span> 的每一列都可以是看作 <span class="arithmatex">\(A\)</span> 列向量线性组合的系数向量）．</p>
-<p>我们可以用四种视角看待矩阵乘法：</p>
-<ul>
-<li>行向量乘列向量：矩阵 <span class="arithmatex">\(C\)</span> 的单个元素 <span class="arithmatex">\(C_{ij}=A_{row_{i}}\cdot B_{col_{j}}\)</span>．</li>
-<li>列向量乘列向量：矩阵 <span class="arithmatex">\(B\)</span> 的每一列都是矩阵 <span class="arithmatex">\(A\)</span> 列向量的线性组合系数，组合得到矩阵 <span class="arithmatex">\(C\)</span> 的每一列．</li>
-<li>行向量乘行向量：矩阵 <span class="arithmatex">\(A\)</span> 的每一行都是矩阵 <span class="arithmatex">\(B\)</span> 行向量的线性组合系数，组合得到矩阵 <span class="arithmatex">\(C\)</span> 的每一行．</li>
-<li>列向量乘行向量：矩阵 <span class="arithmatex">\(A\)</span> 的第 <span class="arithmatex">\(i\)</span> 列与矩阵 <span class="arithmatex">\(B\)</span> 的第 <span class="arithmatex">\(i\)</span> 行相乘得到与矩阵 <span class="arithmatex">\(C\)</span> 形状相同的矩阵，将所有的列 <span class="arithmatex">\(\times\)</span> 行矩阵加在一起就得到了矩阵 <span class="arithmatex">\(C\)</span>．</li>
-</ul>
+<p>见<a href="introduction.html#13">矩阵乘积</a>．</p>
+<!-- 由于矩阵可以看作列向量、行向量拼起来，矩阵乘法也可以看作是矩阵与向量的乘法拼起来．对于 $A\cdot B =C$ 而言，其必须有 $A$ 的列数等于 $B$ 的行数（因为 $B$ 的每一列都可以是看作 $A$ 列向量线性组合的系数向量）．
+
+我们可以用四种视角看待矩阵乘法：
+
++ 行向量乘列向量：矩阵 $C$ 的单个元素 $C_{ij}=A_{row_{i}}\cdot B_{col_{j}}$．
++ 列向量乘列向量：矩阵 $B$ 的每一列都是矩阵 $A$ 列向量的线性组合系数，组合得到矩阵 $C$ 的每一列．
++ 行向量乘行向量：矩阵 $A$ 的每一行都是矩阵 $B$ 行向量的线性组合系数，组合得到矩阵 $C$ 的每一行．
++ 列向量乘行向量：矩阵 $A$ 的第 $i$ 列与矩阵 $B$ 的第 $i$ 行相乘得到与矩阵 $C$ 形状相同的矩阵，将所有的列 $\times$ 行矩阵加在一起就得到了矩阵 $C$． -->
+
 <h3 id="22">2.2 增广矩阵</h3>
 <p>在线性代数中我们常做行变换而少做列变换，是因为对于方程组 <span class="arithmatex">\(A\boldsymbol{x=b}\)</span>，行变换的过程相当于方程相加减的过程，其不改变方程组的解．</p>
 <p>但是在方程相加减的过程中，右侧的 <span class="arithmatex">\(\boldsymbol{b}\)</span> 也进行了加减，为了让其与 <span class="arithmatex">\(A\)</span> 的行变换同步，我们将 <span class="arithmatex">\(A\)</span> 与 <span class="arithmatex">\(\boldsymbol{b}\)</span> 拼在一起得到增广矩阵 <span class="arithmatex">\([A, \boldsymbol{b}]\)</span>．这样行变换的过程就与解方程完全统一了．</p>
@@ -2078,7 +2080,7 @@ S^{T}=(LDU)^{T}=U^{T}D^{T}L^{T}=U^{T}DL^{T}
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年3月14日 21:23:55 CST">2026年3月14日 21:23:55</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年3月31日 14:36:32 CST">2026年3月31日 14:36:32</span>
   </span>
 
     
@@ -2192,8 +2194,6 @@ S^{T}=(LDU)^{T}=U^{T}D^{T}L^{T}=U^{T}DL^{T}
         <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
       
         <script src="../../js/katex.js"></script>
-      
-        <script src="../../js/heading-number-normalize.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
       
