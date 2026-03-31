@@ -64,6 +64,7 @@ $$
 </div>
 
  由于 $\boldsymbol{p}$ 在 $C(A)$ 内，因此 $\boldsymbol{p}$ 可以分解为基的线性组合，即 $\boldsymbol{p}=\boldsymbol{a}_{1}\hat{x_{1}}+\boldsymbol{a}_{2}\hat{x_{2}}=A\boldsymbol{\hat{x}}$，因此 $\boldsymbol{e=b-p=b-}A\boldsymbol{\hat{x}}$．我们知道 $\boldsymbol{e}$ 与 $C(A)$ 正交，这等价于 $\boldsymbol{e}$ 与 $C(A)$ 的基 $\boldsymbol{a}_{1}, \boldsymbol{a}_{2}$ 正交，即 
+
 $$
 \begin{cases}
 \boldsymbol{a}_{1}^{T}(\boldsymbol{b}-A\boldsymbol{\hat{x}})=\boldsymbol{0} \\ 
@@ -136,6 +137,7 @@ $$
 ## 最小二乘法
 投影矩阵最广泛的应用就是**最小二乘法**．当我们想用直线近似几个离散点时，我们本质上是解一个线性方程组：这个线性方程组只有两个变量，分别为直线的斜率与截距；而会有多个方程限制，因此我们基本上无法满足所有方程．退而求其次，我们选择拟合误差最小的直线，而这本质上就是将数据点投影到我们的拟合直线上．
 
+### 拟合三个点
 考虑用直线拟合二维坐标系上三点：$(1,1),(2,2),(3,2)$．不妨设直线方程为 $y=C+Dx$，则我们有 
 
 $$
@@ -240,5 +242,193 @@ $$
 	
 	实际上，我们也可以通过对 $E=\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=(C+D-1)^{2}+(C+2D-2)^{2}+(C+3D-2)^{2}$ 求偏导来计算极值，得到的结果与使用线性代数得到的结果一样．
 
-接下来我们将其扩展到直线拟合 $m$ 个点的情况．
+### 拟合m个点
+接下来我们将其扩展到直线拟合 $m$ 个点的情况．不妨设这 $m$ 个点的坐标为 $(t_{i}, b_{i})$，则我们有
 
+$$
+\begin{aligned}
+&C+Dt_{1}=b_{1} \\
+&C+Dt_{2}=b_{2} \\
+&\qquad\vdots \\
+&C+Dt_{m}=b_{m}
+\end{aligned}
+$$
+
+因此矩阵 $A$、$A^{T}A$、$A^{T}\boldsymbol{b}$ 分别为
+
+$$
+A=\begin{bmatrix}
+ 1 & t_{1} \\
+ 1 & t_{2}  \\
+\vdots & \vdots  \\
+1 & t_{m} 
+\end{bmatrix}
+\quad
+A^{T}A=\begin{bmatrix}
+ m & \sum t_{i} \\
+ \sum t_{i} & \sum t_{i}^{2} 
+\end{bmatrix}
+\quad
+A^{T}\boldsymbol{b}=\begin{bmatrix}
+ \sum b_{i} \\
+\sum t_{i}b_{i}
+\end{bmatrix}
+$$
+
+因此最佳拟合直线即为 $A^{T}A\boldsymbol{\hat x}=A^{T}\boldsymbol{b}$ 的解，即 
+
+$$
+\begin{bmatrix}
+ m & \sum t_{i} \\
+ \sum t_{i} & \sum t_{i}^{2} 
+\end{bmatrix}
+\begin{bmatrix}
+ C \\
+D
+\end{bmatrix}=
+\begin{bmatrix}
+ \sum b_{i} \\
+\sum t_{i}b_{i}
+\end{bmatrix}
+$$
+
+其中误差为 $E=\|A\boldsymbol{x-b} \|^{2}=\sum(C+Dt_{i}-b_{i})^{2}$．
+
+### 正交的优势
+如果 $A$ 的两列是正交的，由于其第一列均为 $1$，因此等价于第二列和为 $0$．即 $\sum t_{i}=0$，我们会得到
+
+$$
+A^{T}A=\begin{bmatrix}
+ m & 0 \\
+ 0 & \sum t_{i}^{2} 
+\end{bmatrix}
+$$
+
+其成为了一个对角矩阵．而对角矩阵解方程是很容易的，可以轻松解得
+
+$$
+\begin{cases}
+C=\dfrac{\sum b_{i}}{m}=\bar b \\
+D=\dfrac{\sum t_{i}b_{i}}{\sum t_{i}^{2}}
+\end{cases}
+$$
+
+事实上，我们可以手动构造出正交列．将所有的待拟合点横坐标全部减去 $\bar t=\sum t_{i}/m$，即新坐标 $t_{i}'=t_{i}-\bar t$，此时显然有 $\sum t_{i}'=0$，可以轻松地计算出 $C'=\bar b$ 与 $D$（平移不改变斜率）．拟合出的直线结果实际上是 $b=\bar{b}+D(t-\bar t)$，展开得到 $b=Dt+(\bar b-D\bar t)$，原始方程 $b=C+Dt$ 中的截距 $C=\bar b-D\bar t$．
+
+### 拟合二次函数
+最小二乘法亦适用于拟合高次函数．以二次函数 $C+Dt+Et^{2}$ 举例，虽然函数本身不线性，但将具体的点带入后其成为一个线性方程组．与一次函数不同的是，此时的矩阵 $A$ 会有三列．
+
+## 正交矩阵
+上一节中我们知道，如果 $A$ 的列向量之间正交，$A^{T}A$ 的结果会是对角矩阵．实际上，若 $A$ 的列向量之间正交且内积为 $1$，$A^{T}A$ 会成为单位矩阵 $I$，从而更加方便我们计算．
+
+记向量组 $\boldsymbol{q}_{1},\cdots,\boldsymbol{q}_{n}$ 是**标准正交**的，当且仅当
+
+$$
+\boldsymbol{q}_{i}^{T}\boldsymbol{q}_{j}=\begin{cases}
+0\quad i\neq j \\
+1\quad i=j
+\end{cases}
+$$
+
+即该向量组内每一个向量均为单位向量，且两两正交．我们记由标准正交向量组当作列向量拼成的矩阵 $Q$ 为**列正交矩阵**，则 $Q^{T}Q=I$．
+
+特别的，当 $Q$ 为方阵时，称其为**正交矩阵**．由 $Q^{T}Q=I$ 我们得到 $Q^{T}=Q^{-1}$，即正交矩阵的转置与逆相等．
+
+### 常见正交矩阵
+**旋转矩阵**：如
+
+$$
+\begin{bmatrix}
+ \cos{\theta} & -\sin{\theta} \\
+ \sin{\theta} & \cos{\theta} 
+\end{bmatrix}
+$$
+
+**置换矩阵**：由于 $P$ 是 $I$ 进行任意次行交换后的矩阵，显然 $P$ 满足每行有且仅有一个 $1$、每列有且仅有一个 $1$，因此其符合标准正交性．
+
+**反射矩阵**：对于任意单位向量 $\boldsymbol{u}$，反射矩阵 $Q=I-2\boldsymbol{uu}^{T}$ 的效果是将向量 $\boldsymbol{x}$ 沿垂直 $\boldsymbol{u}$ 的子空间进行镜像操作．
+
+???+ quote "反射矩阵的证明"
+
+	$\boldsymbol{u}$ 是镜像空间的法向量．将 $\boldsymbol{x}$ 做镜像操作，等价于将其关于镜像空间的平行分量保留而翻转垂直分量，亦等价于将其关于法向量 $\boldsymbol{u}$ 的垂直分量保留而翻转平行分量．
+	
+	$\boldsymbol{x}$ 关于镜像空间的垂直分量，即$\boldsymbol{x}$ 关于 $\boldsymbol{u}$ 的平行分量，即为 $\boldsymbol{x}$ 到 $\boldsymbol{u}$ 的投影，为 $\boldsymbol{x}_{\perp}=\dfrac{\boldsymbol{uu}^{T}}{\boldsymbol{u}^{T}\boldsymbol{u}}\boldsymbol{x}=\boldsymbol{uu}^{T}\boldsymbol{x}$；同理可得关于镜像空间的平行分量为 $\boldsymbol{x}_{\parallel}=\boldsymbol{x}-\boldsymbol{x}_{\perp}$．
+	
+	因此，反射结果为 $\boldsymbol{x}_{\parallel}-\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{uu}^{T}\boldsymbol{x}=(I-2\boldsymbol{uu}^{T})\boldsymbol{x}$．可得反射矩阵 $Q=I-2\boldsymbol{uu}^{T}$．
+
+显然 $Q$ 为对称矩阵，则 $Q^{T}Q=Q^{2}=(I-2\boldsymbol{uu}^{T})^{2}=I-4\boldsymbol{uu}^{T}+4\boldsymbol{uu}^{T}\boldsymbol{uu}^{T}=I$．所以反射矩阵 $Q$ 十分特殊，其满足 $Q=Q^{T}=Q^{-1}$．
+
+### 正交变换
+正交矩阵对向量的变换称为**正交变换**，其不改变向量的长度与向量间的角度．由于长度和角度的本质都是向量内积，因此只需证明正交变换不改变向量内积结果．对于向量 $\boldsymbol{x,y}$，正交变换后的内积
+
+$$
+(Q\boldsymbol{x})^{T}(Q\boldsymbol{y})=\boldsymbol{x}^{T}Q^{T}Q\boldsymbol{y}=\boldsymbol{x}^{T}\boldsymbol{y}
+$$
+
+与正交变换前的内积相等．因此我们证明了其长度与角度的不变性．
+
+### 标准正交基投影
+当我们求 $\boldsymbol{b}$ 往某一子空间的投影时，如果选取该投影空间的一组标准正交基，形成列正交矩阵 $Q$，则有 $Q^{T}Q\boldsymbol{\hat x}=Q^{T}\boldsymbol{b}$，因此 $\boldsymbol{\hat x}=Q^{T}\boldsymbol{b}$．此时投影向量为 $QQ^{T}\boldsymbol{b}$，投影矩阵为 $QQ^{T}$．
+
+由于列正交矩阵的特殊性，$QQ^{T}=\boldsymbol{q}_{1}\boldsymbol{q}_{1}^{T}+\cdots+\boldsymbol{q}_{n}\boldsymbol{q}_{n}^{T}$，因此投影向量为
+
+$$
+QQ^{T}\boldsymbol{b}=(\boldsymbol{q}_{1}\boldsymbol{q}_{1}^{T}+\cdots+\boldsymbol{q}_{n}\boldsymbol{q}_{n}^{T})\boldsymbol{b}=\boldsymbol{q}_{1}(\boldsymbol{q}_{1}^{T}\boldsymbol{b})+\cdots +\boldsymbol{q}_{n}(\boldsymbol{q}_{n}^{T}\boldsymbol{b})
+$$
+
+即求 $\boldsymbol{b}$ 在目标子空间的投影时，若选取一组标准正交基，那么投影结果等价于往每一个基向量上投影再直接相加．
+
+### Gram-Schmidt 正交化
+由于列正交矩阵拥有许多良好性质，因此我们希望将我们的矩阵转化为同一子空间内的列正交矩阵．不妨设三维子空间的三个线性无关向量 $\boldsymbol{a}_{1},\boldsymbol{a}_{2},\boldsymbol{a}_{3}$，我们的目标是构造出一组标准正交基．
+
+首先是将其**正交化**．考虑正交化后的向量为 $\boldsymbol{v}_{1},\boldsymbol{v}_{2},\boldsymbol{v}_{3}$，任取第一个向量，如 $\boldsymbol{v}_{1}=\boldsymbol{a}_{1}$；然后对于后续向量，减去其在已选择的向量上的分量．
+
+如对于 $\boldsymbol{a}_{2}$，其减去自身在 $\boldsymbol{v}_{1}$ 上的投影，得到的向量 $\boldsymbol{v}_{2}=\boldsymbol{a}_{2}-\dfrac{\boldsymbol{v}_{1}^{T}\boldsymbol{a}_{2}}{\boldsymbol{v}_{1}^{T}\boldsymbol{v}_{1}}\boldsymbol{v}_{1}$ 满足 $\boldsymbol{v}_{1},\boldsymbol{v}_{2}$ 生成空间与 $\boldsymbol{a}_{1},\boldsymbol{a}_{2}$ 生成空间一样的前提下 $\boldsymbol{v}_{1},\boldsymbol{v}_{2}$ 正交．
+
+同理有 
+
+$$
+\boldsymbol{v}_{3}=\boldsymbol{a}_{3}-\dfrac{\boldsymbol{v}_{1}^{T}\boldsymbol{a}_{3}}{\boldsymbol{v}_{1}^{T}\boldsymbol{v}_{1}}\boldsymbol{v}_{1}-\dfrac{\boldsymbol{v}_{2}^{T}\boldsymbol{a}_{3}}{\boldsymbol{v}_{2}^{T}\boldsymbol{v}_{2}}\boldsymbol{v}_{2}
+$$
+
+得到正交基后，将其**单位化**．这一步很简单，除以各自模长即可．最后得到 $Q=[\boldsymbol{q}_{1},\boldsymbol{q}_{2},\boldsymbol{q}_{3}]$．
+
+### A的QR分解
+经过正交化后得到的正交矩阵 $Q$ 与原矩阵 $A$ 在同一子空间中，这意味着这两个矩阵的列向量之间一定可以互相表示．事实上这又是一个矩阵分解的思路，可以将 $A$ 分解为 $QR$．
+
+事实上，由于计算 $\boldsymbol{q}_{i}$ 时只用到了 $j\le i$ 的 $\boldsymbol{a}_{j}$，因此 $R$ 矩阵一定是一个三角矩阵，确切而言是上三角矩阵．考虑将原矩阵的列向量分解到标准正交基上，由于上述性质以及标准正交基投影的性质，可以得到 
+
+$$
+\begin{cases}
+\boldsymbol{a_{1}}=\boldsymbol{q}_{1}(\boldsymbol{q_{1}}^{T}\boldsymbol{a}_{1}) \\
+\boldsymbol{a_{2}}=\boldsymbol{q}_{1}(\boldsymbol{q_{1}}^{T}\boldsymbol{a}_{2})+\boldsymbol{q}_{2}(\boldsymbol{q_{2}}^{T}\boldsymbol{a}_{2}) \\
+\boldsymbol{a_{3}}=\boldsymbol{q}_{1}(\boldsymbol{q_{1}}^{T}\boldsymbol{a}_{3})+\boldsymbol{q}_{2}(\boldsymbol{q_{2}}^{T}\boldsymbol{a}_{3})+\boldsymbol{q}_{3}(\boldsymbol{q_{3}}^{T}\boldsymbol{a}_{3})
+\end{cases}
+$$
+
+矩阵形式即为 
+
+$$
+\begin{bmatrix}
+  &  &  \\
+ \boldsymbol{a}_{1} & \boldsymbol{a}_{2} & \boldsymbol{a}_{3} \\
+  &  &  
+\end{bmatrix}=\begin{bmatrix}
+  &  &  \\
+ \boldsymbol{q}_{1} & \boldsymbol{q}_{2} & \boldsymbol{q}_{3} \\
+  &  &  
+\end{bmatrix}
+\begin{bmatrix}
+ \boldsymbol{q_{1}}^{T}\boldsymbol{a}_{1} & \boldsymbol{q_{1}}^{T}\boldsymbol{a}_{2} & \boldsymbol{q_{1}}^{T}\boldsymbol{a}_{3} \\
+  & \boldsymbol{q_{2}}^{T}\boldsymbol{a}_{2} & \boldsymbol{q_{2}}^{T}\boldsymbol{a}_{3} \\
+  &  & \boldsymbol{q_{3}}^{T}\boldsymbol{a}_{3}
+\end{bmatrix}
+$$
+
+即 $A=QR$．使用了该分解后，我们有 
+
+$$
+A^{T}A=(QR)^{T}QR=R^{T}Q^{T}QR=R^{T}R
+$$
+
+则 $A^{T}A\boldsymbol{\hat x}=A^{T}\boldsymbol{b}$ 化简为 $R^{T}R\boldsymbol{\hat x}=R^{T}Q^{T}\boldsymbol{b}$．而 $R^{T}$ 是下三角矩阵，由于对角线元素（$\boldsymbol{a}_{i}$ 在 $\boldsymbol{q}_{i}$ 上的投影长度，即归一化前的模长 $\|\boldsymbol{v}_{i}\|$，若原向量组线性无关必然不为 $0$）不为 $0$，则 $R^{T}$ 可逆，因此 $R\boldsymbol{\hat x}=Q^{T}\boldsymbol{b}$．由于 $R$ 为上三角矩阵，只需从下到上回代即可轻易解出方程组．
