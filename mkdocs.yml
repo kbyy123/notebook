@@ -142,11 +142,12 @@ nav:
       - data-structure/competitive-algo/template.md
   - 💻计算机系统:
     - computer-system/index.md
-    - 体系结构:
+    - 计算机组成与体系结构:
       - computer-system/computer-architecture/index.md
       - computer-system/computer-architecture/C.md
       - computer-system/computer-architecture/number.md
-      - computer-system/computer-architecture/RISC-V.md
+      - computer-system/computer-architecture/assembly-language.md
+      - computer-system/computer-architecture/machine-language.md
   # - 📝编程语言:
   #   - C++:
   #     - language/cpp/compile.md

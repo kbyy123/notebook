@@ -7,7 +7,7 @@ hide:
 !!! abstract "概要"
 
     与计算机系统相关的笔记．
-    
+
 ## Table of Contents
 
-- [体系结构](computer-architecture/index.md)
+- [计算机组成与体系结构](computer-architecture/index.md)

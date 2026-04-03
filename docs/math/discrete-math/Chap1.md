@@ -1,4 +1,4 @@
-# Chap1: The Foundations: Logic and Proofs
+# Chap1 The Foundations: Logic and Proofs
 
 ## Propositional Logic
 ### Propositions
@@ -34,7 +34,7 @@ compound proposition(复合命题): Propositions that formed from existing propo
 ???+ tip "Supplement"
 
 	**NOR**(not or, 或非): $p \downarrow q \equiv \neg(p \vee q)$.
-
+	
 	**NAND**(not and, 与非): $p \mid q \equiv \neg(p \wedge q)$.
 
 **conditional statement**(implication, 蕴含): $p\to q$ .
@@ -110,10 +110,10 @@ The compound propositions $p$ and $q$ are called **logically equivalent** if $p\
 !!! note "Important Logical Equivalences"
 
 	Exclusive OR:
-
+	
 	+ $p\oplus q\equiv(p\vee q)\wedge\neg(p \wedge q)$
 	+ $p\oplus q\equiv(p \wedge \neg q)\vee (\neg p\wedge q)$
-
+	
 		<div style="text-align: center; margin-top: 15px;">
 		<img src="Chap1.assets/image-20260321160615977.png" alt="image-20260321160615977" style="zoom: 50%;" />
 		</div>
@@ -169,9 +169,9 @@ Extension:
 	2. De Morgan's Laws: Move negations inward so they only apply to atomic variables.
 	3. Double Negation Law: Replace $\neg \neg P$ with $P$.
 	4. Distributive Laws: 
-   
-      	+ To get DNF, Distribute $\wedge$ over $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$ 
-    	+ To get CNF, Distribute $\vee$ over $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$  
+	   
+	  	+ To get DNF, Distribute $\wedge$ over $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$ 
+		+ To get CNF, Distribute $\vee$ over $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$  
 
 **The problem**: DNF/CNF are not unique.
 
@@ -201,27 +201,27 @@ Minterms are conventionally denoted by $m_i$, where the subscript $i$ is the dec
 !!! quote "Theorem"
 
 	For any propositional formula, there exists a unique equivalent PDNF.
-
+	
 	A PDNF of a proportional formula is the **disjunction** of the **minterms** that correspond to the rows where the formula evaluates to **True**.
-
+	
 	> How to construct PDNF?
-
+	
 	Method 1: The Truth Table Method 
-
+	
 	1. Construct the complete truth table for the formula.
 	2. Write the minterm for each true rows.
 	3. Connect the minterms with disjunction.
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
 	</div>
-
+	
 	Method 2: The Equivalence Calculus Method
-
+	
 	1. Transform the formula into DNF
 	2. If a simple conjunction is missing a variable (say $R$), multiply it by a tautology($R \vee \neg R$), then expand it using the Distributive law.
 	3. Remove duplicate minterms using the Idempotent law($A \vee A \equiv A$).
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
 	</div>
@@ -241,27 +241,27 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 !!! quote "Theorem"
 
 	For any propositional formula, there exists a unique equivalent CDNF.
-
+	
 	The PCNF of a propositional formula is the **conjunction** of the **maxterms** that correspond to the rows where the formula evaluates to **False**.
-
+	
 	> How to construct PCNF?
-
+	
 	Method 1: The Truth Table Method 
-
+	
 	1. Construct the complete truth table for the formula.
 	2. Write the maxterm for each false rows.
 	3. Connect the maxterms with conjunction.
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
 	</div>
-
+	
 	Method 2: The Equivalence Calculus Method
 	
 	1. Transform the formula into CNF
 	2. If a simple disjunction is missing a variable (say $R$), multiply it by a contradiction($R \wedge \neg R$), then expand it using the Distributive law.
 	3. Remove duplicate maxterms using the Idempotent law($A \wedge A \equiv A$).
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
 	</div> -->
@@ -293,8 +293,8 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 		+ $P\leftrightarrow Q \equiv (P\to Q)\wedge(Q \to P)$．
 	2. 利用德摩根律将公式中的 $\neg$ 移到命题变元之前，用双重否定律消去两个连续的 $\neg$．
 	3. 用分配律将公式化为基本积的析取（DNF）或基本和的合取（CNF）．   
-      	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
-    	+ 为了得到CNF, 将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
+	  	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
+		+ 为了得到CNF, 将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
 
 问题在于，以这种方法得到的DNF/CNF不是唯一的．
 #### 主析取范式
@@ -325,27 +325,27 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 !!! quote "定理"
 
 	命题公式的主析取范式是由赋值为真对应的极小项的析取组成的．
-
+	
 	任何一个命题公式均存在一个与之等值的主析取范式，而且是唯一的．
-
+	
 	> 如何构造主析取范式?
-
+	
 	法一：真值表法
-
+	
 	1. 为命题公式构建真值表．
 	2. 将每一个结果为真的行用极小项表示出来．
 	3. 用析取连接极小项，即为主析取范式．
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
 	</div>
-
+	
 	法二：等值演算法
-
+	
 	1. 将公式化为析取范式，并将一些矛盾式、永真式、重复项消去．
 	2. 若析取范式的简单合取式项缺少命题变项（如 $R$），添加一个永真式（$R \vee \neg R$）然后用分配律打开．
 	3. 用幂等律将重复的极小项删去（$A \vee A \equiv A$）．
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
 	</div>
@@ -366,27 +366,27 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 !!! quote "定理"
 
 	命题公式的主合取范式是由赋值为假对应的极大项的合取组成的．
-
+	
 	任何一个命题公式均存在一个与之等值的主合取范式，而且是唯一的．
-
+	
 	> 如何构造 PCNF?
-
+	
 	法一：真值表法
-
+	
 	1. 为命题公式构建真值表．
 	2. 将每一个结果为假的行用极大项表示出来．
 	3. 用合取连接极大项，即为主合取范式．
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
 	</div>
-
+	
 	法二：等值演算法
-
+	
 	1. 将公式化为合取范式，并将一些矛盾式、永真式、重复项消去．
 	2. 若合取范式的简单析取式项缺少命题变项（如 $R$），添加一个永假式（$R \vee \neg R$）然后用分配律打开．
 	3. 用幂等律将重复的极大项删去（$A \vee A \equiv A$）．
-
+	
 	<div style="text-align: center; margin-top: 15px;">
 	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
 	</div>
@@ -558,7 +558,7 @@ $$
 	&\Leftrightarrow \exists xA(x)\to B  
 	\end{aligned}
 	$$
-
+	
 	直观理解：对于所有 $x$，只要有 $A(x)$ 就有 $B$，那么如果我存在一个满足 $A(x)$ 的 $x$，我就一定能推出 $B$．
 		
 	$$
@@ -569,7 +569,7 @@ $$
 	&\Leftrightarrow B\to \forall xA(x)     
 	\end{aligned}
 	$$
-
+	
 	直观理解：对于所有 $x$，如果 $B$ 满足了，它们都会满足 $A$，那么如果有条件 $B$，必然有所有 $x$ 都满足 $A(x)$．
 
 #### 量词分配
@@ -617,3 +617,329 @@ $$
 	&\Leftrightarrow \forall x\forall y\exists z((P(x)\wedge Q(y))\to R(z)) \quad \text{辖域扩张}:B\to \exists xA(x)\Leftrightarrow \exists x(B\to A(x))   
 	\end{aligned}
 	$$
+
+## Rules of Inference
+### Valid Arguments in Propositional Logic
+**argument**(论证): A sequence of statements.
+
+**conclusion**(结论): The final statement of the argument.
+
+**premises**(前提): Preceding statements of the argument except for the conclusion.
+
+**argument form**(论证形式): A augument that propositions are replaced by propositional variables.
+
+**valid argument**(合法论证): A argument that when all its premises are true, then the conclusion must also be true.
+
+From the definition of a valid argument form we see that the argument form with premises $p_1, p_2, …, p_n$ and conclusion $q$ is valid exactly when $(p_1 ∧ p_2 ∧ ⋯ ∧ p_{n}) \to q$ is a tautology. We denote it by $\Rightarrow$(重言蕴含).
+
+!!! warning "$\to$ 与 $\Rightarrow$ 的区别"
+
+	 $\to$ 为逻辑联结词，$A\to B$ 仍然是一个命题公式，其仍然有真假，当 $A$ 为真 $B$ 为假时为假．
+	
+	$\Rightarrow$ 为公式间的关系符，描述了两个公式间的关系，只能说 $A\Rightarrow B$ 式整体成立或不成立．
+	
+	$A\Rightarrow B$ 成立的充要条件是 $A\to B$ 为重言式．
+
+### Rules of Inference for Propositional Logic
+We can establish the validity of some relatively simple argument forms, called **rules of inference**(推理规则). These rules of inference can be used as building blocks to construct more complicated valid argument forms.
+
+**modus ponens**(假言推理规则)
+
+$$
+\begin{aligned}
+&P\\
+&P\to Q\\
+\hline
+\therefore \ & Q
+\end{aligned}
+$$
+
+**modus tollens**(拒取式)
+
+$$
+\begin{aligned}
+&\neg Q\\
+&P\to Q\\
+\hline
+\therefore \ & \neg P
+\end{aligned}
+$$
+
+> The modus tollens is the contrapositive of modus ponens.
+
+**addition**(析取引入规则)
+
+$$
+\begin{aligned}
+&P\\
+\hline
+\therefore \ & P \vee  Q
+\end{aligned}  
+$$
+
+**conjunction**(合取引入规则)
+
+$$
+\begin{aligned}
+&P\\
+&Q\\
+\hline
+\therefore \ & P \wedge Q
+\end{aligned}
+$$
+
+**simplification**(合取消去规则)
+
+$$
+\begin{aligned}
+&P\wedge Q\\
+\hline
+\therefore \ & P
+\end{aligned} 
+$$
+
+**hypothetical syllogism**(假言三段论)
+
+$$
+\begin{aligned}
+&P\to Q\\
+&Q\to R\\
+\hline
+\therefore \ & P\to R
+\end{aligned} 
+$$
+
+**disjunctive syllogism**(析取三段论)
+
+$$
+\begin{aligned}
+&\neg P\\
+&P\vee Q \\
+\hline
+\therefore \ &Q 
+\end{aligned}
+$$
+
+**resolution**(消解规则)
+
+$$
+\begin{aligned}
+&P \vee Q\\
+&\neg P \vee  R\\
+\hline
+\therefore \ &Q \vee R 
+\end{aligned}
+$$
+
+**constructive dilemma**(二难推论)
+
+$$
+\begin{aligned}
+&(P\to Q)\vee (R\to S) \\
+&P \vee R\\
+\hline
+\therefore \ &Q \vee S 
+\end{aligned} 
+$$
+
+### Using Rules of Inference to Build Arguments
+**formal proof**: To prove an argument is valid or the conclusion follows logically from the hypotheses.
+
++ Assume the hypotheses are true.
++ Use the rules of inference and logical equivalences to determine that the conclusion is true.
+
+???+ warning "考试提醒 for BYR"
+
+	在做逻辑推理时要写三列（如图），分别是序号、命题、原因，这些都会计入考试给分．
+	
+	<img src="Chap1.assets/image-20260402111933037.png" alt="image-20260402111933037" style="zoom:50%;" />
+
+### 谓词逻辑推理规则
+#### 代换实例
+可以将公式代入命题逻辑规则，推理规则依然成立．
+
+如将 $P=F(a),Q=G(a)$ 代入假言推理规则，得到：
+
+$$
+\begin{aligned}
+&F(a)\\
+&F(a) \to G(a)\\
+\hline
+\therefore \ & G(a)
+\end{aligned}
+$$
+
+#### 一阶逻辑等值式生成的推理规则
+即由 $A\Leftrightarrow B$ 可得 $A\Rightarrow B$ 以及 $B\Rightarrow A$．
+
+如由 $\forall x(A(x)\wedge B(x))\Leftrightarrow \forall xA(x)\wedge\forall xB(x)$，可得
+
+$$
+\begin{aligned}
+& \forall x(A(x)\wedge B(x))\Rightarrow \forall xA(x)\wedge\forall xB(x) \\
+&\forall xA(x)\wedge\forall xB(x)\Rightarrow \forall x(A(x)\wedge B(x))
+\end{aligned}
+$$
+
+#### 一阶逻辑蕴含式生成的推理规则
+如
+
+$$
+\forall xA(x)\vee \forall xB(x)\Rightarrow \forall x(A(x)\vee B(x))   
+$$
+
+#### 一阶逻辑量词相关推理规则
+**UI/全称特例化**（universal instantiation）：由全称量词谓词得到任意自由变项或个体常项的公式．
+
+$$
+\begin{aligned}
+&\forall xA(x) \\ 
+\hline
+\therefore \ & A(y)\quad\text{其中 }y\text{ 为自由变项}\\ \\
+\text{或} \\ \\
+&\forall xA(x) \\
+\hline
+\therefore \ & A(c)\quad\text{其中 }c\text{ 为个体常项}
+\end{aligned}
+$$
+
+**UG/全称泛化**（Universal Generalization）：由自由变项公式得到全称量词公式．
+
+$$
+\begin{aligned}
+&A(y)\\
+\hline
+\therefore \ & \forall xA(x) 
+\end{aligned}
+$$
+
+**EI/存在特例化**（Existential Instantiation）：由存在量词公式得到**特定**的个体常项公式．
+
+$$
+\begin{aligned}
+&\exists xA(x)  \\
+\hline
+\therefore \ & A(c)
+\end{aligned}
+$$
+
+**EG/存在泛化**（Existential Generalization）：由个体常项公式推出存在量词公式．
+
+$$
+\begin{aligned}
+&A(c)\\
+\hline
+\therefore \ & \exists xA(x) 
+\end{aligned} 
+$$
+
+!!! warning "注意事项"
+
+	**①：特例化时量词必须在最外层**
+	
+	只能对主逻辑运算符是 $\forall$ 或 $\exists$ 的公式使用EI/UI．在下面例子中，需要进行等值演算化简为前束范式．
+	
+	+ $\neg \forall x P(x) \nRightarrow \neg P(c)$ 不能穿透否定符号．
+	+ $\exists x F(x) \rightarrow \forall y G(y)$ 不能各自剥离成为 $F(c)\to G(z)$．
+	
+	
+	**②：证明顺序**
+	
+	当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+	
+	如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
+	
+	证明1：
+	
+	$$
+	\begin{array}{ll}
+	&(1)\exists xF(x)\quad &\text{Premise}\\
+	&(2)F(c) &(1),\text{EI}\\
+	&(3)\forall x(F(x)\to G(x)) &\text{Premise} \\
+	&(4)F(c)\to G(c) &(3),\text{UI} \\
+	&(5)G(c) & \text{(2),(4),Modus Ponens} \\
+	&(6)\exists xG(x) & \text{(5),EG}  
+	\end{array}
+	$$
+	
+	证明2：
+	
+	$$
+	\begin{array}{ll} \\
+	&(1)\forall x(F(x)\to G(x)) &\text{Premise} \\
+	&(2)F(c)\to G(c) &(1),\text{UI} \\
+	&(3)\exists xF(x)\quad &\text{Premise}\\
+	&(4)F(c) &(3),\text{EI}\\
+	&(5)G(c) & \text{(2),(4),Modus Ponens} \\
+	&(6)\exists xG(x) & \text{(5),EG}  
+	\end{array}
+	$$
+
+### 构造证明
+#### 直接证明法
+
+<img src="Chap1.assets/image-20260403101447465.png" alt="image-20260403101447465" style="zoom:45%;" />
+
+#### 附加前提证明法
+**欲证明**：
+
++ 前提：$A_{1},A_{2},\cdots,A_{k}$
++ 结论：$C\to B$
+
+**等价地证明**：
+
++ 前提：$A_{1},A_{2},\cdots,A_{k},C$
++ 结论：$B$
+
+???+ quote "证明"
+
+	$$
+	\begin{aligned}
+	&(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to (C\to B) \\
+	\Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee (\neg C\vee B) \\
+	\Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee \neg C\vee B \\
+	\Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\vee B  \\
+	\Leftrightarrow &(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\to B  
+	\end{aligned}
+	$$
+
+#### 反证法
+**欲证明**：
+
++ 前提：$A_{1},A_{2},\cdots,A_{k}$
++ 结论：$B$
+
+**方法**：将 $\neg B$ 加入前提，若推出矛盾，则得证结论正确．
+
+<img src="Chap1.assets/image-20260403102639198.png" alt="image-20260403102639198" style="zoom: 45%;" />
+
+???+ quote "证明"
+
+	$$
+	\begin{aligned}
+	&(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to B \\
+	\Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee B \\
+	\Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee B \\
+	\Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B)  \\
+	\end{aligned}
+	$$
+	
+	原命题为重言式，当且仅当 $A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B$ 为矛盾式．
+	
+
+
+!!! warning "注意事项"
+
+	①：记得UI/EI只能作用于前束范式．
+	
+	②：当要证明的蕴含式前后件被一个量词绑定时（即为前束范式时）不能使用附加前提证明法；而前后件被不同量词绑定时可以．
+	
+	> 例6中，我们可以化简为前束范式得到 $F(z)\to G(z)$，但不能直接由前提得到 $F(z)\to G(z)$ ．
+	> 
+	> 同时由于前后件被 $\forall x$ 绑定，不能使用附加前提证明．
+	
+	<img src="Chap1.assets/image-20260403103237795.png" alt="image-20260403103237795" style="zoom:40%;" />
+	
+	> 例7中，$\forall xA(x)$ 与 $\forall xB(x)$ 分开，可以使用附加前提证明．
+	
+	<img src="Chap1.assets/image-20260403103254282.png" alt="image-20260403103254282" style="zoom:40%;" />
