@@ -3320,11 +3320,16 @@ Changing the order of quantifiers completely changes the meaning of the proposit
 <li><span class="arithmatex">\(\neg \forall x P(x) \nRightarrow \neg P(c)\)</span> 不能穿透否定符号．</li>
 <li><span class="arithmatex">\(\exists x F(x) \rightarrow \forall y G(y)\)</span> 不能各自剥离成为 <span class="arithmatex">\(F(c)\to G(z)\)</span>．</li>
 </ul>
-<p><strong>②：证明顺序</strong></p>
-<p>当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．</p>
-<p>如以前提 <span class="arithmatex">\(\forall x(F(x)\to G(x)),\exists xF(x)\)</span> 证明结论 <span class="arithmatex">\(\exists xG(x)\)</span>，证明1正确而证明2错误．</p>
-<p>证明1：</p>
-<div class="arithmatex">\[
+</div>
+<p>​ <br />
+<strong>②：证明顺序</strong></p>
+<pre><code>当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+
+如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
+
+证明1：
+
+$$
 \begin{array}{ll}
 &amp;(1)\exists xF(x)\quad &amp;\text{Premise}\\
 &amp;(2)F(c) &amp;(1),\text{EI}\\
@@ -3333,9 +3338,11 @@ Changing the order of quantifiers completely changes the meaning of the proposit
 &amp;(5)G(c) &amp; \text{(2),(4),Modus Ponens} \\
 &amp;(6)\exists xG(x) &amp; \text{(5),EG}  
 \end{array}
-\]</div>
-<p>证明2：</p>
-<div class="arithmatex">\[
+$$
+
+证明2：
+
+$$
 \begin{array}{ll} \\
 &amp;(1)\forall x(F(x)\to G(x)) &amp;\text{Premise} \\
 &amp;(2)F(c)\to G(c) &amp;(1),\text{UI} \\
@@ -3344,8 +3351,8 @@ Changing the order of quantifiers completely changes the meaning of the proposit
 &amp;(5)G(c) &amp; \text{(2),(4),Modus Ponens} \\
 &amp;(6)\exists xG(x) &amp; \text{(5),EG}  
 \end{array}
-\]</div>
-</div>
+$$
+</code></pre>
 <h3 id="55">5.5 构造证明</h3>
 <h4 id="551">5.5.1 直接证明法</h4>
 <p><img src="Chap1.assets/image-20260403101447465.png" alt="image-20260403101447465" style="zoom:45%;" /></p>
@@ -3428,7 +3435,7 @@ Changing the order of quantifiers completely changes the meaning of the proposit
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年4月3日 10:57:12 CST">2026年4月3日 10:57:12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年4月5日 21:42:22 CST">2026年4月5日 21:42:22</span>
   </span>
 
     
