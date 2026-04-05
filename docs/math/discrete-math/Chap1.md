@@ -841,8 +841,9 @@ $$
 	
 	+ $\neg \forall x P(x) \nRightarrow \neg P(c)$ 不能穿透否定符号．
 	+ $\exists x F(x) \rightarrow \forall y G(y)$ 不能各自剥离成为 $F(c)\to G(z)$．
-	
-	
+
+
+​	
 	**②：证明顺序**
 	
 	当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
@@ -925,7 +926,7 @@ $$
 	$$
 	
 	原命题为重言式，当且仅当 $A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B$ 为矛盾式．
-	
+
 
 
 !!! warning "注意事项"
