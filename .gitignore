@@ -12,3 +12,5 @@ requirements.txt
 /docs/.obsidian/
 
 /docs/LatexSuite/
+
+center-image.py

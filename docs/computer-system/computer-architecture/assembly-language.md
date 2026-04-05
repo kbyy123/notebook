@@ -1,4 +1,4 @@
-﻿# RISC-V 汇编语言
+# RISC-V 汇编语言
 
 ##  指令集架构
 
@@ -33,7 +33,9 @@ RISC-V的算术与逻辑运算指令具有相同的语法：`one two, three, fou
 
 汇编语言中的常数被称为立即数（immediate），immediate加法有特定的指令：`addi x3, x4, 10`．但是不需要 `subi`，因为 `addi` 操作的立即数可以是负数．
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260329215856474.png" alt="image-20260329215856474" style="zoom: 50%;" />
+</div>
 
 **逻辑运算**：含 `and`、`or`、`xor`、`sll`（shift left logical逻辑左移）、`srl`（逻辑右移）、`sra`（arithmetic 算术右移）以及对应的immediate形式
 
@@ -63,11 +65,15 @@ Immediate: andi x5, x6, 3 # x5 = x6 & 3
 
 例如1025的存储：
 
-![image-20260329221336354](assembly-language.assets/image-20260329221336354.png)
+<div style="text-align: center; margin-top: 15px;"> 
+<img src="assembly-language.assets/image-20260329221336354.png" alt="image-20260329221336354" />
+</div>
 
 在小端序中，字的地址与最右侧字节的地址相等．如上图中，字的地址为ADDR0． 
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260329221542161.png" alt="image-20260329221542161" style="zoom:33%;" />
+</div>
 
 DRAM（dynamic random access memory）是实现内存的主流手段．其包含多种类型，如DDR（double data rate）、HBM（high bandwidth memory）．与寄存器相比，内存速度较慢而容量较高．
 
@@ -119,17 +125,23 @@ sb x10, 4(x11)
 
 **与C语言的差别**：C语言是“满足条件则执行特定内容”，RISC-V是”满足条件的跳到特定处”，因此汇编的条件判断和C通常要反着来，比如C是判断相等则执行特定代码，到汇编要变为判断不相等则跳过特定代码：
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330093611562.png" alt="image-20260330093611562" style="zoom:50%;" />
+</div>
 
 也可以加入Else分支，判断不相等后进入Else．记住要在if的结束块处加上跳转到Exit的指令，否则会顺着执行Else的部分．
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330093925066.png" alt="image-20260330093925066" style="zoom:50%;" />
+</div>
 
 ### 循环
 
 通过之前的指令已经可以实现for循环：
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330094741572.png" alt="image-20260330094741572" style="zoom:50%;" />
+</div>
 
 ### 符号化寄存器名与伪指令
 
@@ -218,7 +230,9 @@ jr ra
 
 ### 嵌套函数
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260331210904773.png" alt="image-20260331210904773" style="zoom:50%;" />
+</div>
 
 RISC-V有一套严格的寄存器调用约定．所有的寄存器对应属性可以见上图．
 
@@ -266,26 +280,36 @@ RV32的内存分配：
 + 程序文段从 0001 0000 开始，pc指向此处
 + 静态数据（常量、static变量）从1000 0000开始，gp（global point）指向此处
 + 堆在静态数据上方．
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260331214417092.png" alt="image-20260331214417092" style="zoom: 50%;" />
+</div>
 
 ## 编译
 
 汇编语言的编译过程（其实就是C语言编译的后半段）：
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330101850762.png" alt="image-20260330101850762" style="zoom:50%;" />
+</div>
 
 最后的 `a.out` 太大了，无法存入寄存器，必须存在内存中．
 
 RISC-V的每条指令都是32位，即每一个字都是一条指令．
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330102445217.png" alt="image-20260330102445217" style="zoom:50%;" />
+</div>
 
 程序计数器（program counter）位于处理器内部，其保存着下一条指令的字节地址．通过数据通路（datapath）和内存系统执行完指令后，PC需要指向下一条指令，由于32位定长，因此只需 `PC = PC + 4`（字节）即可（或者在分支情况下加载为新地址）．
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260330102525832.png" alt="image-20260330102525832" style="zoom:50%;" />
+</div>
 
 ## 总结
 
 目前为止所有已学习的指令：
 
+<div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260331214525051.png" alt="image-20260331214525051" style="zoom: 67%;" />
+</div>
