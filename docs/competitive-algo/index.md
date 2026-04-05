@@ -2,17 +2,18 @@
 
 !!! abstract "概要"
 
-    + 时间：2025/10 - 2026/1
+    + 时间：2025/10 - 至今
     + 课程：[Acwing 算法基础课](https://www.acwing.com/activity/content/11/)
+    + 比赛：[2026春季联赛](26sp/index.md)
     + 参考材料：
     	+ [OI Wiki](https://oi-wiki.org/)
     	+ [Algorithms for Competitive Programming](https://cp-algorithms.com/)
     
 !!! info "说明"
 
-    大一上学习算法竞赛的笔记．因为最近要准备校赛和蓝桥杯（不过大概率是重在参与），翻出来复习顺便写一下笔记．
+    大一学习算法竞赛的笔记．
 
-!!! quote "常用模板"
+<!-- !!! quote "常用模板"
 
     ```cpp
     // 常用头文件
@@ -54,4 +55,4 @@
     // 排序去重
     sort(X.begin(), X.end());
     X.erase(unique(X.begin(), X.end()), X.end());
-    ```
+    ``` -->

@@ -78,7 +78,8 @@ plugins:
       locale: zh                  # 使用中文界面
       timezone: Asia/Shanghai     # 设置时区
   - changelog
-  - statistics
+  - statistics:
+      exclude_path: '.*index\.md$'
   - add-number:
       strict_mode: False
       order: 2
@@ -127,7 +128,7 @@ nav:
       - math/probability/counting.md
       - math/probability/core-probability.md
       - math/probability/random-variables.md
-  - 💡数据结构与算法:
+  - 💡数据结构:
     - data-structure/index.md
     - LeetCode:
       - data-structure/LeetCode/index.md
@@ -140,6 +141,11 @@ nav:
     - 算法竞赛:
       - data-structure/competitive-algo/index.md
       - data-structure/competitive-algo/template.md
+  - 💭💡🎈算法竞赛:
+    - competitive-algo/index.md
+    - 2026春季联赛:
+      - competitive-algo/26sp/index.md
+      - competitive-algo/26sp/3.md
   - 💻计算机系统:
     - computer-system/index.md
     - 计算机组成与体系结构:
