@@ -16,10 +16,10 @@
 	对于随机变量 $X$：掷一次骰子的点数，其PMF为
 	
 	$$
-	P(X=x)=\dfrac{1}{6} \quad \text{if }x\in \mathbb{Z}, 1\le x\le 6
+	\text{P}(X=x)=\dfrac{1}{6} \quad \text{if }x\in \mathbb{Z}, 1\le x\le 6
 	$$
 
-显然对于PMF，有 $\sum_{x}P(X=x)=1$，其中 $x$ 为随机变量 $X$ 的所有可能取值．
+显然对于PMF，有 $\sum_{x}\text{P}(X=x)=1$，其中 $x$ 为随机变量 $X$ 的所有可能取值．
 
 ### 期望
 随机变量 $X$ 所有可能取到的值与该值对应出现概率的加权平均称为随机变量 $X$ 的期望，记作 $\text{E}[X]$．
@@ -258,7 +258,7 @@ $$
 ### 几何分布
 对于有 $p$ 的概率成功的试验，不断进行直到该试验成功，设 $X$ 为到成功时的试验次数，则 $X$ 服从**几何分布**，记作 $X\sim \text{Geo}(p)$．
 
-**PMF**：$P(X=x)=(1-p)^{1-x}\cdot p,x=1,2,\cdots$．
+**PMF**：$\text{P}(X=x)=(1-p)^{1-x}\cdot p,x=1,2,\cdots$．
 
 **期望**：$\text{E}[X]=\dfrac{1}{p}$．
 
@@ -266,7 +266,7 @@ $$
 ### 负二项分布
 对于有 $p$ 的概率成功的试验，不断进行直到该试验成功 $r$ 次，设 $X$ 为到成功 $r$ 时的试验次数，则 $X$ 服从**负二项分布**，记作 $X\sim \text{NegBin}(r,p)$．
 
-**PMF**：$P(X=x)=\dbinom{x-1}{r-1}p^{r}(1-p)^{x-r},x=r,r+1,\cdots$．
+**PMF**：$\text{P}(X=x)=\dbinom{x-1}{r-1}p^{r}(1-p)^{x-r},x=r,r+1,\cdots$．
 
 **期望**：$\text{E}[X]=\dfrac{r}{p}$．
 
@@ -274,7 +274,7 @@ $$
 ### 超几何分布
 从包含 $K$ 个成功个体的总体 $N$ 中，不放回地抽取大小为 $n$ 的样本．设 $X$ 为 $n$ 个样本中成功个体的数量，则 $X$ 服从**超几何分布**，记作 $X\sim \text{HyperGeom}(N,K,n)$．
 
-**PMF**：$P(X=x)=\dfrac{\dbinom{K}{x}\cdot\dbinom{N-K}{n-x}}{\dbinom{N}{n}},x=N-K+n,\cdots,K$．
+**PMF**：$\text{P}(X=x)=\dfrac{\dbinom{K}{x}\cdot\dbinom{N-K}{n-x}}{\dbinom{N}{n}},x=N-K+n,\cdots,K$．
 
 **期望**：$\text{E}[X]=n\cdot\dfrac{K}{N}$．
 
@@ -375,7 +375,7 @@ $$
 
 $$
 \begin{aligned}
-\text{P}(X>t_{0}+t\mid X>t_{0})&=\dfrac{\text{P}(X>t_{0}+t)}{P(X>t_{0})} \\
+\text{P}(X>t_{0}+t\mid X>t_{0})&=\dfrac{\text{P}(X>t_{0}+t)}{\text{P}(X>t_{0})} \\
 &=\dfrac{1-F(t_{0}+t)}{1-F(t_{0})} \\
 &=\dfrac{e^{-\lambda (t_{0}+t)}}{e^{-\lambda t_{0}}} \\
 &=e^{-\lambda t} \\

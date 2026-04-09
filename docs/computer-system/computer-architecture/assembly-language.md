@@ -36,7 +36,6 @@ RISC-V的算术与逻辑运算指令具有相同的语法：`one two, three, fou
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260329215856474.png" alt="image-20260329215856474" style="zoom: 50%;" />
 </div>
-
 **逻辑运算**：含 `and`、`or`、`xor`、`sll`（shift left logical逻辑左移）、`srl`（逻辑右移）、`sra`（arithmetic 算术右移）以及对应的immediate形式
 
 and：
@@ -56,12 +55,12 @@ Immediate: andi x5, x6, 3 # x5 = x6 & 3
 
 内存（Memory）存储程序与数据．要访问内存中的每一个字，处理器（Processor）必须提供一个地址．选取完地址后，我们可以选择读取（load from memory）或写入（store to memory）．
 
-内存中的地址是以字节为最小单位而不是字．
+内存中的地址是**以字节为最小单位**而不是字．
 
-字节序（endianness）规定了字节在内存中的存储位置．
+**字节序**（endianness）规定了字节在内存中的存储位置．
 
-+ 小端序（Little-Endian）：最低有效位放在最低地址
-+ 大端序（Big-Endian）：最高有效位放在最低地址
++ **小端序**（Little-Endian）：最低有效位放在最低地址
++ **大端序**（Big-Endian）：最高有效位放在最低地址
 
 例如1025的存储：
 
@@ -74,8 +73,7 @@ Immediate: andi x5, x6, 3 # x5 = x6 & 3
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="assembly-language.assets/image-20260329221542161.png" alt="image-20260329221542161" style="zoom:33%;" />
 </div>
-
-DRAM（dynamic random access memory）是实现内存的主流手段．其包含多种类型，如DDR（double data rate）、HBM（high bandwidth memory）．与寄存器相比，内存速度较慢而容量较高．
+**DRAM**（dynamic random access memory）是实现内存的主流手段．其包含多种类型，如DDR（double data rate）、HBM（high bandwidth memory）．与寄存器相比，内存速度较慢而容量较高．
 
 RISC-V的访存指令语法：`op rs2, offset(rs1)`． 
 
@@ -236,8 +234,8 @@ jr ra
 
 RISC-V有一套严格的寄存器调用约定．所有的寄存器对应属性可以见上图．
 
-+ 不保证保留的寄存器：如 `ra`、`a0-a7`、`t0-t6` 等．这些寄存器值在调用函数后会破坏，如果调用方想要调用其他函数后还想使用这些值，需要自己将这些值压栈保存．
-+ 保证保留的寄存器：如 `s0-s11` 和 `sp`．调用方可以放心地认为这些寄存器内部的值不会修改．如果被调用的函数需要修改这些寄存器中的值，它需要在执行前将旧值压栈保存，返回前将旧值出栈恢复．
++ **不保证保留的寄存器（调用者保存）**：如 `ra`、`a0-a7`、`t0-t6` 等．这些寄存器值在调用函数后会破坏，如果调用方想要调用其他函数后还想使用这些值，需要自己将这些值压栈保存．
++ **保证保留的寄存器（被调用者保存）**：如 `s0-s11` 和 `sp`．调用方可以放心地认为这些寄存器内部的值不会修改．如果被调用的函数需要修改这些寄存器中的值，它需要在执行前将旧值压栈保存，返回前将旧值出栈恢复．
 
 以该函数为例，介绍一下嵌套调用过程：
 

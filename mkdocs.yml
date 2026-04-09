@@ -120,8 +120,6 @@ nav:
     - 离散数学:
       - math/discrete-math/index.md
       - math/discrete-math/Chap1.md
-      - math/discrete-math/set.md
-      - math/discrete-math/proof.md
       - math/discrete-math/induction.md
     - 概率论:
       - math/probability/index.md
@@ -138,9 +136,6 @@ nav:
       - data-structure/fds/index.md
       - data-structure/fds/string.md
       - data-structure/fds/tree.md
-    - 算法竞赛:
-      - data-structure/competitive-algo/index.md
-      - data-structure/competitive-algo/template.md
   - 💭💡🎈算法竞赛:
     - competitive-algo/index.md
     - 2026春季联赛:

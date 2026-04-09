@@ -599,7 +599,7 @@ $$
 + $\forall xA(x)\wedge B(x) \Leftrightarrow \forall  xA(x)∧B(y)$
 
 #### 前束范式
-**前束范式**：量词均在合式公式的开头，且它们的辖域延伸到整个公式末尾．
+**前束范式**（Prenex Normal Form）：量词均在合式公式的开头，且它们的辖域延伸到整个公式末尾．
 
 
 **存在性定理**：谓词逻辑合式公式均存在与之等值的前束范式．合式公式的前束范式是不唯一的．
@@ -844,12 +844,12 @@ $$
 
 
 ​	
-	**②：证明顺序**
-	
-	当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
-	
-	如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
-	
+​	**②：证明顺序**
+​	
+​	当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+​	
+​	如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
+​	
 	证明1：
 	
 	$$
@@ -944,3 +944,133 @@ $$
 	> 例7中，$\forall xA(x)$ 与 $\forall xB(x)$ 分开，可以使用附加前提证明．
 	
 	<img src="Chap1.assets/image-20260403103254282.png" alt="image-20260403103254282" style="zoom:40%;" />
+
+## Introduction to Proofs
+Unlike the previous section on **Formal Proof**, which demands a machine-checked chain of strict inference rules, this section explores **Informal Proof**, where we care contents as well as forms.
+
+### Basic Terminology
+**theorem**(定理): A valid logical assertion which can be proved using other theorems, **axioms**(公理), or rules of inferences.
+
+**lemma**(引理): A pre-theorem that is helpful in the proof of other results.
+
+**corollary**(推论): A theorem that can be established directly from a theorem that has been proved.
+
+**conjecture**(猜想): A statement that is being proposed to be a true statement.
+
+### Proof Methods for Implications
+Assume that we need to prove implication $p\to q$.
+
+**Direct Proof**: Assume the premise $p$ is true, and use rules of inference to prove conclusion $q$​.
+
+???+ example "example"
+
+	<img src="Chap1.assets/image-20260409204728178.png" alt="image-20260409204728178" style="zoom:50%;" />
+
+**Indirect proof (Contrapositive)**: Assume the conclusion is false ($¬q$ is true), and prove the premise is false ($¬p$​).
+
+???+ example "example"
+
+	<img src="Chap1.assets/image-20260409204752930.png" alt="image-20260409204752930" style="zoom:50%;" />
+
+**Trivial proof**(平凡证明): Prove $q$ by itself; the assertion is trivially true independent of the truth of $p$.
+
+**Vacuous proof**(空证明): Prove $¬p$ by itself; if the hypothesis $p$ is false, then $p→q$ is vacuously true.
+
+**Proof by contradiction**(反证法): To prove a statement $p$ is true, assume $p$ is false and derive a contradiction.
+
+**Proof by cases**(分情况讨论): Break the premise into an equivalent disjunction ($p_{1}∨p_{2}⋯∨p_{n}$​) and establish all implications $(p_{1}→q)∧⋯∧(p_{n}→q)$​.
+
+???+ example "Example"
+
+	<img src="Chap1.assets/image-20260409205823218.png" alt="image-20260409205823218" style="zoom:50%;" />
+
+!!! warning "warning"
+
+	Proof by Cases must prove for all cases. If we don't cover all cases, then the proof is invalid.
+
+**Exhaustive Proof**(穷举法): A specific type of proof by cases where you exhaust all possible instances.
+
+???+ example "Example"
+
+	<img src="Chap1.assets/image-20260409205923741.png" alt="image-20260409205923741" style="zoom:50%;" />
+
+!!! question "Differences between Proof by cases and Exhaustive Proof"
+
+	Exhaustive Proof is a specific variation of Proof by cases where you literally verify the theorem by exhausting **all individual instances** rather than dividing them into some cases. When the domain is infinite, we can't use Exhaustive Proof.
+
+
+**Without loss of generality (WLOG)**(不失一般性): Used when covering one case is sufficient because other cases are similar and can be proven using the exact same logic.
+
+!!! quote "Mathematical Induction"
+
+	Not included in the textbook and the slides, but a good way to prove theorem of natural numbers. See [induction](induction.md).
+
+### Proof Methods for Quantified Statements
+#### Existence Proofs
+Assume that we need to prove $\exists xP(x)$.
+
+**Constructive**: Establish $P(c)$ is true for some specific element $c$ in the universe.
+
+???+ example "Example"
+
+	Theorem: For any integer $n>0$, there exists a sequence of $n$ consecutive composite integers.
+	
+	Proof: The same statement in predicate logic is $\forall n>0\,\exists x\,\forall i((1\leq i \leq n)\to(x + i \text{ is composite}))$.
+	
+	Construct $x=(n+1)!+1$. Then $x+i=(n+1)!+i+1$. Because $1\leq i \leq n$, then $2 \leq i + 1\leq n+1$, so $i + 1 \mid (n+1)!$, and $i + 1\mid (n+1)! +i+1$, i.e. $i + 1\mid x+i$, $x+i$ is a composite integer for $1\leq i \leq n$.
+
+
+**Nonconstructive**: Assume no $c$ exists which makes $P(c)$ true and derive a contradiction, or show that an element must exist **without explicitly** describing it.
+
+???+ example "Example"
+
+	**Theorem1**: There exist irrational numbers $x$ and $y$ such that $x^y$ is rational.
+	
+	Proof: Let $x=\sqrt{2}$ and $y=\sqrt{2}$. Make the following two cases:
+	
+	+ $a$. $\sqrt{2}^{\sqrt{2}}$ is rational.
+	+ $b$. $\sqrt{2}^{\sqrt{2}}$ is irrational.
+	
+	Because $a\lor b$ is a tautology, exactly one of them must be true.
+	
+	+ If $a$ is true, this immediately yields our claim, since $x$ and $y$ are both irrational and $x^y$ is rational. 
+	+ If $b$ is true, now we have a new irrational number $\sqrt{2}^{\sqrt{2}}$. Let $\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$, Then,
+	
+	$$
+	x^y=(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}=(\sqrt{2})^{(\sqrt{2}\cdot \sqrt{2})}=\sqrt{2}^2=2,
+	$$
+	
+	Now we again started with two irrational numbers $x$ and $y$ and obtained rational $x^y$.
+	
+	**Theorem2**: There are infinitely many prime numbers.
+	
+	Proof: Any finite set of numbers must contain a maximal element, so we can prove the theorem if we can just prime number. I.e., proof that for any prime number, there is a larger number that is also prime.
+	
+	$\forall$ Prime $n$, consider $x=n!+1$.
+	
+	+ If $x$ is a prime integer, since $x>n$, then the theorem is true.
+	+ If $x$ is a composite integer, then it must have a prime factor $p$, i.e. $x\equiv 0\pmod{p}$. But if $p\leq n$, then $x\equiv 1\pmod{p}$ because $x=n!+1$. So $p>n$. And $p$ is a prime number, so the theorem is true. 
+#### Nonexistence Proofs
+Nonexistence Proofs $\neg\exists xP(x)$ is equivalent to proving $\forall x\neg P(x)$. Then is a problem for Universal Proofs.
+
+#### Universal Proofs
+To proof $\forall xP(x)$, assume $x$ is an **arbitrary member** of the universe and show $P(x)$ must be true, then use UG.
+
+#### Nonuniversal Proofs
+Nonuniversal Proofs $\neg\forall  xP(x)$ is equivalent to proving $\exists  x\neg P(x)$. Then is a problem for Existence Proofs. We need to construct a counterpart.
+
+#### Uniqueness Proofs
+Uniqueness Proofs consists of two steps.
+
+1. show **existence** ($∃xP(x)$). 
+2. show **uniqueness** by proving $∀y(P(y)→y=x)$ or $∀y(y\neq x→¬P(y))$.
+
+### Some Fallacies
+Some fallacies(谬论) may occur when we are proving:
+
+**Fallacy of Affirming the Consequent**: $P\to Q,Q$, so $P$. I.e. $[(P\to Q)\wedge Q]\to P$.
+
+**Fallacy of Denying the Antecedent**: $P\to Q,\neg P$, so $\neg Q$. I.e. $[(P\to Q)\wedge \neg P]\to \neg Q$.
+
+**Circular Reasoning**: The fallacy of explicitly or implicitly assuming the very statement you are trying to prove within the proof itself.
+
