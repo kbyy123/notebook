@@ -46,3 +46,13 @@
 .md-typeset .arithmatex:not(:has(.katex-display)) .katex {
     padding: 0 !important;
 }
+
+/* 让公式字号接近正文 */
+.md-typeset .katex {
+  font-size: 1.1em !important;
+}
+
+/* 可选：块级公式略大一点，阅读更舒服 */
+.md-typeset .katex-display > .katex {
+  font-size: 1.2em !important;
+}
