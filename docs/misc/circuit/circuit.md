@@ -56,8 +56,8 @@
 
 | 理想电源 | 电压源：两端的电压为定值                                     | 电流源：穿过其的支路电流为定值                               |
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 独立电源 | <img src="circuit-model.assets/image-20260325162211080.png" alt="image-20260325162211080" style="zoom:40%;" /> | <img src="circuit-model.assets/image-20260325162655438.png" alt="image-20260325162655438" style="zoom:40%;" /> |
-| 受控电源 | <img src="circuit-model.assets/image-20260325162716767.png" alt="image-20260325162716767" style="zoom:50%;" /> | <img src="circuit-model.assets/image-20260325162728116.png" alt="image-20260325162728116" style="zoom:50%;" /> |
+| 独立电源 | <img src="circuit.assets/image-20260325162211080.png" alt="image-20260325162211080" style="zoom:40%;" /> | <img src="circuit.assets/image-20260325162655438.png" alt="image-20260325162655438" style="zoom:40%;" /> |
+| 受控电源 | <img src="circuit.assets/image-20260325162716767.png" alt="image-20260325162716767" style="zoom:50%;" /> | <img src="circuit.assets/image-20260325162728116.png" alt="image-20260325162728116" style="zoom:50%;" /> |
 
 受控电源：其电压/电流的值为电路中某一个电压/电流的倍数．注意看其上方的电压/电流编号并在电路图中找出．
 
@@ -66,7 +66,7 @@
 ???+ example "例"
 
 	<div style="text-align: center">
-	  <img src="circuit-model.assets/image-20260325163641589.png" alt="image-20260325163641589" style="zoom:50%;" />
+	  <img src="circuit.assets/image-20260325163641589.png" alt="image-20260325163641589" style="zoom:50%;" />
 	</div>
 	
 	$$
@@ -82,13 +82,13 @@
 **实际电压源**：看作是理想电压源串联电阻 $R_{s}$​．
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325164412007.png" alt="image-20260325164412007" style="zoom: 50%;" />
+  <img src="circuit.assets/image-20260325164412007.png" alt="image-20260325164412007" style="zoom: 50%;" />
 </div>
 
 **实际电流源**：看作是理想电流源并联电阻 $R_{s}$．
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325164435006.png" alt="image-20260325164435006" style="zoom:50%;" />
+  <img src="circuit.assets/image-20260325164435006.png" alt="image-20260325164435006" style="zoom:50%;" />
 </div>
 
 ### 等效
@@ -107,8 +107,8 @@
 + 电压源与二端网络并联/电流源与二端网络串联：当作其不存在
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325165100516.png" alt="image-20260325165100516" style="zoom: 50%;" />
-  <img src="circuit-model.assets/image-20260325165110873.png" alt="image-20260325165110873" style="zoom: 50%;" />
+  <img src="circuit.assets/image-20260325165100516.png" alt="image-20260325165100516" style="zoom: 50%;" />
+  <img src="circuit.assets/image-20260325165110873.png" alt="image-20260325165110873" style="zoom: 50%;" />
 </div>
 
 + 实际电压源与实际电流源的等效替换：电阻串改并，并改串；注意方向不要变，此时电流方向为电压的负 $\to$ 正方向．
@@ -116,7 +116,7 @@
     + 电流 $\to$ 电压：电压大小 $u_{s}=i_{s}R_{s}$．
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325165346506.png" alt="image-20260325165346506" style="zoom:60%;" />
+  <img src="circuit.assets/image-20260325165346506.png" alt="image-20260325165346506" style="zoom:60%;" />
 </div>
 
 受控电源的等效也要乘以或除以 $R_{s}$．
@@ -132,7 +132,7 @@
 以该题为例：
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325170648247.png" alt="image-20260325170648247" style="zoom:67%;" />
+  <img src="circuit.assets/image-20260325170648247.png" alt="image-20260325170648247" style="zoom:67%;" />
 </div>
 
 先对电路进行处理：
@@ -161,7 +161,7 @@ $$
 $$
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325172342865.png" alt="image-20260325172342865" style="zoom:50%;" />
+  <img src="circuit.assets/image-20260325172342865.png" alt="image-20260325172342865" style="zoom:50%;" />
 </div>
 
 对节点 $1$，与其有互电导的为：节点 $2$，节点 $3$（等效为电流源并联 $R_{2}$）．流入的电流源为 $i_{1}$ 与 $\dfrac{U_{s2}}{R_{2}}$，无流出，因此方程为
@@ -215,7 +215,7 @@ $$
 简单的例子：
 
 <div style="text-align: center">
-  <img src="circuit-model.assets/image-20260325194230144.png" alt="image-20260325194230144" style="zoom: 50%;" />
+  <img src="circuit.assets/image-20260325194230144.png" alt="image-20260325194230144" style="zoom: 50%;" />
 </div>
 
 **线性含源单口网络的化简**：
@@ -233,4 +233,84 @@ $$
 戴维南最后的结果是电压源串联电阻，诺顿最后的结果是电流源并联电阻，而电压源串联电阻与电流源并联电阻本身就可以等效．实际上上述的短路电流法就是诺顿定理的内容．
 
 ### 最大功率传输定理
-高中知识，连接有源单口网络两端的负载电阻在阻值等于 $R_{eq}$ 时，其获得的功率最大，为 $P_{max}=\dfrac{u_{oc}^{2}}{4R_{eq}}$．
+高中知识，连接有源单口网络两端的负载电阻在阻值等于 $R_{eq}$ 时，其获得的功率最大，为 $P_{max}=\dfrac{u_{oc}^{2}}{4R_{eq}}$​．
+
+## 动态电路时域分析
+此处讨论的均为**一阶动态电路**，即只有一个动态元件的直流电路．
+
+### 动态元件
+
+**电容**：电流是电压的微分 $i_{c}(t)=C\dfrac{du_{c}(t)}{dt}$，电压是电流的积分 $u_{c}(t)=\displaystyle\dfrac{1}{C}\int_{-\infty}^{t}i_{c}(t)dt$.
+
++ 记忆特性：$u_{c}(t)=\displaystyle u_{c}(t_{0)}+\dfrac{1}{C}\int_{t_{0}}^{t}i_{c}(t)dt$
+
++ 储能特性：$W(t)=\dfrac{1}{2}Cu^{2}_{c}t$．
+
++ 串并联：与电阻串并联公式相反．
+
+**电感**：电压是电流的微分 $u_{L}(t)=C\dfrac{di_{L}(t)}{dt}$，电流是电压的积分 $i_{L}(t)=\displaystyle\dfrac{1}{L}\int_{-\infty}^{t}u_{L}(t)dt$.
+
++ 记忆特性：$i_{L}(t)=\displaystyle i_{L}(t_{0)}+\dfrac{1}{L}\int_{t_{0}}^{t}u_{L}(t)dt$
+
++ 储能特性：$W(t)=\dfrac{1}{2}Li^{2}_{L}t$．
+
++ 串并联：与电阻串并联公式相同．
+
+### 换路定则
+**直流稳态**：直流电路中各个元件上的电压和电流都不随着时间变化．
+
+**换路**：电路由一种工作状态变化到另外一种工作状态．
+
+**状态变量**：电容电压与电感电流．
+
+进入直流稳态后，分析电路：电容当作断路，电感当作断路．以此计算电容两端电压 $u_{c}(0^{-})$ 与流经电感电流 $i_{L}(0^{-})$．
+
+**换路定则**：由于状态变量是积分结果，无法突变，因此 $u_{c}(0^{-})=u_{c}(0^{+})$，$i_{L}(0^{-})=i_{L}(0^{+})$．求 $t(0^{+})$ 时的电路状态，将电容看作大小为 $u_{c}(0^{-})$ 的电压源，电感看作大小为 $i_{L}(0^{-})$ 的电流源．
+
+???+ example "例题"
+
+	<img src="circuit.assets/image-20260410091248746.png" alt="image-20260410091248746" style="zoom: 80%;" />
+
+### 零输入响应
+电路无外加激励（无独立电源），仅由动态元件的非零初始状态引起的响应（只考虑电容电感放电）称为**零输入相应（zir）**．
+
+将电路等效为电容/电感连接等效电阻 $R_{eq}$（就是戴维南的 $R_{eq}$），求时间常数 $\tau =RC$（电容）或 $\tau=\dfrac{L}{R}$（电感），则任意量的零输入响应都可以写成
+
+$$
+y(t)=y(0^{+})e^{-\frac{1}{\tau}t} \quad t\geq 0^{+}
+$$
+
+$\tau$ 的单位是秒，常取 $t=(3\sim 5)\tau$ 作为放电完毕所需时间．$\tau$ 越大放电越慢．
+
+???+ example "例题"
+
+	<img src="circuit.assets/image-20260410092131500.png" alt="image-20260410092131500" style="zoom:80%;" />
+	
+	<img src="circuit.assets/image-20260410092149845.png" alt="image-20260410092149845" style="zoom:80%;" />
+
+### 零状态响应
+在零初始状态下，仅由外加激励源产生的响应（电容电感充电过程）称为**零状态响应（zsr）**．
+
+零状态响应并不是任意量都能写成同一公式，只有状态变量可以写成
+
+$$
+\begin{cases}
+u_{c}(t)=U_{s}(1-e^{-\frac{1}{\tau}t}) \\
+i_{L}(t)=I_{s}(1-e^{-\frac{1}{\tau}t})
+\end{cases}
+$$
+
+的形式，其余变量需要根据电压电流关系推导．其中 $U_{s}=u_{c}(\infty)$，$I_{s}=i_{L}(\infty)$．
+
+充电过程中，等效电阻损耗的能量与电容/电感的储能一样，充电效率为 $50\%$．
+
+与放电一样，$\tau$ 越大充电越慢．
+
+???+ example "例题"
+
+	<img src="circuit.assets/image-20260410092807780.png" alt="image-20260410092807780" style="zoom: 80%;" />
+	
+	<img src="circuit.assets/image-20260410092828714.png" alt="image-20260410092828714" style="zoom:80%;" />
+
+### 全响应
+全响应=零输入响应（忽略电源）+零状态响应（忽略初始储能）．
