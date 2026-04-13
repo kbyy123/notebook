@@ -121,11 +121,11 @@ nav:
       - math/discrete-math/index.md
       - math/discrete-math/Chap1.md
       - math/discrete-math/induction.md
-    - 概率论:
-      - math/probability/index.md
-      - math/probability/counting.md
-      - math/probability/core-probability.md
-      - math/probability/random-variables.md
+    # - 概率论:
+    #   - math/probability/index.md
+    #   - math/probability/counting.md
+    #   - math/probability/core-probability.md
+    #   - math/probability/random-variables.md
   - 🧮数据结构:
     - data-structure/index.md
     - LeetCode:
