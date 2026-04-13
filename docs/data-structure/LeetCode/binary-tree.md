@@ -206,6 +206,12 @@ vector<vector<int>> verticalTraversal(TreeNode* root) {
 }
 ```
 
+## 灵活运用
+
+### [100. 相同的树](https://leetcode.cn/problems/same-tree/)
+
+### [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+
 ### [110. 平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
 
 先给出我一开始的错误示范：虽然结果是对的也能AC，但是当每次用到一个结点的 `maxDepth` 时都要重新遍历整个树；当树退化为链表时会达到 $O(n^2)$ 的复杂度．
@@ -244,6 +250,14 @@ bool isBalanced(TreeNode* root) {
     return maxDepth(root) != -1;
 }
 ```
+
+### [199. 二叉树的右视图](https://leetcode.cn/problems/binary-tree-right-side-view/)
+
+### [226. 翻转二叉树](https://leetcode.cn/problems/invert-binary-tree/)
+
+### [617. 合并二叉树](https://leetcode.cn/problems/merge-two-binary-trees/)
+
+### [1026. 节点与其祖先之间的最大差值](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/)
 
 ### [1080. 根到叶路径上的不足节点](https://leetcode.cn/problems/insufficient-nodes-in-root-to-leaf-paths/)
 
@@ -413,6 +427,14 @@ bool isValidBST(TreeNode* root) {
 
 想要降低空间复杂度实现 $O(1)$，可参考[Morris遍历](https://oi-wiki.org/graph/tree-basic/#%E4%BA%8C%E5%8F%89%E6%A0%91-morris-%E9%81%8D%E5%8E%86)．（反正我没学会😭）
 
+### [938. 二叉搜索树的范围和](https://leetcode.cn/problems/range-sum-of-bst/)
+
+### [2476. 二叉搜索树最近节点查询](https://leetcode.cn/problems/closest-nodes-queries-in-a-binary-search-tree/)
+
+### [230. 二叉搜索树中第 K 小的元素](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/)
+
+### [1373. 二叉搜索子树的最大键值和](https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/)
+
 ### [105. 从前序与中序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
 参考资料：[反推二叉树](https://oi-wiki.org/graph/tree-basic/#%E5%8F%8D%E6%8E%A8)，只要有中序遍历+另一个遍历就能反推二叉树．
@@ -490,4 +512,36 @@ TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
         return dfs(preorder, inorder, 0, size, 0, size);
     }
     ```
+
+### [106. 从中序与后序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
+
+### [889. 根据前序和后序遍历构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/)
+
+### [1110. 删点成林](https://leetcode.cn/problems/delete-nodes-and-return-forest/)
+
+## 最近公共祖先
+
+### [236. 二叉树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+### [235. 二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
+### [1123. 最深叶节点的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-deepest-leaves/)
+
+## BFS（层序遍历）
+
+### [102. 二叉树的层序遍历](https://leetcode.cn/problems/binary-tree-level-order-traversal/)
+
+### [103. 二叉树的锯齿形层序遍历](https://leetcode.cn/problems/binary-tree-zigzag-level-order-traversal/)
+
+### [513. 找树左下角的值](https://leetcode.cn/problems/find-bottom-left-tree-value/)
+
+### [107. 二叉树的层序遍历 II](https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/)
+
+### [116. 填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
+
+### [117. 填充每个节点的下一个右侧节点指针 II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
+
+### [2415. 反转二叉树的奇数层](https://leetcode.cn/problems/reverse-odd-levels-of-binary-tree/)
+
+### [2641. 二叉树的堂兄弟节点 II](https://leetcode.cn/problems/cousins-in-binary-tree-ii/)
 

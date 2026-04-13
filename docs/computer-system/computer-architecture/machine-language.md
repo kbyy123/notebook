@@ -9,13 +9,13 @@
 
 ## 指令编码格式
 
-RISC-V的所有指令都和数据一样被设计为固定的32位．为了实现不同功能，将这32位划分成了不同的**字段**，并定义了六种基本格式：R、I、S、B、U、J．
+本节涉及到的RISC-V基础指令都和数据一样被设计为固定的32位．为了实现不同功能，将这32位划分成了不同的**字段**，并定义了六种基本格式：R、I、S、B、U、J．
 
 由于共有32个寄存器，因此表示寄存器至少需要5bit宽．
 
 ### R格式
 
-R格式用于算数与逻辑操作的指令．
+R格式用于算术与逻辑操作的指令．
 
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="machine-language.assets/image-20260401211805864.png" alt="image-20260401211805864" style="zoom:50%;" />
@@ -48,11 +48,11 @@ I格式用于与立即数Immediate有关的指令．
 <img src="machine-language.assets/image-20260401214019674.png" alt="image-20260401214019674" style="zoom:50%;" />
 </div>
 
-由于一个寄存器只有32位，移动超过31位的值没有意义，因此移位操作的字段划分仍然类似R指令，其中 `rs2` 为移位数，第30位用于区分逻辑/算数右移．
+由于一个寄存器只有32位，移动超过31位的值没有意义，因此移位操作的字段划分仍然类似R指令，其中立即数的低5位为移位数，第30位用于区分逻辑/算术右移．
 
 与R指令比较，同样的指令对应的 `funct3` 代码其实也是相同的．
 
-由于load word指令的格式与立即数计算几乎一样（`rs1` 表示 `base`、`rd` 表示 `dest`、立即数表示偏移量），因此load指令也是一种特殊的I格式，其 `opcode` 为000011．
+由于load word指令的格式与立即数计算几乎一样（`rs1` 表示 `base`、`rd` 表示 `dest`、立即数表示偏移量），因此load指令也是一种特殊的I格式，其 `opcode` 为0000011．
 
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="machine-language.assets/image-20260401220414256.png" alt="image-20260401220414256" style="zoom:50%;" />
@@ -62,7 +62,7 @@ I格式用于与立即数Immediate有关的指令．
 <img src="machine-language.assets/image-20260401215038915.png" alt="image-20260401215038915" style="zoom: 50%;" />
 </div>
 
-> `lh` 为load halfword，即一次读取半字/16字节．
+> `lh` 为load halfword，即一次读取半字/16位（2字节）．
 >
 > `lb` 和 `lh` 都是符号位拓展，将终点寄存器的其他位用二进制数的最高位填充；`lbu` 和 `lhu` 对应无符号形式，其他位均为0填充．
 
@@ -110,7 +110,7 @@ B格式的 `opcode` 为1100011．
 
 ### U格式
 
-如果我们想跳转到 $2^{10}$ 字以外的指令处呢？实际上，`jar` 类指令可以跳得更远．在B格式无法跳到的地方，编译器会自动用 `jar` 类指令：
+如果我们想跳转到 $2^{10}$ 字以外的指令处呢？实际上，`jal` 类指令可以跳得更远．在B格式无法跳到的地方，编译器会自动用 `jal` 类指令：
 
 ``` 
 beq x10, x0, far
@@ -121,7 +121,7 @@ j far
 next: next instr
 ```
 
-实际上，`jar` 类指令使用了类似U格式才能实现跳的更远．U格式是用于加载大立即数的指令．其提供了长达20位的立即数字段，以及一个目标寄存器 `rd`．U格式本身的指令有两个：`lui` 与 `auipc`．
+其中 `j`/`jal` 本身属于J格式，可以直接实现更远的跳转；而U格式则常常与 `jalr` 配合，用于构造更大的常数或更灵活的跳转地址．U格式是用于加载大立即数的指令．其提供了长达20位的立即数字段，以及一个目标寄存器 `rd`．U格式本身的指令有两个：`lui` 与 `auipc`．
 
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="machine-language.assets/image-20260405210034978.png" alt="image-20260405210034978" style="zoom: 50%;" />
@@ -148,7 +148,7 @@ lui x10, 0xdeadc		# x10 = 0xdeadc000
 addi x10, x10, 0xeef	# x10 = 0xdeadbeef
 ```
 
-不过编译器已经帮我们解决了这个问题，使用伪指令 `li x10, 0xdeadbeaf`（这个可以用来加载任意32位补码）即可．
+不过编译器已经帮我们解决了这个问题，使用伪指令 `li x10, 0xdeadbeef`（这个可以用来加载任意32位补码）即可．
 
 **`auipc`** 会把20位大立即数扩展为32位（后补0）与PC相加，同时将和加载到目标寄存器上．注意这个过程不改变PC本身的值．
 
@@ -160,19 +160,19 @@ addi x10, x10, 0xeef	# x10 = 0xdeadbeef
 
 ### J格式
 
-J格式用于跳转指令，其跳转范围因为使用了20位（由于可以省略最后的0，实际上是21位）大立即数，因此可以寻址到 $\pm 2^{18}$​ 个字．`jal rd, label` 将当前的 PC + 4 存入 `rd` 中，跳转到 PC + offset 的指令位置（offset 由 label 与PC的相对距离算出）．
+J格式用于跳转指令，其跳转范围因为使用了20位（由于可以省略最后的0，实际上是21位）大立即数，因此可以寻址到约 $\pm 2^{20}$ 字节的范围．`jal rd, label` 将当前的 PC + 4 存入 `rd` 中，跳转到 PC + offset 的指令位置（offset 由 label 与PC的相对距离算出）．
 
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="machine-language.assets/image-20260405212438719.png" alt="image-20260405212438719" style="zoom: 50%;" />
 </div>
 
-跳转指令还有一个 `jalr rd, rs, imm`，但其格式属于**I指令**，因为格式完全相同：
+跳转指令还有一个 `jalr rd, rs1, imm`，但其格式属于**I指令**，因为格式完全相同：
 
 <div style="text-align: center; margin-top: 15px;"> 
 <img src="machine-language.assets/image-20260405213351759.png" alt="image-20260405213351759" style="zoom:50%;" />
 </div>
 
-其负责将 PC + 4 存入 `rd` 中，然后将令 `PC = rs + imm` 从而跳转．
+其负责将 PC + 4 存入 `rd` 中，然后令 `PC = (rs1 + imm)` 的最低位清零后再跳转．
 
 ```
 # ret and jr psuedo-instructions
@@ -189,7 +189,7 @@ jalr x0, x1, <lo12bits>
 
 !!! warning "注意"
 
-	由于 `jalr` 使用的是I格式，因此它在计算跳转距离时没有补0的乘2范围．
+	由于 `jalr` 使用的是I格式，因此它在计算跳转距离时不像B、J格式那样通过省略最低位的0来扩大范围；它只是按照 `rs1 + imm` 计算目标地址，并将结果最低位清零．
 
 ## 总结
 

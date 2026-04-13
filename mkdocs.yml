@@ -157,3 +157,14 @@ nav:
     - misc/index.md
     - 电路与电子学基础:
       - misc/circuit/circuit.md
+
+not_in_nav: |
+  board.md
+  changelog.md
+  LatexSuite/**
+  competitive-algo/basis.md
+  competitive-algo/template.md
+  language/**
+  math/discrete-math/proof.md
+  math/discrete-math/set.md
+  math/probability/**

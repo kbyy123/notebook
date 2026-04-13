@@ -17,3 +17,5 @@
 
     - [ ] [C语言复习](C.md)
     - [ ] [数的表示与运算](number.md)
+    - [ ] [RISC-V 汇编语言](assembly-language.md)
+    - [ ] [RISC-V 机器语言](machine-language.md)
