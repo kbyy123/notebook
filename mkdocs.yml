@@ -47,6 +47,7 @@ markdown_extensions:
   - md_in_html  # 核心：允许在 <div> 标签内解析 Markdown    
   - pymdownx.superfences       # 支持更复杂的代码块嵌套
   - pymdownx.details           # 支持折叠块 (Admonitions)
+  - pymdownx.tilde             # 支持 ~~删除线~~ 和 ~下标~
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tabbed:

@@ -842,14 +842,12 @@ $$
 	+ $\neg \forall x P(x) \nRightarrow \neg P(c)$ 不能穿透否定符号．
 	+ $\exists x F(x) \rightarrow \forall y G(y)$ 不能各自剥离成为 $F(c)\to G(z)$．
 
-
-​	
-​	**②：证明顺序**
-​	
-​	当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
-​	
-​	如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
-​	
+	​**②：证明顺序**
+	​	
+	​当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+	​	
+	​如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
+	​	
 	证明1：
 	
 	$$
@@ -1015,9 +1013,28 @@ Assume that we need to prove $\exists xP(x)$.
 
 	Theorem: For any integer $n>0$, there exists a sequence of $n$ consecutive composite integers.
 	
-	Proof: The same statement in predicate logic is $\forall n>0\,\exists x\,\forall i((1\leq i \leq n)\to(x + i \text{ is composite}))$.
+	Proof: The same statement in predicate logic is 
 	
-	Construct $x=(n+1)!+1$. Then $x+i=(n+1)!+i+1$. Because $1\leq i \leq n$, then $2 \leq i + 1\leq n+1$, so $i + 1 \mid (n+1)!$, and $i + 1\mid (n+1)! +i+1$, i.e. $i + 1\mid x+i$, $x+i$ is a composite integer for $1\leq i \leq n$.
+	$$
+	\forall n>0\,\exists x\,\forall i((1\leq i \leq n)\to(x + i \text{ is composite}))
+	$$
+	
+	Construct $x=(n+1)!+1$. Then $x+i=(n+1)!+i+1$. Because $1\leq i \leq n$, then $2 \leq i + 1\leq n+1$, so 
+	
+	$$
+	i + 1 \mid (n+1)!
+	$$
+	
+	and
+	
+	$$
+	\begin{aligned}
+	&i + 1\mid (n+1)! +i+1\\
+	&\text{i.e. }i + 1\mid x+i
+	\end{aligned}
+	$$
+	
+	$x+i$ is a composite integer for $1\leq i \leq n$.
 
 
 **Nonconstructive**: Assume no $c$ exists which makes $P(c)$ true and derive a contradiction, or show that an element must exist **without explicitly** describing it.
@@ -1068,9 +1085,9 @@ Uniqueness Proofs consists of two steps.
 ### Some Fallacies
 Some fallacies(谬论) may occur when we are proving:
 
-**Fallacy of Affirming the Consequent**: $P\to Q,Q$, so $P$. I.e. $[(P\to Q)\wedge Q]\to P$.
+**Fallacy of Affirming the Consequent**: $P\to Q,Q$, so $P$. I.e. ${\color{red}[(P\to Q)\wedge Q]\to P}$.
 
-**Fallacy of Denying the Antecedent**: $P\to Q,\neg P$, so $\neg Q$. I.e. $[(P\to Q)\wedge \neg P]\to \neg Q$.
+**Fallacy of Denying the Antecedent**: $P\to Q,\neg P$, so $\neg Q$. I.e. ${\color{red}[(P\to Q)\wedge \neg P]\to \neg Q}$.
 
 **Circular Reasoning**: The fallacy of explicitly or implicitly assuming the very statement you are trying to prove within the proof itself.
 
