@@ -56,3 +56,17 @@
 .md-typeset .katex-display > .katex {
   font-size: 1.2em !important;
 }
+
+/* 宽屏布局：将左右目录向两侧拉开，同时扩大正文显示宽度 */
+/* 默认为 61rem */
+@media screen and (min-width: 76.25em) {
+    .md-grid {
+        max-width: 64rem;
+    }
+}
+
+@media screen and (min-width: 100em) {
+    .md-grid {
+        max-width: 66rem;
+    }
+}
