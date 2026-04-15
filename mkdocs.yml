@@ -54,7 +54,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - css/custom.css?v=20260322
+  - css/custom.css?v=20260415
   - css/timestamp.css
   - css/home.css
   - css/font.css?v=20260328
