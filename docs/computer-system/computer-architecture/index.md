@@ -3,7 +3,7 @@
 !!! abstract "概要"
 
     + 时间：2026/3 - 至今
-    + 课程：[CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/en/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)
+    + 课程：[UCBerkeley CS61C: Great Ideas in Computer Architecture](https://csdiy.wiki/en/%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/CS61C/)
     + 参考材料：
         + Computer Organization and Design: The Hardware/Software Interface, RISC-V Edition 
     	+ Computer Systems: A Programmer's Perspective

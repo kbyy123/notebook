@@ -150,6 +150,13 @@ nav:
       - computer-system/computer-architecture/number.md
       - computer-system/computer-architecture/assembly-language.md
       - computer-system/computer-architecture/machine-language.md
+  - 🤖人工智能:
+    - AI/index.md
+    - CV:
+      - AI/CV/index.md
+      - AI/CV/lec1-3.md
+      - AI/CV/lec4.md
+      - AI/CV/lec5-6.md
   # - 📝编程语言:
   #   - C++:
   #     - language/cpp/compile.md
