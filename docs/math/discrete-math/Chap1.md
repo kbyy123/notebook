@@ -266,19 +266,19 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
 	</div> -->
 
-**简单析取式/基本和**: 仅由有限个命题变元或其否定的**析取**构成的析取式．
+**简单析取式/基本和**（simple disjunctive form/basic sum）：仅由有限个命题变元或其否定的**析取**构成的析取式．
 
 + $\neg P \vee Q \vee R$, $\neg P \vee P$.
 
-**简单合取式/基本积**: 仅由有限个命题变元或其否定的**合取**构成的合取式．
+**简单合取式/基本积**（simple conjunctive form/basic product）：仅由有限个命题变元或其否定的**合取**构成的合取式．
 
 + $\neg Q \wedge R \wedge Q$, $\neg P \wedge P$.
 
-**析取范式/DNF**(Disjunctive Normal Form): 由有限个**简单合取式的析取**构成的析取式．
+**析取范式/DNF**（Disjunctive Normal Form）：由有限个**简单合取式的析取**构成的析取式．
 
 + $P\vee (P\wedge Q)\vee(\neg P\wedge \neg Q\wedge \neg R)$, $P\vee Q\vee R$.
 
-**合取范式/CNF**(Conjunctive Normal Form): 由有限个**简单析取式的析取**构成的合取式．
+**合取范式/CNF**（Conjunctive Normal Form）：由有限个**简单析取式的合取**构成的合取式．
 
 + $(P \vee Q) \wedge \neg Q \wedge (Q \vee \neg R \vee S)$, $P \wedge Q \wedge R$.
 
@@ -294,7 +294,7 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 	2. 利用德摩根律将公式中的 $\neg$ 移到命题变元之前，用双重否定律消去两个连续的 $\neg$．
 	3. 用分配律将公式化为基本积的析取（DNF）或基本和的合取（CNF）．   
 	  	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
-		+ 为了得到CNF, 将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
+		+ 为了得到CNF，将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
 
 问题在于，以这种方法得到的DNF/CNF不是唯一的．
 #### 主析取范式
@@ -393,10 +393,27 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 
 总结：主析取范式和主合取范式都是求一个命题公式等价形式的方法．
 
-主析取范式是将该命题公式所有为真的取值全部凑出来（极小项，一个极小项对应一个为真的取值）并析取；如果我们的赋值是原命题公式的成真赋值，那么一定可以对应让某一个极小项为真，从而主析取范式为真．
+主析取范式是将该命题公式所有为**真**的取值全部凑出来（极小项，一个极小项对应一个为真的取值）并析取；如果我们的赋值是原命题公式的成真赋值，那么一定可以对应让某一个极小项为真，从而主析取范式为真．
 
-主合取范式是将该命题公式所有为假的取值全部凑出来（极大项，一个极大项对应一个为假的取值）并合取；如果我们的赋值是原命题的成真赋值，那么它不会让任何一个极大项为假，从而主合取范式为真；反之如果是原命题的成假赋值，其一定会对应一个极大项为假，从而主合取范式为假．
+主合取范式是将该命题公式所有为**假**的取值全部凑出来（极大项，一个极大项对应一个为假的取值）并合取；如果我们的赋值是原命题公式的成真赋值，那么它不会让任何一个极大项为假，从而主合取范式为真；反之如果是原命题的成假赋值，其一定会对应一个极大项为假，从而主合取范式为假．
 
+因此，对于同一个命题，其主析取范式与主合取范式的下标总是**互补**的．
+
+即
+
+$$
+F=\bigvee_{i\in T} m_i
+\quad\Longleftrightarrow\quad
+F=\bigwedge_{j\in Z} M_j
+$$
+
+其中
+
+$$
+T\cup Z=\{0,1,\dots,2^n-1\},\qquad T\cap Z=\varnothing
+$$
+
+例如三个命题变量 $p,q,r$，若他们的主合取范式为 $M_0\land M_4\land M_5$，则他们的主析取范式为 $m_1\lor m_2\lor m_3\lor m_6\lor m_7$．
 ## Predicates and Quantifiers
 ### Predicates
 predicate(谓词): Propositions which contain variables. When its variables bound by assigning it a value or an object from the **domains of discourse**(论域), predicates become propositions.
@@ -418,6 +435,8 @@ $\exists!xP(x)$ means: "There is one and only one $x$ such that $P(x)$".
 > The uniqueness quantifier is not really need as it can be expressed with universal quantifiers and existential quantifiers:
 > 
 > $\exists !xP(x)\equiv \exists x(P(x)\wedge \forall y(P(y)\to y=x))$.
+> 
+> And we will not use it since it's more difficult to simplify it than $\exists$ and $\forall$.
 
 If the domain of discourse is null, then
 
@@ -500,7 +519,7 @@ $$
 
 **原子公式**（Atomic Formula）：以项为自变量的谓词．
 
-**合式公式**：原子公式，以及有限次利用原子公式和逻辑运算符（$A\wedge B,A\vee B,A\to B$ 等）、量词与个体变项（$\exists xA,\forall xA$ 等）规则形成的符号串．
+**合式公式**（Well-formed formula）：原子公式，以及有限次利用原子公式和逻辑运算符（$A\wedge B,A\vee B,A\to B$ 等）、量词与个体变项（$\exists xA,\forall xA$ 等）规则形成的符号串．
 
 #### 量词辖域与变项
 **指导变项**：紧跟在量词后的个体变项．
@@ -529,6 +548,8 @@ $$
 等值：$A\Leftrightarrow B$．$A\Leftrightarrow B$ 当且仅当 $A\leftrightarrow B$ 是永真式．如 $\neg\forall xF(x) \Leftrightarrow \exists x \neg F(x)$．
 
 #### 量词辖域收缩与扩张
+放入括号的过程称为辖**域扩张**（scope expansion），提出括号的过程称为**辖域收缩**（scope contraction）．
+
 假设 $B$ 中不含 $x$ 的出现：
 
 **析取/合取式**直接提出/放入括号，不需要改变符号．
@@ -575,7 +596,7 @@ $$
 #### 量词分配
 全称量词对合取可分配，对析取单向推出：
 
-+ $∀x(A(x)∧B(x))≡∀xA(x)∧∀xB(x)$
++ $∀x(A(x)∧B(x))\Leftrightarrow ∀xA(x)∧∀xB(x)$
 + $∀x(A(x)∨B(x))⇐∀xA(x)∨∀xB(x)$
 
 存在量词对析取可分配，对合取单向推出：
@@ -741,7 +762,14 @@ $$
 \therefore \ &Q \vee S 
 \end{aligned} 
 $$
+!!! quote "another expression"
 
+	Using rules of inference also can be denoted by $\vdash$. 
+	
+	For example:
+	
+	+ $\{P\wedge Q ,P\}\vdash Q$
+	+ $\{P\to Q, Q\to R\} \vdash P \to R$
 ### Using Rules of Inference to Build Arguments
 **formal proof**: To prove an argument is valid or the conclusion follows logically from the hypotheses.
 
@@ -844,7 +872,7 @@ $$
 
 	​**②：证明顺序**
 	​	
-	​当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，当不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+	​当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，而不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
 	​	
 	​如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
 	​	
