@@ -19,6 +19,7 @@
     课内教学：
     
     + [x] [Chap1 The Foundations: Logic and Proofs](Chap1.md)
+    + [x] [Chap2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices](Chap2.md)
     
     课外补充：
     

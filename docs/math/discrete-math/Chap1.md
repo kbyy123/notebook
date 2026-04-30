@@ -57,6 +57,8 @@ The statement p is called the **hypothesis**(假设), q is called the **conclusi
 	
 	**Implication Law**: $p\to q\equiv \neg p \vee q$
 
+	PS: "$q$ unless $\neg p$" is $p\to q$, we can remember "unless" as $\lor$, then "$q$ unless $\neg p$" is $q \lor \neg p \equiv p \to q$. And "$p$ unless $q$" and "$q$ unless $p$" are both $p \lor q$.
+
 
 **biconditional**(equivalence, 等价): $p\leftrightarrow q$​.
 
@@ -548,7 +550,7 @@ $$
 等值：$A\Leftrightarrow B$．$A\Leftrightarrow B$ 当且仅当 $A\leftrightarrow B$ 是永真式．如 $\neg\forall xF(x) \Leftrightarrow \exists x \neg F(x)$．
 
 #### 量词辖域收缩与扩张
-放入括号的过程称为辖**域扩张**（scope expansion），提出括号的过程称为**辖域收缩**（scope contraction）．
+放入括号的过程称为**辖域扩张**（scope expansion），提出括号的过程称为**辖域收缩**（scope contraction）．
 
 假设 $B$ 中不含 $x$ 的出现：
 
@@ -762,14 +764,14 @@ $$
 \therefore \ &Q \vee S 
 \end{aligned} 
 $$
-!!! quote "another expression"
+!!! quote "Another Expression"
 
 	Using rules of inference also can be denoted by $\vdash$. 
 	
 	For example:
 	
 	+ $\{P\wedge Q ,P\}\vdash Q$
-	+ $\{P\to Q, Q\to R\} \vdash P \to R$
+	+ $\{P\to Q, Q\to R\} \vdash \{P \to R\}$
 ### Using Rules of Inference to Build Arguments
 **formal proof**: To prove an argument is valid or the conclusion follows logically from the hypotheses.
 
@@ -1118,4 +1120,3 @@ Some fallacies(谬论) may occur when we are proving:
 **Fallacy of Denying the Antecedent**: $P\to Q,\neg P$, so $\neg Q$. I.e. ${\color{red}[(P\to Q)\wedge \neg P]\to \neg Q}$.
 
 **Circular Reasoning**: The fallacy of explicitly or implicitly assuming the very statement you are trying to prove within the proof itself.
-
