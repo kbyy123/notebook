@@ -169,6 +169,8 @@ $$
     
     <img src="lec5-6.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;" />
 
+按照上述的想法，如果不存储Jacobian矩阵而想求出所有 $y_i$ 对 $x_j$ 的偏导数之和，可以令 $s=\sum y_i$，然后将 $s$ 对 所有 $x_j$ 求偏导即可．这等价于将Jacobian矩阵按照 `dim=0` 求和．
+
 ### 矩阵求导
 
 考虑 $X\in \mathbb{R}^{N\times D},W\in \mathbb{R}^{D\times M}, Y=XW\in \mathbb{R}^{N\times M}$．接下来推导 $\dfrac{\partial{Y}}{\partial{X}},\dfrac{\partial{Y}}{\partial{W}}$．

@@ -77,8 +77,10 @@ extra_javascript:
   - js/mermaid.js
 plugins:
   - search
+  - glightbox
   - git-revision-date-localized:
       enable_creation_date: true  # 开启创建时间
+      enable_parallel_processing: false
       type: datetime              # 显示完整日期时间
       locale: zh                  # 使用中文界面
       timezone: Asia/Shanghai     # 设置时区
@@ -86,7 +88,7 @@ plugins:
   - statistics:
       exclude_path: '.*index\.md$'
       words_per_minute: 200
-      codelines_per_minute": 40
+      codelines_per_minute: 40
   - add-number:
       strict_mode: False
       order: 2
@@ -164,6 +166,7 @@ nav:
       - AI/CV/lec1-3.md
       - AI/CV/lec4.md
       - AI/CV/lec5-6.md
+      - AI/CV/lec7.md
   # - 📝编程语言:
   #   - C++:
   #     - language/cpp/compile.md
