@@ -72,7 +72,7 @@ $$
 
 ### Batch Norm
 
-BatchNorm是逐特征/通道求平均．例如单一输入 $x\in \mathbb{R}^{N\times D}$，其中 $N$ 为batch size，$D$ 为特征数量，则
+**BatchNorm（批归一化）**是逐特征/通道求平均，常用于处理图像．例如单一输入 $x\in \mathbb{R}^{N\times D}$，其中 $N$ 为batch size，$D$ 为特征数量，则
 
 <img src="lec7.assets/image-20260502212726866.png" alt="image-20260502212726866" style="zoom:50%;" />
 
@@ -88,7 +88,7 @@ BatchNorm是逐特征/通道求平均．例如单一输入 $x\in \mathbb{R}^{N\t
 
 ### Layer Norm
 
-LayerNorm是对单一数据的不同特征取平均，因此其在测试时的取平均方式与训练时一样，不需要用running average．
+**LayerNorm（层归一化）**是对单一数据的不同特征取平均，因此其在测试时的取平均方式与训练时一样，不需要用running average．常用于GPT等处理文本的任务．
 
 <img src="lec7.assets/image-20260502214353157.png" alt="image-20260502214353157" style="zoom: 50%;" />
 
