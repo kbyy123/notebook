@@ -101,3 +101,43 @@ Instance Norm是对单一数据的每一个通道求平均．
 !!! quote "不同Norm方法区别"
 
 	<img src="lec7.assets/image-20260502214646493.png" alt="image-20260502214646493" style="zoom: 25%;" />
+
+## LeNet
+
+LeNet 是最早发布的卷积神经网络之一，因其在计算机视觉任务中的高效性能而受到广泛关注．
+
+其包含2个卷积块、3个全连接层．其中每个卷积块的基本单元是一个卷积层、一个激活函数、一个池化层．原始的 LeNet 采用 Sigmoid 激活与平均池化，而现在通常使用 ReLU 激活与最大池化．我们给出最初的 LeNet 实现代码，以及课程修改后的 LeNet：
+
+```python
+import torch
+from torch import nn
+
+net = nn.Sequential(
+    # 第一个卷积块
+    nn.Conv2d(1, 6, kernel_size=5, padding=2), nn.Sigmoid(),
+    nn.AvgPool2d(kernel_size=2, stride=2),
+    # 第二个卷积块
+    nn.Conv2d(6, 16, kernel_size=5), nn.Sigmoid(),
+    nn.AvgPool2d(kernel_size=2, stride=2),
+    # 三个全连接层
+    nn.Flatten(),
+    nn.Linear(16 * 5 * 5, 120), nn.Sigmoid(),
+    nn.Linear(120, 84), nn.Sigmoid(),
+    nn.Linear(84, 10))
+
+# 其对应输出维度（Batch Size = 1）
+Conv2d output shape:         torch.Size([1, 6, 28, 28])
+Sigmoid output shape:        torch.Size([1, 6, 28, 28])
+AvgPool2d output shape:      torch.Size([1, 6, 14, 14])
+Conv2d output shape:         torch.Size([1, 16, 10, 10])
+Sigmoid output shape:        torch.Size([1, 16, 10, 10])
+AvgPool2d output shape:      torch.Size([1, 16, 5, 5])
+Flatten output shape:        torch.Size([1, 400])
+Linear output shape:         torch.Size([1, 120])
+Sigmoid output shape:        torch.Size([1, 120])
+Linear output shape:         torch.Size([1, 84])
+Sigmoid output shape:        torch.Size([1, 84])
+Linear output shape:         torch.Size([1, 10])
+```
+
+<img src="lec7.assets/image-20260511220303410.png" alt="image-20260511220303410" style="zoom:50%;" />
