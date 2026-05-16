@@ -72,7 +72,9 @@ $$
 
 BGD和SGD有个共性的缺点：在某些方向变化太快、某些方向变化太慢时路径会抖动，例如
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="lec4.assets/image-20260418154349443.png" alt="image-20260418154349443" style="zoom:50%;" />
+</div>
 
 ### Momentum
 为了解决路径抖动的问题，我们考虑使用历史梯度的加权平均数．更新的梯度的权重应该更大，而更旧的应该更小．
@@ -181,7 +183,9 @@ AdamW是Adam+Weight Decay的优化．
 
 	Weight Decay是在 $g_{t}$ 里额外加上 $2\lambda \theta_{t}$ 的惩罚项．这里与L2正则化做一个简单的对比：
 	
+<div style="text-align: center; margin-top: 15px;">
 	<img src="lec4.assets/image-20260421085035886.png" alt="image-20260421085035886" style="zoom:50%;" />
+</div>
 	
 	L2正则化是在损失函数中添加 $\lambda \theta_{t}^{2}$ 的惩罚；而Weight Decay是在更新量中额外加上 $2\lambda \theta_{t}$．在SGD/SGC+Momentum中，二者结果是一样的；而在Adam这类自适应优化器中，由于对学习率做了自适应，结果会不同．也就是说，我们使用Weight Decay而不是L2正则化，是因为我们不希望惩罚项被自适应机制一起处理．
 
