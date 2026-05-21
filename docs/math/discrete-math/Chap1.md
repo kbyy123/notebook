@@ -1,4 +1,4 @@
-# Chap1 The Foundations: Logic and Proofs
+# Chap1 Logic and Proofs
 
 ## Propositional Logic
 ### Propositions
