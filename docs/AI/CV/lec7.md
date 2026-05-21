@@ -59,7 +59,7 @@ $$
 ???+ example
 
     对一个 $4\times 4$ 的图像进行 kernel size=2, stride=2, pooling function=max 的最大采样结果：
-    
+
 <div style="text-align: center; margin-top: 15px;">
     <img src="lec7.assets/image-20260502210730111.png" alt="image-20260502210730111" style="zoom:50%;" />
 </div>
@@ -78,7 +78,7 @@ $$
 
 经过几层网络后，数据的尺度可能差距会很大，这对于学习率的调节不方便．因此，引入**Normalization（归一化）**将数据拉回均值接近0、方差接近1的正常范围．
 
-### Batch Norm
+### [Batch Norm](https://arxiv.org/abs/1502.03167)
 
 **BatchNorm（批归一化）**是逐特征/通道求平均，常用于处理图像．例如单一输入 $x\in \mathbb{R}^{N\times D}$，其中 $N$ 为batch size，$D$ 为特征数量，则
 
