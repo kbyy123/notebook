@@ -154,6 +154,8 @@ nav:
       - competitive-algo/26sp/3.md
   - 💻计算机系统:
     - computer-system/index.md
+    - 计算机系统导论:
+      - computer-system/csapp/x86-64.md
     - 计算机组成与体系结构:
       - computer-system/computer-architecture/index.md
       - computer-system/computer-architecture/C.md

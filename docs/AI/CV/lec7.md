@@ -1,4 +1,4 @@
-# Convolutional Networks
+# Convolutional Neural Networks
 
 多层感知机难以学习在图像不同区域的类别．为了实现**特征提取**功能，提出了**卷积神经网络**．
 
