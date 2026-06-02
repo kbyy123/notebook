@@ -147,21 +147,21 @@ nav:
       - data-structure/fds/index.md
       - data-structure/fds/string.md
       - data-structure/fds/tree.md
-  - 💭💡🎈:
-    - competitive-algo/index.md
-    - 2026春季联赛:
-      - competitive-algo/26sp/index.md
-      - competitive-algo/26sp/3.md
+  # - 💭💡🎈:
+  #   - competitive-algo/index.md
+  #   - 2026春季联赛:
+  #     - competitive-algo/26sp/index.md
+  #     - competitive-algo/26sp/3.md
   - 💻计算机系统:
-    - computer-system/index.md
+    - system/index.md
     - 计算机系统导论:
-      - computer-system/csapp/x86-64.md
+      - system/csapp/x86-64.md
     - 计算机组成与体系结构:
-      - computer-system/computer-architecture/index.md
-      - computer-system/computer-architecture/C.md
-      - computer-system/computer-architecture/number.md
-      - computer-system/computer-architecture/assembly-language.md
-      - computer-system/computer-architecture/machine-language.md
+      - system/computer-architecture/index.md
+      - system/computer-architecture/C.md
+      - system/computer-architecture/number.md
+      - system/computer-architecture/assembly-language.md
+      - system/computer-architecture/machine-language.md
   - 🤖人工智能:
     - AI/index.md
     - CV:
@@ -185,9 +185,7 @@ not_in_nav: |
   board.md
   changelog.md
   LatexSuite/**
-  competitive-algo/basis.md
-  competitive-algo/template.md
+  competitive-algo/**
   language/**
-  math/discrete-math/proof.md
-  math/discrete-math/set.md
   math/probability/**
+
