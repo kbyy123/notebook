@@ -37,6 +37,9 @@ theme:
       code: fontawesome/solid/code
 
 markdown_extensions:
+  # 默认在所有代码块左侧显示行号
+  - pymdownx.highlight:
+      linenums: true
   - admonition
   - pymdownx.arithmatex:       # LaTeX 数学公式支持
       generic: true
@@ -58,7 +61,7 @@ markdown_extensions:
       alternate_style: true
 
 extra_css:
-  - css/custom.css?v=20260415
+  - css/custom.css?v=20260602
   - css/timestamp.css
   - css/home.css
   - css/font.css?v=20260328
@@ -96,7 +99,7 @@ plugins:
         - index.md
         - math/index.md
         - data-structure/index.md
-        - computer-system/index.md
+        - system/index.md
         - misc/index.md
         - data-structure/LeetCode/
   # - enumerate-headings:

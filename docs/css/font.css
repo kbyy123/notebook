@@ -94,13 +94,31 @@ body, .md-typeset {
 } */
 
 /* 调整大块代码区域 (Code blocks) 字号 */
+
+/* 统一调整代码块和左侧行号的字号 */
+.md-typeset pre {
+  font-size: 0.9em;
+}
+
 .md-typeset pre code {
-  font-size: 0.9em;  
+  /* 与左侧行号共用 pre 的字号，避免行数增加后逐渐错位 */
+  font-size: inherit;
   font-family: var(--md-code-font-family) !important; /* 强制代码使用等宽字体 */
 }
 
 .md-typeset details pre code {
-  font-size: 0.9em;
+  font-size: inherit;
+}
+
+/* 行号列和代码列必须使用相同字号与行高，否则长代码块会逐行错位 */
+.md-typeset .highlighttable .linenos {
+  font-size: inherit;
+}
+
+.md-typeset .highlighttable .linenos pre,
+.md-typeset .highlighttable .code pre,
+.md-typeset .highlighttable .code pre code {
+  line-height: 1.4;
 }
 
 /* ============================================================

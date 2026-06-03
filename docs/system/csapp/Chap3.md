@@ -1,4 +1,4 @@
-# Machine-Level Programming
+# Chap 3: Machine-Level Programming
 
 ## Historical Perspective
 
@@ -88,7 +88,9 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 主要关注：栈指针 `%rsp`、返回值 `%rax`、六个参数寄存器、Caller saved / Callee saved．
 
-<img src="x86-64.assets/image-20260531232107661.png" alt="image-20260531232107661" style="zoom:67%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260531232107661.png" alt="image-20260531232107661" style="zoom:67%;" />
+</div>
 
 还有 Program Counter 寄存器：`%rip`（指向正在执行的指令地址）；条件码寄存器：`%rflags`．
 
@@ -119,7 +121,9 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 基础指令表：
 
-<img src="x86-64.assets/image-20260601083656279.png" alt="image-20260601083656279" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601083656279.png" alt="image-20260601083656279" style="zoom:50%;" />
+</div>
 
 `move` 指令与 `leaq` 指令不同之处：前者遇到寻址会进入内存地址，取出对应地址的数并做相应的操作；后者不进入内存，计算出寻址后将得到的地址做相应的操作（实际上是为了指针设计的，让一个变量存另一个的地址）．因此，编译器常用 `leaq` 完成一些乘法操作，如 `leaq (%rdi, %rdi, 2), %rax` 等同于 `%rax = %rdi + 2 * %rdi`．
 
@@ -129,13 +133,17 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 `%rflags` 存放最近的测试状态，用于条件跳转．下图中每个 flag 都是单一 bit．机器通过条件码的排列组合判断最近的比较结果．在*基础指令表*中除了 `leaq` 的所有指令都会改变条件码．
 
-<img src="x86-64.assets/image-20260601090658413.png" alt="image-20260601090658413" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601090658413.png" alt="image-20260601090658413" style="zoom:50%;" />
+</div>
 
 `cmp` 和 `test` 都是对两个操作数进行运算（前者是减法，后者是按位与），并根据运算结果设置条件码，但不更新其他寄存器．注意 `cmp` 的操作数顺序：如果想用 `jle` 判断 `x <= y`，应该用`cmp y, x`．
 
 通常会把 `test` 的两个操作数设为同一个寄存器来判 0． 
 
-<img src="x86-64.assets/image-20260601090917849.png" alt="image-20260601090917849" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601090917849.png" alt="image-20260601090917849" style="zoom:50%;" />
+</div>
 
 **`set` 类指令**：根据当前条件码状态来将单一字节设置为 0 / 1（因此操作数只能为单一字节寄存器）．这些操作对应的条件码不需要死记硬背，它的后缀就是我们期望的大小关系：
 
@@ -155,11 +163,15 @@ movzbl	%al,	%eax # zero rest of %rax
 ret
 ```
 
-<img src="x86-64.assets/image-20260601092137177.png" alt="image-20260601092137177" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601092137177.png" alt="image-20260601092137177" style="zoom:50%;" />
+</div>
 
 **`j` 类指令**：相当于修改 program counter `%rip` 的值到 label 的地址
 
-<img src="x86-64.assets/image-20260601093701454.png" alt="image-20260601093701454" style="zoom: 50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601093701454.png" alt="image-20260601093701454" style="zoom: 50%;" />
+</div>
 
 其实这类指令对应的后缀（e, ne, s, ns, g, ge 等）就是我们期望参数的大小关系，只不过我们要按照参数顺序在这之前先做一个cmp/test，然后调用这些访问条件码的指令．
 
@@ -247,13 +259,17 @@ test:
 
 ???+ example "例"
 
-    <img src="x86-64.assets/image-20260601111043805.png" alt="image-20260601111043805" style="zoom: 50%;" /><img src="x86-64.assets/image-20260601111031398.png" alt="image-20260601111031398" style="zoom:50%;" />
+    <div style="text-align: center; margin-top: 15px;">
+    <img src="Chap3.assets/image-20260601111043805.png" alt="image-20260601111043805" style="zoom: 50%;" /><img src="Chap3.assets/image-20260601111031398.png" alt="image-20260601111031398" style="zoom:50%;" />
+    </div>
     
     其中 `*L4(, %rsi, 8)` 的 `*` 表示不是跳到 `L4(, %rsi, 8)` 本身，而是把这个地址里的内容取出来（也就是跳转表），把它当作目标地址跳过去．
     
     实际上的跳转表如下图，他根据写好的代码块，将不同的 case 用下标对照到不同的代码块．
     
-    <img src="x86-64.assets/image-20260601111502808.png" alt="image-20260601111502808" style="zoom: 50%;" />
+    <div style="text-align: center; margin-top: 15px;">
+    <img src="Chap3.assets/image-20260601111502808.png" alt="image-20260601111502808" style="zoom: 50%;" />
+    </div>
 
 ### Procedures
 
@@ -291,7 +307,9 @@ long call_proc()
 }
 ```
 
-<img src="x86-64.assets/image-20260602122328962.png" alt="image-20260602122328962" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260602122328962.png" alt="image-20260602122328962" style="zoom:50%;" />
+</div>
 
 **寄存器调用约定**：
 
@@ -302,15 +320,19 @@ long call_proc()
 
 ???+ example "典型的递归函数"
 
-    <img src="x86-64.assets/image-20260601210339932.png" alt="image-20260601210339932" style="zoom:50%;" />
+    <div style="text-align: center; margin-top: 15px;">
+    <img src="Chap3.assets/image-20260601210339932.png" alt="image-20260601210339932" style="zoom:50%;" />
+    </div>
     
     返回值存 `%rax`、被调用者保存 `%rbp`，汇编程序都遵循 ABI（Application Binary Interface），程序才能正常运作．
 
-### Data
+## Data
 
 **数组**：在机器层面，`a[i]` 等价于 `a` 的地址 + `i * sizeof(T)`，其中 T 为数组数据类型占用字节数．
 
-<img src="x86-64.assets/image-20260601212102706.png" alt="image-20260601212102706" style="zoom: 40%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260601212102706.png" alt="image-20260601212102706" style="zoom: 40%;" />
+</div>
 
 数组名与指针很相似，当在 C 语言中声明一个数组时，我们既分配了空间，也创建了一个允许使用指针计算的数组名称（指向分配的空间）；声明一个指针时，只是为指针本身分配了空间，但没有将其指向任何东西．
 
@@ -318,7 +340,7 @@ long call_proc()
 
     下表给出一些指针和数组细微区别．Cmp 表示能否通过编译；Bad 表示使用空指针、野指针等不好的行为．
     
-    <table>
+    <table class="compact-table">
       <thead>
         <tr>
           <th rowspan="2">Decl</th>
@@ -392,17 +414,23 @@ long call_proc()
     
     （`A4` 和 `A2` 是等价的）
     
-    <img src="x86-64.assets/image-20260602090159772.png" alt="image-20260602090159772" style="zoom:50%;" />
+    <div style="text-align: center; margin-top: 15px;">
+    <img src="Chap3.assets/image-20260602090159772.png" alt="image-20260602090159772" style="zoom:50%;" />
+    </div>
 
 二维数组是按照先行后列的顺序在内存中连续存储的．对于二维数组 `int A[R][C]`，每一个 `A[i]` 都是大小为 C 的数组，地址为 `A + (i*C*4)`；`A[i][j]` 地址为 `A + (i*C + j)*4`．
 
 二维数组和指针数组的差别：指针数组在不同指针之间内存不是连续的．下图体现了两种嵌套数组的区别．
 
-<img src="x86-64.assets/image-20260602102748757.png" alt="image-20260602102748757" style="zoom: 43%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260602102748757.png" alt="image-20260602102748757" style="zoom: 43%;" />
+</div>
 
 对于指针数组：内存不连续，因此要先访问指针存的内容得到数组地址；`univ(, %rdi, 8)` 是得到指针 `univ[index]` 并取它存的值，也就是它指向数组的地址．
 
-<img src="x86-64.assets/image-20260602102224400.png" alt="image-20260602102224400" style="zoom:50%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260602102224400.png" alt="image-20260602102224400" style="zoom:50%;" />
+</div>
 
 **结构体**：按照变量定义顺序，在内存中连续存储．但是要内存对齐：
 
@@ -413,6 +441,103 @@ long call_proc()
 
 我们应当设计变量顺序，减少内存占用．
 
-<img src="x86-64.assets/image-20260602104917109.png" alt="image-20260602104917109" style="zoom:33%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image-20260602104917109.png" alt="image-20260602104917109" style="zoom:33%;" />
+</div>
+**联合体**：所有字段共享同一存储区域，联合体大小取决于最大字段大小．可以用于在不改变位模式下的数据类型转换，如 Datalab 中的 `bit2float` 函数：
+
+```C
+typedef union {
+    float f;
+    unsigned u;
+} bit_float_t;
+
+float bit2float(unsigned u)
+{
+	bit_float_t = arg;
+    arg.u = u;
+    return arg.f;
+}
+```
+
+
 
 **浮点数**：浮点参数一般放在寄存器 `%xmm0 / %xmm1 / ...`（所有 `%xmm` 寄存器都是 caller-saved，返回值为 `%xmm0`）里，并且使用 `addss`（scalar single）、`addsd`（scalar double） 等操作． 
+
+## Memory
+
+### Layout
+
+虽然 x86-64 属于 64 位机器，但只使用 48 位的地址，共 256 TB，其中 128 TB 内核空间，128 TB 用户空间（也就是栈底地址 0x0000 7FFF FFFF FFFF）．
+
+内存区域对应代码示意图（由 GPT 生成）：
+
+<img src="Chap3.assets/21f4f626-335d-4eda-8621-e212648b8723.png" alt="21f4f626-335d-4eda-8621-e212648b8723" style="zoom: 67%;" />
+
+### Buffer Overflow
+
+Unix `gets` 函数的实现：
+
+```C
+char *gets(char *dest)
+{
+    int c = getchar();
+    char *p = dest;
+    while (c != EOF && c != '\n') {
+    	*p++ = c;
+    	c = getchar();
+    }
+    *p = '\0';
+    return dest;
+}
+```
+
+其中 `dest` 为分配的缓冲区．但这个函数并不能判断是否填满缓冲区，如果读入内容比缓冲区大，就会出现**缓冲区溢出**问题．类似的函数还有 `strcpy`、`strcat`．
+
+???+ example "例"
+
+看下方的程序：
+
+```C
+void echo()
+{
+    char buf[4]; /* Way too small! */
+    gets(buf);
+    puts(buf);
+}
+
+void call_echo() {
+    echo();
+}
+```
+
+编译器会给 `buf` 开 24 字节的空间（尽管我们只写了 4 字节），当输入了 24 个字符时，程序会将空间全部填满，同时最后一个 `'\0'` 会破坏栈其他数据．此处它将 `call_echo` 压入栈的返回地址破坏，导致返回到奇怪的地方，出现问题．  
+
+<img src="Chap3.assets/image-20260602160303852.png" alt="image-20260602160303852" style="zoom: 50%;" />
+
+### Avoid Attack
+
+gcc 默认开启栈保护，编译时加入 `-fstack-protector` 可以将栈保护关闭．
+
+1. 使用安全的函数：如使用 `fget` 而不是 `get`．前者会有一个参数表示最多读入多少字节，超过截断
+2. ASLR（Address Space Layout Randomization）：让每次程序运行时地址都不一样，攻击者无法预测缓冲区的地址
+3. 限制可执行代码区域：将栈标记为可读、可写，但是不可执行
+4. 栈金丝雀：在缓冲区和栈保存的内容之间加入一个随机特殊值（金丝雀值），根据这个特殊值是否被修改判断程序是否被攻击
+
+```bash
+40072f: sub 	$0x18,%rsp
+400733: mov 	%fs:0x28,%rax	# %fx:0x28 是内存中的某个值，即为此处的 canary
+40073c: mov 	%rax,0x8(%rsp)	# 将 canary 存入栈指针偏移 8 字节处 (8 字节是为了字节对齐)
+400741: xor 	%eax,%eax	
+400743: mov 	%rsp,%rdi
+400746: callq 	4006e0 <gets>
+40074b: mov 	%rsp,%rdi
+40074e: callq 	400570 <puts@plt>
+400753: mov 	0x8(%rsp),%rax 	# 将 canary 从栈中取出来
+400758: xor 	%fs:0x28,%rax	# 和 %fx:0x28 相等就没有问题，反之调用栈报错
+400761: je 		400768 <echo+0x39>
+400763: callq 	400580 <__stack_chk_fail@plt>
+400768: add 	$0x18,%rsp
+40076c: retq
+```
+

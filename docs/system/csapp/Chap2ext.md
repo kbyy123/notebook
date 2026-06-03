@@ -4,7 +4,10 @@
 
 1 个十六进制数为 4 个二进制数，画四字母版：
 
-<img src="data.assets/卡诺图.png" alt="卡诺图逻辑真值表" style="zoom: 33%;" />
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap2ext.assets/卡诺图.png" alt="卡诺图逻辑真值表" style="zoom: 33%;" />
+</div>
+
 
 绿圈：$x_3x_2=1$；蓝圈：$x_3x_1=1$；故为 $x_3(x_1+x_2)$，即等价于 $x_3\land (x_1\lor x_2)$．
 
