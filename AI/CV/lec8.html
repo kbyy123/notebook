@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -298,29 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -591,63 +569,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -668,7 +589,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -727,7 +648,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,14 +670,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -808,7 +729,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -830,14 +751,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -947,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Convolutional Networks
+    Convolutional Neural Networks
   
 
     
@@ -1632,7 +1553,15 @@
 <p>上述网络都是通过卷积层与池化层提取空间结构，然后通过全连接层进行处理．<strong>NiN（网络中的网络）</strong>在每个像素的通道上分别使用 MLP，减少了参数量的同时保留了空间结构，并且更不容易过拟合．</p>
 <h3 id="31-nin-block">3.1 NiN Block</h3>
 <p>对单通道使用 MLP 本质上是 <span class="arithmatex">\(1\times 1\)</span> 卷积．因此我们可以定义一个 <code>nin_block</code>，其在卷积层后接两个 <span class="arithmatex">\(1\times 1\)</span>​ 卷积层：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">nin_block</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="p">):</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">nin_block</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="p">,</span> <span class="n">stride</span><span class="p">,</span> <span class="n">padding</span><span class="p">),</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
@@ -1641,7 +1570,7 @@
         <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
         <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
     <span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="32-gap">3.2 GAP</h3>
 <p>NiN 使用多个 NiN 块，最后的 NiN 块输出通道数等于分类数．此时输出为 <span class="arithmatex">\([N,10,H,W]\)</span>（以类别数 10 为例），然后通过 <strong>Global Average Pooling（全局平均池化，GAP）</strong>对每个通道整张图求平均，得到 <span class="arithmatex">\([N,10,1,1]\)</span> 即 <span class="arithmatex">\([N,10]\)</span>​，后者即为每个类别的得分．这样的好处是避免了 FC 层，减少了大量的参数．</p>
 <div style="text-align: center; margin-top: 15px;">
@@ -1662,7 +1591,29 @@
 </div>
 
 <p>中间两条通道的 <span class="arithmatex">\(1\times 1\)</span> 卷积是为了减少通道数，从而减少第二个卷积层的参数量．四条路径都通过合适的 padding 使输入和输出的大小一致．最后将四条线路的输出在通道维度上合并（通常输出为 <span class="arithmatex">\([N, C, H,W]\)</span>​，按通道合并即为 dim=1），构成 Inception 块的输出．</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Inception</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Inception</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="c1"># c1--c4是每条路径的输出通道数</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Inception</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -1685,7 +1636,7 @@
         <span class="n">p4</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p4_2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p4_1</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
         <span class="c1"># 在通道维度上连结输出</span>
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="n">p4</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="43-gap">4.3 GAP</h3>
 <p>与 NiN 相同，GoogLeNet 在最后使用一个 GAP + <span class="arithmatex">\((1024\to 10)\)</span>​ 的全连接层来实现分类而不是多个全连接层，减少了参数数量．</p>
 <h3 id="44-auxiliary-classifiers">4.4 Auxiliary Classifiers</h3>
@@ -1718,7 +1669,61 @@
 
 <details class="code" open="open">
 <summary>代码实现</summary>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">nn</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="kn">import</span> <span class="n">functional</span> <span class="k">as</span> <span class="n">F</span>
 
@@ -1773,9 +1778,16 @@
 <span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="n">stem</span><span class="p">,</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span><span class="p">,</span> <span class="n">b4</span><span class="p">,</span>
                     <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span>
                     <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>每一层的张量维度为：</p>
-<div class="highlight"><pre><span></span><code><span class="n">Sequential</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>     <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">56</span><span class="p">])</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Sequential</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>     <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">56</span><span class="p">])</span>
 <span class="n">Sequential</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>     <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">56</span><span class="p">])</span>
 <span class="n">Sequential</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>     <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">])</span>
 <span class="n">Sequential</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>     <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">])</span>
@@ -1783,7 +1795,7 @@
 <span class="n">AdaptiveAvgPool2d</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>      <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 <span class="n">Flatten</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>        <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">])</span>
 <span class="n">Linear</span> <span class="n">output</span> <span class="n">shape</span><span class="p">:</span>         <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 </details>
 
 
@@ -1852,7 +1864,7 @@
       <nav class="md-footer__inner md-grid" aria-label="页脚">
         
           
-          <a href="lec7.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Convolutional Networks">
+          <a href="lec7.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Convolutional Neural Networks">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -1862,7 +1874,7 @@
                 上一页
               </span>
               <div class="md-ellipsis">
-                Convolutional Networks
+                Convolutional Neural Networks
               </div>
             </div>
           </a>

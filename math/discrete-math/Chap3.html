@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -300,29 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -1030,63 +1008,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -1107,7 +1028,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -1439,10 +1360,12 @@
 <ol>
 <li><code>procedure procname(arg: type)</code> </li>
 </ol>
-<div class="highlight"><pre><span></span><code>procedure maximum(L: list of integers)
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>procedure maximum(L: list of integers)
     [statements]
     return expression
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <ol>
 <li>
 <p>Assignment statement <code>variable := expression</code>. e.g. <code>x := the largest integer in the list L</code></p>
@@ -1452,12 +1375,16 @@
 </li>
 <li>begin &amp; end (like "{}" in C-like languages)</li>
 </ol>
-<div class="highlight"><pre><span></span><code>begin
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>begin
     statement 1
     statement 2
     ...
 end
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <ol>
 <li>{comment} </li>
 <li>Condition: <code>if condition then stmt1 else stmt2</code></li>
@@ -1466,14 +1393,27 @@ end
 <div class="admonition example">
 <p class="admonition-title">Examples</p>
 <p>Max:</p>
-<div class="highlight"><pre><span></span><code>procedure max(a1, a2, ..., an: integers)
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>procedure max(a1, a2, ..., an: integers)
     v := a1
     for i := 2 to n
         if ai &gt; v then v := ai
     return v
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Binary Search:</p>
-<div class="highlight"><pre><span></span><code>procedure binary_search(x: integer, a1, a2, ..., an: ordered distinct integers)
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code>procedure binary_search(x: integer, a1, a2, ..., an: ordered distinct integers)
     l := 1
     r := n
     while l &lt; r
@@ -1483,7 +1423,7 @@ end
         end
     if x = ai then location := i else location := 0
     return location
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 </div>
 <h3 id="12-basic-algorithms">1.2 Basic Algorithms</h3>
 <ul>

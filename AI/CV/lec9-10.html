@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -298,29 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -591,63 +569,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -668,7 +589,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -727,7 +648,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,14 +670,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -808,7 +729,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -830,14 +751,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -947,7 +868,7 @@
   <span class="md-ellipsis">
     
   
-    Convolutional Networks
+    Convolutional Neural Networks
   
 
     
@@ -1677,16 +1598,20 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
 <h3 id="13-weight-initialization">1.3 Weight Initialization</h3>
 <p>将权重做特定的初始化，使得输入与输出的方差不变．</p>
 <p><strong>Xavier Initialization</strong>：让权重初始化时，采用均值为0、标准差为 <span class="arithmatex">\(\dfrac{1}{\sqrt{D_{\text{in}}}}\)</span>​ 的正态分布．对于卷积，<span class="arithmatex">\(D_{\text{in}}=K^2\times C_{\text{in}}\)</span>​．</p>
-<div class="highlight"><pre><span></span><code><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">Din</span><span class="p">,</span> <span class="n">Dout</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Din</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">Din</span><span class="p">,</span> <span class="n">Dout</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Din</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>如果激活函数使用ReLU，使用 <strong>Kaiming initialization / MSRA initialization</strong>：<span class="arithmatex">\(\text{std}(W)=\sqrt{\dfrac{2}{D_{\text{in}}}}\)</span>．</p>
 <p>对于 ResNet，将第一个卷积层 MSRA 初始化，第二个卷积层全部初始化为0．这样每一个残差块输入输出方差不变．</p>
-<div class="highlight"><pre><span></span><code>x -&gt; conv1 -&gt; ReLU -&gt; conv2 -&gt; F(x)
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>x -&gt; conv1 -&gt; ReLU -&gt; conv2 -&gt; F(x)
  \                             /
   -------- shortcut ----------
               |
            x + F(x)
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="14-regularization">1.4 Regularization</h3>
 <p><strong>正则化</strong>的核心：训练时添加<strong>噪声/随机性</strong>，测试时把随机性平均/固定（Dropout、BatchNorm都是类似）．</p>
 <h4 id="141-add-term-to-loss">1.4.1 Add term to loss</h4>
@@ -1694,7 +1619,25 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
 <h4 id="142-dropout">1.4.2 Dropout</h4>
 <p>每一次前向传播时随机屏蔽掉一些神经元的数值，一般概率取0.5．强制使网络的特征具有冗余，防止神经元都适应相同的特征．</p>
 <p>在测试时，我们希望输出稳定下来，于是将训练时的<strong>期望输出</strong>作为测试输出，也就是不 drop 任何神经元，而是乘以其被 drop 的概率．</p>
-<div class="highlight"><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># 神经元参与前向传递的概率</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># 神经元参与前向传递的概率</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
   <span class="c1"># 以三层神经网络为例</span>
@@ -1713,9 +1656,28 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
   <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span>
   <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span>
   <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="p">,</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>在实际应用中，更常见的是 <strong>Inverted Dropout</strong>：训练时 drop 后除以 p，测试时不动．这样就和其他模型的测试统一了．</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Inverted dropout</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Inverted dropout</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># 神经元参与前向传递的概率</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -1735,7 +1697,7 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
   <span class="n">H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W1</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b1</span><span class="p">)</span>
   <span class="n">H2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">W2</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span>
   <span class="n">out</span> <span class="o">=</span> <span class="n">np</span><span class="p">,</span><span class="n">dot</span><span class="p">(</span><span class="n">W3</span><span class="p">,</span> <span class="n">H2</span><span class="p">)</span> <span class="o">+</span> <span class="n">b3</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="143-data-argumentation">1.4.3 Data Argumentation</h4>
 <p>将图像增强，可以增加数据数量、提升模型泛化能力．</p>
 <p><strong>Horizontal Flips</strong>：把图片左右翻转．</p>
@@ -1823,32 +1785,32 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504111857267.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;"></a>
 </div>
 
-<pre><code>=== "学习率不衰减"
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>=== "学习率不衰减"
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504112025278.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;"></a>
 </div>
 
-<pre><code>=== "学习率衰减太快"
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>=== "学习率衰减太快"
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504112055617.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;"></a>
 </div>
 
-<pre><code>=== "训练不够久"
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>=== "训练不够久"
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504112119128.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;"></a>
 </div>
 
-<pre><code>=== "过拟合"
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>=== "过拟合"
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504112142018.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;"></a>
 </div>
 
-<pre><code>=== "欠拟合"
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>=== "欠拟合"
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
         <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec9-10.assets/image-20260504112157485.png" data-desc-position="bottom"><img src="lec9-10.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;"></a>
 </div>
@@ -1867,13 +1829,18 @@ x\quad x\geq 0 \\ \alpha (e^x-1) \quad x &lt;0
 </li>
 <li>
 <p>在测试时使用参数的动态平均而不是最后的参数．
-</p><div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">data_batch</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">sample_data_batch</span><span class="p">()</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">data_batch</span><span class="p">)</span>
     <span class="n">dx</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="o">-</span><span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dx</span>
     <span class="n">x_test</span> <span class="o">=</span> <span class="mf">0.995</span> <span class="o">*</span> <span class="n">x_test</span> <span class="o">+</span> <span class="mf">0.005</span> <span class="o">*</span> <span class="n">x</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 </li>
 </ol>
 </div>

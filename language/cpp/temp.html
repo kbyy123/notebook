@@ -63,7 +63,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -294,29 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -585,63 +563,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -662,7 +583,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -1702,35 +1623,45 @@
 <h3 id="pair">pair</h3>
 <p>含两个变量的结构体：std::pair</p>
 <p>pair本质是模板</p>
-<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T1</span><span class="p">,</span><span class="w"> </span><span class="k">typename</span><span class="w"> </span><span class="nc">T2</span><span class="o">&gt;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">pair</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">T1</span><span class="w"> </span><span class="n">first</span><span class="p">;</span>
 <span class="w">    </span><span class="n">T2</span><span class="w"> </span><span class="n">second</span><span class="p">;</span>
 <span class="p">};</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="_3">命名空间/库</h3>
 <p>命名空间：不同的库中可能会使用相同的函数名，因此将库放在一个命名空间下，防止冲突</p>
 <p>一般一个命名空间里有多个库，比如std对应string, utility, iostream</p>
 <p>std：常用的命名空间 不要使用using namespace std 不好的编程习惯</p>
 <p>使用std时需要include相关库文件</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1"> =&gt; std::string</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="c1"> =&gt; std::string</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;utility&gt;</span><span class="c1"> =&gt; std::pair</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="c1"> =&gt; std::cout, std::endl</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="using">using</h3>
 <p>可以使用using A = B，给B起别名A，类似typedef</p>
 <h3 id="auto">auto</h3>
 <p>auto可以自动推断类型（但一定要确定，比如函数返回值、遍历的迭代器）</p>
 <p>可以使用：</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solveQuadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solveQuadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
 <span class="o">==&gt;</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>不能使用：</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="o">==&gt;</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="initializationandreferences">InitializationAndReferences</h2>
 <h3 id="_4">初始化</h3>
 <p><strong>直接初始化</strong>：比如 <code>int numOne = 12.0</code> 和 <code>int numTwo(12.0)</code> 都是可以初始化的，会把float强制转化为int，这个过程叫<strong>narrowing conversion</strong>，将一个数据转换为另一种取值范围更小、可能导致精度丢失或数据溢出的类型</p>
@@ -1739,17 +1670,35 @@
 <li>好处：安全、普遍存在</li>
 </ul>
 <p>例如：</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ages</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ages</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"Charlie"</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">}</span>
 <span class="p">};</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">numbers</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">};</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>以及之前结构体的初始化也是这种方法（省略括号的形式）</p>
 <p><strong>结构化绑定（cpp17）</strong>：类似python，可以将返回值打包成元组</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;tuple&gt;</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">tuple</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getClassInfo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -1762,22 +1711,33 @@
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="p">[</span><span class="n">className</span><span class="p">,</span><span class="w"> </span><span class="n">buildingName</span><span class="p">,</span><span class="w"> </span><span class="n">language</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getClassInfo</span><span class="p">();</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>或者 <code>auto [id, name] : courseMap</code> 这类</p>
 <h3 id="_5">引用</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="kt">int</span><span class="o">&amp;</span><span class="w"> </span><span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
 
 <span class="n">ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// Output: 10</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>类型后加&amp;表示引用，表明该变量和原始变量是同一个，这样可以便于传入函数修改值、减少复制开销</p>
 <p>如果我们并没有修改内容的需求，为了防止误修改内容，可以加上const</p>
 <h3 id="_6">左值与右值</h3>
 <p>左值：可以出现在表达式左侧、拥有实际内存地址的对象</p>
 <p>右值：只能出现在表达式右侧，在表达式求值后不持久存在</p>
 <p>注意：在右边的也可能是左值</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// x是左值，10是右值</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// x是左值，10是右值</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// x y都是左值</span>
 
 <span class="kt">void</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
@@ -1785,7 +1745,7 @@
 <span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 <span class="n">f</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// 左值拥有实际内存地址，传入引用合法</span>
 <span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"> </span><span class="c1">// 右值不具有实际内存地址，不能作为引用传入</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="const">const</h3>
 <p>加上const的变量无法修改，包括基本变量与容器。</p>
 <p>不能声明一个对const变量的非const的引用，可以声明一个const变量的const引用</p>
@@ -1798,7 +1758,17 @@
 <h2 id="streams">Streams</h2>
 <h3 id="_8">抽象</h3>
 <p>抽象：提供接口，不需要关注怎么实现，只需要怎么用
-</p><div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 
 <span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
@@ -1809,7 +1779,7 @@
 <span class="n">std</span><span class="o">::</span><span class="n">iftream</span><span class="w"> </span><span class="n">fin</span><span class="p">(</span><span class="s">"data.txt"</span><span class="p">);</span><span class="w"> </span><span class="c1">// 输入文件流</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">first_input</span><span class="p">;</span>
 <span class="n">fin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">student_input</span><span class="p">;</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="_9">流</h3>
 <h4 id="_10">流是什么</h4>
 <p>stream是读写数据的抽象接口，隐藏了数据来源（键盘、文件、网络）和去向（屏幕、硬盘）</p>
@@ -1846,22 +1816,39 @@
 <h4 id="cin-getline">cin &amp;&amp; getline()</h4>
 <p>std::cin &gt;&gt; 会自动跳过开头的空格（包括制表符换行符），也就是从第一个非空字符开始读取，直到读到空格</p>
 <p>注意：cin会自动判断需要输入的类型并且只接收需要的类型。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 输入：3.14</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 输入：3.14</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 <span class="kt">double</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// 由于 a 是int类型，cin遇到 . 后停止，此时a读入3；然后给b读入，由于b是double，读入.14合法，b会得到0.14</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>如果一个非空白字符合法字符都没读取到，就会触发failbit：</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 输入：1abc，由于abc不符合int，因此给a输入1后就会自动结束a的输入，剩下的abc还在缓冲区</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 输入：1abc，由于abc不符合int，因此给a输入1后就会自动结束a的输入，剩下的abc还在缓冲区</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 
 <span class="c1">// 输入：abc，此时第一个非空白字符就不合法，输入完全失败，输入流触发failbit状态，后续的所有cin都会被跳过</span>
 <span class="c1">// 同时a会变为0</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>std::getline(std::cin（或者其他输入流）, string s, char delim = '\n') 会读取一整行的内容，直到遇到delim为止（此时它会把\n吞掉，也就是缓冲区不再有\n但是字符串也没有s）。注意它不会像cin一样自动忽略开头的空格、制表符、换行符，也就是说开头的空格也会读进去，并且如果第一个字符就是\n的话会得到一个空字符串</p>
-<div class="highlight"><pre><span></span><code><span class="c1">//例如输入：3.14\nRachel Fernandez\n</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">//例如输入：3.14\nRachel Fernandez\n</span>
 <span class="kt">double</span><span class="w"> </span><span class="n">pi</span><span class="p">,</span><span class="w"> </span><span class="n">tao</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 
@@ -1870,10 +1857,19 @@
 <span class="n">std</span><span class="o">::</span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">tao</span><span class="p">;</span><span class="w"> </span><span class="c1">// 此时字符类型与double不匹配，发生failbit</span>
 
 <span class="c1">// 如何修复？对于上面的例子，直接读两次getline即可；但是如果cin是因为空格、制表符停住的，这样做就会出问题。所以尽量不要把cin和getline混用</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="stringstream">stringstream</h4>
 <p>stringstream同时继承了istream和ostream的所有特性，也就是可以使用&gt;&gt;和&lt;&lt;．</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 初始化</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 初始化</span>
 <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">initial_quote</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">“</span><span class="n">Bjarne</span><span class="w"> </span><span class="n">Stroustrup</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">makes</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">easy</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">shoot</span><span class="w"> </span><span class="n">yourself</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">foot</span><span class="err">\</span><span class="n">n</span><span class="err">”</span><span class="p">;</span>
 <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="nf">ss</span><span class="p">(</span><span class="n">initial_quote</span><span class="p">);</span><span class="w"> </span><span class="c1">// 或者 ss &lt;&lt; initial_quote;</span>
 
@@ -1883,7 +1879,7 @@
 
 <span class="c1">// 如果使用 ss &gt;&gt; extracted_quote; 那么就只会读到 makes</span>
 <span class="n">std</span><span class="o">::</span><span class="n">getline</span><span class="p">(</span><span class="n">ss</span><span class="p">,</span><span class="w"> </span><span class="n">extracted_quote</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_12">取消同步</h4>
 <ul>
 <li><code>std::ios::sync_with_stdio(false)</code>：默认情况下，C++流会与C的标准输入输出（printf）同步，也就是可以交替使用cout和printf而不会出现输出顺序混乱，但是代价是C++流必须做很多检查工作，降低性能；关闭同步流后性能提升，但是不能混用流输出和printf</li>
@@ -1892,7 +1888,26 @@
 </ul>
 <h4 id="_13">输出文件流</h4>
 <p><code>std::ofstream</code> 创建一个关联到文件的输出流，可以将流写入文件</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">ofs</span><span class="p">(</span><span class="s">"hello.txt"</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// 如果文件成功打开，将数据写入文件</span>
@@ -1912,10 +1927,30 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_14">输入文件流</h4>
 <p><code>std::ifstream</code> 创建一个关联到文件的输入流，将文件内容以流读出</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">inputFileStreamExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">inputFileStreamExample</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 1. 构造时关联文件：创建一个输入文件流并尝试打开 "input.txt" </span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">ifstream</span><span class="w"> </span><span class="n">ifs</span><span class="p">(</span><span class="s">"input.txt"</span><span class="p">);</span>
 
@@ -1936,13 +1971,24 @@
 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="_15">容器</h2>
 <h3 id="stl">STL</h3>
 <p>STL：Standard Template Library，所有的STL容器都是模板。stl是std的真子集</p>
 <p>STL包含：容器、迭代器、仿函数、算法</p>
 <h4 id="stdvector">std::vector</h4>
-<div class="highlight"><pre><span></span><code><span class="c1">// 初始化</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 初始化</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span><span class="w"> </span><span class="c1">// 空vector</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="c1">// 初始有n个0的vector</span>
 <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="c1">// 初始有n个k的vector</span>
@@ -1954,14 +2000,30 @@
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">empty</span><span class="p">());</span><span class="w"> </span><span class="c1">// 判空</span>
 <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// 访问，无边界检查，可能有未定义行为</span>
 <span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"> </span><span class="c1">// 访问，会进行边界检查，更安全</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>PS：对STL的遍历尽量用 <code>for (auto const&amp; elem : v)</code> 遍历</p>
 <h4 id="stddeque">std::deque</h4>
 <p>deque比vector多了 <code>push_front</code> <code>pop_front</code>。deque与vector不同，其空间是由一段段等大、连续的数据块组成的，不同数据块不连续而块内连续，因此如果当前数据块满了只需要再申请一个数据块即可。</p>
 <h4 id="stdmap">std::map</h4>
 <p>字典（键值对），底层结构是红黑树，要做到有序因此K必须定义&lt;运算</p>
 <p><code>std::unordered_map&lt;std::ifstream, int&gt; map</code> 错误，因为 <code>ifstream</code> 无法比较</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"Chris"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"CS106L"</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p">},</span>
 <span class="w">    </span><span class="p">{</span><span class="s">"Keith"</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">},</span>
@@ -1978,10 +2040,23 @@
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="c1">// 返回匹配键的数量，为0或1</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">k</span><span class="p">))</span><span class="w"> </span><span class="c1">// C++20新增，返回布尔值</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>map是 std::pair<const k,="" v=""> 的容器，const是因为要维护有序性，因此K不能随便改</const></p>
 <p>遍历：</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="p">;</span>
 
 <span class="c1">// 用pair</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">kv</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">map</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1995,7 +2070,7 @@
 <span class="w">    </span><span class="c1">// key: const std::string&amp;</span>
 <span class="w">    </span><span class="c1">// value: const int&amp;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="stdset">std::set</h4>
 <p>大体方法和map类似，可以看作无值的map，底层是红黑树</p>
 <h4 id="stdunordered_mapset">std::unordered_map/set</h4>
@@ -2003,14 +2078,26 @@
 <p><code>std::unordered_map&lt;std::ifstream, int&gt; map</code> 错误，因为 <code>ifstream</code> 无哈希函数</p>
 <p>默认负载因子（元素个数/桶个数）大于1时重新哈希</p>
 <p>获取、修改负载因子：</p>
-<div class="highlight"><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">lf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">load_factor</span><span class="p">();</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">lf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map</span><span class="p">.</span><span class="n">load_factor</span><span class="p">();</span>
 <span class="n">map</span><span class="p">.</span><span class="n">max_load_factor</span><span class="p">(</span><span class="mf">2.0</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="_16">迭代器</h2>
 <h3 id="_17">迭代器操作</h3>
 <p>对于STL容器，我们可以用 <code>for (const auto&amp; elem : container)</code> 来遍历，本质是因为这些容器有<strong>迭代器</strong>。</p>
 <p>因为有些容器不好遍历，因此有了迭代器，方便遍历容器。可以将迭代器看作是容器的专属指针（其与指针用法高度统一）</p>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="c1">// 首元素迭代器</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="c1">// 首元素迭代器</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="c1">// 尾元素后一个元素的迭代器</span>
 <span class="o">++</span><span class="n">it</span><span class="p">;</span><span class="w"> </span><span class="c1">// 指向下一个元素</span>
 <span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span><span class="w"> </span><span class="c1">// 解引用</span>
@@ -2022,7 +2109,7 @@
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="n">end</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">it</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">it</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>迭代器的数据类型：<code>std::container&lt;&gt;::iterator</code></p>
 <p>++it 和 it++ 区别：</p>
 <ul>
@@ -2035,7 +2122,21 @@
 <li>输入迭代器：读取元素，<code>auto elem = *it</code></li>
 </ul>
 <p>例子：流迭代器 <code>std::istream_iterator</code></p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Enter numbers (Ctrl + D to stop):</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 
 <span class="w">    </span><span class="c1">// 输入流迭代器（从 cin 读取 int）</span>
@@ -2050,30 +2151,40 @@
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">elem</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <ul>
 <li>输出迭代器：写入元素，<code>*it = elem</code></li>
 </ul>
 <p>例子：<code>std::back_insert_iterator</code>，适用于有 push_back 的容器</p>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">v</span><span class="p">;</span>
 <span class="c1">// 创建一个绑定到 v 的后插迭代器</span>
 <span class="n">std</span><span class="o">::</span><span class="n">back_insert_iterator</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">out_it</span><span class="p">(</span><span class="n">v</span><span class="p">);</span><span class="w"> </span>
 
 <span class="o">*</span><span class="n">out_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="c1">// 相当于执行 v.push_back(10) </span>
 <span class="o">*</span><span class="n">out_it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w"> </span><span class="c1">// 相当于执行 v.push_back(20)</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <ul>
 <li>前向迭代器，可以让迭代器往前走 <code>++it</code>，所有迭代器都属于这一类</li>
 <li>双向迭代器：可以往后走，如 <code>std::map</code> <code>std::set</code> 的迭代器属于这一类</li>
 <li>随机访问迭代器：可以随便加减</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// 5 ahead</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">it2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="c1">// 5 ahead</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">it3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2 back</span>
 
 <span class="c1">// Get 3rd element</span>
 <span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span>
 <span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>为什么需要不同迭代器类型？</p>
 <ul>
 <li>为所有容器提供一个统一的抽象</li>
@@ -2088,7 +2199,18 @@
 <h3 id="_21">构造函数</h3>
 <p>无返回类型，与类名相同，声明类对象时会自动调用．默认情况下编译器会提供一个空构造函数，当我们手写了任意构造函数后，编译器就不会提供了．</p>
 <p>在 <code>.h</code> 文件中</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BUPTID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">BUPTID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idNumber</span><span class="p">;</span>
@@ -2100,9 +2222,34 @@
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="nf">getName</span><span class="p">();</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">getID</span><span class="p">();</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>在 <code>.cpp</code> 文件中</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"BUPTID.h"</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">"BUPTID.h"</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span>
 
 <span class="c1">// 使用类时要类似命名空间</span>
@@ -2128,14 +2275,28 @@
 <span class="kt">int</span><span class="w"> </span><span class="n">BUPTID</span><span class="o">::</span><span class="n">getID</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">idNumber</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="_22">析构函数</h3>
 <p>当一个对象超出作用域或手动delete时，析构函数会自动调用</p>
 <p>无返回类型，函数名为~+类名，无需参数，不可重载，只能有一个</p>
 <h3 id="_23">访问权限</h3>
 <p>不涉及继承，<code>protected</code> 与 <code>private</code> 没区别，我们此处只讨论 <code>private</code> 和 <code>public</code>．</p>
 <p><code>private</code> 只在类内部可访问，注意只要在类内部，尽管是不同对象也是可访问的．</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
@@ -2150,7 +2311,7 @@
 <span class="w">        </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">n</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span><span class="w"> </span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="const-static">const &amp;&amp; static</h3>
 <p>const：在类的内部，修饰类成员变量表示不可变；修饰函数表示该函数不可改变成员变量（此时要加到函数名后）；如果一个函数传入的参数是一个 <code>const</code> 类，那么这个函数不能调用该类的非 <code>const</code> 方法．所以建议给所有不改变成员变量的方法加上 const．</p>
 <p>（const 方法的 this 指针是 <code>const T* const</code>，非 const 方法的 this 指针是 <code>T* const</code>）</p>
@@ -2158,14 +2319,20 @@
 <li>Objects marked as const can only make use of the <strong>const</strong> <strong>interface</strong></li>
 <li>The <strong>const interface</strong> are the functions that are const in an object</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printVec</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">printVec</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 此处的 size() 和 at() 必须为 const 方法</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">size</span><span class="p">();</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>static：不绑定到实例上，可以直接用类名调用．其中静态变量不能在类内初始化（C++17后可以类内初始化，用 <code>inline static size_t student_total</code>）．静态成员不能使用非静态成员</p>
 <p>如果是使用 new 来申请了类数组的内存，如 <code>Student *psa = new Student[16]</code>，那么释放内存时最好加上中括号 <code>delete []psa</code>，这样才能给每一个对象调用析构函数，否则只会给第一个对象调用．</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="temp.assets/image-20260311122601420.png" data-desc-position="bottom"><img alt="image-20260311122601420" src="temp.assets/image-20260311122601420.png"></a></p>
@@ -2180,20 +2347,36 @@
 <h4 id="_26">友元函数</h4>
 <p>我们之前重载的加号，必须要求第一个是类对象才能调用，比如 <code>time_t + m</code> 是合法的，因为 <code>time_t</code> 作为一个类成员具有重载的加号；而 <code>m + time_t</code> 是不合法的，因为 <code>m</code> 作为一个int类型不具有重载的加号．此时可以用友元函数解决．</p>
 <p>友元函数定义在类的内部，但是不是类的成员．该函数的特点在于：可以访问类内部成员，但是操作的主体不一定为类成员（类成员函数的参数默认有一个this），比如我们直接写 <code>MyTime operator+(int m, const MyTime&amp; t)</code>，编译器会认为参数有三个：this、m、t，不符合双目运算符．在其前加上friend成为友元函数，默认操作主体就可以不是类成员了</p>
-<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">MyTime</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">MyTime</span><span class="w"> </span><span class="k">operator</span><span class="o">+</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">m</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>同理，<code>cout &lt;&lt;</code> 的原理是：cout作为一个 <code>ostream</code> 对象，其有双目运算符 <code>&lt;&lt;</code>，可以将右边的打印后返回一个值，而返回的这个值仍然是 <code>ostream</code> 对象，此时还可以连锁 <code>&lt;&lt;</code> 输出．而该运算符的第一个参数不是time对象，因此必须使用友元函数重载运算符</p>
-<div class="highlight"><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Mytime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">friend</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="w"> </span><span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="w"> </span><span class="n">os</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">Mytime</span><span class="o">&amp;</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">hours</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"hours and "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
 <span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">to_string</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">minutes</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" minutes."</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">os</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">str</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_27">类型转换操作符</h4>
 <p>如果我们想把我们的对象转化成其他类型，可以自己写转化函数．转化函数不用写返回类型，因为返回类型只能是转化的类型，分为隐式转化和显式转化，用关键字 <code>explicit</code> 区分．如果是显式转化，就必须将函数写出来．</p>
-<div class="highlight"><pre><span></span><code><span class="k">operator</span><span class="w"> </span><span class="kt">int</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">operator</span><span class="w"> </span><span class="kt">int</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -2204,9 +2387,19 @@
 <span class="n">MyTime</span><span class="w"> </span><span class="n">t1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 隐式转换</span>
 <span class="kt">float</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">t1</span><span class="p">);</span><span class="w"> </span><span class="c1">// 显式转换</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>如果想要把其他类型转化成对象类型，可以借助构造函数．</p>
-<div class="highlight"><pre><span></span><code><span class="n">MyTime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">hours</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">minutes</span><span class="p">{</span><span class="n">m</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MyTime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">hours</span><span class="p">{</span><span class="mi">0</span><span class="p">},</span><span class="w"> </span><span class="n">minutes</span><span class="p">{</span><span class="n">m</span><span class="p">}</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2217,20 +2410,27 @@
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="c1">// 看起来等价，但是用初始化列表是更好的，因为初始化列表不用经历创建（带着垃圾值）再重新赋值的过程，</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>或者也可以重载赋值运算符 <code>=</code></p>
-<div class="highlight"><pre><span></span><code><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">MyTime</span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">hours</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">minutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>注意：当我们执行初始化时，调用的是构造函数；而创建完后再赋值，调用的是赋值运算符．</p>
-<div class="highlight"><pre><span></span><code><span class="n">Mytime</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="c1">// 构造函数</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Mytime</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="c1">// 构造函数</span>
 
 <span class="n">Mytime</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
 <span class="n">t2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"> </span><span class="c1">// 赋值运算符</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_28">自增自减</h4>
 <p>语法规定：前置自增不带参数，后置自增带一个int．</p>
 <p>前置返回引用，后置返回对象．因为后置返回时对象已经变了，如果用引用返回的话就是返回自增后的值了</p>
@@ -2241,25 +2441,34 @@
 <h4 id="stdshared_ptr">std::shared_ptr</h4>
 <p>shared_ptr 可以实现多个指针指向同一对象，与原生指针最接近</p>
 <h5 id="_29">初始化</h5>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
 <span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mt1</span><span class="p">;</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">mt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">);</span>
 
 <span class="c1">// 注意：智能指针本质不是指针，因此 std::shared_ptr&lt;MyTime&gt; mt1 = new MyTime(10); 是不合法的</span>
 <span class="c1">// 同理 MyTime *mt1 = std::make_shared&lt;MyTime&gt;(1, 70); 也是不合法的  </span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h5 id="_30">方法</h5>
 <p>可以和原生的指针一样使用 <code>*</code> 解引用和 <code>-&gt;</code> 访问成员．</p>
 <p><code>shared_ptr</code> 有一个 <code>use_count()</code> 方法，可以返回该指针指向的成员目前被多少指针指向．</p>
 <h4 id="stdunique_ptr">std::unique_ptr</h4>
 <p>unique_ptr 保证一个对象只能被一个指针指向，不管其他指针是什么类型（shared_ptr也是）．</p>
 <h5 id="_31">初始化</h5>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt1</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">MyTime</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
 <span class="k">auto</span><span class="w"> </span><span class="n">mt2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">);</span><span class="w"> </span><span class="c1">// 特殊：这个方法是 C++17 才有的</span>
 
 <span class="c1">// 由于只能被一个指向，因此需要用 move 方法将 mt1 移除</span>
 <span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">MyTime</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mt3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">mt1</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="_32">继承</h3>
 <p>派生类可以继承基类，自动获得基类的属性、方法，并以此进行修改</p>
 <p>使用 <code>class Derived : (public/protected/private) Base {};</code> 来定义继承关系，默认为private继承</p>
@@ -2291,7 +2500,14 @@
 <p>子类构造函数执行</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// 调用父类构造函数也可以用成员参数化列表进行uniform initialization</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// 调用父类构造函数也可以用成员参数化列表进行uniform initialization</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Derived</span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
@@ -2299,12 +2515,47 @@
 <span class="w">        </span><span class="p">...</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_36">析构函数</h4>
 <p>与构造函数相反，先调用子类析构函数，再调用父类．</p>
 <h4 id="_37">虚函数</h4>
 <p>在C++中，我们可以用父类的变量类型来接受子类（向上转型）．</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">public</span><span class="o">:</span>
 <span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Person</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">n</span><span class="p">){}</span>
@@ -2340,13 +2591,14 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>上述main函数的两个print分别是什么结果？</p>
 <p><strong>答案</strong>：只打印出了名字，也就是说只调用了父类的print．我们设计printObjectInfo接受父类，是希望利用向上转型让其可以接受所有子类对象并根据子类对象自己的方法打印，但是和我们的设计不符合</p>
 <p>在父类的 print 前加上 virtual（也可以在子类函数后加上override，即 void print() override {}），此时打印结果为</p>
-<div class="highlight"><pre><span></span><code><span class="nl">Name</span><span class="p">:</span><span class="w"> </span><span class="n">lin</span><span class="p">.</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="mi">2025</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nl">Name</span><span class="p">:</span><span class="w"> </span><span class="n">lin</span><span class="p">.</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="mi">2025</span>
 <span class="nl">Name</span><span class="p">:</span><span class="w"> </span><span class="n">zhou</span><span class="p">.</span><span class="w"> </span><span class="n">ID</span><span class="o">:</span><span class="w"> </span><span class="mi">2025</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h5 id="_38">虚函数</h5>
 <p>基类的函数声明前加上 <code>virtual</code> 关键字，将对象从静态绑定变成动态绑定．</p>
 <blockquote>
@@ -2388,23 +2640,30 @@
 </ol>
 <p><strong>代码写出来是这样的：</strong></p>
 <p>C++</p>
-<div class="highlight"><pre><span></span><code>class Animal { public: int life; };
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>class Animal { public: int life; };
 class Mammal : public Animal {};
 class Bird : public Animal {};
 class Bat : public Mammal, public Bird {};
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>灾难发生了：</strong> 当你创建一个蝙蝠对象 <code>Bat b;</code>，然后试图给它扣血 <code>b.life = 10;</code> 时，<strong>编译器直接崩溃报错了（Ambiguous 歧义）！</strong></p>
 <p>为什么？因为在物理内存中，<code>Bat</code> 的肚子里装了一个完整的 <code>Mammal</code>，又装了一个完整的 <code>Bird</code>。而这两个伯伯肚子里<strong>各有一个 <code>Animal</code></strong>。 也就是说，这只蝙蝠有<strong>两份 <code>life</code></strong>！当你喊 <code>b.life</code> 时，电脑根本不知道你要扣哪一份血。</p>
 <hr>
 <h3 id="2-virtual-public">2. 救星降临：虚继承 (virtual public)</h3>
 <p>为了解决这个问题，C++ 引入了 <code>virtual</code> 关键字放在继承链上：</p>
 <p>C++</p>
-<div class="highlight"><pre><span></span><code>class Animal { public: int life; };
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>class Animal { public: int life; };
 // 注意这里的 virtual
 class Mammal : virtual public Animal {}; 
 class Bird : virtual public Animal {};
 class Bat : public Mammal, public Bird {};
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>加上 <code>virtual</code> 后发生了什么？</strong> 你这是在向编译器下达一份特殊的声明：</p>
 <blockquote>
 <p>“听着，<code>Animal</code> 是一个<strong>共享祖先</strong>。不管未来有哪个子孙同时继承了你们俩，<strong>整个家族里只能保留一份 <code>Animal</code> 的实例（一份 <code>life</code>）！</strong>”</p>
@@ -2422,7 +2681,14 @@ class Bat : public Mammal, public Bird {};
 <h2 id="_41">模板</h2>
 <h3 id="_42">函数模板</h3>
 <p>模板（template）允许我们写与数据类型无关的代码，类似Java里的泛型，可以实现代码复用</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IntVector</span><span class="w"> </span><span class="p">{};</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IntVector</span><span class="w"> </span><span class="p">{};</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">DoubleVector</span><span class="w"> </span><span class="p">{};</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">StringVector</span><span class="w"> </span><span class="p">{};</span>
 <span class="o">==&gt;</span>
@@ -2430,9 +2696,21 @@ class Bat : public Mammal, public Bird {};
 <span class="k">class</span><span class="w"> </span><span class="nc">vector</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="p">...</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>模板可以运用于函数：函数模板</p>
-<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 <span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;typeinfo&gt;</span>
 
 <span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
@@ -2445,7 +2723,7 @@ class Bat : public Mammal, public Bird {};
 <span class="k">template</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">sum</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="p">(</span><span class="kt">double</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">sum</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="kt">char</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="p">);</span>
 <span class="k">template</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="_43">类模板</h3>
 
 

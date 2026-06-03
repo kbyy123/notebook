@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -300,29 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -1158,63 +1136,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -1235,7 +1156,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -1927,7 +1848,17 @@
 <p>初始时cur指向head，pre作为cur的前驱指向nullptr，这样可以将head的next修改成nullptr；最后cur为空，pre指向新链表的头结点，返回pre．</p>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．
-</p><div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseList</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseList</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nxt</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="p">)</span><span class="w"> </span>
 <span class="w">    </span><span class="p">{</span>
@@ -1938,7 +1869,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pre</span><span class="p">;</span><span class="w"> </span>
 <span class="p">}</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="92-ii"><a href="https://leetcode.cn/problems/reverse-linked-list-ii/">92. 反转链表 II</a></h3>
 <div class="admonition note">
 <p class="admonition-title">过程</p>
@@ -1962,7 +1893,22 @@
 </div>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．
-</p><div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseBetween</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseBetween</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">right</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">p0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dummy</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">left</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
 <span class="w">        </span><span class="n">p0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p0</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
@@ -1978,7 +1924,7 @@
 <span class="w">    </span><span class="n">p0</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="25-k"><a href="https://leetcode.cn/problems/reverse-nodes-in-k-group/">25. K 个一组翻转链表</a></h3>
 <p>大题思路与上一题类似，先遍历一遍链表得到长度算出要循环的次数．</p>
 <p>对于每次循环：</p>
@@ -2000,7 +1946,29 @@
 </div>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．
-</p><div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseKGroup</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverseKGroup</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span><span class="w"> </span><span class="n">cnt</span><span class="p">;</span><span class="w"> </span><span class="n">cnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cnt</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 <span class="w">        </span><span class="n">len</span><span class="o">++</span><span class="p">;</span>
@@ -2023,7 +1991,7 @@
 <span class="w">    </span><span class="p">}</span><span class="w">    </span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="24"><a href="https://leetcode.cn/problems/swap-nodes-in-pairs/">24. 两两交换链表中的节点</a></h3>
 <p>25题在 k = 2 时的特解，由于只有2，完全可以不用链表反转的模板而是直接模拟修改．参考<strong>灵茶山艾府</strong>的图解：</p>
 <details class="note">
@@ -2031,7 +1999,18 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="linked-list.assets/4c041a89-7aed-4d0e-996d-eebbd6362b9c.png" data-desc-position="bottom"><img alt="image" src="linked-list.assets/4c041a89-7aed-4d0e-996d-eebbd6362b9c.png"></a></p>
 </details>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">swapPairs</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">swapPairs</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dummy</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n0</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">n0</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2043,11 +2022,53 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="445-ii"><a href="https://leetcode.cn/problems/add-two-numbers-ii/">445. 两数相加 II</a></h3>
 <p><a href="#206">反转链表</a>和<a href="https://leetcode.cn/problems/add-two-numbers/">两数相加</a>的混合，先将两个链表反转后转化为两数相加问题，计算出答案后再次反转即可．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>，其中 <span class="arithmatex">\(n\)</span> 为 <span class="arithmatex">\(l_1\)</span> 长度和 <span class="arithmatex">\(l_2\)</span> 长度的最大值。</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">reverse</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nxt</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
@@ -2090,14 +2111,26 @@
 <span class="w">    </span><span class="n">l1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">l1</span><span class="p">),</span><span class="w"> </span><span class="n">l2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">l2</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">reverse</span><span class="p">(</span><span class="n">addTwoNumbersReversely</span><span class="p">(</span><span class="n">l1</span><span class="p">,</span><span class="w"> </span><span class="n">l2</span><span class="p">));</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="2816"><a href="https://leetcode.cn/problems/double-a-number-represented-as-a-linked-list/">2816. 翻倍以链表形式表示的数字</a></h3>
 <h4 id="_5">方法一</h4>
 <p>可看作是<a href="#445">两数相加 II</a>自身与自身相加．</p>
 <h4 id="_6">方法二</h4>
 <p>利用2倍数的特殊性：当前位的进位只能为0或者1，且只和下一位有关；只有下一位 <span class="arithmatex">\(\ge5\)</span> 时当前位才会进位．特别地，如果首位 <span class="arithmatex">\(\ge5\)</span>，需要在当前链表前加入一个新的结点．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>（原地修改）．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">doubleIt</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">doubleIt</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="p">)</span><span class="w"> </span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
@@ -2110,7 +2143,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="_7">快慢指针</h2>
 <h3 id="876"><a href="https://leetcode.cn/problems/middle-of-the-linked-list/">876. 链表的中间结点</a></h3>
 <p>通过快慢指针寻找中间结点：慢指针走一步，快指针走两步．当快指针指向空结点或其下一个结点为空结点时，慢指针指向中间结点．</p>
@@ -2130,7 +2163,15 @@
 </div>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">middleNode</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">middleNode</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fast</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2139,7 +2180,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">slow</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="141"><a href="https://leetcode.cn/problems/linked-list-cycle/">141. 环形链表</a></h3>
 <p>同样的快慢指针，每一次快慢指针走完后判断两指针是否相等，若相等则返回 <code>true</code>．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．</p>
@@ -2149,7 +2190,17 @@
 最坏情况下，入环时快指针恰好位于慢指针前方，此时需要 <span class="arithmatex">\(k-1\)</span> 步才能追上．因此慢指针在环内步数不超过 <span class="arithmatex">\(k-1\)</span> 步，总共步数不超过 <span class="arithmatex">\(n-1\)</span> 步，即 <span class="arithmatex">\(O(n)\)</span>．
 <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="linked-list.assets/image-20260302154003248.png" data-desc-position="bottom"><img alt="image-20260302154003248" src="linked-list.assets/image-20260302154003248.png"></a></p>
 </details>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">hasCycle</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">hasCycle</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fast</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2160,7 +2211,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="142-ii"><a href="https://leetcode.cn/problems/linked-list-cycle-ii/">142. 环形链表 II</a></h3>
 <p>当快慢指针相遇后，让慢指针和头结点同时移动，二者相遇处即为入环点．</p>
 <details class="proof">
@@ -2170,7 +2221,24 @@
 <span class="arithmatex">\(kc−a\)</span> 是从入环口开始的步数。因为 <span class="arithmatex">\((kc−a)+a=kc\)</span>，所以从 <span class="arithmatex">\(kc−a\)</span> 开始，再走 <span class="arithmatex">\(a\)</span> 步，就可以走满 <span class="arithmatex">\(k\)</span> 圈．</p>
 </details>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．
-</p><div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="nf">detectCycle</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="nf">detectCycle</span><span class="p">(</span><span class="n">ListNode</span><span class="w"> </span><span class="o">*</span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fast</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2188,7 +2256,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="143"><a href="https://leetcode.cn/problems/reorder-list/">143. 重排链表</a></h3>
 <p>链表的顺序本质就是相向双指针，先放左指针元素再放右指针元素，然后指针向中间移动，重复直到所有结点均被排完．</p>
 <p>我们可以通过<a href="#876">链表的中间结点</a>和<a href="#206">反转链表</a>，将中间点及以后的结点反转并得到右指针．</p>
@@ -2214,7 +2282,42 @@
 </div>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">getMid</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">getMid</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">slow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">fast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">fast</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">fast</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
@@ -2250,24 +2353,37 @@
 <span class="w">        </span><span class="n">head2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nxt2</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="234"><a href="https://leetcode.cn/problems/palindrome-linked-list/">234. 回文链表</a></h3>
 <p>使用上题技巧用链表双指针即可．</p>
 <h2 id="_8">删除系列</h2>
 <h3 id="237"><a href="https://leetcode.cn/problems/delete-node-in-a-linked-list/">237. 删除链表中的节点</a></h3>
 <p>此题有点脑筋急转弯，该题特意为“删除”做了一堆阐释，就是为了告诉我们：这题的删除只要值删除了即可．由于要删除当前结点必须将该结点的上一结点的 <code>next</code> 指向该结点的下一结点，给我们当前结点无法正常删除，但是本题是值删除，只需要：将当前的值变成下一结点的值，再删除下一节点．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(1)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>​．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">deleteNode</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">deleteNode</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">node</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="19-n"><a href="https://leetcode.cn/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第 N 个结点</a></h3>
 <p>遍历一遍求出长度，再根据长度关系计算删除结点即可．</p>
 <h3 id="83"><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list/">83. 删除排序链表中的重复元素</a></h3>
 <p>由于链表升序，对每一个结点判断：如果下一个结点存在且等于当前结点的值，就将下一结点删除；否则迭代到下一个结点．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(1)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">deleteDuplicates</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">deleteDuplicates</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -2278,10 +2394,25 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="82-ii"><a href="https://leetcode.cn/problems/remove-duplicates-from-sorted-list-ii/">82. 删除排序链表中的重复元素 II</a></h3>
 <p>此题要用类似同向双指针的思路：若下一结点与下下结点均存在且值不同，将当前结点迭代到下一结点；若均存在且值相同，此时开始第二重循环：记录下这个相同的值，将为该值的结点全部删除．</p>
-<div class="highlight"><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">deleteDuplicates</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="nf">deleteDuplicates</span><span class="p">(</span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">head</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">head</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">head</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">head</span><span class="p">;</span>
 <span class="w">    </span><span class="n">ListNode</span><span class="o">*</span><span class="w"> </span><span class="n">dummy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ListNode</span><span class="p">(</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">head</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dummy</span><span class="p">;</span>
 <span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">cur</span><span class="o">-&gt;</span><span class="n">next</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
@@ -2297,7 +2428,7 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dummy</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="203"><a href="https://leetcode.cn/problems/remove-linked-list-elements/">203. 移除链表元素</a></h3>
 <p>与<a href="#83">删除排序链表中的重复元素</a>的不同点在于头结点可能会被删除，因此要创建一个哨兵结点．</p>
 <h3 id="3217"><a href="https://leetcode.cn/problems/delete-nodes-from-linked-list-present-in-array/">3217. 从链表中移除在数组中存在的节点</a></h3>

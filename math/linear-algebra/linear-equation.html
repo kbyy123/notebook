@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -300,29 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -1241,63 +1219,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -1318,7 +1239,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -1825,7 +1746,20 @@
 <p>Gauss的过程：用 <span class="arithmatex">\(a_{ii}\)</span> 的元素将其下方所有值消去．例如我们想在三阶矩阵消去 <span class="arithmatex">\(a_{21}\)</span>，首先得到 <span class="arithmatex">\(l_{21}=\dfrac{a_{21}}{a_{11}}\)</span>，然后将第二行整体减去第一行的 <span class="arithmatex">\(l_{21}\)</span> 倍，从而将 <span class="arithmatex">\(a_{21}\)</span> 消为 <span class="arithmatex">\(0\)</span>．接着按照从上到下、从左到右的顺序对 <span class="arithmatex">\(a_{31}\)</span> 与 <span class="arithmatex">\(a_{32}\)</span> 进行消元，得到 <span class="arithmatex">\(U\)</span>．</p>
 <p>在对角线上用于消去其下方元素的元素被称为<strong>主元</strong>．若出现主元为 <span class="arithmatex">\(0\)</span> 时，我们需要与下方该位置非 <span class="arithmatex">\(0\)</span> 的行进行行交换，继续消元过程．如果后面已经没有行可以交换，那么 Gauss 过程结束．</p>
 <p>得到上三角矩阵 <span class="arithmatex">\(U\)</span> 后，使用上述 Jordan 消元过程得到 <span class="arithmatex">\(R\)</span> 矩阵．</p>
-<p></p><div class="highlight"><pre><span></span><code>Gauss:
+<p></p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>Gauss:
 for i in [1, n]:
     if a[i][i] == 0:
         find k, s.t. k &gt; i and a[k][i] != 0
@@ -1839,7 +1773,7 @@ for i in [n, 1]:
     if a[i][i] != 0:
         for j in [i - 1, 1]:
             row[j] -= a[j][i] / a[i][i] * row[i] 
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 我们发现消元过程中只涉及行交换、行倍加操作，而行变换不改变方程组的解且可以用左乘变换矩阵来表示，这为 <span class="arithmatex">\(LU\)</span> 分解打下了基础．<p></p>
 <h2 id="2">2. 矩阵乘法</h2>
 <h3 id="21">2.1 视角</h3>

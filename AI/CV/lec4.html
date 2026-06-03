@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -298,29 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -591,63 +569,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -668,7 +589,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -727,7 +648,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,14 +670,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -808,7 +729,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -830,14 +751,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1110,7 +1031,7 @@
   <span class="md-ellipsis">
     
   
-    Convolutional Networks
+    Convolutional Neural Networks
   
 
     
@@ -1512,11 +1433,14 @@ $$</p>
 <h2 id="2-optimization">2. Optimization</h2>
 <p>我们已经用损失函数量化了参数的好坏，现在我们希望找到使 <span class="arithmatex">\(L(W)\)</span> 最小的 <span class="arithmatex">\(W^{*}\)</span>．</p>
 <p>优化中常用的方法为<strong>Gradient Descent（梯度下降）</strong>，即求出损失函数 <span class="arithmatex">\(L\)</span> 关于 <span class="arithmatex">\(W\)</span> 每一个参数的导数（即梯度，实际上是通过计算），将 <span class="arithmatex">\(W\)</span> 的每个参数往负梯度方向进行变化．用代码来说就是</p>
-<div class="highlight"><pre><span></span><code><span class="n">w</span> <span class="o">=</span> <span class="n">initialize_weights</span><span class="p">()</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">w</span> <span class="o">=</span> <span class="n">initialize_weights</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_steps</span><span class="p">):</span>
     <span class="n">dw</span> <span class="o">=</span> <span class="n">compute_gradient</span><span class="p">(</span><span class="n">loss_fn</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
     <span class="n">w</span> <span class="o">-=</span> <span class="n">learning_rate</span> <span class="o">*</span> <span class="n">dw</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>其中的超参数包含：</p>
 <ul>
 <li>权重初始化方法</li>
@@ -1637,8 +1561,8 @@ v_t=\beta_2 v_{t-1}+(1-\beta_2)g_t^2
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec4.assets/image-20260421085035886.png" data-desc-position="bottom"><img src="lec4.assets/image-20260421085035886.png" alt="image-20260421085035886" style="zoom:50%;"></a>
 </div>
 
-<pre><code>L2正则化是在损失函数中添加 $\lambda \theta_{t}^{2}$ 的惩罚；而Weight Decay是在更新量中额外加上 $2\lambda \theta_{t}$．在SGD/SGC+Momentum中，二者结果是一样的；而在Adam这类自适应优化器中，由于对学习率做了自适应，结果会不同．也就是说，我们使用Weight Decay而不是L2正则化，是因为我们不希望惩罚项被自适应机制一起处理．
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>L2正则化是在损失函数中添加 $\lambda \theta_{t}^{2}$ 的惩罚；而Weight Decay是在更新量中额外加上 $2\lambda \theta_{t}$．在SGD/SGC+Momentum中，二者结果是一样的；而在Adam这类自适应优化器中，由于对学习率做了自适应，结果会不同．也就是说，我们使用Weight Decay而不是L2正则化，是因为我们不希望惩罚项被自适应机制一起处理．
+</code></pre></div></td></tr></tbody></table></div>
 <p>加入了Weight Decat后：</p>
 <div class="arithmatex">\[
 g_t=\nabla L_{\theta}(\theta_t),\quad

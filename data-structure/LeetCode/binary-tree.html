@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -300,29 +300,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -1379,63 +1357,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -1456,7 +1377,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -2407,13 +2328,18 @@
 <p>以本题而言：若当前结点是空结点，其肯定没有左右子树，并且本身没有高度，直接 <code>return 0</code>；若当前结点不是空结点，那么本身会有1的高度；假设已知左右子树的最大深度 <code>leftDepth = maxDepth(root-&gt;left), rightDepth = maxDepth(root-&gt;right)</code>，套用上述公式 <code>return max(leftDepth, rightDepth) + 1</code> 即可．</p>
 <p>子结点将 <code>maxDepth</code> 自底向上传递自身返回值的过程就是<strong>「归」</strong>．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>（函数递归需要开辟栈帧，只有return时才会释放内存；最坏情况下树退化成链表，递归需要 <span class="arithmatex">\(O(n)\)</span> 的栈空间）．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="111"><a href="https://leetcode.cn/problems/minimum-depth-of-binary-tree/">111. 二叉树的最小深度</a></h3>
 <p>本题与<a href="#104">二叉树的最大深度</a>看似相似，但是会更复杂一些：</p>
 <p>原因是：二叉树的<strong>深度</strong>取决于叶结点；对于<strong>非叶结点</strong>，若一个子结点为空而另一个非空，则答案比如来源于非空一侧（因为只有非空一侧才能递归叶结点）．</p>
@@ -2423,7 +2349,18 @@
 </ul>
 <p>也就是说，我们不能直接对一个结点两个子结点取小 <span class="arithmatex">\(+1\)</span>，而是判断类型：若两子都非空，取小 <span class="arithmatex">\(+1\)</span>；若一边非空，取非空深度 <span class="arithmatex">\(+1\)</span>；若均为空，说明为叶结点，返回 <span class="arithmatex">\(1\)</span>．那么对于该结点为空结点的特判是否需要？我们的递归过程中，只要判定其为空结点，就不会把它塞入递归中，理应不需要特判空结点；但是题目有可能传个空树进来，因此最好还是特判一下．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">minDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">minDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
@@ -2435,11 +2372,22 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="w"> </span><span class="n">minDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="404"><a href="https://leetcode.cn/problems/sum-of-left-leaves/">404. 左叶子之和</a></h3>
 <p>一个结点可以知道自己是否为叶结点，但无法判断自己是否为左叶子，需要其父结点来判断．对于一个结点，若为空结点则返回 <span class="arithmatex">\(0\)</span>；非空则判断其左子结点是否为叶子，若是则加上其值，并加上递归左右子结点返回；不是叶子就直接递归左右子结点返回．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isLeaf</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isLeaf</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -2451,7 +2399,7 @@
 <span class="w">        </span><span class="n">leftLeafVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">leftLeafVal</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sumOfLeftLeaves</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sumOfLeftLeaves</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="112"><a href="https://leetcode.cn/problems/path-sum/">112. 路径总和</a></h3>
 <p>若根节点满足存在<strong>根结点到叶结点</strong>的路径使总和为 <code>targetSum</code>，如果其没有子结点（即叶结点），那么要满足自身值等于 <code>targetSum</code>；若有子结点，那么其左右子结点至少有一个满足：存在<strong>自身到叶结点</strong>的路径使总和为 <code>targetSum - root-&gt;val</code>．</p>
 <p>根结点将 <code>targetSum</code> 值更新后自顶向下传递给子结点的过程就是<strong>「递」</strong>，子结点将布尔值自下而上返回给根节点的过程就是<strong>「归」</strong>．</p>
@@ -2460,7 +2408,14 @@
 <p>除了题目直接传入空树外，我们不能给递归传入空结点：对于空树且 <code>targetSum == 0</code> 而言，没有路径应返回 <code>false</code>；而如果是父结点调用，此时 <code>targetSum == 0</code> 应该返回 <code>true</code>；出现矛盾．</p>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>​．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">hasPathSum</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">targetSum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">hasPathSum</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">targetSum</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span>
@@ -2468,7 +2423,7 @@
 <span class="w">    </span><span class="n">targetSum</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">hasPathSum</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">targetSum</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">hasPathSum</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">targetSum</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="129"><a href="https://leetcode.cn/problems/sum-root-to-leaf-numbers/">129. 求根节点到叶节点数字之和</a></h3>
 <p>此题的数字是父结点在高位而子结点在地位，因此需要自顶向下遍历（因为先遍历的数升位简单而降位难，升位只需要 <span class="arithmatex">\(\times 10\)</span>），即dfs；而dfs过程中子结点需要知道父结点的值，以便作为返回值（如叶结点返回父结点的值 <span class="arithmatex">\(\times 10+\)</span> <code>val</code>）．若 <code>root</code> 是空结点（题目传入空树或者是单子的结点传入的空结点），返回 <span class="arithmatex">\(0\)</span> 即可．</p>
 <div class="admonition info">
@@ -2476,7 +2431,14 @@
 <p>原题的函数并没有父结点值的形参，如果我们直接加上新的形参会编译错误；但我们可以给新的形参加上默认值，这样就不会报错了．</p>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">sumNumbers</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">sumNumbers</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
@@ -2484,7 +2446,7 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sumNumbers</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sumNumbers</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">num</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="1448"><a href="https://leetcode.cn/problems/count-good-nodes-in-binary-tree/">1448. 统计二叉树中好节点的数目</a></h3>
 <p>与上题思路类似，dfs自顶向下遍历，同时添加一个当前最大值的形参；若为空结点返回 <span class="arithmatex">\(0\)</span>​，非空判断自身是否为好结点，再递归左右子树．</p>
 <h3 id="987"><a href="https://leetcode.cn/problems/vertical-order-traversal-of-a-binary-tree/">987. 二叉树的垂序遍历</a></h3>
@@ -2504,7 +2466,28 @@
 </ul>
 <p>最坏情况下有大约 <span class="arithmatex">\(\dfrac{n}{4}\)</span> 个结点在同一坐标，即最坏情况下在同一坐标的结点数是 <span class="arithmatex">\(O(n)\)</span> 的，因此对该坐标的排序就是 <span class="arithmatex">\(O(n\log n)\)</span> 的，瓶颈在排序上．</p>
 </details>
-<div class="highlight"><pre><span></span><code><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">groups</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">groups</span><span class="p">;</span>
 <span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">row</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">col</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="p">;</span>
@@ -2526,13 +2509,24 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="_4">灵活运用</h2>
 <h3 id="100"><a href="https://leetcode.cn/problems/same-tree/">100. 相同的树</a></h3>
 <h3 id="101"><a href="https://leetcode.cn/problems/symmetric-tree/">101. 对称二叉树</a></h3>
 <h3 id="110"><a href="https://leetcode.cn/problems/balanced-binary-tree/">110. 平衡二叉树</a></h3>
 <p>先给出我一开始的错误示范：虽然结果是对的也能AC，但是当每次用到一个结点的 <code>maxDepth</code> 时都要重新遍历整个树；当树退化为链表时会达到 <span class="arithmatex">\(O(n^2)\)</span> 的复杂度．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">root</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -2544,10 +2538,22 @@
 <span class="w">    </span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">maxDepth</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isBalanced</span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isBalanced</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>实际上我们可以边计算高度边判断是否平衡：在 <code>maxDepth</code> 内我们需要求出左右子结点的 <code>maxDepth</code>，此时我们就可以直接判断了：若不平衡则可以直接返回不平衡．那我们应该如何返回不平衡？由于 <code>maxDepth</code> 本身返回值必然为非负数，因此可以用一个负数来标记不平衡，如 <span class="arithmatex">\(-1\)</span>；这样得到结果后，自底向上再传递回去：如果结果不是 <span class="arithmatex">\(-1\)</span> 就正常计算高度，如果结果是 <span class="arithmatex">\(-1\)</span> 就让父结点也返回 <span class="arithmatex">\(-1\)</span> ，直到根结点；最后如果得到的最大高度为 <span class="arithmatex">\(-1\)</span>​ 说明不平衡，反之平衡．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">maxDepth</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">leftDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">),</span><span class="w"> </span><span class="n">rightDepth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
@@ -2560,7 +2566,7 @@
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maxDepth</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="199"><a href="https://leetcode.cn/problems/binary-tree-right-side-view/">199. 二叉树的右视图</a></h3>
 <h3 id="226"><a href="https://leetcode.cn/problems/invert-binary-tree/">226. 翻转二叉树</a></h3>
 <h3 id="617"><a href="https://leetcode.cn/problems/merge-two-binary-trees/">617. 合并二叉树</a></h3>
@@ -2582,7 +2588,18 @@
 </div>
 <p>整理一下思路：与<a href="#112">路径总和</a>类似，我们不主动将空结点传入递归．对于非空结点，先将 <code>limit</code> 减去自身的 <code>val</code>；如果自身为叶结点，直接根据 <code>limit</code> 值决定返回自身还是空结点；如果自身为非叶结点，则对有子结点处进行递归；只要左右子结点有一个非空就返回自身，否则返回空结点．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="nf">sufficientSubset</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">limit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="nf">sufficientSubset</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">limit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="n">limit</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
@@ -2594,14 +2611,24 @@
 <span class="w">        </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sufficientSubset</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="_5">前中后序遍历</h2>
 <h3 id="98"><a href="https://leetcode.cn/problems/validate-binary-search-tree/">98. 验证二叉搜索树</a></h3>
 <p>本题适合锻炼二叉树的前中后序遍历．</p>
 <h4 id="_6">方法一：中序遍历</h4>
 <p>对于BST，最直接的想法就是中序遍历递增．用一个全局变量 <code>pre</code> 储存当前的最大值（初始化为负无穷），对于一个结点，先递归判断左子树为BST，然后将 <code>pre</code> 与 <code>val</code> 比较，若 <code>pre &gt;= val</code> 说明不是BST，反之更新 <code>pre</code> 再递归右子树．由于空树也是BST，因此空结点需要返回 <code>true</code>．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">;</span>
 <span class="kt">bool</span><span class="w"> </span><span class="nf">isValidBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
@@ -2612,7 +2639,7 @@
 <span class="w">    </span><span class="n">pre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">isValidBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="_7">方法二：前序遍历</h4>
 <p>前序遍历先遍历根，我们可以根据根的范围与根的值来判断左右子结点的范围：传入参数时，将该结点应该符合的上下界一并传入，如果不符合就返回 <code>false</code>；如果符合就更新传入的参数，继续递归左右子结点．</p>
 <div class="admonition example">
@@ -2625,7 +2652,14 @@
 </ul>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．
-</p><div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isValidBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isValidBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
@@ -2633,7 +2667,7 @@
 <span class="w">        </span><span class="n">isValidBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="p">,</span><span class="w"> </span><span class="n">mi</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
 <span class="w">        </span><span class="n">isValidBST</span><span class="p">(</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">mx</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h4 id="_8">方法三：后序遍历</h4>
 <p>后序遍历的顺序是左右根，要想根据左右结点来判断根结点是否合法，第一想法是直接判断 <code>左 &lt; 根 &lt;右</code>，但这种想法显然是错的，对于如下树</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="binary-tree.assets/image-20260303120129505.png" data-desc-position="bottom"><img alt="image-20260303120129505" src="binary-tree.assets/image-20260303120129505.png"></a></p>
@@ -2641,7 +2675,37 @@
 <p>与<a href="#110">平衡二叉树</a>类似，我们可以设置一个特殊值，只要判断不为BST就返回这个特殊值，归的过程中遇到该特殊值就直接返回，最后只要结果不是这个特殊值，说明整棵树是BST．根据之前的分析，我们可以把这个特殊值设为 <span class="arithmatex">\((-\infty,+\infty)\)</span>，归给父结点时，若为左子结点，则父结点不可能大于其最大值（<span class="arithmatex">\(+\infty\)</span>）；若为右子结点，则父结点不可能小于其最小值（<span class="arithmatex">\(-\infty\)</span>），因此该特殊值可以做到逐层返回．</p>
 <p>因此可以写出初步代码：由于空结点情况不好处理，因此我们将四种情况全部讨论，避免向递归函数中传入空结点．</p>
 <p>时间复杂度 <span class="arithmatex">\(O(n)\)</span>，空间复杂度 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
 <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="o">&gt;</span><span class="w"> </span><span class="n">postOrder</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ll</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">val</span><span class="p">;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">left</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="p">)</span>
@@ -2672,12 +2736,26 @@
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">postOrder</span><span class="p">(</span><span class="n">root</span><span class="p">).</span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <details class="tip">
 <summary>简化</summary>
 <p>如何处理空结点？由于返回 <span class="arithmatex">\((-\infty,+\infty)\)</span> 是必然不成立，那么对应地，返回 <span class="arithmatex">\((+\infty,-\infty)\)</span> 就是必然成立的．对于下图中的 <span class="arithmatex">\(1\)</span>，其左右子结点均返回 <span class="arithmatex">\((+\infty,-\infty)\)</span>，要想在符合BST时让自身正常返回 <span class="arithmatex">\([1,1]\)</span>，我们可以对左区间取 <code>min</code>，这样 <span class="arithmatex">\(+\infty\)</span> 就会被 <code>min</code> 洗掉，同理对右区间取 <code>max</code>．</p>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="binary-tree.assets/image-20260303121853040.png" data-desc-position="bottom"><img alt="image-20260303121853040" src="binary-tree.assets/image-20260303121853040.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
 <span class="n">pair</span><span class="o">&lt;</span><span class="n">ll</span><span class="p">,</span><span class="w"> </span><span class="n">ll</span><span class="o">&gt;</span><span class="w"> </span><span class="n">postorder</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">root</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">LLONG_MAX</span><span class="p">,</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">};</span>
@@ -2692,7 +2770,7 @@
 <span class="kt">bool</span><span class="w"> </span><span class="n">isValidBST</span><span class="p">(</span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">postorder</span><span class="p">(</span><span class="n">root</span><span class="p">).</span><span class="n">second</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 </details>
 <p>想要降低空间复杂度实现 <span class="arithmatex">\(O(1)\)</span>，可参考<a href="https://oi-wiki.org/graph/tree-basic/#%E4%BA%8C%E5%8F%89%E6%A0%91-morris-%E9%81%8D%E5%8E%86">Morris遍历</a>．（反正我没学会😭）</p>
 <h3 id="938"><a href="https://leetcode.cn/problems/range-sum-of-bst/">938. 二叉搜索树的范围和</a></h3>
@@ -2708,7 +2786,29 @@
 <p>前序遍历是按照“根左右”遍历，中序遍历按照“左根右”．因此前序遍历的第一个数 <span class="arithmatex">\(3\)</span> 就是根的值．由于本题中<strong>无重复</strong>元素，在中序遍历中找到该根的值，其左侧即为左子树的中序遍历（<span class="arithmatex">\([9]\)</span>），右侧即为右子树的中序遍历（<span class="arithmatex">\([15,20,7]\)</span>）；然后根据左右子树的中序遍历从完整的前序遍历中截取得到左右子树的前序遍历，即 <span class="arithmatex">\([9]\)</span> 和 <span class="arithmatex">\([20,15,7]\)</span>．然后递归构造左右子树拼接上即可．</p>
 </div>
 <p>时间复杂度 <span class="arithmatex">\(O(n^2)\)</span>，空间复杂度 <span class="arithmatex">\(O(n^2)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="nf">buildTree</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">preorder</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">inorder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="nf">buildTree</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">preorder</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">inorder</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">preorder</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
 
 <span class="w">    </span><span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TreeNode</span><span class="p">(</span><span class="n">preorder</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -2731,12 +2831,38 @@
 <span class="w">    </span><span class="n">root</span><span class="o">-&gt;</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buildTree</span><span class="p">(</span><span class="n">rightpre</span><span class="p">,</span><span class="w"> </span><span class="n">rightin</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">root</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="admonition tip">
 <p class="admonition-title">优化</p>
 <p>每一次递归查找根节点都是 <span class="arithmatex">\(O(n)\)</span> 复杂度，总共为 <span class="arithmatex">\(O(n^2)\)</span>；对于 <code>vector</code> 的复制操作，当二叉树退化为链表时会进行 <span class="arithmatex">\(O(n)\)</span> 次，总共也是 <span class="arithmatex">\(O(n^2)\)</span> 复杂度．对于前者，我们可以将中序遍历的根节点值和下标用哈希表存起来，加快访问速率；对于后者，我们可以在递归时不改变数组本身而是传入下标的范围（左闭右开）．</p>
 <p>简化后单次查找根复杂度为 <span class="arithmatex">\(O(1)\)</span>，查找复杂度为 <span class="arithmatex">\(O(n)\)</span>；由于构造树只会把所有值遍历一遍，复杂度为 <span class="arithmatex">\(O(n)\)</span>；总复杂度为 <span class="arithmatex">\(O(n)\)</span>．由于没有开新的 <code>vector</code>，只有构建了树，因此空间复杂度为 <span class="arithmatex">\(O(n)\)</span>．</p>
-<div class="highlight"><pre><span></span><code><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mp</span><span class="p">;</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mp</span><span class="p">;</span>
 
 <span class="n">TreeNode</span><span class="o">*</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">preorder</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">inorder</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">l_pre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r_pre</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">l_in</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">r_in</span><span class="p">)</span>
 <span class="p">{</span>
@@ -2763,7 +2889,7 @@
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">preorder</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">dfs</span><span class="p">(</span><span class="n">preorder</span><span class="p">,</span><span class="w"> </span><span class="n">inorder</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 </div>
 <h3 id="106"><a href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106. 从中序与后序遍历序列构造二叉树</a></h3>
 <h3 id="889"><a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/">889. 根据前序和后序遍历构造二叉树</a></h3>

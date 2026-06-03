@@ -67,7 +67,7 @@
     
       <link rel="stylesheet" href="../../css/timeline.css">
     
-      <link rel="stylesheet" href="../../css/custom.css?v=20260415">
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
     
       <link rel="stylesheet" href="../../css/timestamp.css">
     
@@ -298,29 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../competitive-algo/index.html" class="md-tabs__link">
-          
-  
-  
-    
-  
-  💭💡🎈
-
-        </a>
-      </li>
-    
-  
-
-      
-        
-  
-  
-  
-  
-    
-    
-      <li class="md-tabs__item">
-        <a href="../../computer-system/index.html" class="md-tabs__link">
+        <a href="../../system/index.html" class="md-tabs__link">
           
   
   
@@ -591,63 +569,6 @@
       
         
       
-    
-    
-    
-      
-      
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-  
-    <a href="../../competitive-algo/index.html" class="md-nav__link">
-      
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    💭💡🎈
-  
-
-    
-  </span>
-  
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
         
       
     
@@ -668,7 +589,7 @@
   
   
   
-    <a href="../../computer-system/index.html" class="md-nav__link">
+    <a href="../../system/index.html" class="md-nav__link">
       
   
   
@@ -727,7 +648,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -749,14 +670,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -808,7 +729,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -830,14 +751,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1110,7 +1031,7 @@
   <span class="md-ellipsis">
     
   
-    Convolutional Networks
+    Convolutional Neural Networks
   
 
     
@@ -1528,8 +1449,8 @@
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260421085424456.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260421085424456.png" alt="image-20260421085424456" style="zoom:33%;"></a>
 </div>
 
-<pre><code>在本节课中我们默认使用ReLU，因为其使用的更加广泛，且函数较为简单（反向传播时导数只可能为0或1）．
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>在本节课中我们默认使用ReLU，因为其使用的更加广泛，且函数较为简单（反向传播时导数只可能为0或1）．
+</code></pre></div></td></tr></tbody></table></div>
 <p>以二层神经网络为例，其形式为 <span class="arithmatex">\(f(x)=W_{2}\max(0, W_{1}x+b_{1})+b_{2}\)</span>．如果输入 <span class="arithmatex">\(x\in \mathbb{R}^{D}\)</span>，输出 <span class="arithmatex">\(f(x)\in \mathbb{R}^{C}\)</span>，则有 <span class="arithmatex">\(W_{1}\in \mathbb{R}^{H\times D},b_{1}\in \mathbb{R}^{H},W_{2}\in \mathbb{R}^{C\times H},b_{2}\in \mathbb{R}^{C}\)</span>．</p>
 <p>神经网络也被称为<strong>多层感知机</strong>．神经网络的层数称为其深度，一般来说，深度越深，神经网络的拟合能力越强，也越容易出现过拟合；我们需要加入正则化项来防止过拟合（而不是通过减小深度来实现）．</p>
 <div style="text-align: center; margin-top: 15px;">
@@ -1566,20 +1487,22 @@ $$
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420105036979.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420105036979.png" alt="image-20260420105036979" style="zoom:50%;"></a>
 </div>
 
-<pre><code>不妨设最后的结果即为目标 $L$．显然 $\dfrac{\partial{L}}{\partial{L}}=1$；对于函数 $f(x)=\dfrac{1}{x}$，其输入为 $x=1.37$，输出为 $y=0.73$；因此我们得到 $\dfrac{\partial{L}}{\partial{x}}=-\dfrac{1}{x^{2}}=-\dfrac{1}{1.37^{2}}\approx 0.53$．
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>不妨设最后的结果即为目标 $L$．显然 $\dfrac{\partial{L}}{\partial{L}}=1$；对于函数 $f(x)=\dfrac{1}{x}$，其输入为 $x=1.37$，输出为 $y=0.73$；因此我们得到 $\dfrac{\partial{L}}{\partial{x}}=-\dfrac{1}{x^{2}}=-\dfrac{1}{1.37^{2}}\approx 0.53$．
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420105409383.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420105409383.png" alt="image-20260420105409383" style="zoom:50%;"></a>
 </div>
-<pre><code>接着是函数 $f(x)=x+1$，偏导与前一轮一样；
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>接着是函数 $f(x)=x+1$，偏导与前一轮一样；
 
 然后是函数 $f(x)=e^{x}$，其输入为 $x=-1$，输出为 $y=0.37$，上游梯度 $\dfrac{\partial{L}}{\partial{y}}=-0.53$，因此下游梯度 $\dfrac{\partial{L}}{\partial{x}}=\dfrac{de^{x}}{dx}\cdot\dfrac{\partial{L}}{\partial{y}}=\dfrac{1}{e}\cdot 0.53\approx 0.20$．
-</code></pre>
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420110002840.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420110002840.png" alt="image-20260420110002840" style="zoom:50%;"></a>
 </div>
-<pre><code>依此类推，可以求出所有偏导：
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>依此类推，可以求出所有偏导：
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420110323215.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420110323215.png" alt="image-20260420110323215" style="zoom:50%;"></a>
 </div>
@@ -1593,7 +1516,18 @@ $$
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420110717168.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420110717168.png" alt="image-20260420110717168" style="zoom:40%;"></a>
 </div>
 
-<pre><code>+ add gate：$f(x,y)=x+y$，此时两边的局部梯度均为1，下游梯度与上游梯度相等．
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>+ add gate：$f(x,y)=x+y$，此时两边的局部梯度均为1，下游梯度与上游梯度相等．
 + mul gate：$f(x,y)=xy$，此时两边的局部梯度为另一个变量．
 + copy gate：$f(x)=(x,x)^T$，此时为向量值函数，其局部梯度为 $J_f=\left(\dfrac{\partial{x}}{\partial{x}},\dfrac{\partial{x}}{\partial{x}}\right)^{T}=(1,1)^{T}$，下游梯度为上游梯度相加．
 + max gate：$f(x,y)=\max(x,y)$，此时较大者局部梯度为1，较小者局部梯度为0．
@@ -1605,10 +1539,28 @@ $$
 $$
 
 可以对求偏导的过程进行很大程度上的化简．
-</code></pre>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="33">3.3 代码</h3>
 <p>还是那个例子，我们可以通过正向传播求函数值+反向传播求偏导的方式，模拟出来代码：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">w2</span><span class="p">):</span>
     <span class="c1"># Forward Pass: Compute output</span>
     <span class="n">s0</span> <span class="o">=</span> <span class="n">w0</span> <span class="o">*</span> <span class="n">x0</span>
     <span class="n">s1</span> <span class="o">=</span> <span class="n">w1</span> <span class="o">*</span> <span class="n">x1</span>
@@ -1627,9 +1579,21 @@ $$
     <span class="n">grad_x1</span> <span class="o">=</span> <span class="n">grad_s1</span> <span class="o">*</span> <span class="n">w1</span>
     <span class="n">grad_w0</span> <span class="o">=</span> <span class="n">grad_s1</span> <span class="o">*</span> <span class="n">x0</span>
     <span class="n">grad_x0</span> <span class="o">=</span> <span class="n">grad_s1</span> <span class="o">*</span> <span class="n">w0</span>
-</code></pre></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Pytorch也提供了 <code>torch.autograd.Function</code> 基类，我们可以继承该基类，实现自己的函数方法；之后调用该方法，Pytorch就会帮我们自动求导：
-</p><div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Multiply</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Multiply</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
     <span class="nd">@Staticmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="c1"># ctx means context, use to store inputs</span>
         <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -1642,7 +1606,7 @@ $$
         <span class="n">grad_x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">grad_z</span>
         <span class="n">grad_y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">grad_z</span>
         <span class="k">return</span> <span class="n">grad_x</span><span class="p">,</span> <span class="n">grad_y</span>
-</code></pre></div><p></p>
+</code></pre></div></td></tr></tbody></table></div><p></p>
 <h3 id="34">3.4 向量求导</h3>
 <p>考虑 <span class="arithmatex">\(f\)</span> 是一个 <span class="arithmatex">\(\mathbb{R}^{n}\to \mathbb{R}^{m}\)</span> 的映射，其输入为 <span class="arithmatex">\(\boldsymbol{x}=(x_{1},x_{2},\cdots,x_{n})^{T}\)</span>、输出为 <span class="arithmatex">\(\boldsymbol{y}=(y_{1},y_{2},\cdots, y_{m})^{T}\)</span>，则 </p>
 <div class="arithmatex">\[
@@ -1668,8 +1632,8 @@ $$
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420215934326.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420215934326.png" alt="image-20260420215934326" style="zoom:50%;"></a>
 </div>
 
-<pre><code>实际上由于存储Jacobian矩阵需要占用大量内存，我们并不显式存储它．我们可以通过如下公式化简：
-</code></pre>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>实际上由于存储Jacobian矩阵需要占用大量内存，我们并不显式存储它．我们可以通过如下公式化简：
+</code></pre></div></td></tr></tbody></table></div>
 <div style="text-align: center; margin-top: 15px;">
     <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="lec5-6.assets/image-20260420220103574.png" data-desc-position="bottom"><img src="lec5-6.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;"></a>
 </div>
@@ -1857,13 +1821,13 @@ G_{ab}\,\delta_{ai}W_{jb}
         
         
           
-          <a href="lec7.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Convolutional Networks">
+          <a href="lec7.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Convolutional Neural Networks">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                Convolutional Networks
+                Convolutional Neural Networks
               </div>
             </div>
             <div class="md-footer__button md-icon">
