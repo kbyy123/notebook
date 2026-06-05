@@ -81,3 +81,10 @@ $$
 <img src="note.assets/image-20260530201333586.png" alt="image-20260530201333586" style="zoom:50%;" />
 
 好处：可以把相似的词学习到接近的词向量，这是 n-gram 做不到的；但它仍然做不到长距离依赖．
+
+## Transformer
+
+之前主要学习 Encoder-Decoder Transformer，而现在常见的 GPT、LLama 架构都属于 Decoder-only Transformer．
+
+<img src="note.assets/image-20260605111419930.png" alt="image-20260605111419930" style="zoom: 38%;" />
+

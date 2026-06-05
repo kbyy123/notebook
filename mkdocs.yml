@@ -78,6 +78,10 @@ extra_javascript:
   # - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - js/typed.js
   - js/mermaid.js
+
+hooks:
+  - hooks/assembly_highlight.py
+
 plugins:
   - search
   - glightbox
@@ -158,7 +162,10 @@ nav:
   - 💻计算机系统:
     - system/index.md
     - 计算机系统导论:
-      - system/csapp/x86-64.md
+      - system/csapp/index.md
+      - system/csapp/Chap3.md
+      - system/csapp/Chap2ext.md
+      - system/csapp/Attacklab.md
     - 计算机组成与体系结构:
       - system/computer-architecture/index.md
       - system/computer-architecture/C.md
@@ -175,6 +182,8 @@ nav:
       - AI/CV/lec7.md
       - AI/CV/lec8.md
       - AI/CV/lec9-10.md
+      - AI/CV/lec16.md
+      - AI/CV/lec17.md
   # - 📝编程语言:
   #   - C++:
   #     - language/cpp/compile.md

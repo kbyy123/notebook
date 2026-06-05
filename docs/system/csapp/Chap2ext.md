@@ -1,5 +1,7 @@
-# Bit Manipulation
+# Chap 2 Extension
 
+
+## Bit Manipulation
 判断无符号数十六进制是否为字母：画**卡诺图**（Karnaugh Map）
 
 1 个十六进制数为 4 个二进制数，画四字母版：
