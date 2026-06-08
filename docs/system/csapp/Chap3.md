@@ -472,7 +472,9 @@ float bit2float(unsigned u)
 
 内存区域对应代码示意图（由 GPT 生成）：
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="Chap3.assets/21f4f626-335d-4eda-8621-e212648b8723.png" alt="21f4f626-335d-4eda-8621-e212648b8723" style="zoom: 67%;" />
+</div>
 
 ### Buffer Overflow
 
@@ -513,7 +515,9 @@ void call_echo() {
 
 编译器会给 `buf` 开 24 字节的空间（尽管我们只写了 4 字节），当输入了 24 个字符时，程序会将空间全部填满，同时最后一个 `'\0'` 会破坏栈其他数据．此处它将 `call_echo` 压入栈的返回地址破坏，导致返回到奇怪的地方，出现问题．  
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="Chap3.assets/image-20260602160303852.png" alt="image-20260602160303852" style="zoom: 50%;" />
+</div>
 
 ### Avoid Attack
 

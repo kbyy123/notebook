@@ -88,3 +88,61 @@ $$
 
 <img src="note.assets/image-20260605111419930.png" alt="image-20260605111419930" style="zoom: 38%;" />
 
+## LLama
+
+|             	  | Vaswani et al. | LLama | LLama2 |
+| -------------- | ---- | ---- | ---- |
+| Norm Position       | Post | Pre | Pre |
+| Norm Type           | LayerNorm | RMSNorm | RMSNorm |
+| Non-linearity       | ReLU | SwiGLU | SwiGLU |
+| Positional Encoding | Sinusoidal | RoPE | RoPE |
+| Attention           | Multi-head | Multi-head | Grouped-query |
+
+### Rotary Positional Encodings
+
+### Pre-Norm
+
+### RMSNorm
+
+### GroupQuery
+
+## Pretraining
+
+使用数据预训练得到 Base Model，再用于不同的任务上
+
++ Prompting：靠描述任务，直接使用模型执行任务
++ Fine-tune：微调模型从而执行特定任务
+
+预训练模型：BERT、GPT-3、Llama、DeepSeek-v3；模型主要被以下因素影响：
+
++ Architecture
++ Task
++ Data
++ Hyper-parameters
+
+### Task
+
+**Masked Language Modeling**：把原句中的一部分 token 损坏或遮住，让模型根据可见上下文预测被遮住的 token．典型模型是 BERT
+
+**Autoregressive Language Modeling**：根据前文预测下一个 token．典型模型是 GPT、Llama
+
+### Data
+
+Date Factors：Quantity、Quality、Coverage
+
+**Quantity**：
+
+<img src="note.assets/image-20260607110113321.png" alt="image-20260607110113321" style="zoom:33%;" />
+
+**Quality**：
+
+Web data：Common Crawl $\to$ Extraction $\to$ Filtering $\to$ Decup $\to$ Data
+
++ Extraction：HTML to text，删去模板，保留 Latex、Code
++ Filtering：过滤掉不想要的文本，如语言不对、短行过多
++ Decup：删除重复文本，fuzzy strategy：minhash
+
+**Coverage**：数据分布决定模型分布，想要模型哪方面强就需要这方面的更多数据．
+
+classifier filtering：训练一个分类器识别想要的数据，再过滤掉不想要的数据
+

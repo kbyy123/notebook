@@ -22,7 +22,9 @@
 
 具体过程：
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="lec17.assets/image-20260526081228999.png" alt="image-20260526081228999" style="zoom:50%;" />
+</div>
 
 + 解码器当前状态 $s_{t-1}$ 和所有隐状态 $h_i$ 计算得到分数 $e_{i,t}$．其使用的是一个小型前馈神经网络．
 + 得到了分数后，用 softmax 函数对其进行归一化处理得到注意力权重 $\alpha_{i,t}$．
@@ -32,7 +34,9 @@
 
     我们用机器翻译的结果，对注意力权重进行可视化：可以发现对应的词语的注意力权重会较高，如英语中的 Area 对应法语中的 zone、European 对应 européenne 等．
     
+    <div style="text-align: center; margin-top: 15px;">
     <img src="lec17.assets/image-20260526082927712.png" alt="image-20260526082927712" style="zoom: 50%;" />
+    </div>
 
 ## Cross-Attention
 
@@ -86,7 +90,9 @@ $$
 
 ### Sequential Modeling
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="https://jshn9515.github.io/deep-learning-notes/zh/ch8-attention-and-transformer/figures/ch8.3-self-attn-vis.png" alt="img" style="zoom: 25%;" />
+</div>
 
 在自注意力中，任意两个 token 可以直接进行交互，信息路径更短，容易建立长距离依赖；并且其主要计算均为矩阵乘法，天生容易并行；因此其天生适合序列建模．
 
@@ -214,4 +220,42 @@ $$
             # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
             return self.w_o(x)
     ```
+
+## Layer Norm
+
+处理文本时，由于不同序列文本长度不一致，因此 BatchNorm 在批之间归一化的方式并不好用；常使用 **Layer Normalization**（层归一化）．
+
+Layer Norm 是把每个 token 的向量表示进行归一化．即对于 `(batch, seq_len, d_model)` 的输入，其在 `d_model` 维度进行归一化．归一化步骤同 BatchNorm：减去均值、除以标准差，再乘以可学习的缩放、加上可学习的偏置（一般维度为 `d_model`）．
+
+!!! code "代码实现"
+
+    ```python
+    class LayerNormalization(nn.Module):
+    
+        def __init__(self, d_model: int, eps: float = 1e-6):
+            super().__init__()
+            self.eps = eps
+            # gamma / beta 都是 d_model 维
+            self.gamma = nn.Parameter(torch.ones(d_model)) # Multiplied
+            self.beta = nn.Parameter(torch.zeros(d_model)) # Added
+    
+        def forward(self, x):
+    
+            # LayerNorm 是作用在每个 token 上的
+            mean = x.mean(dim=-1, keepdim=True)
+            std = x.std(dim=-1, keepdim=True, unbiased=False)
+            return self.gamma * (x - mean) / (std + self.eps) + self.beta
+    ```
+
+## Transformer
+
+至此，Transformer 架构的基本单元已经集齐．Transformer 架构图：
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="lec17.assets/image-20260605123257996.png" alt="image-20260605123257996" style="zoom:45%;" />
+</div>
+
+### Encoder Block
+
+### Decoder Block
 
