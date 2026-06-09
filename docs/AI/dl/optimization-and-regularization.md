@@ -1,9 +1,12 @@
 # Regularization and Optimization
+
+正则化关注如何控制模型复杂度，优化算法关注如何更新参数．两者共同决定模型能否稳定训练并获得较好的泛化能力．
 ## Regularization 
 
 一个模型在训练数据表现得很好而在未知数据表现得很差，这种现象称为**过拟合**．
 
 为了防止模型出现过拟合，在数据集的损失函数后加上一个**正则化**项，其一般是关于模型复杂度的单调递增函数．
+
 $$
 \displaystyle\frac{1}{N}\sum_{i=1}^NL_{i}(f(x_{i},W),y_{i})+\lambda R(W)
 $$
@@ -14,7 +17,7 @@ $$
 ## Optimization
 我们已经用损失函数量化了参数的好坏，现在我们希望找到使 $L(W)$ 最小的 $W^{*}$．
 
-优化中常用的方法为**Gradient Descent（梯度下降）**，即求出损失函数 $L$ 关于 $W$ 每一个参数的导数（即梯度，实际上是通过计算），将 $W$ 的每个参数往负梯度方向进行变化．用代码来说就是
+优化中常用的方法为 **Gradient Descent（梯度下降）**，即求出损失函数 $L$ 关于 $W$ 每一个参数的导数（即梯度，实际上是通过计算），将 $W$ 的每个参数往负梯度方向进行变化．用代码来说就是
 
 ```python
 w = initialize_weights()
@@ -73,7 +76,7 @@ $$
 BGD和SGD有个共性的缺点：在某些方向变化太快、某些方向变化太慢时路径会抖动，例如
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec4.assets/image-20260418154349443.png" alt="image-20260418154349443" style="zoom:50%;" />
+<img src="optimization-and-regularization.assets/image-20260418154349443.png" alt="image-20260418154349443" style="zoom:50%;" />
 </div>
 
 ### Momentum
@@ -148,7 +151,7 @@ $$
 这样的好处是学习率会自适应最近的梯度大小．如果最近的梯度大小很大，那么学习率就会较小；反之最近的梯度较小，那么学习率就会变大．
 
 ### Adam
-Adam是被广泛使用的梯度下降算法．其原文[Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980)被引用次数已经超过24w．其将Momentum与RMSProp进行了结合，并加以修正．
+[Adam: A Method for Stochastic Optimization](https://arxiv.org/abs/1412.6980) 是被广泛使用的梯度下降算法，其将Momentum与RMSProp进行了结合，并加以修正．
 
 不妨设此时
 
@@ -184,7 +187,7 @@ AdamW 是 Adam+Weight Decay 的优化．
 	Weight Decay是在 $g_{t}$ 里额外加上 $2\lambda \theta_{t}$ 的惩罚项．这里与L2正则化做一个简单的对比：
 	
 	<div style="text-align: center; margin-top: 15px;">
-		<img src="lec4.assets/image-20260421085035886.png" alt="image-20260421085035886" style="zoom:50%;" />
+		<img src="optimization-and-regularization.assets/image-20260421085035886.png" alt="image-20260421085035886" style="zoom:50%;" />
 	</div>
 	
 	L2正则化是在损失函数中添加 $\lambda \theta_{t}^{2}$ 的惩罚；而Weight Decay是在更新量中额外加上 $2\lambda \theta_{t}$．在SGD/SGC+Momentum中，二者结果是一样的；而在Adam这类自适应优化器中，由于对学习率做了自适应，结果会不同．也就是说，我们使用Weight Decay而不是L2正则化，是因为我们不希望惩罚项被自适应机制一起处理．

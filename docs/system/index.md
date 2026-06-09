@@ -10,4 +10,4 @@ hide:
 
 ## Table of Contents
 
-- [计算机组成与体系结构](computer-architecture/index.md)
+- [计算机系统导论](csapp/index.md)

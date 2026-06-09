@@ -1,12 +1,14 @@
 # Training Neural Networks
 
+训练神经网络不只是选择一个模型结构，还包括初始化、激活函数、数据预处理、正则化、学习率调度和迁移学习等一整套流程．
+
 ## One time setup
 ### Activation Functions
 
 ???+ quote "激活函数图像"
 
     <div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504095213772.png" alt="image-20260504095213772" style="zoom:50%;" />
+        <img src="training-neural-networks.assets/image-20260504095213772.png" alt="image-20260504095213772" style="zoom:50%;" />
     </div>
 
 Sigmoid $\sigma(x)=\dfrac{1}{1+e^{-x}}$：
@@ -46,14 +48,14 @@ GELU $f(x)=x\sigma(1.702x)$：在 Transformer 中常用
 
     + 不要使用 Sigmoid 或 tanh．
     + 一般来讲使用 ReLU 即可．
-    + 如果想要 0.1% 数量级的提升，可以试试 Leakly ReLU / ELU / SELU/ GELU．
+    + 如果想要 0.1% 数量级的提升，可以试试 Leakly ReLU / ELU / SELU / GELU．
 
 ### Data Preprocessing
 
 将原始数据进行**归一化**处理．可以用如下方法：
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec9-10.assets/image-20260504101218774.png" alt="image-20260504101218774" style="zoom: 33%;" />
+<img src="training-neural-networks.assets/image-20260504101218774.png" alt="image-20260504101218774" style="zoom: 33%;" />
 </div>
 
 也可以对数据进行PCA（让不同维度解耦，协方差矩阵变为对角阵）、 Whitening（把每个方向上方差缩放为1，协方差矩阵变为单位阵），不过这两个在图像任务中不常见．
@@ -86,7 +88,7 @@ x -> conv1 -> ReLU -> conv2 -> F(x)
 
 #### Add term to loss
 
-与之前介绍过的一样，使用 L1/L2 正则化、weight decay 等．
+与之前介绍过的一样，使用 L1/L2 正则化、Weight Decay 等．
 
 #### Dropout
 
@@ -102,18 +104,18 @@ def train_step(X):
   H1 = np.maximum(0, np.dot(W1, X) + b1)
   U1 = (np.random.rand(*H1.shape) < p) 
   H1 *= U1 # Drop!
-  H2 = np.maximun(0, np.dot(W2, H1) + b2)
+  H2 = np.maximum(0, np.dot(W2, H1) + b2)
   U2 = (np.random.rand(*H2.shape) < p)
   H2 *= U2
-  out = np,dot(W3, H2) + b3
+  out = np.dot(W3, H2) + b3
     
   # 反向传播...
   # 更新参数...
 
 def predict(X):
   H1 = np.maximum(0, np.dot(W1, X) + b1) * p
-  H2 = np.maximum(0, np.dot(W2, X) + b2) * p
-  out = np,dot(W3, H2) + b3
+  H2 = np.maximum(0, np.dot(W2, H1) + b2) * p
+  out = np.dot(W3, H2) + b3
 ```
 
 在实际应用中，更常见的是 **Inverted Dropout**：训练时 drop 后除以 p，测试时不动．这样就和其他模型的测试统一了．
@@ -128,20 +130,20 @@ def train_step(X):
   # drop mask, notice '/p' !!
   U1 = (np.random.rand(*H1.shape) < p) / p
   H1 *= U1 # Drop!
-  H2 = np.maximun(0, np.dot(W2, H1) + b2)
+  H2 = np.maximum(0, np.dot(W2, H1) + b2)
   U2 = (np.random.rand(*H2.shape) < p) / p
   H2 *= U2
-  out = np,dot(W3, H2) + b3
+  out = np.dot(W3, H2) + b3
   # 反向传播...
   # 更新参数...
 
 def predict(X):
   H1 = np.maximum(0, np.dot(W1, X) + b1)
-  H2 = np.maximum(0, np.dot(W2, X) + b2)
-  out = np,dot(W3, H2) + b3
+  H2 = np.maximum(0, np.dot(W2, H1) + b2)
+  out = np.dot(W3, H2) + b3
 ```
 
-#### Data Argumentation
+#### Data Augmentation
 
 将图像增强，可以增加数据数量、提升模型泛化能力．
 
@@ -157,7 +159,7 @@ def predict(X):
 **RandAugment**：组合不同的变换，如旋转、平移、剪切、锐化等．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec9-10.assets/image-20260504104614673.png" alt="image-20260504104614673" style="zoom:35%;" />
+<img src="training-neural-networks.assets/image-20260504104614673.png" alt="image-20260504104614673" style="zoom:35%;" />
 </div>
 
 ???+ info "几种少用的正则化方法"
@@ -181,13 +183,13 @@ def predict(X):
 **Step Decay**：在固定 epoch 降低学习率．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec9-10.assets/image-20260504110233466.png" alt="image-20260504110233466" style="zoom:38%;" />
+<img src="training-neural-networks.assets/image-20260504110233466.png" alt="image-20260504110233466" style="zoom:38%;" />
 </div>
 
 **Cosine Decay**：按照余弦函数，从初始学习率逐步下降到0．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec9-10.assets/image-20260504110345785.png" alt="image-20260504110345785" style="zoom: 67%;" />
+<img src="training-neural-networks.assets/image-20260504110345785.png" alt="image-20260504110345785" style="zoom: 67%;" />
 </div>
 
 **Linear Decay**：线性衰减 $\alpha_t = \alpha_0(1-\dfrac{t}{T})$．
@@ -203,7 +205,7 @@ def predict(X):
 **Random Search**：为超参数的值划定一个范围 （通常同样在对数空间上），超参数在空间中均匀随机分布
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec9-10.assets/image-20260504112613672.png" alt="image-20260504112613672" style="zoom:50%;" />
+<img src="training-neural-networks.assets/image-20260504112613672.png" alt="image-20260504112613672" style="zoom:50%;" />
 </div>
 
 没有大量算力的情况下选择超参数的方法：
@@ -235,34 +237,34 @@ def predict(X):
 ???+ info "曲线对应问题"
 
     === "权重初始化"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;" />
+        </div>
 
     === "学习率不衰减"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;" />
+        </div>
 
     === "学习率衰减太快"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;" />
+        </div>
 
     === "训练不够久"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;" />
+        </div>
 
     === "过拟合"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;" />
+        </div>
 
     === "欠拟合"
-<div style="text-align: center; margin-top: 15px;">
-        <img src="lec9-10.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;" />
-</div>
+        <div style="text-align: center; margin-top: 15px;">
+        <img src="training-neural-networks.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;" />
+        </div>
 
 > 7.回到第 5 步，反复迭代直到找到最佳超参数．
 
@@ -290,3 +292,4 @@ def predict(X):
 由于 CNN 的前面几层主要起到特征提取的通用作用，因此当数据量较小时，可以拿现成的 CNN，将前面的层直接拿来用，把最后的分类层拿去训练．
 
 **Fine-Tuning**：如果我们拥有较大的数据集，我们可以在原来网络的基础上进行微调训练，冻结层数较低的层以节省训练资源；建议以原始学习率的 1/10 进行训练．
+

@@ -11,7 +11,7 @@
 
     课外拓展：
 
-    + 时间：2026/3 - 
+    + 时间：2026/3 - 2026/4
     + 课程：[MIT18.06 10sp](https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/)
     + 教材：Introduction to Linear Algebra (5th Edition), Gilbert Strang
 

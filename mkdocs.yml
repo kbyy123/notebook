@@ -105,7 +105,8 @@ plugins:
         - data-structure/index.md
         - system/index.md
         - misc/index.md
-        - data-structure/LeetCode/
+        - LeetCode/
+        - AI/index.md
   # - enumerate-headings:
   #     increment_across_pages: false
   #     toc_depth: 6
@@ -120,12 +121,12 @@ nav:
   - 🏫主页: index.md
   - 📊数学: 
     - math/index.md
-    - 多变量微积分:
-      - math/multivariable-calculus/index.md
-      - math/multivariable-calculus/1.md
-      - math/multivariable-calculus/2.md
-      - math/multivariable-calculus/3.md
-      - math/multivariable-calculus/4.md
+    # - 多变量微积分:
+    #   - math/multivariable-calculus/index.md
+    #   - math/multivariable-calculus/1.md
+    #   - math/multivariable-calculus/2.md
+    #   - math/multivariable-calculus/3.md
+    #   - math/multivariable-calculus/4.md
     - 线性代数:
       - math/linear-algebra/index.md
       - math/linear-algebra/introduction.md
@@ -144,16 +145,20 @@ nav:
     #   - math/probability/counting.md
     #   - math/probability/core-probability.md
     #   - math/probability/random-variables.md
-  - 🧮数据结构:
-    - data-structure/index.md
-    - LeetCode:
-      - data-structure/LeetCode/index.md
-      - data-structure/LeetCode/linked-list.md
-      - data-structure/LeetCode/binary-tree.md
-    - 基础数据结构:
-      - data-structure/fds/index.md
-      - data-structure/fds/string.md
-      - data-structure/fds/tree.md
+  # - 🧮数据结构:
+  #   - data-structure/index.md
+  #   - LeetCode:
+  #     - data-structure/LeetCode/index.md
+  #     - data-structure/LeetCode/linked-list.md
+  #     - data-structure/LeetCode/binary-tree.md
+  #   - 基础数据结构:
+  #     - data-structure/fds/index.md
+  #     - data-structure/fds/string.md
+  #     - data-structure/fds/tree.md
+  - 🔥LeetCode:
+    - LeetCode/index.md
+    - LeetCode/linked-list.md
+    - LeetCode/binary-tree.md
   # - 💭💡🎈:
   #   - competitive-algo/index.md
   #   - 2026春季联赛:
@@ -166,24 +171,37 @@ nav:
       - system/csapp/Chap3.md
       - system/csapp/Chap2ext.md
       - system/csapp/Attacklab.md
-    - 计算机组成与体系结构:
-      - system/computer-architecture/index.md
-      - system/computer-architecture/C.md
-      - system/computer-architecture/number.md
-      - system/computer-architecture/assembly-language.md
-      - system/computer-architecture/machine-language.md
+    # - 计算机组成与体系结构:
+    #   - system/computer-architecture/index.md
+    #   - system/computer-architecture/C.md
+    #   - system/computer-architecture/number.md
+    #   - system/computer-architecture/assembly-language.md
+    #   - system/computer-architecture/machine-language.md
   - 🤖人工智能:
     - AI/index.md
-    - CV:
-      - AI/CV/index.md
-      - AI/CV/lec1-3.md
-      - AI/CV/lec4.md
-      - AI/CV/lec5-6.md
-      - AI/CV/lec7.md
-      - AI/CV/lec8.md
-      - AI/CV/lec9-10.md
-      - AI/CV/lec16.md
-      - AI/CV/lec17.md
+    - 机器学习:
+      - AI/foundations/index.md
+      - AI/foundations/classification-and-linear-models.md
+    - 深度学习:
+      - AI/dl/index.md
+      - AI/dl/neural-networks-and-backpropagation.md
+      - AI/dl/optimization-and-regularization.md
+      - AI/dl/training-neural-networks.md
+      - AI/dl/convolutional-neural-networks.md
+      - AI/dl/recurrent-neural-networks.md
+      - AI/dl/attention-and-transformer.md
+    - 计算机视觉:
+      - AI/cv/index.md
+      - AI/cv/image-classification.md
+    - 自然语言处理:
+      - AI/nlp/index.md
+      - AI/nlp/text-representations.md
+      - AI/nlp/language-modeling.md
+    - 大语言模型:
+      - AI/llm/index.md
+      - AI/llm/llm-architecture.md
+      - AI/llm/pretraining-and-data.md
+    - AI/references.md
   # - 📝编程语言:
   #   - C++:
   #     - language/cpp/compile.md

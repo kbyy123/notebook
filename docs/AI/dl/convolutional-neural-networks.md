@@ -1,5 +1,7 @@
 # Convolutional Neural Networks
 
+卷积神经网络利用局部连接、权重共享和空间下采样来处理图像数据。本节记录卷积层、池化层、归一化和 LeNet 等基础结构。
+
 多层感知机难以学习在图像不同区域的类别．为了实现**特征提取**功能，提出了**卷积神经网络**．
 
 ## Convolution Layer
@@ -17,7 +19,7 @@ $$
 $$
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502204944164.png" alt="image-20260502204944164" style="zoom: 40%;" />
+<img src="convolutional-neural-networks.assets/image-20260502204944164.png" alt="image-20260502204944164" style="zoom: 40%;" />
 </div>
 
 !!! warning "激活函数"
@@ -33,7 +35,7 @@ $$
 经过了数个卷积层后，单个像素可以认为是一个正方形的区域的综合，这个区域被称为**Receptive Fields（感受野）**．显然卷积层越多、$K$ 越大，感受野越大．如果图像过大而 $K$ 较小，需要很多卷积层才能让感受野为整张图片．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502204711053.png" alt="image-20260502204711053" style="zoom:50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502204711053.png" alt="image-20260502204711053" style="zoom:50%;" />
 </div>
 
 因此引入**stride（步长）**的概念：每次kernel滑动可以不止滑动一个单位，可以是多个．例如 $7\times 7$ 的图像，经过 stride=2、Filter=3*3 的卷积后得到的是 $3\times 3$ 的图像．此时再做一次卷积操作，得到的 $1\times 1$ 像素的感受野就是全图．
@@ -44,9 +46,9 @@ $$
 
 使用 $1\times 1$ 卷积，即使不加padding也不会使图像变小．其可以看作是单个像素在每个通道的加权平均数，也可以输出多个通道，相当于对单个点的所有通道做感知机操作．
 
-### Conv in Pytorch
+### Conv in PyTorch
 
-卷积也有一维卷积与三维卷积，这里我们用的更多的是二维卷积．Pytorch有内置的[Conv2d](https://docs.pytorch.org/docs/2.11/generated/torch.nn.Conv2d.html)，可用于 `nn.Sequence` 叠加网络层．
+卷积也有一维卷积与三维卷积，这里我们用的更多的是二维卷积。PyTorch 有内置的 [Conv2d](https://docs.pytorch.org/docs/2.11/generated/torch.nn.Conv2d.html)，可用于 `nn.Sequential` 叠加网络层。
 
 ## Pooling Layers
 
@@ -60,16 +62,16 @@ $$
 
     对一个 $4\times 4$ 的图像进行 kernel size=2, stride=2, pooling function=max 的最大采样结果：
 
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec7.assets/image-20260502210730111.png" alt="image-20260502210730111" style="zoom:50%;" />
-</div>
+    <div style="text-align: center; margin-top: 15px;">
+    <img src="convolutional-neural-networks.assets/image-20260502210730111.png" alt="image-20260502210730111" style="zoom:50%;" />
+    </div>
 
 常用的max函数由于带有非线性性，因此池化层后一般不用接激活函数．
 
 此时我们可以构建简单的卷积神经网络，用卷积层、ReLU、池化层以及全连接层：如 **LeNet-5**：
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502211033380.png" alt="image-20260502211033380" style="zoom: 50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502211033380.png" alt="image-20260502211033380" style="zoom: 50%;" />
 </div>
 
 可以发现我们偏向于减小图像尺寸而增加通道数．
@@ -83,13 +85,13 @@ $$
 **BatchNorm（批归一化）**是逐特征/通道求平均，常用于处理图像．例如单一输入 $x\in \mathbb{R}^{N\times D}$，其中 $N$ 为batch size，$D$ 为特征数量，则
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502212726866.png" alt="image-20260502212726866" style="zoom:50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502212726866.png" alt="image-20260502212726866" style="zoom:50%;" />
 </div>
 
 加入了一个微小量 $\epsilon$ 防止除以0．为了增强模型的表达能力，BatchNorm后也可以再进行仿射变换，得到更适合的调节．其中 $\gamma,\beta$ 都是可学习参数．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502212924854.png" alt="image-20260502212924854" style="zoom:50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502212924854.png" alt="image-20260502212924854" style="zoom:50%;" />
 </div>
 
 由于测试集的batch size较小，得到的 $\mu,\sigma$ 没有代表性，因此测试时一般使用训练集得到的整体running average $\mu,\sigma$．同时因为使用的确定的 $\mu,\sigma,\gamma,\beta$ 值，BatchNorm在此时是一个线性运算，可以和卷积层放在一起，因此在测试时BatchNorm几乎是零开销的．
@@ -97,7 +99,7 @@ $$
 **对于CNN**：为每一个通道的平均
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502213926587.png" alt="image-20260502213926587" style="zoom:50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502213926587.png" alt="image-20260502213926587" style="zoom:50%;" />
 </div>
 
 ### Layer Norm
@@ -105,7 +107,7 @@ $$
 **LayerNorm（层归一化）**是对单一数据的不同特征取平均，因此其在测试时的取平均方式与训练时一样，不需要用running average．常用于GPT等处理文本的任务．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502214353157.png" alt="image-20260502214353157" style="zoom: 50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502214353157.png" alt="image-20260502214353157" style="zoom: 50%;" />
 </div>
 
 ### Instance Norm
@@ -113,53 +115,12 @@ $$
 Instance Norm是对单一数据的每一个通道求平均．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260502214610762.png" alt="image-20260502214610762" style="zoom:50%;" />
+<img src="convolutional-neural-networks.assets/image-20260502214610762.png" alt="image-20260502214610762" style="zoom:50%;" />
 </div>
 
 !!! quote "不同Norm方法区别"
 
-<div style="text-align: center; margin-top: 15px;">
-	<img src="lec7.assets/image-20260502214646493.png" alt="image-20260502214646493" style="zoom: 25%;" />
-</div>
+    <div style="text-align: center; margin-top: 15px;">
+	<img src="convolutional-neural-networks.assets/image-20260502214646493.png" alt="image-20260502214646493" style="zoom: 25%;" />
+    </div>
 
-## LeNet
-
-LeNet 是最早发布的卷积神经网络之一，因其在计算机视觉任务中的高效性能而受到广泛关注．
-
-其包含2个卷积块、3个全连接层．其中每个卷积块的基本单元是一个卷积层、一个激活函数、一个池化层．原始的 LeNet 采用 Sigmoid 激活与平均池化，而现在通常使用 ReLU 激活与最大池化．我们给出最初的 LeNet 实现代码，以及课程修改后的 LeNet：
-
-```python
-import torch
-from torch import nn
-
-net = nn.Sequential(
-    # 第一个卷积块
-    nn.Conv2d(1, 6, kernel_size=5, padding=2), nn.Sigmoid(),
-    nn.AvgPool2d(kernel_size=2, stride=2),
-    # 第二个卷积块
-    nn.Conv2d(6, 16, kernel_size=5), nn.Sigmoid(),
-    nn.AvgPool2d(kernel_size=2, stride=2),
-    # 三个全连接层
-    nn.Flatten(),
-    nn.Linear(16 * 5 * 5, 120), nn.Sigmoid(),
-    nn.Linear(120, 84), nn.Sigmoid(),
-    nn.Linear(84, 10))
-
-# 其对应输出维度（Batch Size = 1）
-Conv2d output shape:         torch.Size([1, 6, 28, 28])
-Sigmoid output shape:        torch.Size([1, 6, 28, 28])
-AvgPool2d output shape:      torch.Size([1, 6, 14, 14])
-Conv2d output shape:         torch.Size([1, 16, 10, 10])
-Sigmoid output shape:        torch.Size([1, 16, 10, 10])
-AvgPool2d output shape:      torch.Size([1, 16, 5, 5])
-Flatten output shape:        torch.Size([1, 400])
-Linear output shape:         torch.Size([1, 120])
-Sigmoid output shape:        torch.Size([1, 120])
-Linear output shape:         torch.Size([1, 84])
-Sigmoid output shape:        torch.Size([1, 84])
-Linear output shape:         torch.Size([1, 10])
-```
-
-<div style="text-align: center; margin-top: 15px;">
-<img src="lec7.assets/image-20260511220303410.png" alt="image-20260511220303410" style="zoom:50%;" />
-</div>

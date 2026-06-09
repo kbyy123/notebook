@@ -1,22 +1,24 @@
-# Neural Networks and Backpropagation
+# Neural Networks
+
+神经网络可以看作一系列可学习的特征变换，反向传播则提供了高效计算梯度的方法．
 ## Feature Transformation
 一些特征变换可以将在原空间下线性不可分的数据，在特征空间下变得线性可分．如下图，原空间在笛卡尔坐标下难以分类，但使用极坐标可以很容易得分类出来．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420083228529.png" alt="image-20260420083228529" style="zoom:50%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420083228529.png" alt="image-20260420083228529" style="zoom:50%;" />
 </div>
 
 !!! warning "提示"
 
 	在此语境下的特征变换为feature transformation．要注意此处的特征为feature，不要与线性代数中的特征弄混了，特别是特征值（feature value, eigenvalue）与特征向量（feature vector, eigenvector）．
 
-CV历史上还使用过：
+CV 历史上还使用过：
 
 + Color Histogram（颜色直方图）：将颜色空间分成很多桶，对图像颜色做频数统计．忽略颜色出现的空间位置，只关心出现频率．
 + Histogram of Oriented Gradients（方向梯度直方图特征）：将图像切成数个小区域（如 $8\times 8$ pixel），统计小区域的方向朝向．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420083727023.png" alt="image-20260420083727023" style="zoom: 22%;" /><img src="lec5-6.assets/image-20260421085249730.png" alt="image-20260421085249730" style="zoom:18%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420083727023.png" alt="image-20260420083727023" style="zoom: 22%;" /><img src="neural-networks-and-backpropagation.assets/image-20260421085249730.png" alt="image-20260421085249730" style="zoom:18%;" />
 </div>
 
 ## Neural Networks
@@ -27,29 +29,28 @@ CV历史上还使用过：
     
     激活函数必须是非线性的，以下函数都可以作为激活函数：
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260421085424456.png" alt="image-20260421085424456" style="zoom:33%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260421085424456.png" alt="image-20260421085424456" style="zoom:33%;" />
+	</div>
     
     在本节课中我们默认使用ReLU，因为其使用的更加广泛，且函数较为简单（反向传播时导数只可能为0或1）．
 
 以二层神经网络为例，其形式为 $f(x)=W_{2}\max(0, W_{1}x+b_{1})+b_{2}$．如果输入 $x\in \mathbb{R}^{D}$，输出 $f(x)\in \mathbb{R}^{C}$，则有 $W_{1}\in \mathbb{R}^{H\times D},b_{1}\in \mathbb{R}^{H},W_{2}\in \mathbb{R}^{C\times H},b_{2}\in \mathbb{R}^{C}$．
 
-神经网络也被称为**多层感知机**．神经网络的层数称为其深度，一般来说，深度越深，神经网络的拟合能力越强，也越容易出现过拟合；我们需要加入正则化项来防止过拟合（而不是通过减小深度来实现）．
+线性神经网络也被称为**多层感知机**．神经网络的层数称为其深度，一般来说，深度越深，神经网络的拟合能力越强，也越容易出现过拟合；我们需要加入正则化项来防止过拟合（而不是通过减小深度来实现）．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420090856700.png" alt="image-20260420090856700" style="zoom:33%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420090856700.png" alt="image-20260420090856700" style="zoom:33%;" />
 </div>
 
 由于非线性激活函数的存在，其可以实现在原坐标系下的非线性边界．理论上，神经网络可以拟合所有 $\mathbb{R}^{N}\to \mathbb{R}^{M}$ 的任意连续函数．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420093107728.png" alt="image-20260420093107728" style="zoom:67%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420093107728.png" alt="image-20260420093107728" style="zoom:67%;" />
 </div>
 
 ## Backpropagation
 
-### 反向传播
 对于函数 $f$，不妨其具有输入 $x,y$，输出 $z$，并且我们已知最终的结果 $L$ 关于输出 $z$  的偏导 $\dfrac{\partial{L}}{\partial{z}}$，那么就能用**链式法则**得到：
 
 $$
@@ -72,37 +73,37 @@ $$
 
     对于函数 $f(x,w)=\dfrac{1}{1+e^{-(w_{0}x_{0}+w_{1}x_{1}+w_{2})}}$，给出其计算图：
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420105036979.png" alt="image-20260420105036979" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420105036979.png" alt="image-20260420105036979" style="zoom:50%;" />
+	</div>
     
     不妨设最后的结果即为目标 $L$．显然 $\dfrac{\partial{L}}{\partial{L}}=1$；对于函数 $f(x)=\dfrac{1}{x}$，其输入为 $x=1.37$，输出为 $y=0.73$；因此我们得到 $\dfrac{\partial{L}}{\partial{x}}=-\dfrac{1}{x^{2}}=-\dfrac{1}{1.37^{2}}\approx 0.53$．
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420105409383.png" alt="image-20260420105409383" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420105409383.png" alt="image-20260420105409383" style="zoom:50%;" />
+	</div>
     接着是函数 $f(x)=x+1$，偏导与前一轮一样；
     
     然后是函数 $f(x)=e^{x}$，其输入为 $x=-1$，输出为 $y=0.37$，上游梯度 $\dfrac{\partial{L}}{\partial{y}}=-0.53$，因此下游梯度 $\dfrac{\partial{L}}{\partial{x}}=\dfrac{de^{x}}{dx}\cdot\dfrac{\partial{L}}{\partial{y}}=\dfrac{1}{e}\cdot 0.53\approx 0.20$．
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420110002840.png" alt="image-20260420110002840" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420110002840.png" alt="image-20260420110002840" style="zoom:50%;" />
+	</div>
     依此类推，可以求出所有偏导：
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420110323215.png" alt="image-20260420110323215" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420110323215.png" alt="image-20260420110323215" style="zoom:50%;" />
+	</div>
 
-### 梯度流
+### Gradient Flow
 
 我们可以预处理一些常用操作的梯度规律，使得运算时可以直接查表．
 
 !!! example "例"
 
-<div style="text-align: center; margin-top: 15px;">
-	<img src="lec5-6.assets/image-20260420110717168.png" alt="image-20260420110717168" style="zoom:40%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+	<img src="neural-networks-and-backpropagation.assets/image-20260420110717168.png" alt="image-20260420110717168" style="zoom:40%;" />
+	</div>
 	
 	+ add gate：$f(x,y)=x+y$，此时两边的局部梯度均为1，下游梯度与上游梯度相等．
 	+ mul gate：$f(x,y)=xy$，此时两边的局部梯度为另一个变量．
@@ -117,48 +118,51 @@ $$
 	
 	可以对求偏导的过程进行很大程度上的化简．
 
-### 代码
-还是那个例子，我们可以通过正向传播求函数值+反向传播求偏导的方式，模拟出来代码：
+!!! code "代码"
 
-```python
-def f(w0, x0, w1, x1, w2):
-	# Forward Pass: Compute output
-	s0 = w0 * x0
-	s1 = w1 * x1
-	s2 = s0 + s1
-	s3 = s2 + w2
-	L = sigmoid(s3)
-	
-	# Backward Pass: Compute grads
-	grad_L = 1.0
-	grad_s3 = grad_L * (1 - L) * L
-	grad_s2 = s3
-	grad_w2 = s3
-	grad_s0 = s2
-	grad_s1 = s2
-	grad_w1 = grad_s1 * x1
-	grad_x1 = grad_s1 * w1
-	grad_w0 = grad_s1 * x0
-	grad_x0 = grad_s1 * w0
-```
+	我们可以通过正向传播求函数值+反向传播求偏导的方式，模拟出来代码：
 
-Pytorch也提供了 `torch.autograd.Function` 基类，我们可以继承该基类，实现自己的函数方法；之后调用该方法，Pytorch就会帮我们自动求导：
-```python
-class Multiply(torch.autograd.Function)
-	@Staticmethod
-	def forward(ctx, x, y): # ctx means context, use to store inputs
-		ctx.save_for_backward(x, y)
-		z = x * y
-		return z
-	
-	@Staticmethod
-    def backward(ctx, grad_z):
-        x, y = ctx.saved_tensors
-        grad_x = y * grad_z
-        grad_y = x * grad_z
-        return grad_x, grad_y
-```
-### 向量求导
+	```python
+	def f(w0, x0, w1, x1, w2):
+		# Forward Pass: Compute output
+		s0 = w0 * x0
+		s1 = w1 * x1
+		s2 = s0 + s1
+		s3 = s2 + w2
+		L = sigmoid(s3)
+		
+		# Backward Pass: Compute grads
+		grad_L = 1.0
+		grad_s3 = grad_L * (1 - L) * L
+		grad_s2 = s3
+		grad_w2 = s3
+		grad_s0 = s2
+		grad_s1 = s2
+		grad_w1 = grad_s1 * x1
+		grad_x1 = grad_s1 * w1
+		grad_w0 = grad_s1 * x0
+		grad_x0 = grad_s1 * w0
+	```
+
+	PyTorch 也提供了 `torch.autograd.Function` 基类，我们可以继承该基类，实现自己的函数方法；之后调用该方法，PyTorch 就会帮我们自动求导：
+	```python
+	class Multiply(torch.autograd.Function)
+		@Staticmethod
+		def forward(ctx, x, y): # ctx means context, use to store inputs
+			ctx.save_for_backward(x, y)
+			z = x * y
+			return z
+		
+		@Staticmethod
+		def backward(ctx, grad_z):
+			x, y = ctx.saved_tensors
+			grad_x = y * grad_z
+			grad_y = x * grad_z
+			return grad_x, grad_y
+	```
+### Compute Derivatives
+**向量求导**：
+
 考虑 $f$ 是一个 $\mathbb{R}^{n}\to \mathbb{R}^{m}$ 的映射，其输入为 $\boldsymbol{x}=(x_{1},x_{2},\cdots,x_{n})^{T}$、输出为 $\boldsymbol{y}=(y_{1},y_{2},\cdots, y_{m})^{T}$，则 
 
 $$
@@ -183,19 +187,19 @@ $$
 
 !!! example "例"
 
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420215934326.png" alt="image-20260420215934326" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420215934326.png" alt="image-20260420215934326" style="zoom:50%;" />
+	</div>
     
     实际上由于存储Jacobian矩阵需要占用大量内存，我们并不显式存储它．我们可以通过如下公式化简：
     
-<div style="text-align: center; margin-top: 15px;">
-    <img src="lec5-6.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;" />
-</div>
+	<div style="text-align: center; margin-top: 15px;">
+    <img src="neural-networks-and-backpropagation.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;" />
+	</div>
 
 按照上述的想法，如果不存储Jacobian矩阵而想求出所有 $y_i$ 对 $x_j$ 的偏导数之和，可以令 $s=\sum y_i$，然后将 $s$ 对 所有 $x_j$ 求偏导即可．这等价于将Jacobian矩阵按照 `dim=0` 求和．
 
-### 矩阵求导
+**矩阵求导**：
 
 考虑 $X\in \mathbb{R}^{N\times D},W\in \mathbb{R}^{D\times M}, Y=XW\in \mathbb{R}^{N\times M}$．接下来推导 $\dfrac{\partial{Y}}{\partial{X}},\dfrac{\partial{Y}}{\partial{W}}$．
 
@@ -302,26 +306,27 @@ $$
 
 这与向量求导的本质相同：由于 $Y=XW$，我们可以认为 $\dfrac{\partial{Y}}{\partial{X}}$ 是 $W$，即 $J$（实际上并不是，结果是一个四维张量）．
 
-### 另一个视角
+### Another Perspective
 
 如果是求标量对向量的导数，我们可以反向求，这样每一次的操作都是矩阵$\times$向量，而不是矩阵$\times$矩阵．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420224715197.png" alt="image-20260420224715197" style="zoom:50%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420224715197.png" alt="image-20260420224715197" style="zoom:50%;" />
 </div>
 
 同理，如果是求向量对标量的导数，我们可以正向求．
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420224729054.png" alt="image-20260420224729054" style="zoom:50%;" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420224729054.png" alt="image-20260420224729054" style="zoom:50%;" />
 </div>
 
-### 高阶导数
+<!-- ### Higher-Order Derivatives
 仅作了解即可．
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420224753514.png" alt="image-20260420224753514" />
+<img src="neural-networks-and-backpropagation.assets/image-20260420224753514.png" alt="image-20260420224753514" />
 </div>
 
 <div style="text-align: center; margin-top: 15px;">
-<img src="lec5-6.assets/image-20260420224817374.png" alt="image-20260420224817374" />
-</div>
+<img src="neural-networks-and-backpropagation.assets/image-20260420224817374.png" alt="image-20260420224817374" />
+</div> -->
+
