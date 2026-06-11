@@ -78,3 +78,5 @@ end
 + Sorting: Bubble sort, Insertion sort...
 + Greedy
 
+## Growth of Functions
+

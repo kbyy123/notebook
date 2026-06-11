@@ -240,27 +240,27 @@ def predict(X):
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;" />
         </div>
-
+    
     === "学习率不衰减"
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;" />
         </div>
-
+    
     === "学习率衰减太快"
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;" />
         </div>
-
+    
     === "训练不够久"
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;" />
         </div>
-
+    
     === "过拟合"
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;" />
         </div>
-
+    
     === "欠拟合"
         <div style="text-align: center; margin-top: 15px;">
         <img src="training-neural-networks.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;" />
@@ -289,7 +289,14 @@ def predict(X):
 
 ###  Transfer Learning
 
-由于 CNN 的前面几层主要起到特征提取的通用作用，因此当数据量较小时，可以拿现成的 CNN，将前面的层直接拿来用，把最后的分类层拿去训练．
+由于 CNN 的前面几层主要起到特征提取的通用作用，因此当数据量较小时，可以拿现成的 CNN，将前面的层直接拿来用，改造最后的输出层为我们需要的功能．
 
-**Fine-Tuning**：如果我们拥有较大的数据集，我们可以在原来网络的基础上进行微调训练，冻结层数较低的层以节省训练资源；建议以原始学习率的 1/10 进行训练．
+将在 ImageNet 上预训练完成的 VGG，改造最后的输出层并用于 Caltech-101 数据集上训练，每一个类别只需要很少的数据就能得到很高的正确率．
 
+<img src="training-neural-networks.assets/image-20260610084712231.png" alt="image-20260610084712231" style="zoom: 50%;" />
+
+**Fine-Tuning**：在原来网络的基础上进行微调训练：
+
++ 冻结层数较低的层以节省训练资源
++ 建议以原始学习率的 1/10 进行训练
++ 在 BatchNorm 的测试模式下进行训练（因为数据集不足以支持 BatchNorm 需要的大小）

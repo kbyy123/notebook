@@ -179,7 +179,10 @@ $$
 \theta_{t+1}=\theta_t-\alpha\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}
 $$
 
+<img src="optimization-and-regularization.assets/image-20260609113626786.png" alt="image-20260609113626786" style="zoom: 50%;" />
+
 ### AdamW
+
 AdamW 是 Adam+Weight Decay 的优化．
 
 !!! quote "Weight Decay"
@@ -192,21 +195,8 @@ AdamW 是 Adam+Weight Decay 的优化．
 	
 	L2正则化是在损失函数中添加 $\lambda \theta_{t}^{2}$ 的惩罚；而Weight Decay是在更新量中额外加上 $2\lambda \theta_{t}$．在SGD/SGC+Momentum中，二者结果是一样的；而在Adam这类自适应优化器中，由于对学习率做了自适应，结果会不同．也就是说，我们使用Weight Decay而不是L2正则化，是因为我们不希望惩罚项被自适应机制一起处理．
 
-加入了Weight Decat后：
+在 Adam 中，L2 正则化与 Weight decay 的区别：
 
-$$
-g_t=\nabla L_{\theta}(\theta_t),\quad
-s_t=\text{optimizer}(g_t)+2\lambda\theta_t,\quad
-\theta_{t+1}=\theta_t-\alpha s_t
-$$
-
-得到的结果：
-
-$$
-\theta_{t+1}
-=
-(1-2\alpha\lambda)\theta_t
--\alpha\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}
-$$
+<img src="optimization-and-regularization.assets/image-20260609113551946.png" alt="image-20260609113551946" style="zoom:50%;" />
 
 AdamW在Adam的基础上添加了防止过拟合的参数，因此可以将其当作默认优化方法．

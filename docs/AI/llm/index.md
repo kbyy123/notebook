@@ -6,5 +6,5 @@
 
 !!! success "目录"
 
-    - [] [LLM Architecture](llm-architecture.md)
-    - [] [Pretraining and Data](pretraining-and-data.md)
+    - [ ] [LLM Architecture](llm-architecture.md)
+    - [ ] [Pretraining and Data](pretraining-and-data.md)

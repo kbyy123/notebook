@@ -399,13 +399,12 @@ $$
 
 自注意力与交叉注意力在形式上的区别就是查询矩阵和被查询矩阵都是 $X$．
 
-### Sequential Modeling
+在自注意力中，任意两个 token 可以直接进行交互，信息路径更短，容易建立长距离依赖；并且其主要计算均为矩阵乘法，天生容易并行；因此其天生适合序列建模．
 
 <div style="text-align: center; margin-top: 15px;">
 <img src="https://jshn9515.github.io/deep-learning-notes/zh/ch8-attention-and-transformer/figures/ch8.3-self-attn-vis.png" alt="img" style="zoom: 25%;" />
 </div>
 
-在自注意力中，任意两个 token 可以直接进行交互，信息路径更短，容易建立长距离依赖；并且其主要计算均为矩阵乘法，天生容易并行；因此其天生适合序列建模．
 
 但自注意力机制仍然有许多不足，而这些不足将在后续内容中提出解决方案．
 
@@ -430,39 +429,6 @@ $$
     
     当然，也可以使用可学习的位置编码．
     
-    !!! code "正弦位置编码代码实现"
-    
-        ```python
-        class PositionalEncoding(nn.Module):
-    
-            def __init__(self, d_model: int, seq_len: int, dropout: float):
-                super().__init__()
-                self.d_model = d_model
-                self.seq_len = seq_len
-                self.dropout = nn.Dropout(dropout)
-    
-                # Create a matrix of shape (seq_len, d_model)
-                pe = torch.zeros(seq_len, d_model)
-    
-                # Create a vector of shape (seq_len, 1)
-                position = torch.arange(0, seq_len).unsqueeze(1)
-                div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000) / d_model))
-    
-                # Apply the sin to even positions and the cos to odd positions
-                pe[:, 0::2] = torch.sin(position * div_term)
-                pe[:, 1::2] = torch.cos(position * div_term)
-    
-                pe = pe.unsqueeze(0) # (1, seq_len, d_model)
-    
-                self.register_buffer('pe', pe)
-    
-            def forward(self, x):
-                # x: (batch, seq_len, d_model)
-                # pe[:, :x.shape[1], :]: (1, seq_len of x, d_model) so can add to x
-                x = x + (self.pe[:, :x.shape[1], :]).requires_grad_(False)
-                return self.dropout(x)
-        ```
-
 ## Multi-Head Attention
 
 如同 CNN 需要多个卷积核提取多个特征一样，注意力也需要有一种能让一组 token 建立不同联系的方法，如语法、语义．因此 Transformer 论文中提出了 **Multi-head Attention**（多头注意力）．
@@ -471,92 +437,13 @@ $$
 
 最后每一个头得到最后一维是 64 的输出，将它们拼起来再置换，恢复成输入形状．
 
-???+ code "代码实现"
-
-    ```python
-    class MultiHeadAttentionBlock(nn.Module):
-    
-        def __init__(self, d_model: int, h: int, dropout: float):
-            super().__init__()
-            self.d_model = d_model
-            self.h = h
-            self.dropout = nn.Dropout(dropout)
-    
-            assert d_model % h == 0, "d_model is not divisible by h"
-    
-            self.d_k = d_model // h
-            self.w_q = nn.Linear(d_model, d_model) 
-            self.w_k = nn.Linear(d_model, d_model) 
-            self.w_v = nn.Linear(d_model, d_model) 
-            self.w_o = nn.Linear(d_model, d_model)    
-    
-        @staticmethod
-        def attention(q, k, v, mask, dropout: nn.Dropout):
-    
-            # q, k, v: (batch, h, seq_len, d_k)
-            d_k = k.shape[-1]
-    
-            # (batch, h, seq_len, d_k) --> (batch, h, seq_len, seq_len)
-            # 多头注意力的拆分是对每个 token 的拆分，经过线性层后把每个 token 分成 h 份
-            attention_scores = q @ k.transpose(-2, -1) / math.sqrt(d_k)
-    
-            if mask is not None:
-                attention_scores.masked_fill_(mask, -1e9)
-    
-            attention_scores = attention_scores.softmax(dim=-1)
-    
-            if dropout is not None:
-                attention_scores = dropout(attention_scores)
-    
-            return attention_scores @ v, attention_scores
-    
-        def forward(self, query, key, value, mask):
-    
-            # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
-            q = self.w_q(query)
-            k = self.w_k(key)
-            v = self.w_v(value)
-    
-            # (batch, seq_len, d_model) --> (batch, seq_len, h, d_k) --> (batch, h, seq_len, d_k)
-            # 相当于把 h 个 Q K V 放在同一个张量里了
-            q = q.view(q.shape[0], q.shape[1], self.h, self.d_k).transpose(1, 2)
-            k = k.view(k.shape[0], k.shape[1], self.h, self.d_k).transpose(1, 2)
-            v = v.view(v.shape[0], v.shape[1], self.h, self.d_k).transpose(1, 2)
-    
-            x, self.attention_scores = MultiHeadAttentionBlock.attention(q, k, v, mask, self.dropout)
-    
-            # (batch, h, seq_len, d_k) --> (batch, seq_len, h, d_k) --> (batch, seq_len, d_model)
-            x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.d_model)
-    
-            # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
-            return self.w_o(x)
-    ```
+在 Transformer 中，Cross-Attention 与 Self-Attention 使用的均为 Multi-Head Attention，只是传入作为 Q、K、V 的张量不同．
 
 ## Layer Norm
 
 处理文本时，由于不同序列文本长度不一致，因此 BatchNorm 在批之间归一化的方式并不好用；常使用 **Layer Normalization**（层归一化）．
 
 Layer Norm 是把每个 token 的向量表示进行归一化．即对于 `(batch, seq_len, d_model)` 的输入，其在 `d_model` 维度进行归一化．归一化步骤同 BatchNorm：减去均值、除以标准差，再乘以可学习的缩放、加上可学习的偏置（一般维度为 `d_model`）．
-
-!!! code "代码实现"
-
-    ```python
-    class LayerNormalization(nn.Module):
-    
-        def __init__(self, d_model: int, eps: float = 1e-6):
-            super().__init__()
-            self.eps = eps
-            # gamma / beta 都是 d_model 维
-            self.gamma = nn.Parameter(torch.ones(d_model)) # Multiplied
-            self.beta = nn.Parameter(torch.zeros(d_model)) # Added
-    
-        def forward(self, x):
-    
-            # LayerNorm 是作用在每个 token 上的
-            mean = x.mean(dim=-1, keepdim=True)
-            std = x.std(dim=-1, keepdim=True, unbiased=False)
-            return self.gamma * (x - mean) / (std + self.eps) + self.beta
-    ```
 
 ## Transformer
 
@@ -568,4 +455,65 @@ Layer Norm 是把每个 token 的向量表示进行归一化．即对于 `(batch
 
 ### Encoder Block
 
+根据架构图，输入经过词嵌入后加上位置编码进入 Encoder Block．每个 Encoder Block 包含 Multi-Head Self-Attention 和 Feed-Forward Network 两个模块，每个模块都各自包含 LayerNorm、Dropout 和 Residual Connection．
+
+所以，一个 Encoder Block 可以写成：
+
+$$
+H = \operatorname{LayerNorm}(X + \operatorname{MultiheadAttention}(X))
+$$
+
+$$
+Y = \operatorname{LayerNorm}(H + \operatorname{FFN}(H))
+$$
+
+#### Pre-Norm 与 Post-Norm
+
+原始 Transformer 中将 LayerNorm 放在子模块和残差连接之后，这种称为 **Post-Norm**．现代 Transformer 实现中，更常见的是 **Pre-Norm**，将 LayerNorm 放在子模块和残差连接之前：
+
+$$
+H = X + \operatorname{MultiheadAttention}(\operatorname{LayerNorm}(X))
+$$
+
+$$
+Y = H + \operatorname{FFN}(\operatorname{LayerNorm}(H))
+$$
+
+具体原因可以参考苏剑林老师的博客：[为什么Pre Norm的效果不如Post Norm？](https://spaces.ac.cn/archives/9009)
+
+
 ### Decoder Block
+
+Decoder Block 由三个类似模块组成，分别包含 Masked Self Attention、 Cross Attention、Feed Forward Netword，和对应的 Norm 与 Residual．
+
+#### Masked Self Attention
+
+在训练 Decoder 时，通常会把目标序列右移一位作为输入：
+
+```
+Decoder input:  <BOS>   y1    y2    y3
+Target  label:  y1      y2    y3    <EOS>
+```
+
+训练时采用 **Teacher Forcing** 方法：训练时的历史 token 来自真实答案而不是模型自己生成的结果．同时一次性输入完整前缀能发挥 Attention 的**并行**优势．
+
+但是一次性输入完整前缀，模型会偷看未来，因此要加上 **Causual Mask**，保证自注意力只能注意到自己及之前，即：
+
+```
+位置 1 只能看到 BOS
+位置 2 只能看到 BOS, y1
+位置 3 只能看到 BOS, y1, y2
+位置 4 只能看到 BOS, y1, y2, y3
+```
+
+从实现角度，在自注意力计算得到分数后、进入 softmax 之前，将自注意力矩阵不含对角线的右上三角全部设为 $-\infty$；保证 softmax 后的结果和为 1 的同时防止模型偷看未来．
+
+推理时，模型没有正确答案，每一次生成下一 token 后再进行下一次自注意力**串行**推理，即自回归生成．
+
+#### Cross Attention
+
+Encoder 侧处理输入序列后得到源序列的上下文表示 $H_\text{enc}=\text{Encoder}(X)$；将 $H_\text{enc}$ 作为 K、V，Decoder 侧输入经过 Masked Self-Attention 后得到的上下文表示作为 Q，进行 Cross-Attention．
+
+### Transformer
+
+根据架构图，将 Encoder / Decoder Block 堆叠 N（一般取 6）次后得到 Encoder / Decoder，再与开始的词嵌入层、位置编码，最后的线性投影层、输出层连接得到完整的 Transformer．
