@@ -1112,23 +1112,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Self-Attention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-sequential-modeling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Sequential Modeling
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1185,6 +1168,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="8.1 Encoder Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811-pre-norm-post-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.1 Pre-Norm 与 Post-Norm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1192,6 +1192,45 @@
     <span class="md-ellipsis">
       
         8.2 Decoder Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 Decoder Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.1 Masked Self Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822-cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.2 Cross Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Transformer
       
     </span>
   </a>
@@ -1594,23 +1633,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="4. Self-Attention">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-sequential-modeling" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Sequential Modeling
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1667,6 +1689,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="8.1 Encoder Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811-pre-norm-post-norm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1.1 Pre-Norm 与 Post-Norm
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1674,6 +1713,45 @@
     <span class="md-ellipsis">
       
         8.2 Decoder Block
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 Decoder Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#821-masked-self-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.1 Masked Self Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#822-cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2.2 Cross Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Transformer
       
     </span>
   </a>
@@ -1786,7 +1864,7 @@
 
 <h1 id="attention-and-transformer">Attention and Transformer</h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 2005 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 406 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 4 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 20 分钟</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 2596 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 307 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 4 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 21 分钟</p>
 </div>
 <p>Attention 让模型在生成或编码每个 token 时动态选择相关上下文，解决传统 Seq2Seq 固定上下文向量的信息瓶颈．本节从 Bahdanau Attention 过渡到 Self-Attention 和 Transformer．</p>
 <p>推荐材料：<a href="https://www.youtube.com/watch?v=ISNdQcPhsts">Coding a Transformer from scratch on PyTorch</a></p>
@@ -2470,12 +2548,11 @@
 <h2 id="4-self-attention">4. Self-Attention</h2>
 <p>对于一个序列里的 token，其如果想了解上下文并关注自己与其他 token 的相关性，就需要这个序列对自己做一次交叉注意力，即 <strong>Self-Attention</strong>（自注意力）．</p>
 <p>自注意力与交叉注意力在形式上的区别就是查询矩阵和被查询矩阵都是 <span class="arithmatex">\(X\)</span>．</p>
-<h3 id="41-sequential-modeling">4.1 Sequential Modeling</h3>
+<p>在自注意力中，任意两个 token 可以直接进行交互，信息路径更短，容易建立长距离依赖；并且其主要计算均为矩阵乘法，天生容易并行；因此其天生适合序列建模．</p>
 <div style="text-align: center; margin-top: 15px;">
 <a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="https://jshn9515.github.io/deep-learning-notes/zh/ch8-attention-and-transformer/figures/ch8.3-self-attn-vis.png" data-desc-position="bottom"><img src="https://jshn9515.github.io/deep-learning-notes/zh/ch8-attention-and-transformer/figures/ch8.3-self-attn-vis.png" alt="img" style="zoom: 25%;"></a>
 </div>
 
-<p>在自注意力中，任意两个 token 可以直接进行交互，信息路径更短，容易建立长距离依赖；并且其主要计算均为矩阵乘法，天生容易并行；因此其天生适合序列建模．</p>
 <p>但自注意力机制仍然有许多不足，而这些不足将在后续内容中提出解决方案．</p>
 <h2 id="5-positional-encoding">5. Positional Encoding</h2>
 <blockquote>
@@ -2493,221 +2570,15 @@ PE_{(pos, 2i+1)} &amp;= \cos \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \ri
 \end{align*}
 \]</div>
 <p>当然，也可以使用可学习的位置编码．</p>
-<div class="admonition code">
-<p class="admonition-title">正弦位置编码代码实现</p>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PositionalEncoding</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">seq_len</span> <span class="o">=</span> <span class="n">seq_len</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)</span>
-
-        <span class="c1"># Create a matrix of shape (seq_len, d_model)</span>
-        <span class="n">pe</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">seq_len</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
-
-        <span class="c1"># Create a vector of shape (seq_len, 1)</span>
-        <span class="n">position</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">div_term</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="o">/</span> <span class="n">d_model</span><span class="p">))</span>
-
-        <span class="c1"># Apply the sin to even positions and the cos to odd positions</span>
-        <span class="n">pe</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">position</span> <span class="o">*</span> <span class="n">div_term</span><span class="p">)</span>
-        <span class="n">pe</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">position</span> <span class="o">*</span> <span class="n">div_term</span><span class="p">)</span>
-
-        <span class="n">pe</span> <span class="o">=</span> <span class="n">pe</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># (1, seq_len, d_model)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">'pe'</span><span class="p">,</span> <span class="n">pe</span><span class="p">)</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="c1"># x: (batch, seq_len, d_model)</span>
-        <span class="c1"># pe[:, :x.shape[1], :]: (1, seq_len of x, d_model) so can add to x</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pe</span><span class="p">[:,</span> <span class="p">:</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:])</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></td></tr></tbody></table></div>
-</div>
 </div>
 <h2 id="6-multi-head-attention">6. Multi-Head Attention</h2>
 <p>如同 CNN 需要多个卷积核提取多个特征一样，注意力也需要有一种能让一组 token 建立不同联系的方法，如语法、语义．因此 Transformer 论文中提出了 <strong>Multi-head Attention</strong>（多头注意力）．</p>
 <p>对于常见的 <span class="arithmatex">\(d_k=d_\text{model}=512、h=8\)</span>，其做法是 <span class="arithmatex">\(W_Q,W_K,W_Q\)</span> 用 <span class="arithmatex">\(512 \to 512\)</span> 的线性层让同一个 token 的表示充分融合，然后直接将这 <span class="arithmatex">\(512\)</span> 拆分成 <span class="arithmatex">\(8\times 64\)</span>（此时 64 即为 <span class="arithmatex">\(d_k\)</span>） ，再将 <span class="arithmatex">\(h\)</span> 维度与 <span class="arithmatex">\(seq\_len\)</span> 维度置换，从而方便使用矩阵进行并行计算．也就是说多个头，其实是在一个张量内部完成的．计算时 <span class="arithmatex">\(h\)</span> 是张量的第一维．</p>
 <p>最后每一个头得到最后一维是 64 的输出，将它们拼起来再置换，恢复成输入形状．</p>
-<details class="code" open="open">
-<summary>代码实现</summary>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">MultiHeadAttentionBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">h</span> <span class="o">=</span> <span class="n">h</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="n">dropout</span><span class="p">)</span>
-
-        <span class="k">assert</span> <span class="n">d_model</span> <span class="o">%</span> <span class="n">h</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"d_model is not divisible by h"</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span> <span class="o">=</span> <span class="n">d_model</span> <span class="o">//</span> <span class="n">h</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">w_q</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">w_k</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">w_v</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">w_o</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>    
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">):</span>
-
-        <span class="c1"># q, k, v: (batch, h, seq_len, d_k)</span>
-        <span class="n">d_k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="c1"># (batch, h, seq_len, d_k) --&gt; (batch, h, seq_len, seq_len)</span>
-        <span class="c1"># 多头注意力的拆分是对每个 token 的拆分，经过线性层后把每个 token 分成 h 份</span>
-        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">q</span> <span class="o">@</span> <span class="n">k</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d_k</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention_scores</span><span class="o">.</span><span class="n">masked_fill_</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="o">-</span><span class="mf">1e9</span><span class="p">)</span>
-
-        <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">attention_scores</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">dropout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">attention_scores</span> <span class="o">=</span> <span class="n">dropout</span><span class="p">(</span><span class="n">attention_scores</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">attention_scores</span> <span class="o">@</span> <span class="n">v</span><span class="p">,</span> <span class="n">attention_scores</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
-
-        <span class="c1"># (batch, seq_len, d_model) --&gt; (batch, seq_len, d_model)</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_q</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_k</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_v</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
-
-        <span class="c1"># (batch, seq_len, d_model) --&gt; (batch, seq_len, h, d_k) --&gt; (batch, h, seq_len, d_k)</span>
-        <span class="c1"># 相当于把 h 个 Q K V 放在同一个张量里了</span>
-        <span class="n">q</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">q</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">k</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-        <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_k</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-        <span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention_scores</span> <span class="o">=</span> <span class="n">MultiHeadAttentionBlock</span><span class="o">.</span><span class="n">attention</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">)</span>
-
-        <span class="c1"># (batch, h, seq_len, d_k) --&gt; (batch, seq_len, h, d_k) --&gt; (batch, seq_len, d_model)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>
-
-        <span class="c1"># (batch, seq_len, d_model) --&gt; (batch, seq_len, d_model)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_o</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</code></pre></div></td></tr></tbody></table></div>
-</details>
+<p>在 Transformer 中，Cross-Attention 与 Self-Attention 使用的均为 Multi-Head Attention，只是传入作为 Q、K、V 的张量不同．</p>
 <h2 id="7-layer-norm">7. Layer Norm</h2>
 <p>处理文本时，由于不同序列文本长度不一致，因此 BatchNorm 在批之间归一化的方式并不好用；常使用 <strong>Layer Normalization</strong>（层归一化）．</p>
 <p>Layer Norm 是把每个 token 的向量表示进行归一化．即对于 <code>(batch, seq_len, d_model)</code> 的输入，其在 <code>d_model</code> 维度进行归一化．归一化步骤同 BatchNorm：减去均值、除以标准差，再乘以可学习的缩放、加上可学习的偏置（一般维度为 <code>d_model</code>）．</p>
-<div class="admonition code">
-<p class="admonition-title">代码实现</p>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">LayerNormalization</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
-        <span class="c1"># gamma / beta 都是 d_model 维</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">d_model</span><span class="p">))</span> <span class="c1"># Multiplied</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d_model</span><span class="p">))</span> <span class="c1"># Added</span>
-
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-
-        <span class="c1"># LayerNorm 是作用在每个 token 上的</span>
-        <span class="n">mean</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">std</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdim</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">unbiased</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">std</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span>
-</code></pre></div></td></tr></tbody></table></div>
-</div>
 <h2 id="8-transformer">8. Transformer</h2>
 <p>至此，Transformer 架构的基本单元已经集齐．Transformer 架构图：</p>
 <div style="text-align: center; margin-top: 15px;">
@@ -2715,7 +2586,47 @@ PE_{(pos, 2i+1)} &amp;= \cos \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \ri
 </div>
 
 <h3 id="81-encoder-block">8.1 Encoder Block</h3>
+<p>根据架构图，输入经过词嵌入后加上位置编码进入 Encoder Block．每个 Encoder Block 包含 Multi-Head Self-Attention 和 Feed-Forward Network 两个模块，每个模块都各自包含 LayerNorm、Dropout 和 Residual Connection．</p>
+<p>所以，一个 Encoder Block 可以写成：</p>
+<div class="arithmatex">\[
+H = \operatorname{LayerNorm}(X + \operatorname{MultiheadAttention}(X))
+\]</div>
+<div class="arithmatex">\[
+Y = \operatorname{LayerNorm}(H + \operatorname{FFN}(H))
+\]</div>
+<h4 id="811-pre-norm-post-norm">8.1.1 Pre-Norm 与 Post-Norm</h4>
+<p>原始 Transformer 中将 LayerNorm 放在子模块和残差连接之后，这种称为 <strong>Post-Norm</strong>．现代 Transformer 实现中，更常见的是 <strong>Pre-Norm</strong>，将 LayerNorm 放在子模块和残差连接之前：</p>
+<div class="arithmatex">\[
+H = X + \operatorname{MultiheadAttention}(\operatorname{LayerNorm}(X))
+\]</div>
+<div class="arithmatex">\[
+Y = H + \operatorname{FFN}(\operatorname{LayerNorm}(H))
+\]</div>
+<p>具体原因可以参考苏剑林老师的博客：<a href="https://spaces.ac.cn/archives/9009">为什么Pre Norm的效果不如Post Norm？</a></p>
 <h3 id="82-decoder-block">8.2 Decoder Block</h3>
+<p>Decoder Block 由三个类似模块组成，分别包含 Masked Self Attention、 Cross Attention、Feed Forward Netword，和对应的 Norm 与 Residual．</p>
+<h4 id="821-masked-self-attention">8.2.1 Masked Self Attention</h4>
+<p>在训练 Decoder 时，通常会把目标序列右移一位作为输入：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Decoder input:  &lt;BOS&gt;   y1    y2    y3
+Target  label:  y1      y2    y3    &lt;EOS&gt;
+</code></pre></div></td></tr></tbody></table></div>
+<p>训练时采用 <strong>Teacher Forcing</strong> 方法：训练时的历史 token 来自真实答案而不是模型自己生成的结果．同时一次性输入完整前缀能发挥 Attention 的<strong>并行</strong>优势．</p>
+<p>但是一次性输入完整前缀，模型会偷看未来，因此要加上 <strong>Causual Mask</strong>，保证自注意力只能注意到自己及之前，即：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>位置 1 只能看到 BOS
+位置 2 只能看到 BOS, y1
+位置 3 只能看到 BOS, y1, y2
+位置 4 只能看到 BOS, y1, y2, y3
+</code></pre></div></td></tr></tbody></table></div>
+<p>从实现角度，在自注意力计算得到分数后、进入 softmax 之前，将自注意力矩阵不含对角线的右上三角全部设为 <span class="arithmatex">\(-\infty\)</span>；保证 softmax 后的结果和为 1 的同时防止模型偷看未来．</p>
+<p>推理时，模型没有正确答案，每一次生成下一 token 后再进行下一次自注意力<strong>串行</strong>推理，即自回归生成．</p>
+<h4 id="822-cross-attention">8.2.2 Cross Attention</h4>
+<p>Encoder 侧处理输入序列后得到源序列的上下文表示 <span class="arithmatex">\(H_\text{enc}=\text{Encoder}(X)\)</span>；将 <span class="arithmatex">\(H_\text{enc}\)</span> 作为 K、V，Decoder 侧输入经过 Masked Self-Attention 后得到的上下文表示作为 Q，进行 Cross-Attention．</p>
+<h3 id="83-transformer">8.3 Transformer</h3>
+<p>根据架构图，将 Encoder / Decoder Block 堆叠 N（一般取 6）次后得到 Encoder / Decoder，再与开始的词嵌入层、位置编码，最后的线性投影层、输出层连接得到完整的 Transformer．</p>
 
 
 
@@ -2738,7 +2649,7 @@ PE_{(pos, 2i+1)} &amp;= \cos \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \ri
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年6月9日 11:15:29 CST">2026年6月9日 11:15:29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年6月11日 12:45:17 CST">2026年6月11日 12:45:17</span>
   </span>
 
     
