@@ -20,8 +20,8 @@
 /* 仅针对“块级公式”所在的段落进行间距压缩 */
 /* 增加判断：只有当段落唯一的子元素内部含有 .katex-display 时才生效 */
 .md-typeset p:has(> .arithmatex > .katex-display):only-child {
-    margin-top: 0.4em;
-    margin-bottom: 0.4em;
+    margin-top: -1em;
+    margin-bottom: -1em;
 }
 
 /* 确保不会误伤普通的行内公式所在的段落 */
@@ -32,14 +32,24 @@
 
 /* 针对块级公式本身的微调 */
 .md-typeset .arithmatex .katex-display {
-    margin: 0.2em 0; 
+    margin: -1em; 
+}
+
+/* 隐藏块级公式的横向滚动条，但保留长公式的横向溢出能力 */
+.md-typeset .arithmatex:has(.katex-display) {
+    overflow-x: hidden; /* hidden or auto */
+    scrollbar-width: none;
+}
+
+.md-typeset .arithmatex:has(.katex-display)::-webkit-scrollbar {
+    display: none;
 }
 
 /* 行内 LaTeX 紧凑化：对于手动加空格的写法，将左右两侧间距少 */
 /* 加长路径：从 .md-typeset 开始，并强制执行 */
 .md-typeset .arithmatex:not(:has(.katex-display)) {
-    margin-left: -0.05em !important;
-    margin-right: -0.05em !important;
+    margin-left: 0.05em !important;
+    margin-right: 0.05em !important;
     padding: 0 !important;
 }
 
