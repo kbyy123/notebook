@@ -183,6 +183,7 @@ nav:
     - 机器学习:
       - AI/foundations/index.md
       - AI/foundations/classification-and-linear-models.md
+      - AI/foundations/information-theory.md
     - 深度学习:
       - AI/dl/index.md
       - AI/dl/neural-networks-and-backpropagation.md
@@ -194,6 +195,7 @@ nav:
     - 计算机视觉:
       - AI/cv/index.md
       - AI/cv/image-classification.md
+      - AI/cv/object-detection.md
     - 自然语言处理:
       - AI/nlp/index.md
       - AI/nlp/text-representations.md
@@ -202,6 +204,7 @@ nav:
       - AI/llm/index.md
       - AI/llm/llm-architecture.md
       - AI/llm/pretraining-and-data.md
+      - AI/llm/llama.md
     - AI/references.md
   # - 📝编程语言:
   #   - C++:

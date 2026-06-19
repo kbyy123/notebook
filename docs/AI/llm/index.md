@@ -8,3 +8,4 @@
 
     - [ ] [LLM Architecture](llm-architecture.md)
     - [ ] [Pretraining and Data](pretraining-and-data.md)
+    - [x] [Llama](llama.md)

@@ -10,5 +10,4 @@ hide:
     
 ## Table of Contents
 
-- [LeetCode](LeetCode/index.md)
 - [基础数据结构](fds/index.md)

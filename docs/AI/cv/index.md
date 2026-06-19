@@ -6,6 +6,7 @@
 
 !!! success "目录"
 
-    - [Image Classification](image-classification.md)
+    - [x] [Image Classification](image-classification.md)
+    - [x] [Object Detection](object-detection.md)
 
 
