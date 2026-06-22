@@ -1,24 +1,312 @@
 - "2026":
-  - "2026-03-19":
-    - newpage: 
+  - "2026-06-22":
+    - newpage:
+        text: Generative Models
+        href: /AI/dl/generative-models.html
+    - newpage:
+        text: Vision Transformer
+        href: /AI/cv/vit.html
+    - pageupdate:
+        text: Object Detection
+        href: /AI/cv/object-detection.html
+    - pageupdate:
+        text: Training Neural Networks
+        href: /AI/dl/training-neural-networks.html
+    - pageupdate:
+        text: NLP 与 AI 参考资料
+        href: /AI/references.html
+  - "2026-06-19":
+    - newpage:
+        text: Llama
+        href: /AI/llm/llama.html
+    - newpage:
+        text: The Information Theory
+        href: /AI/foundations/information-theory.html
+    - pageupdate:
+        text: Object Detection
+        href: /AI/cv/object-detection.html
+    - pageupdate:
+        text: LLM Architecture
+        href: /AI/llm/llm-architecture.html
+  - "2026-06-11":
+    - newpage:
+        text: Object Detection
+        href: /AI/cv/object-detection.html
+    - newpage:
+        text: Chap4 Number Theory
+        href: /math/discrete-math/Chap4.html
+    - pageupdate:
+        text: Chap3 Algorithms
+        href: /math/discrete-math/Chap3.html
+    - pageupdate:
+        text: Image Classification
+        href: /AI/cv/image-classification.html
+    - pageupdate:
+        text: Attention and Transformer
+        href: /AI/dl/attention-and-transformer.html
+    - pageupdate:
+        text: Optimization and Regularization
+        href: /AI/dl/optimization-and-regularization.html
+    - pageupdate:
+        text: Training Neural Networks
+        href: /AI/dl/training-neural-networks.html
+  - "2026-06-09":
+    - function: 重建 AI 笔记目录与导航
+    - newpage:
+        text: LLM Architecture
+        href: /AI/llm/llm-architecture.html
+    - newpage:
+        text: Pretraining and Data
+        href: /AI/llm/pretraining-and-data.html
+    - newpage:
+        text: Language Modeling
+        href: /AI/nlp/language-modeling.html
+    - newpage:
+        text: Text Representations
+        href: /AI/nlp/text-representations.html
+    - newpage:
+        text: Recurrent Neural Networks
+        href: /AI/dl/recurrent-neural-networks.html
+    - newpage:
+        text: Attention and Transformer
+        href: /AI/dl/attention-and-transformer.html
+    - newpage:
+        text: AI 参考资料
+        href: /AI/references.html
+  - "2026-06-08":
+    - pageupdate:
+        text: Chap 3 Machine-Level Programming
+        href: /system/csapp/Chap3.html
+    - pageupdate:
+        text: AI 深度学习与 NLP 笔记
+        href: /AI/index.html
+  - "2026-06-05":
+    - function: 增加 Assembly 代码块高亮
+    - newpage:
+        text: Attack lab
+        href: /system/csapp/Attacklab.html
+    - pageupdate:
+        text: Chap 2 Extension
+        href: /system/csapp/Chap2ext.html
+  - "2026-06-03":
+    - pageupdate:
+        text: Chap 3 Machine-Level Programming
+        href: /system/csapp/Chap3.html
+    - pageupdate:
+        text: Chap 2 Extension
+        href: /system/csapp/Chap2ext.html
+  - "2026-06-02":
+    - function: 将计算机系统目录整理为 system
+    - newpage:
+        text: Chap 3 Machine-Level Programming
+        href: /system/csapp/Chap3.html
+  - "2026-06-01":
+    - newpage:
+        text: Chap 2 Extension
+        href: /system/csapp/Chap2ext.html
+  - "2026-05-22":
+    - pageupdate:
+        text: 电路与电子学基础
+        href: /misc/circuit/circuit.html
+  - "2026-05-21":
+    - newpage:
+        text: Chap3 Algorithms
+        href: /math/discrete-math/Chap3.html
+    - pageupdate:
+        text: Chap2 Basic Structures
+        href: /math/discrete-math/Chap2.html
+  - "2026-05-16":
+    - pageupdate:
+        text: AI 课程笔记 Lec1-10
+        href: /AI/index.html
+  - "2026-05-11":
+    - pageupdate:
+        text: AI 课程笔记 Lec9-10
+        href: /AI/dl/training-neural-networks.html
+  - "2026-05-04":
+    - newpage:
+        text: Training Neural Networks
+        href: /AI/dl/training-neural-networks.html
+  - "2026-05-03":
+    - newpage:
+        text: Image Classification
+        href: /AI/cv/image-classification.html
+    - newpage:
+        text: Convolutional Neural Networks
+        href: /AI/dl/convolutional-neural-networks.html
+  - "2026-04-30":
+    - newpage:
+        text: Chap2 Basic Structures
+        href: /math/discrete-math/Chap2.html
+  - "2026-04-22":
+    - pageupdate:
+        text: Chap1 Logic and Proofs
+        href: /math/discrete-math/Chap1.html
+  - "2026-04-21":
+    - newpage:
+        text: Classification and Linear Models
+        href: /AI/foundations/classification-and-linear-models.html
+    - newpage:
+        text: Neural Networks
+        href: /AI/dl/neural-networks-and-backpropagation.html
+    - newpage:
+        text: Optimization and Regularization
+        href: /AI/dl/optimization-and-regularization.html
+  - "2026-04-15":
+    - function: 调整正文宽度与 MkDocs 页面样式
+  - "2026-04-13":
+    - pageupdate:
+        text: Classification and Linear Models
+        href: /AI/foundations/classification-and-linear-models.html
+  - "2026-04-10":
+    - pageupdate:
+        text: 电路与电子学基础
+        href: /misc/circuit/circuit.html
+  - "2026-04-09":
+    - newpage:
+        text: Probabilistic Models
+        href: /math/probability/probabilistic-models.html
+    - pageupdate:
+        text: Chap1 Logic and Proofs
+        href: /math/discrete-math/Chap1.html
+  - "2026-04-05":
+    - newpage:
+        text: 2026 春季联赛第三场题解
+        href: /competitive-algo/26sp/3.html
+    - pageupdate:
+        text: RISC-V 机器语言
+        href: /system/computer-architecture/machine-language.html
+    - pageupdate:
+        text: RISC-V 汇编语言
+        href: /system/computer-architecture/assembly-language.html
+  - "2026-04-03":
+    - newpage:
+        text: RISC-V 机器语言
+        href: /system/computer-architecture/machine-language.html
+    - pageupdate:
+        text: Chap1 Logic and Proofs
+        href: /math/discrete-math/Chap1.html
+  - "2026-03-31":
+    - newpage:
+        text: RISC-V 汇编语言
+        href: /system/computer-architecture/assembly-language.html
+    - pageupdate:
+        text: 数的表示与计算
+        href: /system/computer-architecture/number.html
+    - pageupdate:
+        text: 线性代数笔记
+        href: /math/linear-algebra/index.html
+  - "2026-03-28":
+    - newpage:
+        text: 基础算法
+        href: /competitive-algo/basis.html
+    - newpage:
+        text: 算法模板
+        href: /competitive-algo/template.html
+    - pageupdate:
+        text: Chap1 Logic and Proofs
+        href: /math/discrete-math/Chap1.html
+    - pageupdate:
         text: 向量空间的正交
         href: /math/linear-algebra/orthogonality.html
+    - pageupdate:
+        text: Counting
+        href: /math/probability/counting.html
+  - "2026-03-25":
+    - newpage:
+        text: 电路与电子学基础
+        href: /misc/circuit/circuit.html
+    - pageupdate:
+        text: Random Variables
+        href: /math/probability/random-variables.html
+    - function: 更新站点导航与字体样式
+  - "2026-03-24":
+    - newpage:
+        text: Core Probability
+        href: /math/probability/core-probability.html
+    - newpage:
+        text: Counting
+        href: /math/probability/counting.html
+    - newpage:
+        text: Random Variables
+        href: /math/probability/random-variables.html
+  - "2026-03-22":
+    - pageupdate:
+        text: 线性代数笔记
+        href: /math/linear-algebra/index.html
+    - pageupdate:
+        text: C++ 笔记
+        href: /language/cpp/temp.html
+  - "2026-03-21":
+    - newpage:
+        text: Chap1 Logic and Proofs
+        href: /math/discrete-math/Chap1.html
+    - newpage:
+        text: 行列式
+        href: /math/linear-algebra/determinant.html
+  - "2026-03-19":
+    - newpage:
+        text: 向量空间的正交
+        href: /math/linear-algebra/orthogonality.html
+    - newpage:
+        text: Mathematical Induction
+        href: /math/discrete-math/induction.html
+    - pageupdate:
+        text: 向量空间
+        href: /math/linear-algebra/vector-space.html
+  - "2026-03-14":
+    - newpage:
+        text: 向量空间
+        href: /math/linear-algebra/vector-space.html
+    - newpage:
+        text: 解线性方程组
+        href: /math/linear-algebra/linear-equation.html
+    - newpage:
+        text: 线性代数导引
+        href: /math/linear-algebra/introduction.html
+    - newpage:
+        text: C++ 编译
+        href: /language/cpp/compile.html
+    - newpage:
+        text: CS106L
+        href: /language/cpp/temp.html
+    - function: 更新标题字体与侧边目录样式
   - "2026-03-08":
-    - newpage: 
+    - newpage:
         text: 数的表示与计算
-        href: /computer-system/computer-architecture/number.html
+        href: /system/computer-architecture/number.html
+    - newpage:
+        text: C语言复习
+        href: /system/computer-architecture/C.html
+    - pageupdate:
+        text: LeetCode 链表
+        href: /LeetCode/linked-list.html
   - "2026-03-05":
-    - newpage: 
-        text: Huffman树
+    - newpage:
+        text: Huffman 树
         href: /data-structure/fds/tree.html
-    - newpage: 
-        text: 前缀函数与KMP
+    - newpage:
+        text: 前缀函数与 KMP
         href: /data-structure/fds/string.html
   - "2026-03-03":
-    - newpage: 
-        text: LeetCode二叉树
-        href: /data-structure/LeetCode/binary-tree.html
+    - newpage:
+        text: LeetCode 二叉树
+        href: /LeetCode/binary-tree.html
   - "2026-03-02":
-    - newpage: 
-        text: LeetCode链表
-        href: /data-structure/LeetCode/linked-list.html
+    - newpage:
+        text: LeetCode 链表
+        href: /LeetCode/linked-list.html
+    - newpage:
+        text: 曲线积分
+        href: /math/multivariable-calculus/4.html
+  - "2026-02-26":
+    - function: 网站初始化
+    - newpage:
+        text: 向量与矩阵
+        href: /math/multivariable-calculus/1.html
+    - newpage:
+        text: 多变量微分
+        href: /math/multivariable-calculus/2.html
+    - newpage:
+        text: 重积分
+        href: /math/multivariable-calculus/3.html
