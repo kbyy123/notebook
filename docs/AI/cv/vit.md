@@ -39,3 +39,4 @@ Transformer Encoder 的输出和输入是同一个形状，为融合了其他 to
 
 一般而言，ViT 只使用 Encoder 作为 backbone，因为 Encoder 能让每一个 patch token 看到全局其他的 token；由于图像是一次性传入的，patch 是在同一张图像上分割的，因此完全可以让 patch token 不需要 mask 做自注意力．
 
+## Swin Transformer

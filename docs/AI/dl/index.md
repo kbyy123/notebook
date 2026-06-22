@@ -12,4 +12,4 @@
     - [x] [Convolutional Neural Networks](convolutional-neural-networks.md) 
     - [x] [Recurrent Neural Networks](recurrent-neural-networks.md)
     - [x] [Attention and Transformer](attention-and-transformer.md)
-    - [x] [Generative Models](generative-models.md)
+    - [ ] [Generative Models](generative-models.md)

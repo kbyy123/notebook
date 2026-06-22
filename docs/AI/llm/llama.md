@@ -6,7 +6,9 @@ Llama 是 Meta 发布的一系列开源大语言模型，主要基于 decoder-on
 
 ## Transformer VS Llama
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llama.assets/image-20260619150457808.png" alt="image-20260619150457808" style="zoom: 50%;" />
+</div>
 
 Llama 属于 decoder-only Transformer，去除了 encoder，并引入了 RMSNorm、RoPE、GQA、KV Cache、SwiGLU 等创新．
 
@@ -16,7 +18,9 @@ Llama 属于 decoder-only Transformer，去除了 encoder，并引入了 RMSNorm
 
 [论文](https://arxiv.org/abs/1910.07467)提到，re-scaling 是 LayerNorm 成功的主要原因，因此为了减少计算量，RMSNorm 放弃了计算平均数，同时使用方均根来计算缩放比例；保留了缩放参数 $g$，维度为 `dim` 用于给每个 token 的向量表示缩放．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llama.assets/image-20260619151958228.png" alt="image-20260619151958228" style="zoom:50%;" />
+</div>
 
 ## RoPE
 
@@ -32,7 +36,9 @@ Llama2采用 [Rotary Positional Embedding](https://arxiv.org/abs/2104.09864) 替
 
 位置编码的作用对象是 Q 和 K 的 `seq_len, head_dim` 维度，对于 `head_dim` 维度，其两两分组进行二维旋转，即
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llama.assets/image-20260619154424795.png" alt="image-20260619154424795" style="zoom:50%;" />
+</div>
 
 旋转角度为 $\theta_{i,k}=\dfrac{i}{\Theta^{2k/d}}$，其中
 
@@ -46,7 +52,9 @@ Llama2采用 [Rotary Positional Embedding](https://arxiv.org/abs/2104.09864) 替
 
 原始 Transformer 中每个 Q 头对应一个 K、V 头，消耗了过多内存；MQA 提出所有 Q 头对应一个 K、V 头，但导致了生成质量下降等问题．Llama 使用 [Grouped-Query Attention ](https://arxiv.org/abs/2305.13245) 折中，将多个 Q 头对应到一个 K、V 头，形成一组．在计算注意力时，为了并行计算将 K、V 复制成与 Q 同头数．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llama.assets/image-20260619161621929.png" alt="image-20260619161621929" style="zoom:50%;" />
+</div>
 
 ## KV-Cache
 
@@ -56,7 +64,9 @@ Llama2采用 [Rotary Positional Embedding](https://arxiv.org/abs/2104.09864) 替
 
 需要注意的是，KV-Cache 的前提是“历史 token 的 K / V 一旦算好就不会因为未来 token 改变”．如果输入 prompt 进行自注意力时，需要使用 Causal Mask 来防止 K / V 因为未来 token 而改变．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llama.assets/0WAJVBEY5vs6QHh2W.gif" alt="img" style="zoom: 40%;" />
+</div>
 
 （图片来自[João Lages](https://medium.com/@joaolages/kv-caching-explained-276520203249)）
 

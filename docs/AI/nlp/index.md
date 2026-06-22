@@ -6,5 +6,5 @@
 
 !!! success "目录"
 
-    - [x] [Text Representations](text-representations.md)
-    - [x] [Language Modeling](language-modeling.md)
+    - [ ] [Text Representations](text-representations.md)
+    - [ ] [Language Modeling](language-modeling.md)

@@ -172,7 +172,9 @@ ResNet-18/34 的残差块设计如下，当学习结果 $f(x)-x$ 通道数与 $x
 
 ResNet-50/101/152 的残差块使用的是 Bottleneck Block．其先使用 $1\times 1$ 卷积压缩通道数，再使用 $3\times 3$ 卷积提取空间信息，最后再使用 $1\times 1$ 卷积将通道数还原．将昂贵的 $3\times 3$​​ 卷积放在低通道数里做，能减小参数量，更适合构建深层网络．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="image-classification.assets/image-20260609153124233.png" alt="image-20260609153124233" style="zoom:33%;" />
+</div>
 
 ### ResNet Model
 

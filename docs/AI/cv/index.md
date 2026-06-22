@@ -7,7 +7,7 @@
 !!! success "目录"
 
     - [x] [Image Classification](image-classification.md)
-    - [x] [Vision Transformer](vision-transformer.md)
+    - [ ] [Vision Transformer](vision-transformer.md)
     - [x] [Object Detection](object-detection.md)
 
 

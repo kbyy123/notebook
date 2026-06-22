@@ -179,7 +179,9 @@ $$
 \theta_{t+1}=\theta_t-\alpha\frac{\hat m_t}{\sqrt{\hat v_t}+\epsilon}
 $$
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="optimization-and-regularization.assets/image-20260609113626786.png" alt="image-20260609113626786" style="zoom: 50%;" />
+</div>
 
 ### AdamW
 
@@ -197,6 +199,8 @@ AdamW 是 Adam+Weight Decay 的优化．
 
 在 Adam 中，L2 正则化与 Weight decay 的区别：
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="optimization-and-regularization.assets/image-20260609113551946.png" alt="image-20260609113551946" style="zoom:50%;" />
+</div>
 
 AdamW在Adam的基础上添加了防止过拟合的参数，因此可以将其当作默认优化方法．

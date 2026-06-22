@@ -1,8 +1,10 @@
 # LLM Architecture
 
-现代大语言模型大多基于 Transformer．基础 Attention、Self-Attention 与 Encoder-Decoder Transformer 放在 [Attention and Transformer](../dl/attention-and-transformer.md) 中；这里主要记录 GPT、LLaMA 一类自回归语言模型常用的 Decoder-only Transformer 结构．
+现代大语言模型大多基于 Transformer．GPT、LLaMA 等一类自回归语言模型常用 Decoder-only Transformer 结构．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="llm-architecture.assets/image-20260605111419930.png" alt="image-20260605111419930" style="zoom: 38%;" />
+</div>
 
 ## Decoder-only Transformer
 

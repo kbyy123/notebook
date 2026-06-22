@@ -26,7 +26,9 @@ Data Factors：Quantity、Quality、Coverage．
 
 ### Quantity
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="pretraining-and-data.assets/image-20260607110113321.png" alt="image-20260607110113321" style="zoom:33%;" />
+</div>
 
 数据量通常影响模型能力上限，但并不是越多越好；当数据质量较低或重复度很高时，继续增加数据可能带来更差的泛化效果．
 

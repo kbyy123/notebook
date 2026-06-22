@@ -196,7 +196,7 @@ nav:
     - 计算机视觉:
       - AI/cv/index.md
       - AI/cv/image-classification.md
-      - AI/cv/vision-transformer.md
+      - AI/cv/vit.md
       - AI/cv/object-detection.md
     - 自然语言处理:
       - AI/nlp/index.md

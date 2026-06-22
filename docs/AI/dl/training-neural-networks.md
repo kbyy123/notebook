@@ -293,7 +293,9 @@ def predict(X):
 
 将在 ImageNet 上预训练完成的 VGG，改造最后的输出层并用于 Caltech-101 数据集上训练，每一个类别只需要很少的数据就能得到很高的正确率．
 
+<div style="text-align: center; margin-top: 15px;">
 <img src="training-neural-networks.assets/image-20260610084712231.png" alt="image-20260610084712231" style="zoom: 50%;" />
+</div>
 
 **Linear Probe**：冻结前面的网络，只训练分类头
 
