@@ -295,8 +295,7 @@ def predict(X):
 
 <img src="training-neural-networks.assets/image-20260610084712231.png" alt="image-20260610084712231" style="zoom: 50%;" />
 
-**Fine-Tuning**：在原来网络的基础上进行微调训练：
+**Linear Probe**：冻结前面的网络，只训练分类头
 
-+ 冻结层数较低的层以节省训练资源
-+ 建议以原始学习率的 1/10 进行训练
-+ 在 BatchNorm 的测试模式下进行训练（因为数据集不足以支持 BatchNorm 需要的大小）
+**Fine-Tuning**：帮整个网络放开，在原来网络的基础上进行微调学习
+

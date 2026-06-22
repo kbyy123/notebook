@@ -16,14 +16,9 @@
 - [Dive into Deep Learning](https://zh.d2l.ai/)
 - [Deep Learning Notes](https://jshn9515.github.io/deep-learning-notes/zh/)
 
-## Papers
+## Videos
 
-- [AlexNet](https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf)
-- [VGG](https://arxiv.org/abs/1409.1556)
-- [Network in Network](https://arxiv.org/abs/1312.4400)
-- [GoogLeNet / Inception](https://arxiv.org/abs/1409.4842)
-- [ResNet](https://arxiv.org/abs/1512.03385)
-- [Batch Normalization](https://arxiv.org/abs/1502.03167)
++ B 站 [霹雳吧啦Wz](https://space.bilibili.com/18161609)
 
 <!-- ## 原课程笔记迁移
 

@@ -192,9 +192,11 @@ nav:
       - AI/dl/convolutional-neural-networks.md
       - AI/dl/recurrent-neural-networks.md
       - AI/dl/attention-and-transformer.md
+      - AI/dl/generative-models.md
     - 计算机视觉:
       - AI/cv/index.md
       - AI/cv/image-classification.md
+      - AI/cv/vision-transformer.md
       - AI/cv/object-detection.md
     - 自然语言处理:
       - AI/nlp/index.md
