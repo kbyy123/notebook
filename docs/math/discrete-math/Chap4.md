@@ -16,16 +16,16 @@ $$
 
 If $a\mid b$, then $a$ is a **factor** or **divisor** of $b$, and $b$ is a **multiple** of $a$.
 
-!!! quote "Basic Properties"
-
-    For $a,b,c\in\mathbb{Z}$ and $a\neq0$:
-    
-    + $a\mid0$
-    + $(a\mid b\wedge a\mid c)\Rightarrow a\mid(b+c)$
-    + $a\mid b\Rightarrow a\mid bc$
-    + $(a\mid b\wedge b\mid c)\Rightarrow a\mid c$
-    
-    More generally, if $a\mid b$ and $a\mid c$, then $a\mid(mb+nc)$ for all $m,n\in\mathbb{Z}$.
+> [!quote] Basic Properties
+>
+> For $a,b,c\in\mathbb{Z}$ and $a\neq0$:
+>
+> + $a\mid0$
+> + $(a\mid b\wedge a\mid c)\Rightarrow a\mid(b+c)$
+> + $a\mid b\Rightarrow a\mid bc$
+> + $(a\mid b\wedge b\mid c)\Rightarrow a\mid c$
+>
+> More generally, if $a\mid b$ and $a\mid c$, then $a\mid(mb+nc)$ for all $m,n\in\mathbb{Z}$.
 
 ### Division Algorithm
 
@@ -73,35 +73,35 @@ $$
 a\equiv a\bmod m\pmod m
 $$
 
-!!! quote "Congruence Rules"
-
-    If
-    
-    $$
-    a\equiv b\pmod m,\qquad c\equiv d\pmod m
-    $$
-    
-    then
-    
-    $$
-    a+c\equiv b+d\pmod m
-    $$
-    
-    and
-    
-    $$
-    ac\equiv bd\pmod m
-    $$
-    
-    Therefore:
-    
-    $$
-    (a+b)\bmod m=((a\bmod m)+(b\bmod m))\bmod m
-    $$
-    
-    $$
-    ab\bmod m=((a\bmod m)(b\bmod m))\bmod m
-    $$
+> [!quote] Congruence Rules
+>
+> If
+>
+> $$
+> a\equiv b\pmod m,\qquad c\equiv d\pmod m
+> $$
+>
+> then
+>
+> $$
+> a+c\equiv b+d\pmod m
+> $$
+>
+> and
+>
+> $$
+> ac\equiv bd\pmod m
+> $$
+>
+> Therefore:
+>
+> $$
+> (a+b)\bmod m=((a\bmod m)+(b\bmod m))\bmod m
+> $$
+>
+> $$
+> ab\bmod m=((a\bmod m)(b\bmod m))\bmod m
+> $$
 
 ## Integer Representations and Algorithms
 
@@ -188,34 +188,34 @@ procedure modularExp(b: integer, n = (ak-1...a0)2, m: positive integer)
     return x
 ```
 
-???+ quote "RSA Encryption"
-
-    RSA is an application of modular exponentiation and modular inverses.
-    
-    1. Choose two large primes $P,Q$.
-    2. Let $N=PQ$ and $L=(P-1)(Q-1)$.
-    3. Choose $E<L$ with $\gcd(E,L)=1$.
-    4. Find $D$ such that
-    
-       $$
-       DE\equiv1\pmod L
-       $$
-    
-    The public key is $(E,N)$ and the private key is $D$.
-    
-    Encryption:
-    
-    $$
-    C\equiv M^E\pmod N
-    $$
-    
-    Decryption:
-    
-    $$
-    M\equiv C^D\pmod N
-    $$
-    
-    This is treated as an application rather than a core number-theory theorem here.
+> [!quote]+ RSA Encryption
+>
+> RSA is an application of modular exponentiation and modular inverses.
+>
+> 1. Choose two large primes $P,Q$.
+> 2. Let $N=PQ$ and $L=(P-1)(Q-1)$.
+> 3. Choose $E<L$ with $\gcd(E,L)=1$.
+> 4. Find $D$ such that
+>
+>    $$
+>    DE\equiv1\pmod L
+>    $$
+>
+> The public key is $(E,N)$ and the private key is $D$.
+>
+> Encryption:
+>
+> $$
+> C\equiv M^E\pmod N
+> $$
+>
+> Decryption:
+>
+> $$
+> M\equiv C^D\pmod N
+> $$
+>
+> This is treated as an application rather than a core number-theory theorem here.
 
 ## Primes and GCD
 
@@ -235,37 +235,37 @@ An integer greater than $1$ that is not prime is **composite**(合数).
 
 To test whether $n$ is prime, it is enough to check divisibility by primes $\leq\sqrt n$.
 
-???+ example "Show 101 Is Prime"
-
-    Since
-    
-    $$
-    \sqrt{101}<11
-    $$
-    
-    it is enough to test primes $2,3,5,7$.
-    
-    $101$ is divisible by none of them, so $101$ is prime.
+> [!example]+ Show 101 Is Prime
+>
+> Since
+>
+> $$
+> \sqrt{101}<11
+> $$
+>
+> it is enough to test primes $2,3,5,7$.
+>
+> $101$ is divisible by none of them, so $101$ is prime.
 
 *Thm.* There are infinitely many primes. See proof in [Chap1 6.3.1](Chap1.md).
 
-??? quote "Mersenne Primes"
-
-    Prime numbers of the form
-    
-    $$
-    2^p-1
-    $$
-    
-    where $p$ is prime are called **Mersenne primes**.
-    
-    Examples:
-    
-    $$
-    2^2-1=3,\quad 2^3-1=7,\quad 2^5-1=31,\quad 2^7-1=127
-    $$
-    
-    But $2^{11}-1=2047=23\cdot89$, so not every number of this form is prime.
+> [!quote]- Mersenne Primes
+>
+> Prime numbers of the form
+>
+> $$
+> 2^p-1
+> $$
+>
+> where $p$ is prime are called **Mersenne primes**.
+>
+> Examples:
+>
+> $$
+> 2^2-1=3,\quad 2^3-1=7,\quad 2^5-1=31,\quad 2^7-1=127
+> $$
+>
+> But $2^{11}-1=2047=23\cdot89$, so not every number of this form is prime.
 
 ### GCD & LCM
 
@@ -325,20 +325,20 @@ procedure gcd(a, b: positive integers)
 
 The last nonzero remainder is the gcd.
 
-???+ example "Example"
-
-    $$
-    \begin{aligned}
-    \gcd(372,164)
-    &=\gcd(164,44)\\
-    &=\gcd(44,32)\\
-    &=\gcd(32,12)\\
-    &=\gcd(12,8)\\
-    &=\gcd(8,4)\\
-    &=\gcd(4,0)\\
-    &=4
-    \end{aligned}
-    $$
+> [!example]+ Example
+>
+> $$
+> \begin{aligned}
+> \gcd(372,164)
+> &=\gcd(164,44)\\
+> &=\gcd(44,32)\\
+> &=\gcd(32,12)\\
+> &=\gcd(12,8)\\
+> &=\gcd(8,4)\\
+> &=\gcd(4,0)\\
+> &=4
+> \end{aligned}
+> $$
 
 ### Bézout's Theorem
 
@@ -350,32 +350,32 @@ $$
 
 $s$ and $t$ are called **Bézout coefficients**(贝祖系数), the equation is called **Bézout's identity**.
 
-???+ example "Back Substitution"
-
-    Express $\gcd(252,198)=18$ as a linear combination.
-    
-    Euclidean algorithm:
-    
-    $$
-    \begin{aligned}
-    252&=1\cdot198+54\\
-    198&=3\cdot54+36\\
-    54&=1\cdot36+18\\
-    36&=2\cdot18
-    \end{aligned}
-    $$
-    
-    Work backward: each time, represent the smaller number as a combination of the larger number in Euclidean algorithm
-    
-    $$
-    \begin{aligned}
-    18&=54-36\\
-    &=54-(198-3\cdot54)\\
-    &=4\cdot54-198\\
-    &=4(252-198)-198\\
-    &=4\cdot252-5\cdot198
-    \end{aligned}
-    $$
+> [!example]+ Back Substitution
+>
+> Express $\gcd(252,198)=18$ as a linear combination.
+>
+> Euclidean algorithm:
+>
+> $$
+> \begin{aligned}
+> 252&=1\cdot198+54\\
+> 198&=3\cdot54+36\\
+> 54&=1\cdot36+18\\
+> 36&=2\cdot18
+> \end{aligned}
+> $$
+>
+> Work backward: each time, represent the smaller number as a combination of the larger number in Euclidean algorithm
+>
+> $$
+> \begin{aligned}
+> 18&=54-36\\
+> &=54-(198-3\cdot54)\\
+> &=4\cdot54-198\\
+> &=4(252-198)-198\\
+> &=4\cdot252-5\cdot198
+> \end{aligned}
+> $$
 
 *Lem*. If $\gcd(a,b)=1$ and $a\mid bc$, then $a\mid c$.
 
@@ -401,21 +401,21 @@ $$
 
 When it exists, it is unique modulo $m$.
 
-??? proof "Why it exists"
-
-    If $\gcd(a,m)=1$, Bézout's theorem gives integers $s,t$ such that
-
-    $$
-    sa+tm=1
-    $$
-
-    Therefore
-
-    $$
-    sa\equiv1\pmod m
-    $$
-
-    so $s$ is an inverse of $a$ modulo $m$.
+> [!proof]- Why it exists
+>
+> If $\gcd(a,m)=1$, Bézout's theorem gives integers $s,t$ such that
+>
+> $$
+> sa+tm=1
+> $$
+>
+> Therefore
+>
+> $$
+> sa\equiv1\pmod m
+> $$
+>
+> so $s$ is an inverse of $a$ modulo $m$.
 
 
 ### Linear Congruences
@@ -463,88 +463,88 @@ $$
 
 > 中国剩余定理类似寻找向量空间中的正交基向量，每一个 $M_ky_k$ 都满足模 $m_k$ 同余 1 而模 $m_{i,i \ne k}$ 同余 0，这样就能直接通过投影得到系数．
 
-???+ example "Sun-Tsu's Problem"
+> [!example]+ Sun-Tsu's Problem
+>
+> Solve:
+>
+> $$
+> x\equiv2\pmod3,\qquad x\equiv3\pmod5,\qquad x\equiv2\pmod7
+> $$
+>
+> Here
+>
+> $$
+> m=3\cdot5\cdot7=105
+> $$
+>
+> $$
+> M_1=35,\quad M_2=21,\quad M_3=15
+> $$
+>
+> Inverses:
+>
+> $$
+> 35\cdot2\equiv1\pmod3,\quad
+> 21\cdot1\equiv1\pmod5,\quad
+> 15\cdot1\equiv1\pmod7
+> $$
+>
+> Therefore
+>
+> $$
+> x\equiv2\cdot35\cdot2+3\cdot21\cdot1+2\cdot15\cdot1
+> \equiv233\equiv23\pmod{105}
+> $$
 
-    Solve:
-    
-    $$
-    x\equiv2\pmod3,\qquad x\equiv3\pmod5,\qquad x\equiv2\pmod7
-    $$
-    
-    Here
-    
-    $$
-    m=3\cdot5\cdot7=105
-    $$
-    
-    $$
-    M_1=35,\quad M_2=21,\quad M_3=15
-    $$
-    
-    Inverses:
-    
-    $$
-    35\cdot2\equiv1\pmod3,\quad
-    21\cdot1\equiv1\pmod5,\quad
-    15\cdot1\equiv1\pmod7
-    $$
-    
-    Therefore
-    
-    $$
-    x\equiv2\cdot35\cdot2+3\cdot21\cdot1+2\cdot15\cdot1
-    \equiv233\equiv23\pmod{105}
-    $$
-
-???+ tip "Back Substitution"
-
-    A system of congruences can also be solved by rewriting one congruence as an equality and substituting step by step.
-
-    Solve:
-    
-    $$
-    x\equiv1\pmod5,\quad x\equiv2\pmod6,\quad x\equiv3\pmod7
-    $$
-    
-    From $x\equiv1\pmod5$, write
-    
-    $$
-    x=5t+1
-    $$
-    
-    Substitute into $x\equiv2\pmod6$:
-    
-    $$
-    5t+1\equiv2\pmod6
-    $$
-    
-    Thus $t\equiv5\pmod6$, so $t=6u+5$.
-    
-    Then
-    
-    $$
-    x=5(6u+5)+1=30u+26
-    $$
-    
-    Substitute into $x\equiv3\pmod7$:
-    
-    $$
-    30u+26\equiv3\pmod7
-    $$
-    
-    Thus $u\equiv6\pmod7$, so $u=7v+6$.
-    
-    Hence
-    
-    $$
-    x=30(7v+6)+26=210v+206
-    $$
-    
-    Therefore
-    
-    $$
-    x\equiv206\pmod{210}
-    $$
+> [!tip]+ Back Substitution
+>
+> A system of congruences can also be solved by rewriting one congruence as an equality and substituting step by step.
+>
+> Solve:
+>
+> $$
+> x\equiv1\pmod5,\quad x\equiv2\pmod6,\quad x\equiv3\pmod7
+> $$
+>
+> From $x\equiv1\pmod5$, write
+>
+> $$
+> x=5t+1
+> $$
+>
+> Substitute into $x\equiv2\pmod6$:
+>
+> $$
+> 5t+1\equiv2\pmod6
+> $$
+>
+> Thus $t\equiv5\pmod6$, so $t=6u+5$.
+>
+> Then
+>
+> $$
+> x=5(6u+5)+1=30u+26
+> $$
+>
+> Substitute into $x\equiv3\pmod7$:
+>
+> $$
+> 30u+26\equiv3\pmod7
+> $$
+>
+> Thus $u\equiv6\pmod7$, so $u=7v+6$.
+>
+> Hence
+>
+> $$
+> x=30(7v+6)+26=210v+206
+> $$
+>
+> Therefore
+>
+> $$
+> x\equiv206\pmod{210}
+> $$
 
 ### CRT Representation of Large Integers
 
@@ -556,54 +556,54 @@ $$
 
 This representation can make large-integer arithmetic easier, because computations modulo different $m_k$ can be done separately.
 
-???+ example "Modulo 3 and 4"
+> [!example]+ Modulo 3 and 4
+>
+> For integers less than $12$, use the pair
+>
+> $$
+> (a\bmod3,\ a\bmod4)
+> $$
+>
+> Then:
+>
+> $$
+> \begin{array}{c|c}
+> a & (a\bmod 3,\ a\bmod 4) \\
+> \hline
+> 0  & (0,0) \\
+> 1  & (1,1) \\
+> 2  & (2,2) \\
+> 3  & (0,3) \\
+> 4  & (1,0) \\
+> 5  & (2,1) \\
+> 6  & (0,2) \\
+> 7  & (1,3) \\
+> 8  & (2,0) \\
+> 9  & (0,1) \\
+> 10 & (1,2) \\
+> 11 & (2,3)
+> \end{array}
+> $$
 
-    For integers less than $12$, use the pair
-    
-    $$
-    (a\bmod3,\ a\bmod4)
-    $$
-    
-    Then:
-    
-    $$
-    \begin{array}{c|c}
-    a & (a\bmod 3,\ a\bmod 4) \\
-    \hline
-    0  & (0,0) \\
-    1  & (1,1) \\
-    2  & (2,2) \\
-    3  & (0,3) \\
-    4  & (1,0) \\
-    5  & (2,1) \\
-    6  & (0,2) \\
-    7  & (1,3) \\
-    8  & (2,0) \\
-    9  & (0,1) \\
-    10 & (1,2) \\
-    11 & (2,3)
-    \end{array}
-    $$
-
-???+ quote "CRT in RSA Decryption"
-
-    RSA decryption computes
-    
-    $$
-    M\equiv C^D\pmod N
-    $$
-    
-    where $N=PQ$ for large primes $P,Q$.
-    
-    Instead of computing directly modulo $N$, compute
-    
-    $$
-    M\equiv C^D\pmod P,\qquad M\equiv C^D\pmod Q
-    $$
-    
-    and combine the two results with CRT.
-    
-    This reduces the modulus size and also allows parallel computation.
+> [!quote]+ CRT in RSA Decryption
+>
+> RSA decryption computes
+>
+> $$
+> M\equiv C^D\pmod N
+> $$
+>
+> where $N=PQ$ for large primes $P,Q$.
+>
+> Instead of computing directly modulo $N$, compute
+>
+> $$
+> M\equiv C^D\pmod P,\qquad M\equiv C^D\pmod Q
+> $$
+>
+> and combine the two results with CRT.
+>
+> This reduces the modulus size and also allows parallel computation.
 
 ## Fermat's Little Theorem and Related Ideas
 
@@ -627,22 +627,22 @@ $$
 
 then $n$ is a **pseudoprime to base $b$**(伪质数).
 
-???+ example "Example"
+> [!example]+ Example
+>
+> $341=11\cdot31 $ is a pseudoprime to base $2$ because $2^{340}\equiv1\pmod{341}$.
 
-    $341=11\cdot31 $ is a pseudoprime to base $2$ because $2^{340}\equiv1\pmod{341}$.
 
-
-???+ quote "Carmichael Numbers"
-
-    A **Carmichael number** is a composite integer $n$ such that
-    
-    $$
-    b^{n-1}\equiv1\pmod n
-    $$
-    
-    for every positive integer $b$ with $\gcd(b,n)=1$.
-    
-    $561=3\cdot11\cdot17$ is the classic example, for every $b$ coprime to $561$ we have $b^{560}\equiv1\pmod{561}$.
+> [!quote]+ Carmichael Numbers
+>
+> A **Carmichael number** is a composite integer $n$ such that
+>
+> $$
+> b^{n-1}\equiv1\pmod n
+> $$
+>
+> for every positive integer $b$ with $\gcd(b,n)=1$.
+>
+> $561=3\cdot11\cdot17$ is the classic example, for every $b$ coprime to $561$ we have $b^{560}\equiv1\pmod{561}$.
 
 ### Primitive Roots
 
@@ -652,25 +652,25 @@ $$
 \{r^1,r^2,\dots,r^{p-1}\}\equiv\{1,2,\dots,p-1\}\pmod p
 $$
 
-???+ example "Modulo 11"
-
-    $2$ is a primitive root modulo $11$ because:
-    
-    $$
-    \begin{aligned}
-    2^1&\equiv2\\
-    2^2&\equiv4\\
-    2^3&\equiv8\\
-    2^4&\equiv5\\
-    2^5&\equiv10\\
-    2^6&\equiv9\\
-    2^7&\equiv7\\
-    2^8&\equiv3\\
-    2^9&\equiv6\\
-    2^{10}&\equiv1
-    \end{aligned}
-    \pmod{11}
-    $$
+> [!example]+ Modulo 11
+>
+> $2$ is a primitive root modulo $11$ because:
+>
+> $$
+> \begin{aligned}
+> 2^1&\equiv2\\
+> 2^2&\equiv4\\
+> 2^3&\equiv8\\
+> 2^4&\equiv5\\
+> 2^5&\equiv10\\
+> 2^6&\equiv9\\
+> 2^7&\equiv7\\
+> 2^8&\equiv3\\
+> 2^9&\equiv6\\
+> 2^{10}&\equiv1
+> \end{aligned}
+> \pmod{11}
+> $$
 
 ### Discrete Logarithms
 
@@ -684,9 +684,9 @@ $$
 
 then $e$ is the **discrete logarithm**(离散对数) of $a$ modulo $p$ to the base $r$.
 
-???+ example "Example"
-
-    Modulo $11$ with base $2$:
-    
-    + $2^8\equiv3\pmod{11}$ so $\log_2 3=8$
-    + $2^4\equiv5\pmod{11}$ so $\log_2 5=4$
+> [!example]+ Example
+>
+> Modulo $11$ with base $2$:
+>
+> + $2^8\equiv3\pmod{11}$ so $\log_2 3=8$
+> + $2^4\equiv5\pmod{11}$ so $\log_2 5=4$

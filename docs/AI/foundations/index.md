@@ -1,12 +1,12 @@
 # 机器学习
 
-!!! abstract "概要"
+> [!abstract] 概要
+>
+> 这一部分记录 AI 与机器学习的基础概念．
 
-    这一部分记录 AI 与机器学习的基础概念．
-
-!!! success "目录"
-
-    - [x] [Classification and Linear Models](classification-and-linear-models.md)
+> [!success] 目录
+>
+> - [x] [Classification and Linear Models](classification-and-linear-models.md)
 
 <!-- ## 建议补充
 

@@ -117,9 +117,9 @@ int sumOfLeftLeaves(TreeNode* root) {
 
 根结点将 `targetSum` 值更新后自顶向下传递给子结点的过程就是**「递」**，子结点将布尔值自下而上返回给根节点的过程就是**「归」**．
 
-!!! warning "注意"
-	
-	除了题目直接传入空树外，我们不能给递归传入空结点：对于空树且 `targetSum == 0` 而言，没有路径应返回 `false`；而如果是父结点调用，此时 `targetSum == 0` 应该返回 `true`；出现矛盾．
+> [!warning] 注意
+>
+> 除了题目直接传入空树外，我们不能给递归传入空结点：对于空树且 `targetSum == 0` 而言，没有路径应返回 `false`；而如果是父结点调用，此时 `targetSum == 0` 应该返回 `true`；出现矛盾．
 
   时间复杂度 $O(n)$，空间复杂度 $O(n)$​．
 
@@ -138,9 +138,9 @@ bool hasPathSum(TreeNode* root, int targetSum) {
 
 此题的数字是父结点在高位而子结点在地位，因此需要自顶向下遍历（因为先遍历的数升位简单而降位难，升位只需要 $\times 10$），即dfs；而dfs过程中子结点需要知道父结点的值，以便作为返回值（如叶结点返回父结点的值 $\times 10+$ `val`）．若 `root` 是空结点（题目传入空树或者是单子的结点传入的空结点），返回 $0$ 即可．
 
-!!! info "注"
-
-	原题的函数并没有父结点值的形参，如果我们直接加上新的形参会编译错误；但我们可以给新的形参加上默认值，这样就不会报错了．
+> [!info] 注
+>
+> 原题的函数并没有父结点值的形参，如果我们直接加上新的形参会编译错误；但我们可以给新的形参加上默认值，这样就不会报错了．
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$．
 
@@ -167,19 +167,19 @@ int sumNumbers(TreeNode* root, int num = 0) {
 
 时间复杂度 $O(n\log n)$，空间复杂度为 $O(n)$．
 
-??? question "时间复杂度证明"
-	如果不考虑排序，时间复杂度是 $O(n)$ 的，因为无论是dfs还是创建插入 `vector` 都只遍历了一次．
-
-	若考虑排序，那么我们应该考虑最坏情况下多少个结点可以在同一坐标．
-	
-	从 $(0,0)$ 出发，向左再向右、向右再向左均可以达到 $(2,0)$；这两个结点按照同样的方法可以得到 $4$ 个在 $(4,0)$ 的结点；以此类推，如果当前有 $2^k$ 个结点在同一坐标，那么增加 $2^{k+2}$ 个结点就可以得到 $2^{k+1}$ 个在同一坐标的结点．
-	
-	+ $n=5$ 时，最多 $2$ 结点在同一坐标．
-	+ $n=5 + 8 =13$ 时，最多 $4$ 结点在同一坐标．
-	+ $n=5 + 8 + 16=29$ 时，最多 $8$ 结点在同一坐标．
-	+ $n=2^{k+2}-3$ 时，最多 $2^k$ 结点在同一坐标．
-	
-	最坏情况下有大约 $\dfrac{n}{4}$ 个结点在同一坐标，即最坏情况下在同一坐标的结点数是 $O(n)$ 的，因此对该坐标的排序就是 $O(n\log n)$ 的，瓶颈在排序上．
+> [!question]- 时间复杂度证明
+> 如果不考虑排序，时间复杂度是 $O(n)$ 的，因为无论是dfs还是创建插入 `vector` 都只遍历了一次．
+>
+> 若考虑排序，那么我们应该考虑最坏情况下多少个结点可以在同一坐标．
+>
+> 从 $(0,0)$ 出发，向左再向右、向右再向左均可以达到 $(2,0)$；这两个结点按照同样的方法可以得到 $4$ 个在 $(4,0)$ 的结点；以此类推，如果当前有 $2^k$ 个结点在同一坐标，那么增加 $2^{k+2}$ 个结点就可以得到 $2^{k+1}$ 个在同一坐标的结点．
+>
+> + $n=5$ 时，最多 $2$ 结点在同一坐标．
+> + $n=5 + 8 =13$ 时，最多 $4$ 结点在同一坐标．
+> + $n=5 + 8 + 16=29$ 时，最多 $8$ 结点在同一坐标．
+> + $n=2^{k+2}-3$ 时，最多 $2^k$ 结点在同一坐标．
+>
+> 最坏情况下有大约 $\dfrac{n}{4}$ 个结点在同一坐标，即最坏情况下在同一坐标的结点数是 $O(n)$ 的，因此对该坐标的排序就是 $O(n\log n)$ 的，瓶颈在排序上．
 
 ```cpp
 map<int, vector<pair<int, int>>> groups;
@@ -265,22 +265,22 @@ bool isBalanced(TreeNode* root) {
 
 对于**不足结点**的定义，我本人在初见时理解有偏差：认为是根到某个中间节点的路径和．这导致写出来的代码出现问题：
 
-!!! warning "易错点"
-
-	当某个中间结点的所有叶结点被删除后，其不应该成为新的叶结点．也就是说若 `limit == 0`，由于从根到叶的两条路径均不符合，整棵树都应该被删除；而不是将两个 $-10$ 删除后在判定一次 $1+2+3>0$ 因而将这三个结点留下来．
-	![image-20260303095831628](binary-tree.assets/image-20260303095831628.png)
+> [!warning] 易错点
+>
+> 当某个中间结点的所有叶结点被删除后，其不应该成为新的叶结点．也就是说若 `limit == 0`，由于从根到叶的两条路径均不符合，整棵树都应该被删除；而不是将两个 $-10$ 删除后在判定一次 $1+2+3>0$ 因而将这三个结点留下来．
+> ![image-20260303095831628](binary-tree.assets/image-20260303095831628.png)
 
 接下来我们对删除条件进行深入剖析：
 
-!!! question "删除条件证明"
-
-    对于叶结点，由于经过其的根到叶路径只有一条，如果该路径和小于 `limit`，就应该删除自身；即递给叶结点时若有 `limit > val` 就应该删除自身．
-
-
-    对于非叶结点 `node`，如果其有一个子结点 `son` 没被删除，那么其必然不能被删除．因为经过 `son` 的路径是经过 `node` 路径的子集，`son` 没被删除，说明至少存在一条经过 `son` 的符合条件路径，而这条路径必然经过 `node`．反之，由于其所有子结点的根到叶路径的并集等于经过该结点的路径集合，若其子结点均被删除，则 `node` 也应该被删除．
-
-
-    因此要删除非叶结点，**当且仅当**其子结点全部被删除．
+> [!question] 删除条件证明
+>
+> 对于叶结点，由于经过其的根到叶路径只有一条，如果该路径和小于 `limit`，就应该删除自身；即递给叶结点时若有 `limit > val` 就应该删除自身．
+>
+>
+> 对于非叶结点 `node`，如果其有一个子结点 `son` 没被删除，那么其必然不能被删除．因为经过 `son` 的路径是经过 `node` 路径的子集，`son` 没被删除，说明至少存在一条经过 `son` 的符合条件路径，而这条路径必然经过 `node`．反之，由于其所有子结点的根到叶路径的并集等于经过该结点的路径集合，若其子结点均被删除，则 `node` 也应该被删除．
+>
+>
+> 因此要删除非叶结点，**当且仅当**其子结点全部被删除．
 
 整理一下思路：与[路径总和](#112)类似，我们不主动将空结点传入递归．对于非空结点，先将 `limit` 减去自身的 `val`；如果自身为叶结点，直接根据 `limit` 值决定返回自身还是空结点；如果自身为非叶结点，则对有子结点处进行递归；只要左右子结点有一个非空就返回自身，否则返回空结点．
 
@@ -331,14 +331,14 @@ bool isValidBST(TreeNode* root) {
 
 前序遍历先遍历根，我们可以根据根的范围与根的值来判断左右子结点的范围：传入参数时，将该结点应该符合的上下界一并传入，如果不符合就返回 `false`；如果符合就更新传入的参数，继续递归左右子结点．
 
-!!! example "例子"
-
-    以一个结点 `root` 和它的两个子结点为例：
-    
-    若递归 `root` 是传入的参数是 `isValidBST(root, a, b)`，记 `c = root->val`：
-    
-    + 若 $c\le a$ 或 $c \ge b$，不符合BST，返回 `false`．
-    + 若 $a<c<b$，递归左子树时需要满足左子树均比 $c$ 小，因此需要传入 `isValidBST(root->left, a, c)`；递归右子树时需要满足右子树均比 $c$ 大，传入 `isValidBST(root->left, c, b)`．
+> [!example] 例子
+>
+> 以一个结点 `root` 和它的两个子结点为例：
+>
+> 若递归 `root` 是传入的参数是 `isValidBST(root, a, b)`，记 `c = root->val`：
+>
+> + 若 $c\le a$ 或 $c \ge b$，不符合BST，返回 `false`．
+> + 若 $a<c<b$，递归左子树时需要满足左子树均比 $c$ 小，因此需要传入 `isValidBST(root->left, a, c)`；递归右子树时需要满足右子树均比 $c$ 大，传入 `isValidBST(root->left, c, b)`．
 
 时间复杂度 $O(n)$，空间复杂度 $O(n)$．
 ```cpp
@@ -401,29 +401,29 @@ bool isValidBST(TreeNode* root) {
     return postOrder(root).second != LLONG_MAX;
 }
 ```
-??? tip "简化"
-
-    如何处理空结点？由于返回 $(-\infty,+\infty)$ 是必然不成立，那么对应地，返回 $(+\infty,-\infty)$ 就是必然成立的．对于下图中的 $1$，其左右子结点均返回 $(+\infty,-\infty)$，要想在符合BST时让自身正常返回 $[1,1]$，我们可以对左区间取 `min`，这样 $+\infty$ 就会被 `min` 洗掉，同理对右区间取 `max`．
-    
-    ![image-20260303121853040](binary-tree.assets/image-20260303121853040.png)
-    
-    ```cpp
-    typedef long long ll;
-    pair<ll, ll> postorder(TreeNode* root) {
-        if (!root)
-            return {LLONG_MAX, LLONG_MIN};
-        auto[l_min, l_max] = postorder(root->left);
-        auto[r_min, r_max] = postorder(root->right);
-        ll val = root->val;
-        if (val <= l_max || val >= r_min)
-            return {LLONG_MIN, LLONG_MAX};
-        return {min(l_min, val), max(r_max, val)};
-    }
-    
-    bool isValidBST(TreeNode* root) {
-        return postorder(root).second != LLONG_MAX;
-    }
-    ```
+> [!tip]- 简化
+>
+> 如何处理空结点？由于返回 $(-\infty,+\infty)$ 是必然不成立，那么对应地，返回 $(+\infty,-\infty)$ 就是必然成立的．对于下图中的 $1$，其左右子结点均返回 $(+\infty,-\infty)$，要想在符合BST时让自身正常返回 $[1,1]$，我们可以对左区间取 `min`，这样 $+\infty$ 就会被 `min` 洗掉，同理对右区间取 `max`．
+>
+> ![image-20260303121853040](binary-tree.assets/image-20260303121853040.png)
+>
+> ```cpp
+> typedef long long ll;
+> pair<ll, ll> postorder(TreeNode* root) {
+>     if (!root)
+>         return {LLONG_MAX, LLONG_MIN};
+>     auto[l_min, l_max] = postorder(root->left);
+>     auto[r_min, r_max] = postorder(root->right);
+>     ll val = root->val;
+>     if (val <= l_max || val >= r_min)
+>         return {LLONG_MIN, LLONG_MAX};
+>     return {min(l_min, val), max(r_max, val)};
+> }
+>
+> bool isValidBST(TreeNode* root) {
+>     return postorder(root).second != LLONG_MAX;
+> }
+> ```
 
 想要降低空间复杂度实现 $O(1)$，可参考[Morris遍历](https://oi-wiki.org/graph/tree-basic/#%E4%BA%8C%E5%8F%89%E6%A0%91-morris-%E9%81%8D%E5%8E%86)．（反正我没学会😭）
 
@@ -439,13 +439,13 @@ bool isValidBST(TreeNode* root) {
 
 参考资料：[反推二叉树](https://oi-wiki.org/graph/tree-basic/#%E5%8F%8D%E6%8E%A8)，只要有中序遍历+另一个遍历就能反推二叉树．
 
-!!! example "例子"
-
-    ![img](https://assets.leetcode.com/uploads/2021/02/19/tree.jpg)
-    
-    已知 `preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]`．
-    
-    前序遍历是按照“根左右”遍历，中序遍历按照“左根右”．因此前序遍历的第一个数 $3$ 就是根的值．由于本题中**无重复**元素，在中序遍历中找到该根的值，其左侧即为左子树的中序遍历（$[9]$），右侧即为右子树的中序遍历（$[15,20,7]$）；然后根据左右子树的中序遍历从完整的前序遍历中截取得到左右子树的前序遍历，即 $[9]$ 和 $[20,15,7]$．然后递归构造左右子树拼接上即可．
+> [!example] 例子
+>
+> ![img](https://assets.leetcode.com/uploads/2021/02/19/tree.jpg)
+>
+> 已知 `preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]`．
+>
+> 前序遍历是按照“根左右”遍历，中序遍历按照“左根右”．因此前序遍历的第一个数 $3$ 就是根的值．由于本题中**无重复**元素，在中序遍历中找到该根的值，其左侧即为左子树的中序遍历（$[9]$），右侧即为右子树的中序遍历（$[15,20,7]$）；然后根据左右子树的中序遍历从完整的前序遍历中截取得到左右子树的前序遍历，即 $[9]$ 和 $[20,15,7]$．然后递归构造左右子树拼接上即可．
 
 时间复杂度 $O(n^2)$，空间复杂度 $O(n^2)$．
 
@@ -475,43 +475,43 @@ TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
 }
 ```
 
-!!! tip "优化"
-
-    每一次递归查找根节点都是 $O(n)$ 复杂度，总共为 $O(n^2)$；对于 `vector` 的复制操作，当二叉树退化为链表时会进行 $O(n)$ 次，总共也是 $O(n^2)$ 复杂度．对于前者，我们可以将中序遍历的根节点值和下标用哈希表存起来，加快访问速率；对于后者，我们可以在递归时不改变数组本身而是传入下标的范围（左闭右开）．
-
-
-
-    简化后单次查找根复杂度为 $O(1)$，查找复杂度为 $O(n)$；由于构造树只会把所有值遍历一遍，复杂度为 $O(n)$；总复杂度为 $O(n)$．由于没有开新的 `vector`，只有构建了树，因此空间复杂度为 $O(n)$．
-    
-    ```cpp
-    unordered_map<int, int> mp;
-    
-    TreeNode* dfs(vector<int>& preorder, vector<int>& inorder, int l_pre, int r_pre, int l_in, int r_in)
-    {
-        // 如果左右区间相等，说明为空结点
-        if (l_pre == r_pre)
-            return nullptr;
-        // 找到根的值，为前序遍历的第一个值
-        int root_val = preorder[l_pre];
-        // 找到根的下标
-        int root_idx = mp[root_val];
-        TreeNode* root = new TreeNode(root_val);
-        // 得到左子树的长度
-        int l_size = root_idx - li;
-        // l_pre + 1 对应 preorder.begin() + 1；l_pre + 1 + l_size 对应 preorder.begin() + 1 + l_size
-        // l_in 对应 inorder.begin()；l_in + l_size 对应 inorder.begin() + l_size
-        root->left = dfs(preorder, inorder, l_pre + 1, l_pre + 1 + l_size, l_in, l_in + l_size);
-        root->right = dfs(preorder, inorder, l_pre + 1 + l_size, r_pre, l_in + l_size + 1, r_in);
-        return root;
-    }
-    
-    TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        for (int i = 0; i < inorder.size(); i++)
-            mp[inorder[i]] = i;
-        int size = preorder.size();
-        return dfs(preorder, inorder, 0, size, 0, size);
-    }
-    ```
+> [!tip] 优化
+>
+> 每一次递归查找根节点都是 $O(n)$ 复杂度，总共为 $O(n^2)$；对于 `vector` 的复制操作，当二叉树退化为链表时会进行 $O(n)$ 次，总共也是 $O(n^2)$ 复杂度．对于前者，我们可以将中序遍历的根节点值和下标用哈希表存起来，加快访问速率；对于后者，我们可以在递归时不改变数组本身而是传入下标的范围（左闭右开）．
+>
+>
+>
+> 简化后单次查找根复杂度为 $O(1)$，查找复杂度为 $O(n)$；由于构造树只会把所有值遍历一遍，复杂度为 $O(n)$；总复杂度为 $O(n)$．由于没有开新的 `vector`，只有构建了树，因此空间复杂度为 $O(n)$．
+>
+> ```cpp
+> unordered_map<int, int> mp;
+>
+> TreeNode* dfs(vector<int>& preorder, vector<int>& inorder, int l_pre, int r_pre, int l_in, int r_in)
+> {
+>     // 如果左右区间相等，说明为空结点
+>     if (l_pre == r_pre)
+>         return nullptr;
+>     // 找到根的值，为前序遍历的第一个值
+>     int root_val = preorder[l_pre];
+>     // 找到根的下标
+>     int root_idx = mp[root_val];
+>     TreeNode* root = new TreeNode(root_val);
+>     // 得到左子树的长度
+>     int l_size = root_idx - li;
+>     // l_pre + 1 对应 preorder.begin() + 1；l_pre + 1 + l_size 对应 preorder.begin() + 1 + l_size
+>     // l_in 对应 inorder.begin()；l_in + l_size 对应 inorder.begin() + l_size
+>     root->left = dfs(preorder, inorder, l_pre + 1, l_pre + 1 + l_size, l_in, l_in + l_size);
+>     root->right = dfs(preorder, inorder, l_pre + 1 + l_size, r_pre, l_in + l_size + 1, r_in);
+>     return root;
+> }
+>
+> TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
+>     for (int i = 0; i < inorder.size(); i++)
+>         mp[inorder[i]] = i;
+>     int size = preorder.size();
+>     return dfs(preorder, inorder, 0, size, 0, size);
+> }
+> ```
 
 ### [106. 从中序与后序遍历序列构造二叉树](https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 

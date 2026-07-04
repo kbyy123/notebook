@@ -22,9 +22,9 @@ $$
 <img src="convolutional-neural-networks.assets/image-20260502204944164.png" alt="image-20260502204944164" style="zoom: 40%;" />
 </div>
 
-!!! warning "激活函数"
-
-    卷积操作本质上仍然是仿射变换，因此叠加多个卷积层等效于只是用一个卷积层，所以要在卷积层之间加激活函数．
+> [!warning] 激活函数
+>
+> 卷积操作本质上仍然是仿射变换，因此叠加多个卷积层等效于只是用一个卷积层，所以要在卷积层之间加激活函数．
 
 ### Padding
 
@@ -58,13 +58,13 @@ $$
 + Stride
 + Pooling function（max/avg）
 
-???+ example
-
-    对一个 $4\times 4$ 的图像进行 kernel size=2, stride=2, pooling function=max 的最大采样结果：
-
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="convolutional-neural-networks.assets/image-20260502210730111.png" alt="image-20260502210730111" style="zoom:50%;" />
-    </div>
+> [!example]+
+>
+> 对一个 $4\times 4$ 的图像进行 kernel size=2, stride=2, pooling function=max 的最大采样结果：
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="convolutional-neural-networks.assets/image-20260502210730111.png" alt="image-20260502210730111" style="zoom:50%;" />
+> </div>
 
 常用的max函数由于带有非线性性，因此池化层后一般不用接激活函数．
 
@@ -118,9 +118,9 @@ Instance Norm是对单一数据的每一个通道求平均．
 <img src="convolutional-neural-networks.assets/image-20260502214610762.png" alt="image-20260502214610762" style="zoom:50%;" />
 </div>
 
-!!! quote "不同Norm方法区别"
-
-    <div style="text-align: center; margin-top: 15px;">
-	<img src="convolutional-neural-networks.assets/image-20260502214646493.png" alt="image-20260502214646493" style="zoom: 25%;" />
-    </div>
+> [!quote] 不同Norm方法区别
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="convolutional-neural-networks.assets/image-20260502214646493.png" alt="image-20260502214646493" style="zoom: 25%;" />
+> </div>
 

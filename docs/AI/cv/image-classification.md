@@ -190,75 +190,75 @@ ResNet-50/101/152 的残差块使用的是 Bottleneck Block．其先使用 $1\ti
 <img src="https://zh.d2l.ai/_images/resnet18.svg" alt="../_images/resnet18.svg" style="zoom:120%;" />
 </div>
 
-???+ code "代码实现"
-
-    ```python
-    import torch
-    from torch import nn
-    from torch.nn import functional as F
-    
-    # Res Block
-    class Residual(nn.Module):
-        def __init__(self, input_channels, num_channels,
-                     use_1x1conv=False, strides=1):
-            super().__init__()
-            self.conv1 = nn.Conv2d(input_channels, num_channels,
-                                   kernel_size=3, padding=1, stride=strides)
-            self.conv2 = nn.Conv2d(num_channels, num_channels,
-                                   kernel_size=3, padding=1)
-            if use_1x1conv:
-                self.conv3 = nn.Conv2d(input_channels, num_channels,
-                                       kernel_size=1, stride=strides)
-            else:
-                self.conv3 = None
-            self.bn1 = nn.BatchNorm2d(num_channels)
-            self.bn2 = nn.BatchNorm2d(num_channels)
-    
-        def forward(self, X):
-            Y = F.relu(self.bn1(self.conv1(X)))
-            Y = self.bn2(self.conv2(Y))
-            if self.conv3:
-                X = self.conv3(X)
-            Y += X
-            return F.relu(Y)
-    
-    # Res Stage
-    def res_stage(input_channels, num_channels, num_residuals, first_stage=False):
-        blk = []
-        for i in range(num_residuals):
-            # 如果不是第一个 Stage，那么第一个 Block 需要改变通道数并下采样
-            # 同时要用 1*1 卷积改变 x 通道数
-            if i == 0 and not first_stage:
-                blk.append(Residual(input_channels, num_channels,
-                                    use_1x1conv=True, strides=2))
-            else:
-                blk.append(Residual(num_channels, num_channels))
-        return blk
-    
-    # Net
-    stem = nn.Sequential(nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3),
-                       nn.BatchNorm2d(64), nn.ReLU(),
-                       nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
-    
-    b1 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
-    b2 = nn.Sequential(*resnet_block(64, 128, 2))
-    b3 = nn.Sequential(*resnet_block(128, 256, 2))
-    b4 = nn.Sequential(*resnet_block(256, 512, 2))
-    
-    net = nn.Sequential(stem, b1, b2, b3, b4,
-                        nn.AdaptiveAvgPool2d((1,1)),
-                        nn.Flatten(), nn.Linear(512, 10))
-    ```
-    
-    每一层的张量维度为：
-    
-    ```python
-    Sequential output shape:     torch.Size([1, 64, 56, 56])
-    Sequential output shape:     torch.Size([1, 64, 56, 56])
-    Sequential output shape:     torch.Size([1, 128, 28, 28])
-    Sequential output shape:     torch.Size([1, 256, 14, 14])
-    Sequential output shape:     torch.Size([1, 512, 7, 7])
-    AdaptiveAvgPool2d output shape:      torch.Size([1, 512, 1, 1])
-    Flatten output shape:        torch.Size([1, 512])
-    Linear output shape:         torch.Size([1, 10])
-    ```
+> [!code]+ 代码实现
+>
+> ```python
+> import torch
+> from torch import nn
+> from torch.nn import functional as F
+>
+> # Res Block
+> class Residual(nn.Module):
+>     def __init__(self, input_channels, num_channels,
+>                  use_1x1conv=False, strides=1):
+>         super().__init__()
+>         self.conv1 = nn.Conv2d(input_channels, num_channels,
+>                                kernel_size=3, padding=1, stride=strides)
+>         self.conv2 = nn.Conv2d(num_channels, num_channels,
+>                                kernel_size=3, padding=1)
+>         if use_1x1conv:
+>             self.conv3 = nn.Conv2d(input_channels, num_channels,
+>                                    kernel_size=1, stride=strides)
+>         else:
+>             self.conv3 = None
+>         self.bn1 = nn.BatchNorm2d(num_channels)
+>         self.bn2 = nn.BatchNorm2d(num_channels)
+>
+>     def forward(self, X):
+>         Y = F.relu(self.bn1(self.conv1(X)))
+>         Y = self.bn2(self.conv2(Y))
+>         if self.conv3:
+>             X = self.conv3(X)
+>         Y += X
+>         return F.relu(Y)
+>
+> # Res Stage
+> def res_stage(input_channels, num_channels, num_residuals, first_stage=False):
+>     blk = []
+>     for i in range(num_residuals):
+>         # 如果不是第一个 Stage，那么第一个 Block 需要改变通道数并下采样
+>         # 同时要用 1*1 卷积改变 x 通道数
+>         if i == 0 and not first_stage:
+>             blk.append(Residual(input_channels, num_channels,
+>                                 use_1x1conv=True, strides=2))
+>         else:
+>             blk.append(Residual(num_channels, num_channels))
+>     return blk
+>
+> # Net
+> stem = nn.Sequential(nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3),
+>                    nn.BatchNorm2d(64), nn.ReLU(),
+>                    nn.MaxPool2d(kernel_size=3, stride=2, padding=1))
+>
+> b1 = nn.Sequential(*resnet_block(64, 64, 2, first_block=True))
+> b2 = nn.Sequential(*resnet_block(64, 128, 2))
+> b3 = nn.Sequential(*resnet_block(128, 256, 2))
+> b4 = nn.Sequential(*resnet_block(256, 512, 2))
+>
+> net = nn.Sequential(stem, b1, b2, b3, b4,
+>                     nn.AdaptiveAvgPool2d((1,1)),
+>                     nn.Flatten(), nn.Linear(512, 10))
+> ```
+>
+> 每一层的张量维度为：
+>
+> ```python
+> Sequential output shape:     torch.Size([1, 64, 56, 56])
+> Sequential output shape:     torch.Size([1, 64, 56, 56])
+> Sequential output shape:     torch.Size([1, 128, 28, 28])
+> Sequential output shape:     torch.Size([1, 256, 14, 14])
+> Sequential output shape:     torch.Size([1, 512, 7, 7])
+> AdaptiveAvgPool2d output shape:      torch.Size([1, 512, 1, 1])
+> Flatten output shape:        torch.Size([1, 512])
+> Linear output shape:         torch.Size([1, 10])
+> ```

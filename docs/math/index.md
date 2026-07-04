@@ -4,9 +4,9 @@ hide:
 ---
 
 # 数学
-!!! abstract "概要"
-
-    包含线性代数、离散数学．
+> [!abstract] 概要
+>
+> 包含线性代数、离散数学．
     
 ## Table of Contents
 

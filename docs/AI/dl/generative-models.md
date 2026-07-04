@@ -78,9 +78,9 @@ PixelCNN 使用 masked convolution 避免卷积核看到“未来像素”，从
 <img src="generative-models.assets/image-20260621204325652.png" alt="image-20260621204325652" style="zoom: 33%;" />
 </div>
 
-!!! note "Masked Convolution"
-
-    普通卷积会同时看到当前位置周围的像素，其中包含生成顺序上的未来信息．Masked convolution 通过遮住卷积核中的未来位置，使第 $i$ 个像素只能依赖 $x_1,\ldots,x_{i-1}$．
+> [!note] Masked Convolution
+>
+> 普通卷积会同时看到当前位置周围的像素，其中包含生成顺序上的未来信息．Masked convolution 通过遮住卷积核中的未来位置，使第 $i$ 个像素只能依赖 $x_1,\ldots,x_{i-1}$．
 
 ## AutoEncoder
 

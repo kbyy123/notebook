@@ -110,14 +110,14 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 根据操作数的字节数，大部分操作符都可以加上四种后缀：b (byte)、w (word，2字节)、l (long，4字节)、q (quad，8字节)．特别地，当对一个寄存器低 4 字节操作时，会自动清零其高 4 字节．
 
-!!! example "例"
-
-    ```bash
-    movb %al, (%rbx)    # 移动 1 字节
-    movw %ax, (%rbx)    # 移动 2 字节
-    movl %eax, (%rbx)   # 移动 4 字节，同时高 4 字节清零
-    movq %rax, (%rbx)   # 移动 8 字节
-    ```
+> [!example] 例
+>
+> ```bash
+> movb %al, (%rbx)    # 移动 1 字节
+> movw %ax, (%rbx)    # 移动 2 字节
+> movl %eax, (%rbx)   # 移动 4 字节，同时高 4 字节清零
+> movq %rax, (%rbx)   # 移动 8 字节
+> ```
 
 基础指令表：
 
@@ -263,19 +263,19 @@ test:
 
 > 小 tip：如果要判断 $x\geq 0$ 且 $x\le 6$，可以用无符号比较跳转 `ja`，当 $x>6$ 时跳转．因为是无符号比较，所以 $x<0$​ 时会被视为大正数，也会跳转走，用一个指令实现两个判断．  
 
-???+ example "例"
-
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="Chap3.assets/image-20260601111043805.png" alt="image-20260601111043805" style="zoom: 50%;" /><img src="Chap3.assets/image-20260601111031398.png" alt="image-20260601111031398" style="zoom:50%;" />
-    </div>
-    
-    其中 `*L4(, %rsi, 8)` 的 `*` 表示不是跳到 `L4(, %rsi, 8)` 本身，而是把这个地址里的内容取出来（也就是跳转表），把它当作目标地址跳过去．
-    
-    实际上的跳转表如下图，他根据写好的代码块，将不同的 case 用下标对照到不同的代码块．
-    
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="Chap3.assets/image-20260601111502808.png" alt="image-20260601111502808" style="zoom: 50%;" />
-    </div>
+> [!example]+ 例
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap3.assets/image-20260601111043805.png" alt="image-20260601111043805" style="zoom: 50%;" /><img src="Chap3.assets/image-20260601111031398.png" alt="image-20260601111031398" style="zoom:50%;" />
+> </div>
+>
+> 其中 `*L4(, %rsi, 8)` 的 `*` 表示不是跳到 `L4(, %rsi, 8)` 本身，而是把这个地址里的内容取出来（也就是跳转表），把它当作目标地址跳过去．
+>
+> 实际上的跳转表如下图，他根据写好的代码块，将不同的 case 用下标对照到不同的代码块．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap3.assets/image-20260601111502808.png" alt="image-20260601111502808" style="zoom: 50%;" />
+> </div>
 
 ### Procedures
 
@@ -324,13 +324,13 @@ long call_proc()
 
 使用 Callee Saved 寄存器时，Callee 需要在使用前将它们压入栈中，并在返回前弹出．
 
-???+ example "典型的递归函数"
-
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="Chap3.assets/image-20260601210339932.png" alt="image-20260601210339932" style="zoom:50%;" />
-    </div>
-    
-    返回值存 `%rax`、被调用者保存 `%rbp`，汇编程序都遵循 ABI（Application Binary Interface），程序才能正常运作．
+> [!example] 典型的递归函数
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap3.assets/image-20260601210339932.png" alt="image-20260601210339932" style="zoom:50%;" />
+> </div>
+>
+> 返回值存 `%rax`、被调用者保存 `%rbp`，汇编程序都遵循 ABI（Application Binary Interface），程序才能正常运作．
 
 ## Data
 
@@ -342,87 +342,87 @@ long call_proc()
 
 数组名与指针很相似，当在 C 语言中声明一个数组时，我们既分配了空间，也创建了一个允许使用指针计算的数组名称（指向分配的空间）；声明一个指针时，只是为指针本身分配了空间，但没有将其指向任何东西．
 
-!!! info "指针与数组辨析"
-
-    下表给出一些指针和数组细微区别．Cmp 表示能否通过编译；Bad 表示使用空指针、野指针等不好的行为．
-    
-    <table class="compact-table">
-      <thead>
-        <tr>
-          <th rowspan="2">Decl</th>
-          <th colspan="3"><code>A<sub>n</sub></code></th>
-          <th colspan="3"><code>&ast;A<sub>n</sub></code></th>
-          <th colspan="3"><code>&ast;&ast;A<sub>n</sub></code></th>
-        </tr>
-        <tr>
-          <th>Cmp</th>
-          <th>Bad</th>
-          <th>Size</th>
-          <th>Cmp</th>
-          <th>Bad</th>
-          <th>Size</th>
-          <th>Cmp</th>
-          <th>Bad</th>
-          <th>Size</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>int A1[3]</code>数组</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>12</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>4</td>
-          <td>N</td>
-          <td>-</td>
-          <td>-</td>
-        </tr>
-        <tr>
-          <td><code>int &ast;A2[3]</code>指针数组</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>24</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>8</td>
-          <td>Y</td>
-          <td>Y</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td><code>int (&ast;A3)[3]</code>数组指针</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>8</td>
-          <td>Y</td>
-          <td>Y</td>
-          <td>12</td>
-          <td>Y</td>
-          <td>Y</td>
-          <td>4</td>
-        </tr>
-        <tr>
-          <td><code>int (&ast;A4[3])</code>指针数组</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>24</td>
-          <td>Y</td>
-          <td>N</td>
-          <td>8</td>
-          <td>Y</td>
-          <td>Y</td>
-          <td>4</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    （`A4` 和 `A2` 是等价的）
-    
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="Chap3.assets/image-20260602090159772.png" alt="image-20260602090159772" style="zoom:50%;" />
-    </div>
+> [!info] 指针与数组辨析
+>
+> 下表给出一些指针和数组细微区别．Cmp 表示能否通过编译；Bad 表示使用空指针、野指针等不好的行为．
+>
+> <table class="compact-table">
+>   <thead>
+>     <tr>
+>       <th rowspan="2">Decl</th>
+>       <th colspan="3"><code>A<sub>n</sub></code></th>
+>       <th colspan="3"><code>&ast;A<sub>n</sub></code></th>
+>       <th colspan="3"><code>&ast;&ast;A<sub>n</sub></code></th>
+>     </tr>
+>     <tr>
+>       <th>Cmp</th>
+>       <th>Bad</th>
+>       <th>Size</th>
+>       <th>Cmp</th>
+>       <th>Bad</th>
+>       <th>Size</th>
+>       <th>Cmp</th>
+>       <th>Bad</th>
+>       <th>Size</th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <td><code>int A1[3]</code>数组</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>12</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>4</td>
+>       <td>N</td>
+>       <td>-</td>
+>       <td>-</td>
+>     </tr>
+>     <tr>
+>       <td><code>int &ast;A2[3]</code>指针数组</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>24</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>8</td>
+>       <td>Y</td>
+>       <td>Y</td>
+>       <td>4</td>
+>     </tr>
+>     <tr>
+>       <td><code>int (&ast;A3)[3]</code>数组指针</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>8</td>
+>       <td>Y</td>
+>       <td>Y</td>
+>       <td>12</td>
+>       <td>Y</td>
+>       <td>Y</td>
+>       <td>4</td>
+>     </tr>
+>     <tr>
+>       <td><code>int (&ast;A4[3])</code>指针数组</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>24</td>
+>       <td>Y</td>
+>       <td>N</td>
+>       <td>8</td>
+>       <td>Y</td>
+>       <td>Y</td>
+>       <td>4</td>
+>     </tr>
+>   </tbody>
+> </table>
+>
+> （`A4` 和 `A2` 是等价的）
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap3.assets/image-20260602090159772.png" alt="image-20260602090159772" style="zoom:50%;" />
+> </div>
 
 二维数组是按照先行后列的顺序在内存中连续存储的．对于二维数组 `int A[R][C]`，每一个 `A[i]` 都是大小为 C 的数组，地址为 `A + (i*C*4)`；`A[i][j]` 地址为 `A + (i*C + j)*4`．
 
@@ -465,8 +465,6 @@ float bit2float(unsigned u)
     return arg.f;
 }
 ```
-
-
 
 **浮点数**：浮点参数一般放在寄存器 `%xmm0 / %xmm1 / ...`（所有 `%xmm` 寄存器都是 caller-saved，返回值为 `%xmm0`）里，并且使用 `addss`（scalar single）、`addsd`（scalar double） 等操作． 
 

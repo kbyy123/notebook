@@ -11,13 +11,13 @@
 
 我们通常用 $\text{P}(X=x)$ 来表示随机变量 $X$ 的PMF，有时也会简写为 $\text{P}(x)$．
 
-???+ example "例"
-
-	对于随机变量 $X$：掷一次骰子的点数，其PMF为
-	
-	$$
-	\text{P}(X=x)=\dfrac{1}{6} \quad \text{if }x\in \mathbb{Z}, 1\le x\le 6
-	$$
+> [!example]+ 例
+>
+> 对于随机变量 $X$：掷一次骰子的点数，其PMF为
+>
+> $$
+> \text{P}(X=x)=\dfrac{1}{6} \quad \text{if }x\in \mathbb{Z}, 1\le x\le 6
+> $$
 
 显然对于PMF，有 $\sum_{x}\text{P}(X=x)=1$，其中 $x$ 为随机变量 $X$ 的所有可能取值．
 
@@ -79,27 +79,27 @@ $$
 
 **方差**：$\text{Var}(X)=p(1-p)．$
 
-??? quote "伯努利分布期望与方差证明"
-
-	期望：
-	
-	$$
-	\begin{aligned}
-	\text{E}[X]&=\sum_x x\cdot \text{P}(X=x)\\
-	&= 1\cdot p+0\cdot(1-p)\\
-	&=p
-	\end{aligned}
-	$$
-	
-	方差：
-	
-	$$
-	\begin{aligned}
-	\text{E}[X^{2}]&=\sum_x x^{2}\cdot \text{P}(X=x)\\&=1^{2}\cdot p+0^{2}\cdot(1-p)\\
-	&=p\\\\
-	\text{则 } \text{Var}(X)&=\text{E}[X^{2}]-\text{E}^{2}[X]\\&=p-p^{2}\\&=p(1-p)
-	\end{aligned}
-	$$
+> [!quote]- 伯努利分布期望与方差证明
+>
+> 期望：
+>
+> $$
+> \begin{aligned}
+> \text{E}[X]&=\sum_x x\cdot \text{P}(X=x)\\
+> &= 1\cdot p+0\cdot(1-p)\\
+> &=p
+> \end{aligned}
+> $$
+>
+> 方差：
+>
+> $$
+> \begin{aligned}
+> \text{E}[X^{2}]&=\sum_x x^{2}\cdot \text{P}(X=x)\\&=1^{2}\cdot p+0^{2}\cdot(1-p)\\
+> &=p\\\\
+> \text{则 } \text{Var}(X)&=\text{E}[X^{2}]-\text{E}^{2}[X]\\&=p-p^{2}\\&=p(1-p)
+> \end{aligned}
+> $$
 
 ### 二项分布
 在 $n$ 次独立重复试验中，每次试验都有 $p$ 的概率成功，则这一系列试验称为 $n$ 重伯努利试验．设 $X$ 为 $n$ 次实验中的成功次数，则 $X$ 服从**二项分布**，记作 $X\sim \text{Bin}(n,p)$．
@@ -114,73 +114,73 @@ $$
 
 **方差**：$\text{Var}(X)=n\cdot p(1-p)$．
 
-??? example "二项分布的应用"
+> [!example]- 二项分布的应用
+>
+> 一场七局四胜的比赛，必须比完七场，我方球队每局胜率为 $p=0.55$，则总胜率为？
+>
+> 显然答案为
+>
+> $$
+> \text{P(win)}=\sum_{k=4}^{7}\binom{7}{k}(0.55)^{k}(1-0.55)^{7-k} 
+> $$
+>
+> 我们用Python得到答案：
+>
+> ```python
+> from scipy import stats
+>
+> def binomial():  
+>     n = 7  
+>     p = 0.55  
+>     win = sum(stats.binom.pmf(i, n, p) for i in range(4, n + 1))  
+>     return win # 0.608287796875
+> ```
+>
+> 如果出现某一方球队打赢了四场，那么直接判该球队获胜而不进行后续比赛，此时我方胜率又为多少？
+>
+> 此时仍然为上述答案．因为当一方球队赢下四场后，后续单场比赛结果都不影响最终的结果，我们可以将后面的比赛当作是全概率公式的事件划分，其事件总和为样本空间而每一个情况的最终结果都是同一支队伍获胜，因此后续比赛的概率累计和为 $1$ 且贡献给同一支队伍，不影响结果．
+>
+> 实际上，如果我们使用**负二项分布**计算，即准确在第 $k$ 场赢下第四场，则胜率为
+>
+> $$
+> \text{P(win)} = \sum_{k=4}^{7} \binom{k-1}{3} p^4 (1-p)^{k-4}
+> $$
+>
+> ```python
+> def negative_binomial():  
+>     n = 7  
+>     p = 0.55  
+>     # nbinom.pmf(k, n, p) 中，k 为失败次数，n 为需要达到的成功次数  
+>     win = sum(stats.nbinom.pmf(i - 4, 4, p) for i in range(4, n + 1))  
+>     return win # 0.608287796875
+> ```
+>
+> 这与我们使用二项分布计算的结果一致．
 
-	一场七局四胜的比赛，必须比完七场，我方球队每局胜率为 $p=0.55$，则总胜率为？
-	
-	显然答案为
-	
-	$$
-	\text{P(win)}=\sum_{k=4}^{7}\binom{7}{k}(0.55)^{k}(1-0.55)^{7-k} 
-	$$
-	
-	我们用Python得到答案：
-	
-	```python
-	from scipy import stats
-	
-	def binomial():  
-	    n = 7  
-	    p = 0.55  
-	    win = sum(stats.binom.pmf(i, n, p) for i in range(4, n + 1))  
-	    return win # 0.608287796875
-	```
-	
-	如果出现某一方球队打赢了四场，那么直接判该球队获胜而不进行后续比赛，此时我方胜率又为多少？
-	
-	此时仍然为上述答案．因为当一方球队赢下四场后，后续单场比赛结果都不影响最终的结果，我们可以将后面的比赛当作是全概率公式的事件划分，其事件总和为样本空间而每一个情况的最终结果都是同一支队伍获胜，因此后续比赛的概率累计和为 $1$ 且贡献给同一支队伍，不影响结果．
-	
-	实际上，如果我们使用**负二项分布**计算，即准确在第 $k$ 场赢下第四场，则胜率为
-	
-	$$
-	\text{P(win)} = \sum_{k=4}^{7} \binom{k-1}{3} p^4 (1-p)^{k-4}
-	$$
-	
-	```python
-	def negative_binomial():  
-	    n = 7  
-	    p = 0.55  
-	    # nbinom.pmf(k, n, p) 中，k 为失败次数，n 为需要达到的成功次数  
-	    win = sum(stats.nbinom.pmf(i - 4, 4, p) for i in range(4, n + 1))  
-	    return win # 0.608287796875
-	```
-	
-	这与我们使用二项分布计算的结果一致．
-
-??? quote "二项分布期望与方差证明"
-
-	不妨设 $Y$ 为成功概率为 $p$ 的伯努利变量，$Y_{i}$ 表示第 $i$ 次试验是否成功，即 $Y_{i}\sim \text{Ber}(p)$．
-	
-	期望：
-	
-	$$
-	\begin{aligned}
-	\text{E}[X]&=\text{E}\left[ \sum_{i=1}^{n}Y_{i}  \right] \\
-	&=\sum_{i=1}^{n}\text{E}[Y_{i}]\\
-	&=\sum_{i=1}^{n}p\\
-	&=n\cdot p
-	\end{aligned}
-	$$
-	
-	方差：由于各次试验相互独立
-	
-	$$
-	\begin{aligned}
-	\text{Var}(X)&=\sum_{i=1}^{n}\text{Var}(Y_{i}) \\
-	&=\sum_{i=1}^{n}p(1-p) \\
-	&=n \cdot p(1-p)
-	\end{aligned}
-	$$
+> [!quote]- 二项分布期望与方差证明
+>
+> 不妨设 $Y$ 为成功概率为 $p$ 的伯努利变量，$Y_{i}$ 表示第 $i$ 次试验是否成功，即 $Y_{i}\sim \text{Ber}(p)$．
+>
+> 期望：
+>
+> $$
+> \begin{aligned}
+> \text{E}[X]&=\text{E}\left[ \sum_{i=1}^{n}Y_{i}  \right] \\
+> &=\sum_{i=1}^{n}\text{E}[Y_{i}]\\
+> &=\sum_{i=1}^{n}p\\
+> &=n\cdot p
+> \end{aligned}
+> $$
+>
+> 方差：由于各次试验相互独立
+>
+> $$
+> \begin{aligned}
+> \text{Var}(X)&=\sum_{i=1}^{n}\text{Var}(Y_{i}) \\
+> &=\sum_{i=1}^{n}p(1-p) \\
+> &=n \cdot p(1-p)
+> \end{aligned}
+> $$
 
 ### 泊松分布
 若事件以已知的恒定平均速率（在给定的一段时间内发生 $\lambda$ 次）发生，且与上一次事件发生的时间无关，那么描述固定时间内发生特定数量事件的概率的变量 $X$ 称作泊松随机变量，其服从**泊松分布**，记作 $X\sim\text{Poi}(\lambda)$．
@@ -195,60 +195,60 @@ $$
 
 **方差**：$\text{Var}(X)=\lambda$．
 
-??? quote "泊松分布PMF、期望、方差证明"
-
-	事件在给定时间 $t$ 内平均发生 $\lambda$ 次，将给定时间等分称 $n$ 份，每一份的时间为 $t/n$，并假定每一份时间内事件最多发生一次．
-	
-	我们可以将其近似为二项分布，由于要保证平均发生次数一样，即这 $n$ 次的二项分布的期望要为 $\lambda$，因此每一次的发生概率为 $\lambda/n$．
-	
-	当 $n\to \infty$时，即为泊松分布的PMF：
-	
-	$$
-	\begin{aligned}
-	\text{P}(X=x)&=\lim_{n\to \infty}\binom{n}{x}\left(\dfrac{\lambda}{n}\right)^{x}(1-\lambda/n)^{n-x} \\
-	&=\lim_{n\to \infty} \dfrac{n!}{x!(n-x)!}\cdot \dfrac{\lambda^{x}}{n^{x}}\cdot \dfrac{(1-\lambda/n)^{n}}{(1-\lambda/n)^{x}}
-	\end{aligned}
-	$$
-	
-	由于
-	
-	$$
-	\lim_{n\to \infty}
-	\begin{cases}
-	(1-\lambda/n)^{n}=e^{-\lambda} \\ \\
-	(1-\lambda/n)^{x}=1 \\
-	\dfrac{n!}{n^{x}(n-x)!}=\dfrac{n(n-1)\cdots(n-x +1)}{n^{x}}=1
-	\end{cases}
-	$$
-	
-	则
-	
-	$$
-	\begin{aligned}
-	\text{原式}&=\lim_{n\to \infty}\dfrac{1}{x!}\cdot \lambda^{x} \cdot e^{-\lambda} \\
-	&=\dfrac{\lambda^{x}e^{-\lambda}}{x!}
-	\end{aligned}
-	$$
-	
-	期望：将泊松分布视为二项分布的情况
-	
-	$$
-	\begin{aligned}
-	\text{E}[X]&= \lim_{n\to \infty}n\cdot p  \\
-	&=\lim_{n\to \infty} n \cdot \dfrac{\lambda}{n} \\
-	&=\lambda
-	\end{aligned}
-	$$
-	
-	同理可以得到方差：
-	
-	$$
-	\begin{aligned} \\
-	\text{Var}(X)&= \lim_{n\to \infty}n\cdot p(1-p) \\
-	&=\lim_{n\to \infty} n \cdot \dfrac{\lambda}{n} (1-\dfrac{\lambda}{n})\\
-	&=\lambda
-	\end{aligned}
-	$$
+> [!quote]- 泊松分布PMF、期望、方差证明
+>
+> 事件在给定时间 $t$ 内平均发生 $\lambda$ 次，将给定时间等分称 $n$ 份，每一份的时间为 $t/n$，并假定每一份时间内事件最多发生一次．
+>
+> 我们可以将其近似为二项分布，由于要保证平均发生次数一样，即这 $n$ 次的二项分布的期望要为 $\lambda$，因此每一次的发生概率为 $\lambda/n$．
+>
+> 当 $n\to \infty$时，即为泊松分布的PMF：
+>
+> $$
+> \begin{aligned}
+> \text{P}(X=x)&=\lim_{n\to \infty}\binom{n}{x}\left(\dfrac{\lambda}{n}\right)^{x}(1-\lambda/n)^{n-x} \\
+> &=\lim_{n\to \infty} \dfrac{n!}{x!(n-x)!}\cdot \dfrac{\lambda^{x}}{n^{x}}\cdot \dfrac{(1-\lambda/n)^{n}}{(1-\lambda/n)^{x}}
+> \end{aligned}
+> $$
+>
+> 由于
+>
+> $$
+> \lim_{n\to \infty}
+> \begin{cases}
+> (1-\lambda/n)^{n}=e^{-\lambda} \\ \\
+> (1-\lambda/n)^{x}=1 \\
+> \dfrac{n!}{n^{x}(n-x)!}=\dfrac{n(n-1)\cdots(n-x +1)}{n^{x}}=1
+> \end{cases}
+> $$
+>
+> 则
+>
+> $$
+> \begin{aligned}
+> \text{原式}&=\lim_{n\to \infty}\dfrac{1}{x!}\cdot \lambda^{x} \cdot e^{-\lambda} \\
+> &=\dfrac{\lambda^{x}e^{-\lambda}}{x!}
+> \end{aligned}
+> $$
+>
+> 期望：将泊松分布视为二项分布的情况
+>
+> $$
+> \begin{aligned}
+> \text{E}[X]&= \lim_{n\to \infty}n\cdot p  \\
+> &=\lim_{n\to \infty} n \cdot \dfrac{\lambda}{n} \\
+> &=\lambda
+> \end{aligned}
+> $$
+>
+> 同理可以得到方差：
+>
+> $$
+> \begin{aligned} \\
+> \text{Var}(X)&= \lim_{n\to \infty}n\cdot p(1-p) \\
+> &=\lim_{n\to \infty} n \cdot \dfrac{\lambda}{n} (1-\dfrac{\lambda}{n})\\
+> &=\lambda
+> \end{aligned}
+> $$
 
 #### 泊松分布近似二项分布
 由于泊松分布计算公式简洁，当因此当二项分布 $n$ 较大（>20）而 $p$ 较小（<0.05）时，我们可以用泊松分布来近似二项分布．
@@ -425,11 +425,11 @@ $$
 
 我们将任意正态分布计算转化为了标准正态分布计算，接下来查表即可．
 
-??? info "标准正态分布表"
-
-	<div style="text-align: center">
-	<img src="random-variables.assets/file-20260325125210847.png" style="zoom: 60%;" />
-	</div>
+> [!info]- 标准正态分布表
+>
+> <div style="text-align: center">
+> <img src="random-variables.assets/file-20260325125210847.png" style="zoom: 60%;" />
+> </div>
 
 #### 三 σ 法则
 若$X \sim N(\mu, \sigma^2)$，则：

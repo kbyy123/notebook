@@ -4,317 +4,317 @@ Attention 让模型在生成或编码每个 token 时动态选择相关上下文
 
 推荐材料：[Coding a Transformer from scratch on PyTorch](https://www.youtube.com/watch?v=ISNdQcPhsts)
 
-??? code "跟随视频的完整代码实现"
-
-    ```python
-    import torch
-    import torch.nn as nn
-    import math
-
-    class InputEmbeddings(nn.Module):
-
-        def __init__(self, vocab_size: int, d_model: int):
-            # each token have shape (d_model)
-            super().__init__()
-            self.vocab_size = vocab_size
-            self.d_model = d_model
-            self.embedding = nn.Embedding(vocab_size, d_model)
-
-        def forward(self, x):
-            # 乘以 sqrt(d_model) 是为了和 PE 规模大致匹配
-            return self.embedding(x) * math.sqrt(self.d_model)
-        
-    class PositionalEncoding(nn.Module):
-
-        def __init__(self, d_model: int, seq_len: int, dropout: float):
-            super().__init__()
-            self.d_model = d_model
-            self.seq_len = seq_len
-            self.dropout = nn.Dropout(dropout)
-
-            # Create a matrix of shape (seq_len, d_model)
-            pe = torch.zeros(seq_len, d_model)
-
-            # Create a vector of shape (seq_len, 1)
-            position = torch.arange(0, seq_len).unsqueeze(1)
-            div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000) / d_model))
-
-            # Apply the sin to even positions and the cos to odd positions
-            pe[:, 0::2] = torch.sin(position * div_term)
-            pe[:, 1::2] = torch.cos(position * div_term)
-
-            pe = pe.unsqueeze(0) # (1, seq_len, d_model)
-
-            self.register_buffer('pe', pe)
-
-        def forward(self, x):
-            # x: (batch, seq_len, d_model)
-            # pe[:, :x.shape[1], :]: (1, seq_len of x, d_model) so can add to x
-            x = x + (self.pe[:, :x.shape[1], :]).requires_grad_(False)
-            return self.dropout(x)
-
-    class LayerNormalization(nn.Module):
-
-        def __init__(self, d_model: int, eps: float = 1e-6):
-            super().__init__()
-            self.eps = eps
-            # gamma / beta 都是 d_model 维
-            self.gamma = nn.Parameter(torch.ones(d_model)) # Multiplied
-            self.beta = nn.Parameter(torch.zeros(d_model)) # Added
-
-        def forward(self, x):
-
-            # LayerNorm 是作用在每个 token 上的
-            mean = x.mean(dim=-1, keepdim=True)
-            std = x.std(dim=-1, keepdim=True, unbiased=False)
-            return self.gamma * (x - mean) / (std + self.eps) + self.beta
-
-    class FeedForwardBlock(nn.Module):
-
-        # x --> Linear_1 --> ReLU --> Dropout --> Linear2 
-
-        def __init__(self, d_model: int, d_ff: int, dropout: float):
-            super().__init__()
-            self.linear_1 = nn.Linear(d_model, d_ff)
-            self.dropout = nn.Dropout(dropout)
-            self.linear_2 = nn.Linear(d_ff, d_model)
-
-        def forward(self, x):
-            return self.linear_2(self.dropout(torch.relu(self.linear_1(x))))
-        
-    class MultiHeadAttentionBlock(nn.Module):
-
-        def __init__(self, d_model: int, h: int, dropout: float):
-            super().__init__()
-            self.d_model = d_model
-            self.h = h
-            self.dropout = nn.Dropout(dropout)
-
-            assert d_model % h == 0, "d_model is not divisible by h"
-
-            self.d_k = d_model // h
-            self.w_q = nn.Linear(d_model, d_model) 
-            self.w_k = nn.Linear(d_model, d_model) 
-            self.w_v = nn.Linear(d_model, d_model) 
-            self.w_o = nn.Linear(d_model, d_model)    
-        
-        @staticmethod
-        def attention(q, k, v, mask, dropout: nn.Dropout):
-
-            # q, k, v: (batch, h, seq_len, d_k)
-            d_k = k.shape[-1]
-
-            # (batch, h, seq_len, d_k) --> (batch, h, seq_len, seq_len)
-            # 多头注意力的拆分是对每个 token 的拆分，经过线性层后把每个 token 分成 h 份
-            attention_scores = q @ k.transpose(-2, -1) / math.sqrt(d_k)
-
-            if mask is not None:
-                attention_scores.masked_fill_(mask, -1e9)
-            
-            attention_scores = attention_scores.softmax(dim=-1)
-
-            if dropout is not None:
-                attention_scores = dropout(attention_scores)
-            
-            return attention_scores @ v, attention_scores
-
-        def forward(self, query, key, value, mask):
-
-            # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
-            q = self.w_q(query)
-            k = self.w_k(key)
-            v = self.w_v(value)
-            
-            # (batch, seq_len, d_model) --> (batch, seq_len, h, d_k) --> (batch, h, seq_len, d_k)
-            # 相当于把 h 个 Q K V 放在同一个张量里了
-            q = q.view(q.shape[0], q.shape[1], self.h, self.d_k).transpose(1, 2)
-            k = k.view(k.shape[0], k.shape[1], self.h, self.d_k).transpose(1, 2)
-            v = v.view(v.shape[0], v.shape[1], self.h, self.d_k).transpose(1, 2)
-
-            x, self.attention_scores = MultiHeadAttentionBlock.attention(q, k, v, mask, self.dropout)
-
-            # (batch, h, seq_len, d_k) --> (batch, seq_len, h, d_k) --> (batch, seq_len, d_model)
-            x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.d_model)
-
-            # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
-            return self.w_o(x)
-
-    class ResidualConnection(nn.Module):
-
-        # y = x + dropout(Sublayer(LayerNorm(x)))
-
-        def __init__(self, d_model: int, dropout: float):
-            super().__init__()
-            self.dropout = nn.Dropout(dropout)
-            self.norm = LayerNormalization(d_model)
-
-        def forward(self, x, sublayer):
-            return x + self.dropout(sublayer(self.norm(x)))
-        
-    class EncoderBlock(nn.Module):
-
-        def __init__(self, 
-                    self_attention_block: MultiHeadAttentionBlock,
-                    feed_forward_block: FeedForwardBlock,
-                    d_model: int,
-                    dropout: float):
-            super().__init__()
-            self.self_attention_block = self_attention_block
-            self.feed_forward_block = feed_forward_block
-            self.dropout = nn.Dropout(dropout)
-            # 用 ModuleList 把两个残差连接放到一起
-            self.residual_connections = nn.ModuleList([ResidualConnection(d_model, dropout) for _ in range(2)])
-
-        def forward(self, x, src_mask):
-            # src_mask 通常只屏蔽源句子里的 <pad>，包括 decoder 内的也是屏蔽作用
-
-            # 第一层：此时的 sublayer 为自注意力层，传入接收 x，输出自注意力结果的 lambda 函数
-            # 由于继承 nn.Module 类的实例直接用 () 相当于使用 .forward()，因此可以直接将类实例传入
-            x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, src_mask))
-            x = self.residual_connections[1](x, self.feed_forward_block)
-            return x
-        
-    class Encoder(nn.Module):
-
-        # layers 的元素都是 EncoderBlock
-        def __init__(self, layers: nn.ModuleList, d_model: int):
-            super().__init__()
-            self.layers = layers
-            self.norm = LayerNormalization(d_model)
-
-        def forward(self, x, mask):
-            for layer in self.layers:
-                x = layer(x, mask)
-            return self.norm(x) # pre-norm 每次归一化都在子层之前做的，最后一个 layer 的输出还没有归一化
-        
-    class DecoderBlock(nn.Module):
-
-        def __init__(self, 
-                    self_attention_block: MultiHeadAttentionBlock,
-                    cross_attention_block: MultiHeadAttentionBlock,
-                    feed_forward_block: FeedForwardBlock,
-                    d_model: int,
-                    dropout: float):
-            super().__init__()
-            self.self_attention_block = self_attention_block
-            self.cross_attention_block = cross_attention_block
-            self.feed_forward_block = feed_forward_block
-            self.dropout = nn.Dropout(dropout)
-            self.residual_connections = nn.ModuleList([ResidualConnection(d_model, dropout) for _ in range(3)])
-
-        def forward(self, x, encoder_output, src_mask, tgt_mask):
-            # src_mask 用来屏蔽源序列 <pad>，tgt_mask 用来防止 decoder 自注意力偷看未来
-            x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, tgt_mask))
-            x = self.residual_connections[1](x, lambda x: self.cross_attention_block(x, encoder_output, encoder_output, src_mask))
-            x = self.residual_connections[2](x, self.feed_forward_block)
-            return x
-        
-    class Decoder(nn.Module):
-
-        # layers 的元素都是 DecoderBlock
-        def __init__(self, layers: nn.ModuleList, d_model: int):
-            super().__init__()
-            self.layers = layers
-            self.norm = LayerNormalization(d_model)
-
-        def forward(self, x, encoder_output, src_mask, tgt_mask):
-            for layer in self.layers:
-                x = layer(x, encoder_output, src_mask, tgt_mask)
-            return self.norm(x)
-        
-    class ProjectionLayer(nn.Module):
-
-        def __init__(self, d_model: int, vocab_size: int):
-            super().__init__()
-            self.proj = nn.Linear(d_model, vocab_size)
-
-        def forward(self, x):
-            # (batch, seq_len, d_model) --> (batch, seq_len, vocab_size)
-            return torch.log_softmax(self.proj(x), dim=-1)
-        
-    class Transformer(nn.Module):
-
-        def __init__(self,
-                    encoder: Encoder,
-                    decoder: Decoder,
-                    src_embed: InputEmbeddings,
-                    tgt_embed: InputEmbeddings,
-                    src_pos: PositionalEncoding,
-                    tgt_pos: PositionalEncoding,
-                    projection_layer: ProjectionLayer):
-            super().__init__() 
-            self.encoder = encoder
-            self.decoder = decoder
-            self.src_embed = src_embed
-            self.tgt_embed = tgt_embed
-            self.src_pos = src_pos
-            self.tgt_pos = tgt_pos
-            self.projection_layer = projection_layer
-
-        def encode(self, src, src_mask):
-            src = self.src_embed(src)
-            src = self.src_pos(src)
-            return self.encoder(src, src_mask)
-        
-        def decode(self, encoder_output, src_mask, tgt, tgt_mask):
-            tgt = self.tgt_embed(tgt)
-            tgt = self.tgt_pos(tgt)
-            return self.decoder(tgt, encoder_output, src_mask, tgt_mask)
-        
-        def project(self, x):
-            return self.projection_layer(x)
-        
-    def build_transformer(src_vocab_size: int,
-                        tgt_vocab_size: int,
-                        src_seq_len: int,
-                        tgt_seq_len: int,
-                        d_model: int = 512,
-                        N: int = 6,
-                        h: int = 8,
-                        dropout: float = 0.1,
-                        d_ff: int = 2048) -> Transformer:
-        # Create the embedding layers
-        src_embed = InputEmbeddings(src_vocab_size, d_model)
-        tgt_embed = InputEmbeddings(tgt_vocab_size, d_model)
-
-        # Create the positional encoding layers
-        src_pos = PositionalEncoding(d_model, src_seq_len, dropout)
-        tgt_pos = PositionalEncoding(d_model, tgt_seq_len, dropout)
-
-        # Create the encoder blocks
-        encoder_blocks = []
-        for _ in range(N):
-            encoder_self_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
-            feed_forward_block = FeedForwardBlock(d_model, d_ff, dropout)
-            encoder_block = EncoderBlock(encoder_self_attention_block, feed_forward_block, d_model, dropout)
-            encoder_blocks.append(encoder_block)
-
-        # Create the decoder blocks
-        decoder_blocks = []
-        for _ in range(N):
-            decoder_self_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
-            decoder_cross_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
-            feed_forward_block = FeedForwardBlock(d_model, d_ff, dropout)
-            decoder_block = DecoderBlock(decoder_self_attention_block, decoder_cross_attention_block, feed_forward_block, d_model, dropout)
-            decoder_blocks.append(decoder_block)
-
-        # Create the encoder and decoder
-        encoder = Encoder(nn.ModuleList(encoder_blocks), d_model)
-        decoder = Decoder(nn.ModuleList(decoder_blocks), d_model)
-
-        # Create the projection layer
-        projection_layer = ProjectionLayer(d_model, tgt_vocab_size)
-
-        # Create the transformer
-        transformer = Transformer(encoder, decoder, src_embed, tgt_embed, src_pos, tgt_pos, projection_layer)
-
-        # Initialize the parameters
-        for p in transformer.parameters():
-            if p.dim() > 1: # 只初始化矩阵，bias 这类一维不初始化
-                nn.init.xavier_uniform_(p)
-
-        return transformer
-    ```
+> [!code]- 跟随视频的完整代码实现
+>
+> ```python
+> import torch
+> import torch.nn as nn
+> import math
+>
+> class InputEmbeddings(nn.Module):
+>
+>     def __init__(self, vocab_size: int, d_model: int):
+>         # each token have shape (d_model)
+>         super().__init__()
+>         self.vocab_size = vocab_size
+>         self.d_model = d_model
+>         self.embedding = nn.Embedding(vocab_size, d_model)
+>
+>     def forward(self, x):
+>         # 乘以 sqrt(d_model) 是为了和 PE 规模大致匹配
+>         return self.embedding(x) * math.sqrt(self.d_model)
+>
+> class PositionalEncoding(nn.Module):
+>
+>     def __init__(self, d_model: int, seq_len: int, dropout: float):
+>         super().__init__()
+>         self.d_model = d_model
+>         self.seq_len = seq_len
+>         self.dropout = nn.Dropout(dropout)
+>
+>         # Create a matrix of shape (seq_len, d_model)
+>         pe = torch.zeros(seq_len, d_model)
+>
+>         # Create a vector of shape (seq_len, 1)
+>         position = torch.arange(0, seq_len).unsqueeze(1)
+>         div_term = torch.exp(torch.arange(0, d_model, 2).float() * (-math.log(10000) / d_model))
+>
+>         # Apply the sin to even positions and the cos to odd positions
+>         pe[:, 0::2] = torch.sin(position * div_term)
+>         pe[:, 1::2] = torch.cos(position * div_term)
+>
+>         pe = pe.unsqueeze(0) # (1, seq_len, d_model)
+>
+>         self.register_buffer('pe', pe)
+>
+>     def forward(self, x):
+>         # x: (batch, seq_len, d_model)
+>         # pe[:, :x.shape[1], :]: (1, seq_len of x, d_model) so can add to x
+>         x = x + (self.pe[:, :x.shape[1], :]).requires_grad_(False)
+>         return self.dropout(x)
+>
+> class LayerNormalization(nn.Module):
+>
+>     def __init__(self, d_model: int, eps: float = 1e-6):
+>         super().__init__()
+>         self.eps = eps
+>         # gamma / beta 都是 d_model 维
+>         self.gamma = nn.Parameter(torch.ones(d_model)) # Multiplied
+>         self.beta = nn.Parameter(torch.zeros(d_model)) # Added
+>
+>     def forward(self, x):
+>
+>         # LayerNorm 是作用在每个 token 上的
+>         mean = x.mean(dim=-1, keepdim=True)
+>         std = x.std(dim=-1, keepdim=True, unbiased=False)
+>         return self.gamma * (x - mean) / (std + self.eps) + self.beta
+>
+> class FeedForwardBlock(nn.Module):
+>
+>     # x --> Linear_1 --> ReLU --> Dropout --> Linear2 
+>
+>     def __init__(self, d_model: int, d_ff: int, dropout: float):
+>         super().__init__()
+>         self.linear_1 = nn.Linear(d_model, d_ff)
+>         self.dropout = nn.Dropout(dropout)
+>         self.linear_2 = nn.Linear(d_ff, d_model)
+>
+>     def forward(self, x):
+>         return self.linear_2(self.dropout(torch.relu(self.linear_1(x))))
+>
+> class MultiHeadAttentionBlock(nn.Module):
+>
+>     def __init__(self, d_model: int, h: int, dropout: float):
+>         super().__init__()
+>         self.d_model = d_model
+>         self.h = h
+>         self.dropout = nn.Dropout(dropout)
+>
+>         assert d_model % h == 0, "d_model is not divisible by h"
+>
+>         self.d_k = d_model // h
+>         self.w_q = nn.Linear(d_model, d_model) 
+>         self.w_k = nn.Linear(d_model, d_model) 
+>         self.w_v = nn.Linear(d_model, d_model) 
+>         self.w_o = nn.Linear(d_model, d_model)    
+>
+>     @staticmethod
+>     def attention(q, k, v, mask, dropout: nn.Dropout):
+>
+>         # q, k, v: (batch, h, seq_len, d_k)
+>         d_k = k.shape[-1]
+>
+>         # (batch, h, seq_len, d_k) --> (batch, h, seq_len, seq_len)
+>         # 多头注意力的拆分是对每个 token 的拆分，经过线性层后把每个 token 分成 h 份
+>         attention_scores = q @ k.transpose(-2, -1) / math.sqrt(d_k)
+>
+>         if mask is not None:
+>             attention_scores.masked_fill_(mask, -1e9)
+>
+>         attention_scores = attention_scores.softmax(dim=-1)
+>
+>         if dropout is not None:
+>             attention_scores = dropout(attention_scores)
+>
+>         return attention_scores @ v, attention_scores
+>
+>     def forward(self, query, key, value, mask):
+>
+>         # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
+>         q = self.w_q(query)
+>         k = self.w_k(key)
+>         v = self.w_v(value)
+>
+>         # (batch, seq_len, d_model) --> (batch, seq_len, h, d_k) --> (batch, h, seq_len, d_k)
+>         # 相当于把 h 个 Q K V 放在同一个张量里了
+>         q = q.view(q.shape[0], q.shape[1], self.h, self.d_k).transpose(1, 2)
+>         k = k.view(k.shape[0], k.shape[1], self.h, self.d_k).transpose(1, 2)
+>         v = v.view(v.shape[0], v.shape[1], self.h, self.d_k).transpose(1, 2)
+>
+>         x, self.attention_scores = MultiHeadAttentionBlock.attention(q, k, v, mask, self.dropout)
+>
+>         # (batch, h, seq_len, d_k) --> (batch, seq_len, h, d_k) --> (batch, seq_len, d_model)
+>         x = x.transpose(1, 2).contiguous().view(x.shape[0], -1, self.d_model)
+>
+>         # (batch, seq_len, d_model) --> (batch, seq_len, d_model)
+>         return self.w_o(x)
+>
+> class ResidualConnection(nn.Module):
+>
+>     # y = x + dropout(Sublayer(LayerNorm(x)))
+>
+>     def __init__(self, d_model: int, dropout: float):
+>         super().__init__()
+>         self.dropout = nn.Dropout(dropout)
+>         self.norm = LayerNormalization(d_model)
+>
+>     def forward(self, x, sublayer):
+>         return x + self.dropout(sublayer(self.norm(x)))
+>
+> class EncoderBlock(nn.Module):
+>
+>     def __init__(self, 
+>                 self_attention_block: MultiHeadAttentionBlock,
+>                 feed_forward_block: FeedForwardBlock,
+>                 d_model: int,
+>                 dropout: float):
+>         super().__init__()
+>         self.self_attention_block = self_attention_block
+>         self.feed_forward_block = feed_forward_block
+>         self.dropout = nn.Dropout(dropout)
+>         # 用 ModuleList 把两个残差连接放到一起
+>         self.residual_connections = nn.ModuleList([ResidualConnection(d_model, dropout) for _ in range(2)])
+>
+>     def forward(self, x, src_mask):
+>         # src_mask 通常只屏蔽源句子里的 <pad>，包括 decoder 内的也是屏蔽作用
+>
+>         # 第一层：此时的 sublayer 为自注意力层，传入接收 x，输出自注意力结果的 lambda 函数
+>         # 由于继承 nn.Module 类的实例直接用 () 相当于使用 .forward()，因此可以直接将类实例传入
+>         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, src_mask))
+>         x = self.residual_connections[1](x, self.feed_forward_block)
+>         return x
+>
+> class Encoder(nn.Module):
+>
+>     # layers 的元素都是 EncoderBlock
+>     def __init__(self, layers: nn.ModuleList, d_model: int):
+>         super().__init__()
+>         self.layers = layers
+>         self.norm = LayerNormalization(d_model)
+>
+>     def forward(self, x, mask):
+>         for layer in self.layers:
+>             x = layer(x, mask)
+>         return self.norm(x) # pre-norm 每次归一化都在子层之前做的，最后一个 layer 的输出还没有归一化
+>
+> class DecoderBlock(nn.Module):
+>
+>     def __init__(self, 
+>                 self_attention_block: MultiHeadAttentionBlock,
+>                 cross_attention_block: MultiHeadAttentionBlock,
+>                 feed_forward_block: FeedForwardBlock,
+>                 d_model: int,
+>                 dropout: float):
+>         super().__init__()
+>         self.self_attention_block = self_attention_block
+>         self.cross_attention_block = cross_attention_block
+>         self.feed_forward_block = feed_forward_block
+>         self.dropout = nn.Dropout(dropout)
+>         self.residual_connections = nn.ModuleList([ResidualConnection(d_model, dropout) for _ in range(3)])
+>
+>     def forward(self, x, encoder_output, src_mask, tgt_mask):
+>         # src_mask 用来屏蔽源序列 <pad>，tgt_mask 用来防止 decoder 自注意力偷看未来
+>         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, tgt_mask))
+>         x = self.residual_connections[1](x, lambda x: self.cross_attention_block(x, encoder_output, encoder_output, src_mask))
+>         x = self.residual_connections[2](x, self.feed_forward_block)
+>         return x
+>
+> class Decoder(nn.Module):
+>
+>     # layers 的元素都是 DecoderBlock
+>     def __init__(self, layers: nn.ModuleList, d_model: int):
+>         super().__init__()
+>         self.layers = layers
+>         self.norm = LayerNormalization(d_model)
+>
+>     def forward(self, x, encoder_output, src_mask, tgt_mask):
+>         for layer in self.layers:
+>             x = layer(x, encoder_output, src_mask, tgt_mask)
+>         return self.norm(x)
+>
+> class ProjectionLayer(nn.Module):
+>
+>     def __init__(self, d_model: int, vocab_size: int):
+>         super().__init__()
+>         self.proj = nn.Linear(d_model, vocab_size)
+>
+>     def forward(self, x):
+>         # (batch, seq_len, d_model) --> (batch, seq_len, vocab_size)
+>         return torch.log_softmax(self.proj(x), dim=-1)
+>
+> class Transformer(nn.Module):
+>
+>     def __init__(self,
+>                 encoder: Encoder,
+>                 decoder: Decoder,
+>                 src_embed: InputEmbeddings,
+>                 tgt_embed: InputEmbeddings,
+>                 src_pos: PositionalEncoding,
+>                 tgt_pos: PositionalEncoding,
+>                 projection_layer: ProjectionLayer):
+>         super().__init__() 
+>         self.encoder = encoder
+>         self.decoder = decoder
+>         self.src_embed = src_embed
+>         self.tgt_embed = tgt_embed
+>         self.src_pos = src_pos
+>         self.tgt_pos = tgt_pos
+>         self.projection_layer = projection_layer
+>
+>     def encode(self, src, src_mask):
+>         src = self.src_embed(src)
+>         src = self.src_pos(src)
+>         return self.encoder(src, src_mask)
+>
+>     def decode(self, encoder_output, src_mask, tgt, tgt_mask):
+>         tgt = self.tgt_embed(tgt)
+>         tgt = self.tgt_pos(tgt)
+>         return self.decoder(tgt, encoder_output, src_mask, tgt_mask)
+>
+>     def project(self, x):
+>         return self.projection_layer(x)
+>
+> def build_transformer(src_vocab_size: int,
+>                     tgt_vocab_size: int,
+>                     src_seq_len: int,
+>                     tgt_seq_len: int,
+>                     d_model: int = 512,
+>                     N: int = 6,
+>                     h: int = 8,
+>                     dropout: float = 0.1,
+>                     d_ff: int = 2048) -> Transformer:
+>     # Create the embedding layers
+>     src_embed = InputEmbeddings(src_vocab_size, d_model)
+>     tgt_embed = InputEmbeddings(tgt_vocab_size, d_model)
+>
+>     # Create the positional encoding layers
+>     src_pos = PositionalEncoding(d_model, src_seq_len, dropout)
+>     tgt_pos = PositionalEncoding(d_model, tgt_seq_len, dropout)
+>
+>     # Create the encoder blocks
+>     encoder_blocks = []
+>     for _ in range(N):
+>         encoder_self_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
+>         feed_forward_block = FeedForwardBlock(d_model, d_ff, dropout)
+>         encoder_block = EncoderBlock(encoder_self_attention_block, feed_forward_block, d_model, dropout)
+>         encoder_blocks.append(encoder_block)
+>
+>     # Create the decoder blocks
+>     decoder_blocks = []
+>     for _ in range(N):
+>         decoder_self_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
+>         decoder_cross_attention_block = MultiHeadAttentionBlock(d_model, h, dropout)
+>         feed_forward_block = FeedForwardBlock(d_model, d_ff, dropout)
+>         decoder_block = DecoderBlock(decoder_self_attention_block, decoder_cross_attention_block, feed_forward_block, d_model, dropout)
+>         decoder_blocks.append(decoder_block)
+>
+>     # Create the encoder and decoder
+>     encoder = Encoder(nn.ModuleList(encoder_blocks), d_model)
+>     decoder = Decoder(nn.ModuleList(decoder_blocks), d_model)
+>
+>     # Create the projection layer
+>     projection_layer = ProjectionLayer(d_model, tgt_vocab_size)
+>
+>     # Create the transformer
+>     transformer = Transformer(encoder, decoder, src_embed, tgt_embed, src_pos, tgt_pos, projection_layer)
+>
+>     # Initialize the parameters
+>     for p in transformer.parameters():
+>         if p.dim() > 1: # 只初始化矩阵，bias 这类一维不初始化
+>             nn.init.xavier_uniform_(p)
+>
+>     return transformer
+> ```
 
 ## Bottleneck in Seq2Seq
 
@@ -341,13 +341,13 @@ Attention 让模型在生成或编码每个 token 时动态选择相关上下文
 + 得到了分数后，用 softmax 函数对其进行归一化处理得到注意力权重 $\alpha_{i,t}$．
 + 再用注意力权重对隐状态进行加权求和，即 $c_t=\sum\alpha_{t,i}h_i$，得到此时的上下文向量．
 
-!!! success "可视化"
-
-    我们用机器翻译的结果，对注意力权重进行可视化：可以发现对应的词语的注意力权重会较高，如英语中的 Area 对应法语中的 zone、European 对应 européenne 等．
-    
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="attention-and-transformer.assets/image-20260526082927712.png" alt="image-20260526082927712" style="zoom: 50%;" />
-    </div>
+> [!success] 可视化
+>
+> 我们用机器翻译的结果，对注意力权重进行可视化：可以发现对应的词语的注意力权重会较高，如英语中的 Area 对应法语中的 zone、European 对应 européenne 等．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="attention-and-transformer.assets/image-20260526082927712.png" alt="image-20260526082927712" style="zoom: 50%;" />
+> </div>
 
 ## Cross-Attention
 
@@ -416,18 +416,18 @@ $$
 
 最直接的解决方法是给每个位置加上一个 embedding 向量，即 $z_i=x_i+p_i$，或矩阵形式 $Z=X+P$．而使用相加而非拼接，好处是不会改变向量维度，可以直接套用原来的模型．
 
-!!! example "正弦位置编码"
-
-    在原始 Transformer 论文中，作者采用了固定的正弦位置编码，直接由公式生成；对于位置 $pos$ 和维度 $i$，其定义为：
-    
-    $$
-    \begin{align*}
-    PE_{(pos, 2i)} &= \sin \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \right) \\
-    PE_{(pos, 2i+1)} &= \cos \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \right)
-    \end{align*}
-    $$
-    
-    当然，也可以使用可学习的位置编码．
+> [!example] 正弦位置编码
+>
+> 在原始 Transformer 论文中，作者采用了固定的正弦位置编码，直接由公式生成；对于位置 $pos$ 和维度 $i$，其定义为：
+>
+> $$
+> \begin{align*}
+> PE_{(pos, 2i)} &= \sin \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \right) \\
+> PE_{(pos, 2i+1)} &= \cos \left(\frac{pos}{10000^{2i / d_\mathrm{model}}} \right)
+> \end{align*}
+> $$
+>
+> 当然，也可以使用可学习的位置编码．
     
 ## Multi-Head Attention
 

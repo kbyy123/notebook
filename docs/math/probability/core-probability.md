@@ -112,15 +112,15 @@ $$
 \text{P}(B_{i} \mid E)=\dfrac{\text{P}(EB_{i})}{\text{P}(E)}=\dfrac{\text{P}(E \mid B_{i})\text{P}(B_{i})}{\sum_{i=1}^{n}\text{P}(B_{i})\text{P}(E \mid B_{i})}
 $$
 
-???+ example "例：SARS病毒"
-
-	<div style="text-align: center">
-	<img src="core-probability.assets/image-20260323102737671.png" alt="image-20260323102737671" style="zoom: 33%;" />
-	</div>
-	
-	在该例中，似然度 $\text{P}(E \mid F)$ 高达 $0.98$，但由于先验概率 $\text{P}(F)$ 只有 $0.005$，导致后验概率也只有 $0.330$．
-	
-	因此，不建议对全人类进行罕见病的筛查，因为先验概率太低时会产生大量的假阳性病例浪费医疗资源；而先通过初步门诊增大先验概率，此时检测结果才真正具有决定性．
+> [!example]+ 例：SARS病毒
+>
+> <div style="text-align: center">
+> <img src="core-probability.assets/image-20260323102737671.png" alt="image-20260323102737671" style="zoom: 33%;" />
+> </div>
+>
+> 在该例中，似然度 $\text{P}(E \mid F)$ 高达 $0.98$，但由于先验概率 $\text{P}(F)$ 只有 $0.005$，导致后验概率也只有 $0.330$．
+>
+> 因此，不建议对全人类进行罕见病的筛查，因为先验概率太低时会产生大量的假阳性病例浪费医疗资源；而先通过初步门诊增大先验概率，此时检测结果才真正具有决定性．
 
 ## 独立性
 对于事件 $E,F$，如果 $E$ 的概率恰好等于 $F$ 已经发生时 $E$ 的概率（反之亦然），即 $\text{P}(E)=\text{P}(E \mid F)$，则称事件 $E,F$ 独立．
@@ -133,9 +133,9 @@ $$
 
 即积事件概率等于单独事件概率积，此推论也可用于独立性的判定．由此推论我们还可以得出：当 $\text{P}(E)=\text{P}(E \mid F)$ 时必然有 $\text{P}(F)=\text{P}(F \mid E)$．
 
-!!! warning "理解错误"
-
-	两事件独立并不一定代表两个事件互不影响，而只代表一个事件发生与否不影响另一个事件的发生概率．例如掷骰子，事件 $A$ 为“点数为偶数”，事件 $B$ 为“点数小于5”；$\text{P}(AB)=\dfrac{1}{3}=\dfrac{1}{2}\cdot \dfrac{2}{3}=\text{P}(A)\cdot \text{P}(B)$，但显然事件 $B$ 发生会影响事件 $A$，因为无法得到 $6$ 这个样本点． 
+> [!warning] 理解错误
+>
+> 两事件独立并不一定代表两个事件互不影响，而只代表一个事件发生与否不影响另一个事件的发生概率．例如掷骰子，事件 $A$ 为“点数为偶数”，事件 $B$ 为“点数小于5”；$\text{P}(AB)=\dfrac{1}{3}=\dfrac{1}{2}\cdot \dfrac{2}{3}=\text{P}(A)\cdot \text{P}(B)$，但显然事件 $B$ 发生会影响事件 $A$，因为无法得到 $6$ 这个样本点． 
 
 如果 $A,B$ 独立，那么 $A,\overline{B}$、$\overline{A},B$、$\overline{A},\overline{B}$ 均独立．以 $A,\overline{B}$ 为例：
 
@@ -155,24 +155,24 @@ $$
 \text{P}(E_{i_{1}}E_{i_{2}}\cdots E_{i_{n}})=\text{P}(E_{i_{1}})\cdot \text{P}(E_{i_{2}})\cdots \text{P}(E_{i_{r}})
 $$
 
-???+ example "例"
-
-	对于三个事件 $A,B,C$，其相互独立要满足
-	
-	$$
-	\begin{cases}
-	\text{P}(AB)=\text{P}(A)\cdot \text{P}(B)\\
-	\text{P}(AC)=\text{P}(A)\cdot \text{P}(C)\\ 
-	\text{P}(BC)=\text{P}(B)\cdot \text{P}(C)\\ 
-	\text{P}(ABC)=\text{P}(A)\cdot \text{P}(B)\cdot \text{P}(C)\\
-	\end{cases}
-	$$
-	
-	如下图，$E,F,G$ 两两独立但不相互独立．
-	
-	<div style="text-align: center">
-	<img src="core-probability.assets/image-20260323185817853.png" alt="image-20260323185817853" style="zoom: 40%;" />
-	</div>
+> [!example]+ 例
+>
+> 对于三个事件 $A,B,C$，其相互独立要满足
+>
+> $$
+> \begin{cases}
+> \text{P}(AB)=\text{P}(A)\cdot \text{P}(B)\\
+> \text{P}(AC)=\text{P}(A)\cdot \text{P}(C)\\ 
+> \text{P}(BC)=\text{P}(B)\cdot \text{P}(C)\\ 
+> \text{P}(ABC)=\text{P}(A)\cdot \text{P}(B)\cdot \text{P}(C)\\
+> \end{cases}
+> $$
+>
+> 如下图，$E,F,G$ 两两独立但不相互独立．
+>
+> <div style="text-align: center">
+> <img src="core-probability.assets/image-20260323185817853.png" alt="image-20260323185817853" style="zoom: 40%;" />
+> </div>
 
 ### 条件独立
 若 $\text{P}(E_{1},E_{2}\mid F)=\text{P}(E_{1} \mid F)\cdot \text{P}(E_{2} \mid F)$ 或 $\text{P}(E_{1}\mid G)=\text{P}(E_{1} \mid E_{2},G)$，则称事件 $E_{1},E_{2}$ 在给定事件 $F$ 下条件独立．条件独立不一定有独立，独立也不一定有条件独立．

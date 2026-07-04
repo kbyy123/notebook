@@ -5,11 +5,11 @@
 ## One time setup
 ### Activation Functions
 
-???+ quote "激活函数图像"
-
-    <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504095213772.png" alt="image-20260504095213772" style="zoom:50%;" />
-    </div>
+> [!quote]+ 激活函数图像
+>
+> <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504095213772.png" alt="image-20260504095213772" style="zoom:50%;" />
+> </div>
 
 Sigmoid $\sigma(x)=\dfrac{1}{1+e^{-x}}$：
 
@@ -44,11 +44,11 @@ SELU：倍增版本的ELU，参数取值很逆天
 
 GELU $f(x)=x\sigma(1.702x)$：在 Transformer 中常用
 
-!!! abstract "总结"
-
-    + 不要使用 Sigmoid 或 tanh．
-    + 一般来讲使用 ReLU 即可．
-    + 如果想要 0.1% 数量级的提升，可以试试 Leakly ReLU / ELU / SELU / GELU．
+> [!abstract] 总结
+>
+> + 不要使用 Sigmoid 或 tanh．
+> + 一般来讲使用 ReLU 即可．
+> + 如果想要 0.1% 数量级的提升，可以试试 Leakly ReLU / ELU / SELU / GELU．
 
 ### Data Preprocessing
 
@@ -162,15 +162,15 @@ def predict(X):
 <img src="training-neural-networks.assets/image-20260504104614673.png" alt="image-20260504104614673" style="zoom:35%;" />
 </div>
 
-???+ info "几种少用的正则化方法"
-
-    + DropConnect：随机将神经元之间的连接 drop；测试时使用完整连接．
-    + Fractional Pooling：池化层的 Kernel 大小不固定，可以这一块 $2\times 2$ 最大池化后，下一块 $1\times 2$ 最大池化；测试时对不同 sample 的预测做平均．
-    + Stochastic Depth：在 ResNet 中随机跳过一些残差块，测试时使用完整网络．这个思想后来在 EfficientNetV2、Vision Transformer 等架构中也常见．
-    + Cutout：将图像的某些区域遮住（设为0或者噪音）；测试时用完整图．
-    + Mixup：将两个图像按比例混合，然后 label 设为两个类别的占比（如cat 0.4，dog 0.6）；
-    + Cutmix：不是整张图线性混合，而是把一张图的一块区域替换成另一张图的 crop，标签按面积比例混合；
-    + Label Smoothing：不再把正确类别设成 100%，而是比如 cat：90%，其他类别分一点概率。这样可以避免模型过度自信．
+> [!info]+ 几种少用的正则化方法
+>
+> + DropConnect：随机将神经元之间的连接 drop；测试时使用完整连接．
+> + Fractional Pooling：池化层的 Kernel 大小不固定，可以这一块 $2\times 2$ 最大池化后，下一块 $1\times 2$ 最大池化；测试时对不同 sample 的预测做平均．
+> + Stochastic Depth：在 ResNet 中随机跳过一些残差块，测试时使用完整网络．这个思想后来在 EfficientNetV2、Vision Transformer 等架构中也常见．
+> + Cutout：将图像的某些区域遮住（设为0或者噪音）；测试时用完整图．
+> + Mixup：将两个图像按比例混合，然后 label 设为两个类别的占比（如cat 0.4，dog 0.6）；
+> + Cutmix：不是整张图线性混合，而是把一张图的一块区域替换成另一张图的 crop，标签按面积比例混合；
+> + Label Smoothing：不再把正确类别设成 100%，而是比如 cat：90%，其他类别分一点概率。这样可以避免模型过度自信．
 
 在实际使用时，大型全连接层可以用 Dropout；图像任务里用 Data Augmentation；CNN 也常用 BatchNorm．其他正则化方法如果想再挤一点性能可以使用．
 
@@ -234,37 +234,37 @@ def predict(X):
 
 观察训练曲线，判断哪里出了问题．
 
-???+ info "曲线对应问题"
-
-    === "权重初始化"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;" />
-        </div>
-    
-    === "学习率不衰减"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;" />
-        </div>
-    
-    === "学习率衰减太快"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;" />
-        </div>
-    
-    === "训练不够久"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;" />
-        </div>
-    
-    === "过拟合"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;" />
-        </div>
-    
-    === "欠拟合"
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="training-neural-networks.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;" />
-        </div>
+> [!info]+ 曲线对应问题
+>
+> === "权重初始化"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504111857267.png" alt="image-20260504111857267" style="zoom:50%;" />
+>     </div>
+>
+> === "学习率不衰减"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504112025278.png" alt="image-20260504112025278" style="zoom: 50%;" />
+>     </div>
+>
+> === "学习率衰减太快"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504112055617.png" alt="image-20260504112055617" style="zoom:50%;" />
+>     </div>
+>
+> === "训练不够久"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504112119128.png" alt="image-20260504112119128" style="zoom:50%;" />
+>     </div>
+>
+> === "过拟合"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504112142018.png" alt="image-20260504112142018" style="zoom:50%;" />
+>     </div>
+>
+> === "欠拟合"
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="training-neural-networks.assets/image-20260504112157485.png" alt="image-20260504112157485" style="zoom:50%;" />
+>     </div>
 
 > 7.回到第 5 步，反复迭代直到找到最佳超参数．
 
@@ -273,19 +273,19 @@ def predict(X):
 
 训练多个独立模型，测试时平均它们的预测概率分布再选出分类结果，大概能获得 2% 的额外性能．
 
-!!! tip "tips"
-
-    1. 不用真的训练多个模型，而是在一个模型训练过程中保存多个 checkpoint，用这些 checkpoint 做 ensemble．
-    
-    2. 在测试时使用参数的动态平均而不是最后的参数．
-    ```python
-    while True:
-        data_batch = dataset.sample_data_batch()
-        loss = network.forward(data_batch)
-        dx = network.backward()
-        x += -learning_rate * dx
-        x_test = 0.995 * x_test + 0.005 * x
-    ```
+> [!tip] tips
+>
+> 1. 不用真的训练多个模型，而是在一个模型训练过程中保存多个 checkpoint，用这些 checkpoint 做 ensemble．
+>
+> 2. 在测试时使用参数的动态平均而不是最后的参数．
+> ```python
+> while True:
+>     data_batch = dataset.sample_data_batch()
+>     loss = network.forward(data_batch)
+>     dx = network.backward()
+>     x += -learning_rate * dx
+>     x_test = 0.995 * x_test + 0.005 * x
+> ```
 
 ###  Transfer Learning
 

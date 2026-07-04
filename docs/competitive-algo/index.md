@@ -1,17 +1,17 @@
 # 算法竞赛
 
-!!! abstract "概要"
-
-    + 时间：2025/10 - 至今
-    + 课程：[Acwing 算法基础课](https://www.acwing.com/activity/content/11/)
-    + 比赛：[2026春季联赛](26sp/index.md)
-    + 参考材料：
-    	+ [OI Wiki](https://oi-wiki.org/)
-    	+ [Algorithms for Competitive Programming](https://cp-algorithms.com/)
+> [!abstract] 概要
+>
+> + 时间：2025/10 - 至今
+> + 课程：[Acwing 算法基础课](https://www.acwing.com/activity/content/11/)
+> + 比赛：[2026春季联赛](26sp/index.md)
+> + 参考材料：
+> 	+ [OI Wiki](https://oi-wiki.org/)
+> 	+ [Algorithms for Competitive Programming](https://cp-algorithms.com/)
     
-!!! info "说明"
-
-    大一学习算法竞赛的笔记．
+> [!info] 说明
+>
+> 大一学习算法竞赛的笔记．
 
 <!-- !!! quote "常用模板"
 

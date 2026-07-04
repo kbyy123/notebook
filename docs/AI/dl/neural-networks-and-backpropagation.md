@@ -8,9 +8,9 @@
 <img src="neural-networks-and-backpropagation.assets/image-20260420083228529.png" alt="image-20260420083228529" style="zoom:50%;" />
 </div>
 
-!!! warning "提示"
-
-	在此语境下的特征变换为feature transformation．要注意此处的特征为feature，不要与线性代数中的特征弄混了，特别是特征值（feature value, eigenvalue）与特征向量（feature vector, eigenvector）．
+> [!warning] 提示
+>
+> 在此语境下的特征变换为feature transformation．要注意此处的特征为feature，不要与线性代数中的特征弄混了，特别是特征值（feature value, eigenvalue）与特征向量（feature vector, eigenvector）．
 
 CV 历史上还使用过：
 
@@ -25,15 +25,15 @@ CV 历史上还使用过：
 
 线性分类器只使用 $f(x)=Wx+b$，无法表示非线性的分类界限．而**神经网络**通过多层线性分类与非线性的**激活函数**，实现非线性分类，并且能从原始数据中**自动**学到合适的特征表示．
     
-???+ quote "常用的激活函数"
-    
-    激活函数必须是非线性的，以下函数都可以作为激活函数：
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260421085424456.png" alt="image-20260421085424456" style="zoom:33%;" />
-	</div>
-    
-    在本节课中我们默认使用ReLU，因为其使用的更加广泛，且函数较为简单（反向传播时导数只可能为0或1）．
+> [!quote]+ 常用的激活函数
+>
+> 激活函数必须是非线性的，以下函数都可以作为激活函数：
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260421085424456.png" alt="image-20260421085424456" style="zoom:33%;" />
+> </div>
+>
+> 在本节课中我们默认使用ReLU，因为其使用的更加广泛，且函数较为简单（反向传播时导数只可能为0或1）．
 
 以二层神经网络为例，其形式为 $f(x)=W_{2}\max(0, W_{1}x+b_{1})+b_{2}$．如果输入 $x\in \mathbb{R}^{D}$，输出 $f(x)\in \mathbb{R}^{C}$，则有 $W_{1}\in \mathbb{R}^{H\times D},b_{1}\in \mathbb{R}^{H},W_{2}\in \mathbb{R}^{C\times H},b_{2}\in \mathbb{R}^{C}$．
 
@@ -69,97 +69,97 @@ $$
 
 一般而言，计算函数值时使用正向传播，而计算偏导时使用反向传播．
 
-!!! example "例"
-
-    对于函数 $f(x,w)=\dfrac{1}{1+e^{-(w_{0}x_{0}+w_{1}x_{1}+w_{2})}}$，给出其计算图：
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420105036979.png" alt="image-20260420105036979" style="zoom:50%;" />
-	</div>
-    
-    不妨设最后的结果即为目标 $L$．显然 $\dfrac{\partial{L}}{\partial{L}}=1$；对于函数 $f(x)=\dfrac{1}{x}$，其输入为 $x=1.37$，输出为 $y=0.73$；因此我们得到 $\dfrac{\partial{L}}{\partial{x}}=-\dfrac{1}{x^{2}}=-\dfrac{1}{1.37^{2}}\approx 0.53$．
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420105409383.png" alt="image-20260420105409383" style="zoom:50%;" />
-	</div>
-    接着是函数 $f(x)=x+1$，偏导与前一轮一样；
-    
-    然后是函数 $f(x)=e^{x}$，其输入为 $x=-1$，输出为 $y=0.37$，上游梯度 $\dfrac{\partial{L}}{\partial{y}}=-0.53$，因此下游梯度 $\dfrac{\partial{L}}{\partial{x}}=\dfrac{de^{x}}{dx}\cdot\dfrac{\partial{L}}{\partial{y}}=\dfrac{1}{e}\cdot 0.53\approx 0.20$．
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420110002840.png" alt="image-20260420110002840" style="zoom:50%;" />
-	</div>
-    依此类推，可以求出所有偏导：
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420110323215.png" alt="image-20260420110323215" style="zoom:50%;" />
-	</div>
+> [!example] 例
+>
+> 对于函数 $f(x,w)=\dfrac{1}{1+e^{-(w_{0}x_{0}+w_{1}x_{1}+w_{2})}}$，给出其计算图：
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420105036979.png" alt="image-20260420105036979" style="zoom:50%;" />
+> </div>
+>
+> 不妨设最后的结果即为目标 $L$．显然 $\dfrac{\partial{L}}{\partial{L}}=1$；对于函数 $f(x)=\dfrac{1}{x}$，其输入为 $x=1.37$，输出为 $y=0.73$；因此我们得到 $\dfrac{\partial{L}}{\partial{x}}=-\dfrac{1}{x^{2}}=-\dfrac{1}{1.37^{2}}\approx 0.53$．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420105409383.png" alt="image-20260420105409383" style="zoom:50%;" />
+> </div>
+> 接着是函数 $f(x)=x+1$，偏导与前一轮一样；
+>
+> 然后是函数 $f(x)=e^{x}$，其输入为 $x=-1$，输出为 $y=0.37$，上游梯度 $\dfrac{\partial{L}}{\partial{y}}=-0.53$，因此下游梯度 $\dfrac{\partial{L}}{\partial{x}}=\dfrac{de^{x}}{dx}\cdot\dfrac{\partial{L}}{\partial{y}}=\dfrac{1}{e}\cdot 0.53\approx 0.20$．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420110002840.png" alt="image-20260420110002840" style="zoom:50%;" />
+> </div>
+> 依此类推，可以求出所有偏导：
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420110323215.png" alt="image-20260420110323215" style="zoom:50%;" />
+> </div>
 
 ### Gradient Flow
 
 我们可以预处理一些常用操作的梯度规律，使得运算时可以直接查表．
 
-!!! example "例"
+> [!example] 例
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420110717168.png" alt="image-20260420110717168" style="zoom:40%;" />
+> </div>
+>
+> + add gate：$f(x,y)=x+y$，此时两边的局部梯度均为1，下游梯度与上游梯度相等．
+> + mul gate：$f(x,y)=xy$，此时两边的局部梯度为另一个变量．
+> + copy gate：$f(x)=(x,x)^T$，此时为向量值函数，其局部梯度为 $J_f=\left(\dfrac{\partial{x}}{\partial{x}},\dfrac{\partial{x}}{\partial{x}}\right)^{T}=(1,1)^{T}$，下游梯度为上游梯度相加．
+> + max gate：$f(x,y)=\max(x,y)$，此时较大者局部梯度为1，较小者局部梯度为0．
+>
+> 类似的，之前例子中的 $\dfrac{1}{1+e^{-x}}$ 是sigmoid函数，其也可以预处理，得到 
+>
+> $$
+> \dfrac{d\sigma(x)}{dx}=\dfrac{e^{-x}}{(1+e^{-x})^{2}}=\dfrac{1}{1+e^{-x}}\cdot \dfrac{e^{-x}}{1+e^{-x}}=\sigma(x)(1-\sigma(x))
+> $$
+>
+> 可以对求偏导的过程进行很大程度上的化简．
 
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="neural-networks-and-backpropagation.assets/image-20260420110717168.png" alt="image-20260420110717168" style="zoom:40%;" />
-	</div>
-	
-	+ add gate：$f(x,y)=x+y$，此时两边的局部梯度均为1，下游梯度与上游梯度相等．
-	+ mul gate：$f(x,y)=xy$，此时两边的局部梯度为另一个变量．
-	+ copy gate：$f(x)=(x,x)^T$，此时为向量值函数，其局部梯度为 $J_f=\left(\dfrac{\partial{x}}{\partial{x}},\dfrac{\partial{x}}{\partial{x}}\right)^{T}=(1,1)^{T}$，下游梯度为上游梯度相加．
-	+ max gate：$f(x,y)=\max(x,y)$，此时较大者局部梯度为1，较小者局部梯度为0．
-	
-	类似的，之前例子中的 $\dfrac{1}{1+e^{-x}}$ 是sigmoid函数，其也可以预处理，得到 
-	
-	$$
-	\dfrac{d\sigma(x)}{dx}=\dfrac{e^{-x}}{(1+e^{-x})^{2}}=\dfrac{1}{1+e^{-x}}\cdot \dfrac{e^{-x}}{1+e^{-x}}=\sigma(x)(1-\sigma(x))
-	$$
-	
-	可以对求偏导的过程进行很大程度上的化简．
-
-!!! code "代码"
-
-	我们可以通过正向传播求函数值+反向传播求偏导的方式，模拟出来代码：
-
-	```python
-	def f(w0, x0, w1, x1, w2):
-		# Forward Pass: Compute output
-		s0 = w0 * x0
-		s1 = w1 * x1
-		s2 = s0 + s1
-		s3 = s2 + w2
-		L = sigmoid(s3)
-		
-		# Backward Pass: Compute grads
-		grad_L = 1.0
-		grad_s3 = grad_L * (1 - L) * L
-		grad_s2 = s3
-		grad_w2 = s3
-		grad_s0 = s2
-		grad_s1 = s2
-		grad_w1 = grad_s1 * x1
-		grad_x1 = grad_s1 * w1
-		grad_w0 = grad_s1 * x0
-		grad_x0 = grad_s1 * w0
-	```
-
-	PyTorch 也提供了 `torch.autograd.Function` 基类，我们可以继承该基类，实现自己的函数方法；之后调用该方法，PyTorch 就会帮我们自动求导：
-	```python
-	class Multiply(torch.autograd.Function)
-		@Staticmethod
-		def forward(ctx, x, y): # ctx means context, use to store inputs
-			ctx.save_for_backward(x, y)
-			z = x * y
-			return z
-		
-		@Staticmethod
-		def backward(ctx, grad_z):
-			x, y = ctx.saved_tensors
-			grad_x = y * grad_z
-			grad_y = x * grad_z
-			return grad_x, grad_y
-	```
+> [!code] 代码
+>
+> 我们可以通过正向传播求函数值+反向传播求偏导的方式，模拟出来代码：
+>
+> ```python
+> def f(w0, x0, w1, x1, w2):
+> 	# Forward Pass: Compute output
+> 	s0 = w0 * x0
+> 	s1 = w1 * x1
+> 	s2 = s0 + s1
+> 	s3 = s2 + w2
+> 	L = sigmoid(s3)
+>
+> 	# Backward Pass: Compute grads
+> 	grad_L = 1.0
+> 	grad_s3 = grad_L * (1 - L) * L
+> 	grad_s2 = s3
+> 	grad_w2 = s3
+> 	grad_s0 = s2
+> 	grad_s1 = s2
+> 	grad_w1 = grad_s1 * x1
+> 	grad_x1 = grad_s1 * w1
+> 	grad_w0 = grad_s1 * x0
+> 	grad_x0 = grad_s1 * w0
+> ```
+>
+> PyTorch 也提供了 `torch.autograd.Function` 基类，我们可以继承该基类，实现自己的函数方法；之后调用该方法，PyTorch 就会帮我们自动求导：
+> ```python
+> class Multiply(torch.autograd.Function)
+> 	@Staticmethod
+> 	def forward(ctx, x, y): # ctx means context, use to store inputs
+> 		ctx.save_for_backward(x, y)
+> 		z = x * y
+> 		return z
+>
+> 	@Staticmethod
+> 	def backward(ctx, grad_z):
+> 		x, y = ctx.saved_tensors
+> 		grad_x = y * grad_z
+> 		grad_y = x * grad_z
+> 		return grad_x, grad_y
+> ```
 ### Compute Derivatives
 **向量求导**：
 
@@ -185,17 +185,17 @@ $$
 =J^{T}\cdot \dfrac{\partial{L}}{\partial{\boldsymbol{y}}}
 $$
 
-!!! example "例"
-
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420215934326.png" alt="image-20260420215934326" style="zoom:50%;" />
-	</div>
-    
-    实际上由于存储Jacobian矩阵需要占用大量内存，我们并不显式存储它．我们可以通过如下公式化简：
-    
-	<div style="text-align: center; margin-top: 15px;">
-    <img src="neural-networks-and-backpropagation.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;" />
-	</div>
+> [!example] 例
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420215934326.png" alt="image-20260420215934326" style="zoom:50%;" />
+> </div>
+>
+> 实际上由于存储Jacobian矩阵需要占用大量内存，我们并不显式存储它．我们可以通过如下公式化简：
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="neural-networks-and-backpropagation.assets/image-20260420220103574.png" alt="image-20260420220103574" style="zoom:50%;" />
+> </div>
 
 按照上述的想法，如果不存储Jacobian矩阵而想求出所有 $y_i$ 对 $x_j$ 的偏导数之和，可以令 $s=\sum y_i$，然后将 $s$ 对 所有 $x_j$ 求偏导即可．这等价于将Jacobian矩阵按照 `dim=0` 求和．
 

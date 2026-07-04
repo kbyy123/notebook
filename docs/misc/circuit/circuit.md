@@ -1,11 +1,11 @@
 # 电路与电子学基础
 
-!!! abstract "概要"
-
-    + 时间：2025-2026春夏学期
-    + 学分：2
-    + 授课老师：魏翼飞
-    + 教材：简明电路与电子学基础，北京邮电大学出版社
+> [!abstract] 概要
+>
+> + 时间：2025-2026春夏学期
+> + 学分：2
+> + 授课老师：魏翼飞
+> + 教材：简明电路与电子学基础，北京邮电大学出版社
 
 ## 电路基础
 ### 记忆内容（直接背）
@@ -63,23 +63,23 @@
 
 注意：是电压源还是电流源只与其图形有关而与控制其的变量无关，他们均可以被电压/电流控制，不用管量纲直接相乘即可．
 
-???+ example "例"
-
-	<div style="text-align: center">
-	  <div style="text-align: center; margin-top: 15px;">
-	  <img src="circuit.assets/image-20260325163641589.png" alt="image-20260325163641589" style="zoom:50%;" />
-	  </div>
-	</div>
-	
-	$$
-	i_{2}=\dfrac{4.9V}{5\Omega}=0.98A 
-	$$
-	
-	由于经过受控电流源为 $0.98i$，而 $i_{2}$ 也经过它，因此 
-	
-	$$
-	0.98i=i_{2},i=1A
-	$$
+> [!example]+ 例
+>
+> <div style="text-align: center">
+>   <div style="text-align: center; margin-top: 15px;">
+>   <img src="circuit.assets/image-20260325163641589.png" alt="image-20260325163641589" style="zoom:50%;" />
+>   </div>
+> </div>
+>
+> $$
+> i_{2}=\dfrac{4.9V}{5\Omega}=0.98A 
+> $$
+>
+> 由于经过受控电流源为 $0.98i$，而 $i_{2}$ 也经过它，因此 
+>
+> $$
+> 0.98i=i_{2},i=1A
+> $$
 
 **实际电压源**：看作是理想电压源串联电阻 $R_{s}$​．
 
@@ -204,21 +204,21 @@ $$
 
 共有 $u_{1}',u_{2}',u_{3}',u_{0},i_{1},i_{2}$ 六个未知数，有六个方程，可解．
 
-???+ quote "补充"
-
-	步骤 $3$ ：“选择合适的参考节点，使得无阻电压源成为一个已知节点电位”，本题可以选择对 $U_{s1}$ 的处理用该方法，而对 $U_{s5}$ 的处理用设电流的方法．
-	
-	此时就不用列出节点 $1$ 的方程，我们也就不需要知道节点 $1$ 的流入电流了．方程减少了两个，但未知数也减少了两个（$u_{1}',i_{1}$），仍然是可解的．
+> [!quote]+ 补充
+>
+> 步骤 $3$ ：“选择合适的参考节点，使得无阻电压源成为一个已知节点电位”，本题可以选择对 $U_{s1}$ 的处理用该方法，而对 $U_{s5}$ 的处理用设电流的方法．
+>
+> 此时就不用列出节点 $1$ 的方程，我们也就不需要知道节点 $1$ 的流入电流了．方程减少了两个，但未知数也减少了两个（$u_{1}',i_{1}$），仍然是可解的．
 
 ## 电路分析基本定理
 ### 叠加定理
 线性电路中任一元件的电压/电流可以看作每一个独立电源单独作用时在该元件产生的电压/电流．
 
-???+ abstract "步骤"
-
-	1. 对每一个独立电源，让其单独作用而将其他独立电源置零（电压源短路，电流源断路，可以看作是把他们的圈去掉，这样电压源剩下一根导线，电流源剩下断路）．受控电源不受影响．
-	2. 叠加时，尽量将分量的方向与原来总电压/电流的方向保持一致，这样可以直接相加不用考虑正负号．
-	3. 叠加定理不能计算功率．
+> [!abstract]+ 步骤
+>
+> 1. 对每一个独立电源，让其单独作用而将其他独立电源置零（电压源短路，电流源断路，可以看作是把他们的圈去掉，这样电压源剩下一根导线，电流源剩下断路）．受控电源不受影响．
+> 2. 叠加时，尽量将分量的方向与原来总电压/电流的方向保持一致，这样可以直接相加不用考虑正负号．
+> 3. 叠加定理不能计算功率．
 
 ### 替代定理
 上课没讲，略．
@@ -286,11 +286,11 @@ $$
 
 **换路定则**：由于状态变量是积分结果，无法突变，因此 $u_{c}(0^{-})=u_{c}(0^{+})$，$i_{L}(0^{-})=i_{L}(0^{+})$．求 $t(0^{+})$ 时的电路状态，将电容看作大小为 $u_{c}(0^{-})$ 的电压源，电感看作大小为 $i_{L}(0^{-})$ 的电流源．
 
-???+ example "例题"
-
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="circuit.assets/image-20260410091248746.png" alt="image-20260410091248746" style="zoom: 80%;" />
-	</div>
+> [!example]+ 例题
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260410091248746.png" alt="image-20260410091248746" style="zoom: 80%;" />
+> </div>
 
 ### 零输入响应
 电路无外加激励（无独立电源），仅由动态元件的非零初始状态引起的响应（只考虑电容电感放电）称为**零输入相应（zir）**．
@@ -303,15 +303,15 @@ $$
 
 $\tau$ 的单位是秒，常取 $t=(3\sim 5)\tau$ 作为放电完毕所需时间．$\tau$ 越大放电越慢．
 
-???+ example "例题"
-
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="circuit.assets/image-20260410092131500.png" alt="image-20260410092131500" style="zoom:80%;" />
-	</div>
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="circuit.assets/image-20260410092149845.png" alt="image-20260410092149845" style="zoom:80%;" />
-	</div>
+> [!example]+ 例题
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260410092131500.png" alt="image-20260410092131500" style="zoom:80%;" />
+> </div>
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260410092149845.png" alt="image-20260410092149845" style="zoom:80%;" />
+> </div>
 
 ### 零状态响应
 在零初始状态下，仅由外加激励源产生的响应（电容电感充电过程）称为**零状态响应（zsr）**．
@@ -331,15 +331,15 @@ $$
 
 与放电一样，$\tau$ 越大充电越慢．
 
-???+ example "例题"
-
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="circuit.assets/image-20260410092807780.png" alt="image-20260410092807780" style="zoom: 80%;" />
-	</div>
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="circuit.assets/image-20260410092828714.png" alt="image-20260410092828714" style="zoom:80%;" />
-	</div>
+> [!example]+ 例题
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260410092807780.png" alt="image-20260410092807780" style="zoom: 80%;" />
+> </div>
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260410092828714.png" alt="image-20260410092828714" style="zoom:80%;" />
+> </div>
 
 ### 全响应
 全响应 = 零输入响应（忽略电源）+ 零状态响应（忽略初始储能）．
@@ -485,13 +485,13 @@ $Q=UI\sin \phi$．
 
 $S=UI$，为电压、电流有效值的乘积．
 
-!!! info "功率三角形"
-
-    $S=UI$，$P=UI\cos\phi$，$Q=UI\sin\phi$，$S=\sqrt{P^2+Q^2}$．
-    
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="circuit.assets/image-20260522104349333.png" alt="image-20260522104349333" style="zoom:33%;" />
-    </div>
+> [!info] 功率三角形
+>
+> $S=UI$，$P=UI\cos\phi$，$Q=UI\sin\phi$，$S=\sqrt{P^2+Q^2}$．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image-20260522104349333.png" alt="image-20260522104349333" style="zoom:33%;" />
+> </div>
 
 #### 最大功率传输
 

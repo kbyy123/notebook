@@ -101,19 +101,19 @@ $$
 P=A(A^{T}A)^{-1}A^{T}
 $$
 
-!!! warning "注意"
-
-	有的人可能会用乘积逆的运算法则，将矩阵化简为 $P=A(A^{T}A)^{-1}A^{T}=AA^{-1}(A^{T})^{-1}A^{T}=I$．不能这么做的原因是我们只假设了 $A$ 列向量无关即列满秩，因此 $A^{T}A$ 是可逆方阵，而 $A$ 与 $A^{T}$ 可能不是方阵，因此分别不可逆．
-	
-	当然，如果 $A$ 是方阵，再加上 $A$ 为列满秩矩阵，我们得到 $A$ 本身即为可逆矩阵，此时 $P=I$ 就是正确的了．从直观上理解，$A$ 的列空间充满了整个 $\mathbb{R}^{m}$，因此任何向量往 $C(A)$ 投影都会得到其本身．
-	
-	???+ question "为什么列满秩矩阵 $A$ 满足 $A^{T}A$ 可逆"
-	
-		首先 $A^TA$ 必然为方阵．如果 $A^{T}A$ 可逆，那么 $A^{T}A\boldsymbol{x=0}$ 只有零解，这是充要的．因此我们可以转化问证明 $A^{T}A\boldsymbol{x=0}$ 只有零解．
-		
-		两边同时左乘 $\boldsymbol{x}^{T}$ 得到 $\boldsymbol{x}^{T}A^{T}A\boldsymbol{x}=0$，即 $(A\boldsymbol{x})^{T}(A\boldsymbol{x})=0$．由于 $A\boldsymbol{x}$ 为列向量，因此该式子说明 $A\boldsymbol{x}$ 模长为 $0$，即 $A\boldsymbol{x=0}$．
-		
-		由于 $A$ 列满秩，因此当且仅当 $\boldsymbol{x=0}$ 有 $A\boldsymbol{x=0}$．这说明当且仅当 $\boldsymbol{x=0}$ 有 $A^{T}A\boldsymbol{x}=0$，即 $A^{T}A\boldsymbol{x}=0$ 只有零解，得证．
+> [!warning] 注意
+>
+> 有的人可能会用乘积逆的运算法则，将矩阵化简为 $P=A(A^{T}A)^{-1}A^{T}=AA^{-1}(A^{T})^{-1}A^{T}=I$．不能这么做的原因是我们只假设了 $A$ 列向量无关即列满秩，因此 $A^{T}A$ 是可逆方阵，而 $A$ 与 $A^{T}$ 可能不是方阵，因此分别不可逆．
+>
+> 当然，如果 $A$ 是方阵，再加上 $A$ 为列满秩矩阵，我们得到 $A$ 本身即为可逆矩阵，此时 $P=I$ 就是正确的了．从直观上理解，$A$ 的列空间充满了整个 $\mathbb{R}^{m}$，因此任何向量往 $C(A)$ 投影都会得到其本身．
+>
+> > [!question]+ 为什么列满秩矩阵 $A$ 满足 $A^{T}A$ 可逆
+> >
+> > 首先 $A^TA$ 必然为方阵．如果 $A^{T}A$ 可逆，那么 $A^{T}A\boldsymbol{x=0}$ 只有零解，这是充要的．因此我们可以转化问证明 $A^{T}A\boldsymbol{x=0}$ 只有零解．
+> >
+> > 两边同时左乘 $\boldsymbol{x}^{T}$ 得到 $\boldsymbol{x}^{T}A^{T}A\boldsymbol{x}=0$，即 $(A\boldsymbol{x})^{T}(A\boldsymbol{x})=0$．由于 $A\boldsymbol{x}$ 为列向量，因此该式子说明 $A\boldsymbol{x}$ 模长为 $0$，即 $A\boldsymbol{x=0}$．
+> >
+> > 由于 $A$ 列满秩，因此当且仅当 $\boldsymbol{x=0}$ 有 $A\boldsymbol{x=0}$．这说明当且仅当 $\boldsymbol{x=0}$ 有 $A^{T}A\boldsymbol{x}=0$，即 $A^{T}A\boldsymbol{x}=0$ 只有零解，得证．
 
 我们观察到 $P=A(A^{T}A)^{-1}A^{T}$ 与 $P=\dfrac{\boldsymbol{a}\boldsymbol{a}^{T}}{\boldsymbol{a}^{T}\boldsymbol{a}}$ 很相似，都是内积作为分母而内积作为分子．当 $A$ 只有一列时，其退化为后者．
 
@@ -226,21 +226,21 @@ $$
 
 因此最佳拟合直线为 $y=\dfrac{2}{3}+\dfrac{1}{2}x$．
 
-???+ question "为什么误差最小"
-
-	向量在列空间的投影是以垂线形式得到的最小误差 $\boldsymbol{e}$，但这并不代表我们在最小二乘中的误差是点到直线的垂直距离．实际上，由于 $\boldsymbol{e=b-}A\boldsymbol{\hat{x}}$，而 $\boldsymbol{b}$ 是我们的真实值（观测值），$(A\boldsymbol{\hat{x}})_{i}$ 是我们计算出来的拟合值，他们的关系仅仅是代数加减．因此误差最小的误差指的是**真实观测值 $y_i$** 与**拟合值 $\hat{y}_i$** 之间的**竖直距离偏差**，而不是从数据点向拟合直线作垂线所得到的几何最短距离．
-	
-	对于空间内任意一个 $\boldsymbol{b}$，其有两个分量：在 $A$ 列空间上的分量 $\boldsymbol{p}$ 与在 $A$ 左零空间上的分量  $\boldsymbol{e}$．由于列空间与左零空间正交，由勾股定理，对于我们的拟合向量 $A\boldsymbol{x}$，误差为
-	
-	$$
-	\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|A\boldsymbol{x}-\boldsymbol{p}\|^{2}+\|\boldsymbol{e}\|^{2}
-	$$
-	
-	我们无法改变 $\|\boldsymbol{e^{2}}\|$ 的大小，只能通过调整 $\boldsymbol{x}$ 来让 $\|A\boldsymbol{x}-\boldsymbol{p}\|$ 最小，即 $A\boldsymbol{x=p}$，此时 $\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|\boldsymbol{e}\|^{2}$．
-	
-	而转化为坐标系中，由于 $\boldsymbol{e}$ 是一个 $3$ 维向量，因此 $\|\boldsymbol{e}^{2}\|=e_{1}^{2}+e_{2}^{2}+e_{3}^{2}$，即为竖直距离偏差平方和．
-	
-	实际上，我们也可以通过对 $E=\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=(C+D-1)^{2}+(C+2D-2)^{2}+(C+3D-2)^{2}$ 求偏导来计算极值，得到的结果与使用线性代数得到的结果一样．
+> [!question]+ 为什么误差最小
+>
+> 向量在列空间的投影是以垂线形式得到的最小误差 $\boldsymbol{e}$，但这并不代表我们在最小二乘中的误差是点到直线的垂直距离．实际上，由于 $\boldsymbol{e=b-}A\boldsymbol{\hat{x}}$，而 $\boldsymbol{b}$ 是我们的真实值（观测值），$(A\boldsymbol{\hat{x}})_{i}$ 是我们计算出来的拟合值，他们的关系仅仅是代数加减．因此误差最小的误差指的是**真实观测值 $y_i$** 与**拟合值 $\hat{y}_i$** 之间的**竖直距离偏差**，而不是从数据点向拟合直线作垂线所得到的几何最短距离．
+>
+> 对于空间内任意一个 $\boldsymbol{b}$，其有两个分量：在 $A$ 列空间上的分量 $\boldsymbol{p}$ 与在 $A$ 左零空间上的分量  $\boldsymbol{e}$．由于列空间与左零空间正交，由勾股定理，对于我们的拟合向量 $A\boldsymbol{x}$，误差为
+>
+> $$
+> \|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|A\boldsymbol{x}-\boldsymbol{p}\|^{2}+\|\boldsymbol{e}\|^{2}
+> $$
+>
+> 我们无法改变 $\|\boldsymbol{e^{2}}\|$ 的大小，只能通过调整 $\boldsymbol{x}$ 来让 $\|A\boldsymbol{x}-\boldsymbol{p}\|$ 最小，即 $A\boldsymbol{x=p}$，此时 $\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=\|\boldsymbol{e}\|^{2}$．
+>
+> 而转化为坐标系中，由于 $\boldsymbol{e}$ 是一个 $3$ 维向量，因此 $\|\boldsymbol{e}^{2}\|=e_{1}^{2}+e_{2}^{2}+e_{3}^{2}$，即为竖直距离偏差平方和．
+>
+> 实际上，我们也可以通过对 $E=\|A\boldsymbol{x}-\boldsymbol{b}\|^{2}=(C+D-1)^{2}+(C+2D-2)^{2}+(C+3D-2)^{2}$ 求偏导来计算极值，得到的结果与使用线性代数得到的结果一样．
 
 ### 拟合m个点
 接下来我们将其扩展到直线拟合 $m$ 个点的情况．不妨设这 $m$ 个点的坐标为 $(t_{i}, b_{i})$，则我们有
@@ -348,13 +348,13 @@ $$
 
 **反射矩阵**：对于任意单位向量 $\boldsymbol{u}$，反射矩阵 $Q=I-2\boldsymbol{uu}^{T}$ 的效果是将向量 $\boldsymbol{x}$ 沿垂直 $\boldsymbol{u}$ 的子空间进行镜像操作．
 
-???+ quote "反射矩阵的证明"
-
-	$\boldsymbol{u}$ 是镜像空间的法向量．将 $\boldsymbol{x}$ 做镜像操作，等价于将其关于镜像空间的平行分量保留而翻转垂直分量，亦等价于将其关于法向量 $\boldsymbol{u}$ 的垂直分量保留而翻转平行分量．
-	
-	$\boldsymbol{x}$ 关于镜像空间的垂直分量，即$\boldsymbol{x}$ 关于 $\boldsymbol{u}$ 的平行分量，即为 $\boldsymbol{x}$ 到 $\boldsymbol{u}$ 的投影，为 $\boldsymbol{x}_{\perp}=\dfrac{\boldsymbol{uu}^{T}}{\boldsymbol{u}^{T}\boldsymbol{u}}\boldsymbol{x}=\boldsymbol{uu}^{T}\boldsymbol{x}$；同理可得关于镜像空间的平行分量为 $\boldsymbol{x}_{\parallel}=\boldsymbol{x}-\boldsymbol{x}_{\perp}$．
-	
-	因此，反射结果为 $\boldsymbol{x}_{\parallel}-\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{uu}^{T}\boldsymbol{x}=(I-2\boldsymbol{uu}^{T})\boldsymbol{x}$．可得反射矩阵 $Q=I-2\boldsymbol{uu}^{T}$．
+> [!quote]+ 反射矩阵的证明
+>
+> $\boldsymbol{u}$ 是镜像空间的法向量．将 $\boldsymbol{x}$ 做镜像操作，等价于将其关于镜像空间的平行分量保留而翻转垂直分量，亦等价于将其关于法向量 $\boldsymbol{u}$ 的垂直分量保留而翻转平行分量．
+>
+> $\boldsymbol{x}$ 关于镜像空间的垂直分量，即$\boldsymbol{x}$ 关于 $\boldsymbol{u}$ 的平行分量，即为 $\boldsymbol{x}$ 到 $\boldsymbol{u}$ 的投影，为 $\boldsymbol{x}_{\perp}=\dfrac{\boldsymbol{uu}^{T}}{\boldsymbol{u}^{T}\boldsymbol{u}}\boldsymbol{x}=\boldsymbol{uu}^{T}\boldsymbol{x}$；同理可得关于镜像空间的平行分量为 $\boldsymbol{x}_{\parallel}=\boldsymbol{x}-\boldsymbol{x}_{\perp}$．
+>
+> 因此，反射结果为 $\boldsymbol{x}_{\parallel}-\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{x}_{\perp}=\boldsymbol{x}-2\boldsymbol{uu}^{T}\boldsymbol{x}=(I-2\boldsymbol{uu}^{T})\boldsymbol{x}$．可得反射矩阵 $Q=I-2\boldsymbol{uu}^{T}$．
 
 显然 $Q$ 为对称矩阵，则 $Q^{T}Q=Q^{2}=(I-2\boldsymbol{uu}^{T})^{2}=I-4\boldsymbol{uu}^{T}+4\boldsymbol{uu}^{T}\boldsymbol{uu}^{T}=I$．所以反射矩阵 $Q$ 十分特殊，其满足 $Q=Q^{T}=Q^{-1}$．
 

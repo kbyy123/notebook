@@ -42,41 +42,41 @@ $$
 
 容易导致梯度消失或梯度爆炸．因此普通 RNN 难以处理长距离依赖，这也是 LSTM、GRU 着重优化的部分．
 
-!!! info "Truncated BPTT"
-
-    实际训练时，通常不会对特别长的序列完整做 BPTT，而是用 **Truncated BPTT**（截断时间反向传播）．
-    
-    如一个很长的序列 $x_1,x_2,\dots, x_{1000}$，可能每 50 步切一段，反向传播时将上一段的末尾看作是常数，不跨段传播．
+> [!info] Truncated BPTT
+>
+> 实际训练时，通常不会对特别长的序列完整做 BPTT，而是用 **Truncated BPTT**（截断时间反向传播）．
+>
+> 如一个很长的序列 $x_1,x_2,\dots, x_{1000}$，可能每 50 步切一段，反向传播时将上一段的末尾看作是常数，不跨段传播．
 
 ## Interpretable Hidden Units
 
 训练 RNN 后，会发现有的隐变量学习到了一些语法、格式内容，具体见 [Visualizing and Understanding Recurrent Networks](https://arxiv.org/abs/1506.02078)．
 
-???+ example "Interpretable Hidden Units"
-
-    === "quote detection cell"
-    
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="recurrent-neural-networks.assets/image-20260525165917635.png" alt="image-20260525165917635" style="zoom:50%;" />
-        </div>
-    
-    === "line length tracking cell"
-    
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="recurrent-neural-networks.assets/image-20260525170110849.png" alt="image-20260525170110849" style="zoom:50%;" />
-        </div>
-    
-    === "if statement cell"
-    
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="recurrent-neural-networks.assets/image-20260525170124589.png" alt="image-20260525170124589" style="zoom:50%;" />
-        </div>
-    
-    === "quote/comment cell"
-    
-        <div style="text-align: center; margin-top: 15px;">
-        <img src="recurrent-neural-networks.assets/image-20260525170132943.png" alt="image-20260525170132943" style="zoom:50%;" />
-        </div>
+> [!example]+ Interpretable Hidden Units
+>
+> === "quote detection cell"
+>
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="recurrent-neural-networks.assets/image-20260525165917635.png" alt="image-20260525165917635" style="zoom:50%;" />
+>     </div>
+>
+> === "line length tracking cell"
+>
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="recurrent-neural-networks.assets/image-20260525170110849.png" alt="image-20260525170110849" style="zoom:50%;" />
+>     </div>
+>
+> === "if statement cell"
+>
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="recurrent-neural-networks.assets/image-20260525170124589.png" alt="image-20260525170124589" style="zoom:50%;" />
+>     </div>
+>
+> === "quote/comment cell"
+>
+>     <div style="text-align: center; margin-top: 15px;">
+>     <img src="recurrent-neural-networks.assets/image-20260525170132943.png" alt="image-20260525170132943" style="zoom:50%;" />
+>     </div>
 
 ## Image Captioning
 
@@ -86,15 +86,15 @@ Image Captioning 本身是视觉与语言的跨模态任务，它可以结合 CN
 <img src="recurrent-neural-networks.assets/image-20260525170627464.png" alt="image-20260525170627464" style="zoom: 50%;" />
 </div>
 
-???+ example "成功样例与失败样例"
-
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="recurrent-neural-networks.assets/image-20260525170659997.png" alt="image-20260525170659997" style="zoom:50%;" />
-    </div>
-    
-    <div style="text-align: center; margin-top: 15px;">
-    <img src="recurrent-neural-networks.assets/image-20260525170743395.png" alt="image-20260525170743395" style="zoom:50%;" />
-    </div>
+> [!example]+ 成功样例与失败样例
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="recurrent-neural-networks.assets/image-20260525170659997.png" alt="image-20260525170659997" style="zoom:50%;" />
+> </div>
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="recurrent-neural-networks.assets/image-20260525170743395.png" alt="image-20260525170743395" style="zoom:50%;" />
+> </div>
 
 ## RNN Variants
 

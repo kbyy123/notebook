@@ -31,11 +31,11 @@ compound proposition(复合命题): Propositions that formed from existing propo
 <img src="Chap1.assets/image-20260321150545867.png" alt="image-20260321150545867" style="zoom:50%;" />
 </div>
 
-???+ tip "Supplement"
-
-	**NOR**(not or, 或非): $p \downarrow q \equiv \neg(p \vee q)$.
-	
-	**NAND**(not and, 与非): $p \mid q \equiv \neg(p \wedge q)$.
+> [!tip]+ Supplement
+>
+> **NOR**(not or, 或非): $p \downarrow q \equiv \neg(p \vee q)$.
+>
+> **NAND**(not and, 与非): $p \mid q \equiv \neg(p \wedge q)$.
 
 **conditional statement**(implication, 蕴含): $p\to q$ .
 <div style="text-align: center; margin-top: 15px;">
@@ -43,21 +43,21 @@ compound proposition(复合命题): Propositions that formed from existing propo
 </div>
 The statement p is called the **hypothesis**(假设), q is called the **conclusion**(结论).
 
-!!! info "Related Conditional Statements"
+> [!info] Related Conditional Statements
+>
+> + converse(逆命题): $q\to p$
+> + inverse(否命题): $\neg p\to\neg q$
+> + contrapositive(逆否命题): $\neg q \to \neg p$
 
-	+ converse(逆命题): $q\to p$
-	+ inverse(否命题): $\neg p\to\neg q$
-	+ contrapositive(逆否命题): $\neg q \to \neg p$
-
-!!! abstract "Equivalent Forms in English"
-
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321150150685.png" alt="image-20260321150150685" style="zoom:50%;" />
-	</div>
-	
-	**Implication Law**: $p\to q\equiv \neg p \vee q$
-
-	PS: "$q$ unless $\neg p$" is $p\to q$, we can remember "unless" as $\lor$, then "$q$ unless $\neg p$" is $q \lor \neg p \equiv p \to q$. And "$p$ unless $q$" and "$q$ unless $p$" are both $p \lor q$.
+> [!abstract] Equivalent Forms in English
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321150150685.png" alt="image-20260321150150685" style="zoom:50%;" />
+> </div>
+>
+> **Implication Law**: $p\to q\equiv \neg p \vee q$
+>
+> PS: "$q$ unless $\neg p$" is $p\to q$, we can remember "unless" as $\lor$, then "$q$ unless $\neg p$" is $q \lor \neg p \equiv p \to q$. And "$p$ unless $q$" and "$q$ unless $p$" are both $p \lor q$.
 
 
 **biconditional**(equivalence, 等价): $p\leftrightarrow q$​.
@@ -109,24 +109,24 @@ Logic circuit or digital circuit receives input signals and produces output sign
 
 The compound propositions $p$ and $q$ are called **logically equivalent** if $p\leftrightarrow q$ is a tautology, noted by $p\equiv q$.
 
-!!! note "Important Logical Equivalences"
-
-	Exclusive OR:
-	
-	+ $p\oplus q\equiv(p\vee q)\wedge\neg(p \wedge q)$
-	+ $p\oplus q\equiv(p \wedge \neg q)\vee (\neg p\wedge q)$
-	
-		<div style="text-align: center; margin-top: 15px;">
-		<img src="Chap1.assets/image-20260321160615977.png" alt="image-20260321160615977" style="zoom: 50%;" />
-		</div>
-		
-		<div style="text-align: center; margin-top: 15px;">
-		<img src="Chap1.assets/image-20260321160642043.png" alt="image-20260321160642043" style="zoom:50%;" />
-		</div>
-		
-		<div style="text-align: center; margin-top: 15px;">
-		<img src="Chap1.assets/image-20260321160714908.png" alt="image-20260321160714908" style="zoom:50%;" />
-		</div>
+> [!note] Important Logical Equivalences
+>
+> Exclusive OR:
+>
+> + $p\oplus q\equiv(p\vee q)\wedge\neg(p \wedge q)$
+> + $p\oplus q\equiv(p \wedge \neg q)\vee (\neg p\wedge q)$
+>
+> 	<div style="text-align: center; margin-top: 15px;">
+> 	<img src="Chap1.assets/image-20260321160615977.png" alt="image-20260321160615977" style="zoom: 50%;" />
+> 	</div>
+>
+> 	<div style="text-align: center; margin-top: 15px;">
+> 	<img src="Chap1.assets/image-20260321160642043.png" alt="image-20260321160642043" style="zoom:50%;" />
+> 	</div>
+>
+> 	<div style="text-align: center; margin-top: 15px;">
+> 	<img src="Chap1.assets/image-20260321160714908.png" alt="image-20260321160714908" style="zoom:50%;" />
+> 	</div>
 
 ### Using De Morgan’s Laws
 De Morgan's Laws:
@@ -161,31 +161,31 @@ Extension:
 
 + $(P \vee Q) \wedge \neg Q \wedge (Q \vee \neg R \vee S)$, $P \wedge Q \wedge R$.
 
-!!! quote "Existence Theorem of Normal Forms(范式存在性定理)"
-
-	For any propositional formula, there exists an equivalent formula in **Disjunctive Normal Form (DNF)** and an equivalent formula in **Conjunctive Normal Form (CNF)**.
-	
-	Steps:
-	
-	1. Elimination of $\to$ and $\leftrightarrow$: Replace $P\to Q$ with $\neg P \vee Q$, $P\leftrightarrow Q$ with $(P\to Q)\wedge(Q \to P)$.
-	2. De Morgan's Laws: Move negations inward so they only apply to atomic variables.
-	3. Double Negation Law: Replace $\neg \neg P$ with $P$.
-	4. Distributive Laws: 
-	   
-	  	+ To get DNF, Distribute $\wedge$ over $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$ 
-		+ To get CNF, Distribute $\vee$ over $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$  
+> [!quote] Existence Theorem of Normal Forms(范式存在性定理)
+>
+> For any propositional formula, there exists an equivalent formula in **Disjunctive Normal Form (DNF)** and an equivalent formula in **Conjunctive Normal Form (CNF)**.
+>
+> Steps:
+>
+> 1. Elimination of $\to$ and $\leftrightarrow$: Replace $P\to Q$ with $\neg P \vee Q$, $P\leftrightarrow Q$ with $(P\to Q)\wedge(Q \to P)$.
+> 2. De Morgan's Laws: Move negations inward so they only apply to atomic variables.
+> 3. Double Negation Law: Replace $\neg \neg P$ with $P$.
+> 4. Distributive Laws: 
+>
+>   	+ To get DNF, Distribute $\wedge$ over $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$ 
+> 	+ To get CNF, Distribute $\vee$ over $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$  
 
 **The problem**: DNF/CNF are not unique.
 
 **Minterm**(极小项): A minterm of $n$ variables is a **conjunction** of all $n$ variables, where each variable appears exactly once in either its direct form $P$ or its negation $\neg P$.
 
-???+ example "Example"
-
-	For $P,Q,R$ in a formula:
-	
-	+ $P \wedge Q \wedge\neg R$ is minterm.
-	+ $P \wedge Q$ is not minterm, because $R$ is excluded.
-	+ $P \wedge Q \wedge R \wedge \neg P$ is not minterm, because $P$ appears twice.
+> [!example]+ Example
+>
+> For $P,Q,R$ in a formula:
+>
+> + $P \wedge Q \wedge\neg R$ is minterm.
+> + $P \wedge Q$ is not minterm, because $R$ is excluded.
+> + $P \wedge Q \wedge R \wedge \neg P$ is not minterm, because $P$ appears twice.
 
 A minterm evaluates to True for **exactly one** combination of variable assignment, and evaluates to False for other $2^{n}-1$ combinations.
 
@@ -200,33 +200,33 @@ Minterms are conventionally denoted by $m_i$, where the subscript $i$ is the dec
 + $(P\wedge Q)\vee(\neg P \wedge R)$ is DNF, but not PDNF.
 + $(P \wedge Q \wedge \neg R)\vee(\neg P \wedge Q \wedge Q)$ is PDNF, also DNF.
 
-!!! quote "Theorem"
-
-	For any propositional formula, there exists a unique equivalent PDNF.
-	
-	A PDNF of a proportional formula is the **disjunction** of the **minterms** that correspond to the rows where the formula evaluates to **True**.
-	
-	> How to construct PDNF?
-	
-	Method 1: The Truth Table Method 
-	
-	1. Construct the complete truth table for the formula.
-	2. Write the minterm for each true rows.
-	3. Connect the minterms with disjunction.
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
-	</div>
-	
-	Method 2: The Equivalence Calculus Method
-	
-	1. Transform the formula into DNF
-	2. If a simple conjunction is missing a variable (say $R$), multiply it by a tautology($R \vee \neg R$), then expand it using the Distributive law.
-	3. Remove duplicate minterms using the Idempotent law($A \vee A \equiv A$).
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
-	</div>
+> [!quote] Theorem
+>
+> For any propositional formula, there exists a unique equivalent PDNF.
+>
+> A PDNF of a proportional formula is the **disjunction** of the **minterms** that correspond to the rows where the formula evaluates to **True**.
+>
+> > How to construct PDNF?
+>
+> Method 1: The Truth Table Method 
+>
+> 1. Construct the complete truth table for the formula.
+> 2. Write the minterm for each true rows.
+> 3. Connect the minterms with disjunction.
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
+> </div>
+>
+> Method 2: The Equivalence Calculus Method
+>
+> 1. Transform the formula into DNF
+> 2. If a simple conjunction is missing a variable (say $R$), multiply it by a tautology($R \vee \neg R$), then expand it using the Distributive law.
+> 3. Remove duplicate minterms using the Idempotent law($A \vee A \equiv A$).
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
+> </div>
 
 **Maxterm**(极大项): A maxterm of $n$ variables is a **disjunction** of all $n$ variables, where each variable appears exactly once in either its direct form $P$ or its negation $\neg P$.
 
@@ -240,33 +240,33 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 
 **Principle CNF**(主合取范式): A conjunction of maxterms.
 
-!!! quote "Theorem"
-
-	For any propositional formula, there exists a unique equivalent CDNF.
-	
-	The PCNF of a propositional formula is the **conjunction** of the **maxterms** that correspond to the rows where the formula evaluates to **False**.
-	
-	> How to construct PCNF?
-	
-	Method 1: The Truth Table Method 
-	
-	1. Construct the complete truth table for the formula.
-	2. Write the maxterm for each false rows.
-	3. Connect the maxterms with conjunction.
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
-	</div>
-	
-	Method 2: The Equivalence Calculus Method
-	
-	1. Transform the formula into CNF
-	2. If a simple disjunction is missing a variable (say $R$), multiply it by a contradiction($R \wedge \neg R$), then expand it using the Distributive law.
-	3. Remove duplicate maxterms using the Idempotent law($A \wedge A \equiv A$).
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
-	</div> -->
+> [!quote] Theorem
+>
+> For any propositional formula, there exists a unique equivalent CDNF.
+>
+> The PCNF of a propositional formula is the **conjunction** of the **maxterms** that correspond to the rows where the formula evaluates to **False**.
+>
+> > How to construct PCNF?
+>
+> Method 1: The Truth Table Method 
+>
+> 1. Construct the complete truth table for the formula.
+> 2. Write the maxterm for each false rows.
+> 3. Connect the maxterms with conjunction.
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
+> </div>
+>
+> Method 2: The Equivalence Calculus Method
+>
+> 1. Transform the formula into CNF
+> 2. If a simple disjunction is missing a variable (say $R$), multiply it by a contradiction($R \wedge \neg R$), then expand it using the Distributive law.
+> 3. Remove duplicate maxterms using the Idempotent law($A \wedge A \equiv A$).
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
+> </div> -->
 
 **简单析取式/基本和**（simple disjunctive form/basic sum）：仅由有限个命题变元或其否定的**析取**构成的析取式．
 
@@ -284,32 +284,32 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 
 + $(P \vee Q) \wedge \neg Q \wedge (Q \vee \neg R \vee S)$, $P \wedge Q \wedge R$.
 
-!!! quote "范式存在性定理"
-
-	任意一个命题公式均存在与之等值的析取范式和合取范式．
-	
-	证明（构造法）:
-	
-	1. 利用蕴含等值式消去公式中的 $\to$ 和 $\leftrightarrow$：
-		+ $P\to Q \equiv \neg P \vee Q$． 
-		+ $P\leftrightarrow Q \equiv (P\to Q)\wedge(Q \to P)$．
-	2. 利用德摩根律将公式中的 $\neg$ 移到命题变元之前，用双重否定律消去两个连续的 $\neg$．
-	3. 用分配律将公式化为基本积的析取（DNF）或基本和的合取（CNF）．   
-	  	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
-		+ 为了得到CNF，将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
+> [!quote] 范式存在性定理
+>
+> 任意一个命题公式均存在与之等值的析取范式和合取范式．
+>
+> 证明（构造法）:
+>
+> 1. 利用蕴含等值式消去公式中的 $\to$ 和 $\leftrightarrow$：
+> 	+ $P\to Q \equiv \neg P \vee Q$． 
+> 	+ $P\leftrightarrow Q \equiv (P\to Q)\wedge(Q \to P)$．
+> 2. 利用德摩根律将公式中的 $\neg$ 移到命题变元之前，用双重否定律消去两个连续的 $\neg$．
+> 3. 用分配律将公式化为基本积的析取（DNF）或基本和的合取（CNF）．   
+>   	+ 为了得到DNF，将 $\wedge$ 分配给 $\vee$，使得最外层为 $\vee$: $P\wedge (Q \vee R)\equiv (P \wedge Q) \vee(P \wedge R)$．
+> 	+ 为了得到CNF，将 $\vee$ 分配给 $\wedge$，使得最外层为 $\wedge$: $P\vee (Q \wedge R)\equiv (P \vee Q) \wedge(P \vee R)$．
 
 问题在于，以这种方法得到的DNF/CNF不是唯一的．
 #### 主析取范式
 
 **极小项**：$n$ 个命题变项的极小项是这 $n$ 个变元均出现一次的合取，并且保证每个变项或其否定二者仅出现一个．
 
-???+ example "例"
-
-	公式中出现 $P,Q,R$ 三个命题变项:
-	
-	+ $P \wedge Q \wedge\neg R$ 是极小项.
-	+ $P \wedge Q$ 不是极小项，因为没出现 $R$.
-	+ $P \wedge Q \wedge R \wedge \neg P$ 不是极小项，因为 $P$ 出现两次.
+> [!example]+ 例
+>
+> 公式中出现 $P,Q,R$ 三个命题变项:
+>
+> + $P \wedge Q \wedge\neg R$ 是极小项.
+> + $P \wedge Q$ 不是极小项，因为没出现 $R$.
+> + $P \wedge Q \wedge R \wedge \neg P$ 不是极小项，因为 $P$ 出现两次.
 
 对于每一个极小项 $n$ 个变项的赋值中，只有一个赋值使其为真，其余 $2^{n-1}$ 个赋值使其为假．
 
@@ -324,33 +324,33 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 + $(P\wedge Q)\vee(\neg P \wedge R)$ 是析取范式，但不是主析取范式．
 + $(P \wedge Q \wedge \neg R)\vee(\neg P \wedge Q \wedge R)$ 是主析取范式，并且也是析取范式．
 
-!!! quote "定理"
-
-	命题公式的主析取范式是由赋值为真对应的极小项的析取组成的．
-	
-	任何一个命题公式均存在一个与之等值的主析取范式，而且是唯一的．
-	
-	> 如何构造主析取范式?
-	
-	法一：真值表法
-	
-	1. 为命题公式构建真值表．
-	2. 将每一个结果为真的行用极小项表示出来．
-	3. 用析取连接极小项，即为主析取范式．
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
-	</div>
-	
-	法二：等值演算法
-	
-	1. 将公式化为析取范式，并将一些矛盾式、永真式、重复项消去．
-	2. 若析取范式的简单合取式项缺少命题变项（如 $R$），添加一个永真式（$R \vee \neg R$）然后用分配律打开．
-	3. 用幂等律将重复的极小项删去（$A \vee A \equiv A$）．
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
-	</div>
+> [!quote] 定理
+>
+> 命题公式的主析取范式是由赋值为真对应的极小项的析取组成的．
+>
+> 任何一个命题公式均存在一个与之等值的主析取范式，而且是唯一的．
+>
+> > 如何构造主析取范式?
+>
+> 法一：真值表法
+>
+> 1. 为命题公式构建真值表．
+> 2. 将每一个结果为真的行用极小项表示出来．
+> 3. 用析取连接极小项，即为主析取范式．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321173214588.png" alt="image-20260321173214588" style="zoom:50%;" />
+> </div>
+>
+> 法二：等值演算法
+>
+> 1. 将公式化为析取范式，并将一些矛盾式、永真式、重复项消去．
+> 2. 若析取范式的简单合取式项缺少命题变项（如 $R$），添加一个永真式（$R \vee \neg R$）然后用分配律打开．
+> 3. 用幂等律将重复的极小项删去（$A \vee A \equiv A$）．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321173230872.png" alt="image-20260321173230872" style="zoom:50%;" />
+> </div>
 
 #### 主合取范式
 **极大项**：$n$ 个命题变项的极大项是这 $n$ 个变元均出现一次的析取，并且保证每个变项或其否定二者仅出现一个．
@@ -365,33 +365,33 @@ Maxterms are conventionally denoted by $M_i$. The subscript $i$ is the decimal e
 
 **主合取范式**（Principal CNF）：若干不同的极大项组成的合取式．
 
-!!! quote "定理"
-
-	命题公式的主合取范式是由赋值为假对应的极大项的合取组成的．
-	
-	任何一个命题公式均存在一个与之等值的主合取范式，而且是唯一的．
-	
-	> 如何构造 PCNF?
-	
-	法一：真值表法
-	
-	1. 为命题公式构建真值表．
-	2. 将每一个结果为假的行用极大项表示出来．
-	3. 用合取连接极大项，即为主合取范式．
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
-	</div>
-	
-	法二：等值演算法
-	
-	1. 将公式化为合取范式，并将一些矛盾式、永真式、重复项消去．
-	2. 若合取范式的简单析取式项缺少命题变项（如 $R$），添加一个永假式（$R \vee \neg R$）然后用分配律打开．
-	3. 用幂等律将重复的极大项删去（$A \vee A \equiv A$）．
-	
-	<div style="text-align: center; margin-top: 15px;">
-	<img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
-	</div>
+> [!quote] 定理
+>
+> 命题公式的主合取范式是由赋值为假对应的极大项的合取组成的．
+>
+> 任何一个命题公式均存在一个与之等值的主合取范式，而且是唯一的．
+>
+> > 如何构造 PCNF?
+>
+> 法一：真值表法
+>
+> 1. 为命题公式构建真值表．
+> 2. 将每一个结果为假的行用极大项表示出来．
+> 3. 用合取连接极大项，即为主合取范式．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321175136454.png" alt="image-20260321175136454" style="zoom: 50%;" />
+> </div>
+>
+> 法二：等值演算法
+>
+> 1. 将公式化为合取范式，并将一些矛盾式、永真式、重复项消去．
+> 2. 若合取范式的简单析取式项缺少命题变项（如 $R$），添加一个永假式（$R \vee \neg R$）然后用分配律打开．
+> 3. 用幂等律将重复的极大项删去（$A \vee A \equiv A$）．
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap1.assets/image-20260321175719974.png" alt="image-20260321175719974" style="zoom:50%;" />
+> </div>
 
 总结：主析取范式和主合取范式都是求一个命题公式等价形式的方法．
 
@@ -474,13 +474,13 @@ The order of different quantifiers cannot be changed arbitrarily.
 <img src="Chap1.assets/file-20260321203500287.png" style="zoom:67%;" />
 </div>
 
-!!! example "Example"
-	
-	Let $P(x,y):y>x$. 
-	
-	+ $\forall x\exists yP(x,y)$: There isn't the biggest number.
-	+ $\exists y \forall xP(x,y)$: The biggest number exists.
-	Changing the order of quantifiers completely changes the meaning of the proposition.
+> [!example] Example
+>
+> Let $P(x,y):y>x$. 
+>
+> + $\forall x\exists yP(x,y)$: There isn't the biggest number.
+> + $\exists y \forall xP(x,y)$: The biggest number exists.
+> Changing the order of quantifiers completely changes the meaning of the proposition.
 
 #### Logical Equivalences Involving Quantifiers 
 Statements involving predicates and quantifiers are **logically equivalent** iff they have the **same truth value** no matter which the predicates an the domain of discourse.
@@ -570,30 +570,30 @@ $$
 + $\exists  x(A(x)\to B)\Leftrightarrow \forall  xA(x)\to B$．
 + $\exists  x(B\to A(x))\Leftrightarrow B\to\exists x A(x)$．
 
-???+ quote "蕴含式的证明（以全称量词为例）"
-
-	$$
-	\begin{aligned}
-	&\forall x (A(x)\to B) \\
-	&\Leftrightarrow \forall x(\neg A(x) \vee B) \\
-	&\Leftrightarrow \forall x\neg A(x) \vee B \\
-	&\Leftrightarrow \neg \exists xA(x) \vee B  \\
-	&\Leftrightarrow \exists xA(x)\to B  
-	\end{aligned}
-	$$
-	
-	直观理解：对于所有 $x$，只要有 $A(x)$ 就有 $B$，那么如果我存在一个满足 $A(x)$ 的 $x$，我就一定能推出 $B$．
-		
-	$$
-	\begin{aligned}
-	&\forall x(B\to A(x)) \\
-	&\Leftrightarrow  \forall x(\neg B \vee A(x)) \\
-	&\Leftrightarrow \neg B\vee \forall xA(x) \\
-	&\Leftrightarrow B\to \forall xA(x)     
-	\end{aligned}
-	$$
-	
-	直观理解：对于所有 $x$，如果 $B$ 满足了，它们都会满足 $A$，那么如果有条件 $B$，必然有所有 $x$ 都满足 $A(x)$．
+> [!quote]+ 蕴含式的证明（以全称量词为例）
+>
+> $$
+> \begin{aligned}
+> &\forall x (A(x)\to B) \\
+> &\Leftrightarrow \forall x(\neg A(x) \vee B) \\
+> &\Leftrightarrow \forall x\neg A(x) \vee B \\
+> &\Leftrightarrow \neg \exists xA(x) \vee B  \\
+> &\Leftrightarrow \exists xA(x)\to B  
+> \end{aligned}
+> $$
+>
+> 直观理解：对于所有 $x$，只要有 $A(x)$ 就有 $B$，那么如果我存在一个满足 $A(x)$ 的 $x$，我就一定能推出 $B$．
+>
+> $$
+> \begin{aligned}
+> &\forall x(B\to A(x)) \\
+> &\Leftrightarrow  \forall x(\neg B \vee A(x)) \\
+> &\Leftrightarrow \neg B\vee \forall xA(x) \\
+> &\Leftrightarrow B\to \forall xA(x)     
+> \end{aligned}
+> $$
+>
+> 直观理解：对于所有 $x$，如果 $B$ 满足了，它们都会满足 $A$，那么如果有条件 $B$，必然有所有 $x$ 都满足 $A(x)$．
 
 #### 量词分配
 全称量词对合取可分配，对析取单向推出：
@@ -627,19 +627,19 @@ $$
 
 **存在性定理**：谓词逻辑合式公式均存在与之等值的前束范式．合式公式的前束范式是不唯一的．
 
-???+ example "例"
-
-	$$
-	\begin{aligned}
-	&(\exists xP(x)\wedge \forall yQ(y))\to \exists xR(x) \\
-	&\Leftrightarrow (\exists xP(x)\wedge \forall yQ(y))\to \exists zR(z) \quad \text{换名规则} \\
-	&\Leftrightarrow \exists x(P(x)\wedge \forall yQ(y)) \to \exists zR(z) \quad \text{辖域扩张}\\
-	&\Leftrightarrow \exists x\forall y(P(x)\wedge Q(y))\to \exists zR(z) \quad \text{辖域扩张}\\
-	&\Leftrightarrow \forall x(\forall y (P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\exists xA(x)\to B \Leftrightarrow \forall x(A(x)\to B)     \\
-	&\Leftrightarrow \forall x\exists   y((P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\forall xA(x)\to B \Leftrightarrow \exists  x(A(x)\to B)\\
-	&\Leftrightarrow \forall x\forall y\exists z((P(x)\wedge Q(y))\to R(z)) \quad \text{辖域扩张}:B\to \exists xA(x)\Leftrightarrow \exists x(B\to A(x))   
-	\end{aligned}
-	$$
+> [!example]+ 例
+>
+> $$
+> \begin{aligned}
+> &(\exists xP(x)\wedge \forall yQ(y))\to \exists xR(x) \\
+> &\Leftrightarrow (\exists xP(x)\wedge \forall yQ(y))\to \exists zR(z) \quad \text{换名规则} \\
+> &\Leftrightarrow \exists x(P(x)\wedge \forall yQ(y)) \to \exists zR(z) \quad \text{辖域扩张}\\
+> &\Leftrightarrow \exists x\forall y(P(x)\wedge Q(y))\to \exists zR(z) \quad \text{辖域扩张}\\
+> &\Leftrightarrow \forall x(\forall y (P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\exists xA(x)\to B \Leftrightarrow \forall x(A(x)\to B)     \\
+> &\Leftrightarrow \forall x\exists   y((P(x)\wedge Q(y))\to \exists zR(z) ) \quad \text{辖域扩张}:\forall xA(x)\to B \Leftrightarrow \exists  x(A(x)\to B)\\
+> &\Leftrightarrow \forall x\forall y\exists z((P(x)\wedge Q(y))\to R(z)) \quad \text{辖域扩张}:B\to \exists xA(x)\Leftrightarrow \exists x(B\to A(x))   
+> \end{aligned}
+> $$
 
 ## Rules of Inference
 ### Valid Arguments in Propositional Logic
@@ -655,13 +655,13 @@ $$
 
 From the definition of a valid argument form we see that the argument form with premises $p_1, p_2, …, p_n$ and conclusion $q$ is valid exactly when $(p_1 ∧ p_2 ∧ ⋯ ∧ p_{n}) \to q$ is a tautology. We denote it by $\Rightarrow$(重言蕴含).
 
-!!! warning "$\to$ 与 $\Rightarrow$ 的区别"
-
-	 $\to$ 为逻辑联结词，$A\to B$ 仍然是一个命题公式，其仍然有真假，当 $A$ 为真 $B$ 为假时为假．
-	
-	$\Rightarrow$ 为公式间的关系符，描述了两个公式间的关系，只能说 $A\Rightarrow B$ 式整体成立或不成立．
-	
-	$A\Rightarrow B$ 成立的充要条件是 $A\to B$ 为重言式．
+> [!warning] $\to$ 与 $\Rightarrow$ 的区别
+>
+>  $\to$ 为逻辑联结词，$A\to B$ 仍然是一个命题公式，其仍然有真假，当 $A$ 为真 $B$ 为假时为假．
+>
+> $\Rightarrow$ 为公式间的关系符，描述了两个公式间的关系，只能说 $A\Rightarrow B$ 式整体成立或不成立．
+>
+> $A\Rightarrow B$ 成立的充要条件是 $A\to B$ 为重言式．
 
 ### Rules of Inference for Propositional Logic
 We can establish the validity of some relatively simple argument forms, called **rules of inference**(推理规则). These rules of inference can be used as building blocks to construct more complicated valid argument forms.
@@ -764,25 +764,25 @@ $$
 \therefore \ &Q \vee S 
 \end{aligned} 
 $$
-!!! quote "Another Expression"
-
-	Using rules of inference also can be denoted by $\vdash$. 
-	
-	For example:
-	
-	+ $\{P\wedge Q ,P\}\vdash Q$
-	+ $\{P\to Q, Q\to R\} \vdash \{P \to R\}$
+> [!quote] Another Expression
+>
+> Using rules of inference also can be denoted by $\vdash$. 
+>
+> For example:
+>
+> + $\{P\wedge Q ,P\}\vdash Q$
+> + $\{P\to Q, Q\to R\} \vdash \{P \to R\}$
 ### Using Rules of Inference to Build Arguments
 **formal proof**: To prove an argument is valid or the conclusion follows logically from the hypotheses.
 
 + Assume the hypotheses are true.
 + Use the rules of inference and logical equivalences to determine that the conclusion is true.
 
-???+ warning "考试提醒 for BYR"
-
-	在做逻辑推理时要写三列（如图），分别是序号、命题、原因，这些都会计入考试给分．
-	
-	<img src="Chap1.assets/image-20260402111933037.png" alt="image-20260402111933037" style="zoom:50%;" />
+> [!warning]+ 考试提醒 for BYR
+>
+> 在做逻辑推理时要写三列（如图），分别是序号、命题、原因，这些都会计入考试给分．
+>
+> <img src="Chap1.assets/image-20260402111933037.png" alt="image-20260402111933037" style="zoom:50%;" />
 
 ### 谓词逻辑推理规则
 #### 代换实例
@@ -863,46 +863,46 @@ $$
 \end{aligned} 
 $$
 
-!!! warning "注意事项"
-
-	**①：特例化时量词必须在最外层**
-	
-	只能对主逻辑运算符是 $\forall$ 或 $\exists$ 的公式使用EI/UI．在下面例子中，需要进行等值演算化简为前束范式．
-	
-	+ $\neg \forall x P(x) \nRightarrow \neg P(c)$ 不能穿透否定符号．
-	+ $\exists x F(x) \rightarrow \forall y G(y)$ 不能各自剥离成为 $F(c)\to G(z)$．
-
-	​**②：证明顺序**
-	​	
-	​当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，而不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
-	​	
-	​如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
-	​	
-	证明1：
-	
-	$$
-	\begin{array}{ll}
-	&(1)\exists xF(x)\quad &\text{Premise}\\
-	&(2)F(c) &(1),\text{EI}\\
-	&(3)\forall x(F(x)\to G(x)) &\text{Premise} \\
-	&(4)F(c)\to G(c) &(3),\text{UI} \\
-	&(5)G(c) & \text{(2),(4),Modus Ponens} \\
-	&(6)\exists xG(x) & \text{(5),EG}  
-	\end{array}
-	$$
-	
-	证明2：
-	
-	$$
-	\begin{array}{ll} \\
-	&(1)\forall x(F(x)\to G(x)) &\text{Premise} \\
-	&(2)F(c)\to G(c) &(1),\text{UI} \\
-	&(3)\exists xF(x)\quad &\text{Premise}\\
-	&(4)F(c) &(3),\text{EI}\\
-	&(5)G(c) & \text{(2),(4),Modus Ponens} \\
-	&(6)\exists xG(x) & \text{(5),EG}  
-	\end{array}
-	$$
+> [!warning] 注意事项
+>
+> **①：特例化时量词必须在最外层**
+>
+> 只能对主逻辑运算符是 $\forall$ 或 $\exists$ 的公式使用EI/UI．在下面例子中，需要进行等值演算化简为前束范式．
+>
+> + $\neg \forall x P(x) \nRightarrow \neg P(c)$ 不能穿透否定符号．
+> + $\exists x F(x) \rightarrow \forall y G(y)$ 不能各自剥离成为 $F(c)\to G(z)$．
+>
+> ​**②：证明顺序**
+> ​	
+> ​当使用一阶逻辑量词相关推理规则，一定要注意“先EI，后UI”，因为我们能保证EI特定的个体常项一定在UI的论域内从而符合对应公式，而不能保证UI选取的任意个体常项即为满足EI的特定个体常项．
+> ​	
+> ​如以前提 $\forall x(F(x)\to G(x)),\exists xF(x)$ 证明结论 $\exists xG(x)$，证明1正确而证明2错误．
+> ​	
+> 证明1：
+>
+> $$
+> \begin{array}{ll}
+> &(1)\exists xF(x)\quad &\text{Premise}\\
+> &(2)F(c) &(1),\text{EI}\\
+> &(3)\forall x(F(x)\to G(x)) &\text{Premise} \\
+> &(4)F(c)\to G(c) &(3),\text{UI} \\
+> &(5)G(c) & \text{(2),(4),Modus Ponens} \\
+> &(6)\exists xG(x) & \text{(5),EG}  
+> \end{array}
+> $$
+>
+> 证明2：
+>
+> $$
+> \begin{array}{ll} \\
+> &(1)\forall x(F(x)\to G(x)) &\text{Premise} \\
+> &(2)F(c)\to G(c) &(1),\text{UI} \\
+> &(3)\exists xF(x)\quad &\text{Premise}\\
+> &(4)F(c) &(3),\text{EI}\\
+> &(5)G(c) & \text{(2),(4),Modus Ponens} \\
+> &(6)\exists xG(x) & \text{(5),EG}  
+> \end{array}
+> $$
 
 ### 构造证明
 #### 直接证明法
@@ -920,17 +920,17 @@ $$
 + 前提：$A_{1},A_{2},\cdots,A_{k},C$
 + 结论：$B$
 
-???+ quote "证明"
-
-	$$
-	\begin{aligned}
-	&(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to (C\to B) \\
-	\Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee (\neg C\vee B) \\
-	\Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee \neg C\vee B \\
-	\Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\vee B  \\
-	\Leftrightarrow &(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\to B  
-	\end{aligned}
-	$$
+> [!quote]+ 证明
+>
+> $$
+> \begin{aligned}
+> &(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to (C\to B) \\
+> \Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee (\neg C\vee B) \\
+> \Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee \neg C\vee B \\
+> \Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\vee B  \\
+> \Leftrightarrow &(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge C)\to B  
+> \end{aligned}
+> $$
 
 #### 反证法
 **欲证明**：
@@ -942,36 +942,36 @@ $$
 
 <img src="Chap1.assets/image-20260403102639198.png" alt="image-20260403102639198" style="zoom: 45%;" />
 
-???+ quote "证明"
+> [!quote]+ 证明
+>
+> $$
+> \begin{aligned}
+> &(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to B \\
+> \Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee B \\
+> \Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee B \\
+> \Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B)  \\
+> \end{aligned}
+> $$
+>
+> 原命题为重言式，当且仅当 $A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B$ 为矛盾式．
 
-	$$
-	\begin{aligned}
-	&(A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\to B \\
-	\Leftrightarrow & \neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k})\vee B \\
-	\Leftrightarrow &\neg A_{1}\vee \neg A_{2}\vee \cdots \vee \neg A_{k} \vee B \\
-	\Leftrightarrow &\neg (A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B)  \\
-	\end{aligned}
-	$$
-	
-	原命题为重言式，当且仅当 $A_{1}\wedge A_{2}\wedge \cdots \wedge A_{k}\wedge \neg B$ 为矛盾式．
 
 
-
-!!! warning "注意事项"
-
-	①：记得UI/EI只能作用于前束范式．
-	
-	②：当要证明的蕴含式前后件被一个量词绑定时（即为前束范式时）不能使用附加前提证明法；而前后件被不同量词绑定时可以．
-	
-	> 例6中，我们可以化简为前束范式得到 $F(z)\to G(z)$，但不能直接由前提得到 $F(z)\to G(z)$ ．
-	> 
-	> 同时由于前后件被 $\forall x$ 绑定，不能使用附加前提证明．
-	
-	<img src="Chap1.assets/image-20260403103237795.png" alt="image-20260403103237795" style="zoom:40%;" />
-	
-	> 例7中，$\forall xA(x)$ 与 $\forall xB(x)$ 分开，可以使用附加前提证明．
-	
-	<img src="Chap1.assets/image-20260403103254282.png" alt="image-20260403103254282" style="zoom:40%;" />
+> [!warning] 注意事项
+>
+> ①：记得UI/EI只能作用于前束范式．
+>
+> ②：当要证明的蕴含式前后件被一个量词绑定时（即为前束范式时）不能使用附加前提证明法；而前后件被不同量词绑定时可以．
+>
+> > 例6中，我们可以化简为前束范式得到 $F(z)\to G(z)$，但不能直接由前提得到 $F(z)\to G(z)$ ．
+> > 
+> > 同时由于前后件被 $\forall x$ 绑定，不能使用附加前提证明．
+>
+> <img src="Chap1.assets/image-20260403103237795.png" alt="image-20260403103237795" style="zoom:40%;" />
+>
+> > 例7中，$\forall xA(x)$ 与 $\forall xB(x)$ 分开，可以使用附加前提证明．
+>
+> <img src="Chap1.assets/image-20260403103254282.png" alt="image-20260403103254282" style="zoom:40%;" />
 
 ## Introduction to Proofs
 Unlike the previous section on **Formal Proof**, which demands a machine-checked chain of strict inference rules, this section explores **Informal Proof**, where we care contents as well as forms.
@@ -990,15 +990,15 @@ Assume that we need to prove implication $p\to q$.
 
 **Direct Proof**: Assume the premise $p$ is true, and use rules of inference to prove conclusion $q$​.
 
-???+ example "example"
-
-	<img src="Chap1.assets/image-20260409204728178.png" alt="image-20260409204728178" style="zoom:50%;" />
+> [!example]+ example
+>
+> <img src="Chap1.assets/image-20260409204728178.png" alt="image-20260409204728178" style="zoom:50%;" />
 
 **Indirect proof (Contrapositive)**: Assume the conclusion is false ($¬q$ is true), and prove the premise is false ($¬p$​).
 
-???+ example "example"
-
-	<img src="Chap1.assets/image-20260409204752930.png" alt="image-20260409204752930" style="zoom:50%;" />
+> [!example]+ example
+>
+> <img src="Chap1.assets/image-20260409204752930.png" alt="image-20260409204752930" style="zoom:50%;" />
 
 **Trivial proof**(平凡证明): Prove $q$ by itself; the assertion is trivially true independent of the truth of $p$.
 
@@ -1008,30 +1008,30 @@ Assume that we need to prove implication $p\to q$.
 
 **Proof by cases**(分情况讨论): Break the premise into an equivalent disjunction ($p_{1}∨p_{2}⋯∨p_{n}$​) and establish all implications $(p_{1}→q)∧⋯∧(p_{n}→q)$​.
 
-???+ example "Example"
+> [!example]+ Example
+>
+> <img src="Chap1.assets/image-20260409205823218.png" alt="image-20260409205823218" style="zoom:50%;" />
 
-	<img src="Chap1.assets/image-20260409205823218.png" alt="image-20260409205823218" style="zoom:50%;" />
-
-!!! warning "warning"
-
-	Proof by Cases must prove for all cases. If we don't cover all cases, then the proof is invalid.
+> [!warning] warning
+>
+> Proof by Cases must prove for all cases. If we don't cover all cases, then the proof is invalid.
 
 **Exhaustive Proof**(穷举法): A specific type of proof by cases where you exhaust all possible instances.
 
-???+ example "Example"
+> [!example]+ Example
+>
+> <img src="Chap1.assets/image-20260409205923741.png" alt="image-20260409205923741" style="zoom:50%;" />
 
-	<img src="Chap1.assets/image-20260409205923741.png" alt="image-20260409205923741" style="zoom:50%;" />
-
-!!! question "Differences between Proof by cases and Exhaustive Proof"
-
-	Exhaustive Proof is a specific variation of Proof by cases where you literally verify the theorem by exhausting **all individual instances** rather than dividing them into some cases. When the domain is infinite, we can't use Exhaustive Proof.
+> [!question] Differences between Proof by cases and Exhaustive Proof
+>
+> Exhaustive Proof is a specific variation of Proof by cases where you literally verify the theorem by exhausting **all individual instances** rather than dividing them into some cases. When the domain is infinite, we can't use Exhaustive Proof.
 
 
 **Without loss of generality (WLOG)**(不失一般性): Used when covering one case is sufficient because other cases are similar and can be proven using the exact same logic.
 
-!!! quote "Mathematical Induction"
-
-	Not included in the textbook and the slides, but a good way to prove theorem of natural numbers. See [induction](induction.md).
+> [!quote] Mathematical Induction
+>
+> Not included in the textbook and the slides, but a good way to prove theorem of natural numbers. See [induction](induction.md).
 
 ### Proof Methods for Quantified Statements
 #### Existence Proofs
@@ -1039,64 +1039,64 @@ Assume that we need to prove $\exists xP(x)$.
 
 **Constructive**: Establish $P(c)$ is true for some specific element $c$ in the universe.
 
-???+ example "Example"
-
-	Theorem: For any integer $n>0$, there exists a sequence of $n$ consecutive composite integers.
-	
-	Proof: The same statement in predicate logic is 
-	
-	$$
-	\forall n>0\,\exists x\,\forall i((1\leq i \leq n)\to(x + i \text{ is composite}))
-	$$
-	
-	Construct $x=(n+1)!+1$. Then $x+i=(n+1)!+i+1$. Because $1\leq i \leq n$, then $2 \leq i + 1\leq n+1$, so 
-	
-	$$
-	i + 1 \mid (n+1)!
-	$$
-	
-	and
-	
-	$$
-	\begin{aligned}
-	&i + 1\mid (n+1)! +i+1\\
-	&\text{i.e. }i + 1\mid x+i
-	\end{aligned}
-	$$
-	
-	$x+i$ is a composite integer for $1\leq i \leq n$.
+> [!example]+ Example
+>
+> Theorem: For any integer $n>0$, there exists a sequence of $n$ consecutive composite integers.
+>
+> Proof: The same statement in predicate logic is 
+>
+> $$
+> \forall n>0\,\exists x\,\forall i((1\leq i \leq n)\to(x + i \text{ is composite}))
+> $$
+>
+> Construct $x=(n+1)!+1$. Then $x+i=(n+1)!+i+1$. Because $1\leq i \leq n$, then $2 \leq i + 1\leq n+1$, so 
+>
+> $$
+> i + 1 \mid (n+1)!
+> $$
+>
+> and
+>
+> $$
+> \begin{aligned}
+> &i + 1\mid (n+1)! +i+1\\
+> &\text{i.e. }i + 1\mid x+i
+> \end{aligned}
+> $$
+>
+> $x+i$ is a composite integer for $1\leq i \leq n$.
 
 
 **Nonconstructive**: Assume no $c$ exists which makes $P(c)$ true and derive a contradiction, or show that an element must exist **without explicitly** describing it.
 
-???+ example "Example"
-
-	**Theorem1**: There exist irrational numbers $x$ and $y$ such that $x^y$ is rational.
-	
-	Proof: Let $x=\sqrt{2}$ and $y=\sqrt{2}$. Make the following two cases:
-	
-	+ $a$. $\sqrt{2}^{\sqrt{2}}$ is rational.
-	+ $b$. $\sqrt{2}^{\sqrt{2}}$ is irrational.
-	
-	Because $a\lor b$ is a tautology, exactly one of them must be true.
-	
-	+ If $a$ is true, this immediately yields our claim, since $x$ and $y$ are both irrational and $x^y$ is rational. 
-	+ If $b$ is true, now we have a new irrational number $\sqrt{2}^{\sqrt{2}}$. Let $\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$, Then,
-	
-	$$
-	x^y=(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}=(\sqrt{2})^{(\sqrt{2}\cdot \sqrt{2})}=\sqrt{2}^2=2,
-	$$
-	
-	Now we again started with two irrational numbers $x$ and $y$ and obtained rational $x^y$.
-	
-	**Theorem2**: There are infinitely many prime numbers.
-	
-	Proof: Any finite set of numbers must contain a maximal element, so we can prove the theorem if we can just prime number. I.e., proof that for any prime number, there is a larger number that is also prime.
-	
-	$\forall$ Prime $n$, consider $x=n!+1$.
-	
-	+ If $x$ is a prime integer, since $x>n$, then the theorem is true.
-	+ If $x$ is a composite integer, then it must have a prime factor $p$, i.e. $x\equiv 0\pmod{p}$. But if $p\leq n$, then $x\equiv 1\pmod{p}$ because $x=n!+1$. So $p>n$. And $p$ is a prime number, so the theorem is true. 
+> [!example]+ Example
+>
+> **Theorem1**: There exist irrational numbers $x$ and $y$ such that $x^y$ is rational.
+>
+> Proof: Let $x=\sqrt{2}$ and $y=\sqrt{2}$. Make the following two cases:
+>
+> + $a$. $\sqrt{2}^{\sqrt{2}}$ is rational.
+> + $b$. $\sqrt{2}^{\sqrt{2}}$ is irrational.
+>
+> Because $a\lor b$ is a tautology, exactly one of them must be true.
+>
+> + If $a$ is true, this immediately yields our claim, since $x$ and $y$ are both irrational and $x^y$ is rational. 
+> + If $b$ is true, now we have a new irrational number $\sqrt{2}^{\sqrt{2}}$. Let $\sqrt{2}^{\sqrt{2}}$ and $y=\sqrt{2}$, Then,
+>
+> $$
+> x^y=(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}=(\sqrt{2})^{(\sqrt{2}\cdot \sqrt{2})}=\sqrt{2}^2=2,
+> $$
+>
+> Now we again started with two irrational numbers $x$ and $y$ and obtained rational $x^y$.
+>
+> **Theorem2**: There are infinitely many prime numbers.
+>
+> Proof: Any finite set of numbers must contain a maximal element, so we can prove the theorem if we can just prime number. I.e., proof that for any prime number, there is a larger number that is also prime.
+>
+> $\forall$ Prime $n$, consider $x=n!+1$.
+>
+> + If $x$ is a prime integer, since $x>n$, then the theorem is true.
+> + If $x$ is a composite integer, then it must have a prime factor $p$, i.e. $x\equiv 0\pmod{p}$. But if $p\leq n$, then $x\equiv 1\pmod{p}$ because $x=n!+1$. So $p>n$. And $p$ is a prime number, so the theorem is true. 
 #### Nonexistence Proofs
 Nonexistence Proofs $\neg\exists xP(x)$ is equivalent to proving $\forall x\neg P(x)$. Then is a problem for Universal Proofs.
 

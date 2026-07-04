@@ -10,47 +10,47 @@
 ### 前缀函数
 对于一个长度为 $n$ 的字符串 $s$，其 **前缀函数** 是一个长度为 $n$ 的数组 $\pi$．而 $\pi[i]$ 为：对于 $s$ 的长度为 $i+1$ 的子串，满足 该子串 **真前后缀** 相等的最大长度．
 
-??? example "例"
-
-    想要让真前后缀相等，那么必要条件是真前后缀的长度要相等．对于长度为 $n$ 的字符串，其长度相等的前后缀共有 $n-1$ 对．
-    对于字符串 `abcabcd`：
-    
-    + $\pi[0]$：取长度为 $1$ 的子串，即 `a`．该子串不存在真前缀、真后缀，因此 $\pi[0] = 0$．
-    + $\pi[1]$：取长度为 $2$ 的子串，即 `ab`．该子串有一组长度相等真前后缀：
-        + `a` 与 `b`：不相等；
-        + 最大长度为 $0$，因此 $\pi[1] = 0$．
-    + $\pi[2]$：`abc` 有两组长度相等的真前后缀：
-        + `a` 与 `b`：不相等；
-        + `ab` 与 `bc`：不相等；
-        + 最大长度为 $0$，因此 $\pi[2] = 0$．
-    + $\pi[3]$：`abca` 有三组长度相等的真前后缀：
-        + `a` 与 `a`：相等，长度为 $1$；
-        + `ab` 与 `ca`：不相等；
-        + `abc` 与 `bca`：不相等；
-        + 最大长度为 $1$，因此 $\pi[3] = 1$．
-    + $\pi[4]$：`abcab` 有四组长度相等的真前后缀：
-        + `a` 与 `b`：不相等；
-        + `ab` 与 `ab`：相等，长度为 $2$；
-        + `abc` 与 `cab`：不相等；
-        + `abca` 与 `bcab`：不相等；
-        + 最大长度为 $2$，因此 $\pi[4] = 2$．
-    + $\pi[5]$：`abcabc` 有五组长度相等的真前后缀：
-        + `a` 与 `c`：不相等；
-        + `ab` 与 `bc`：不相等；
-        + `abc` 与 `abc`：相等，长度为 $3$；
-        + `abca` 与 `cabc`：不相等；
-        + `abcab` 与 `bcabc`：不相等；
-        + 最大长度为 $2$，因此 $\pi[5] = 3$．
-    + $\pi[6]$：`abcabcd` 有六组长度相等的真前后缀：
-        + `a` 与 `d`：不相等；
-        + `ab` 与 `cd`：不相等；
-        + `abc` 与 `bcd`：不相等；
-        + `abca` 与 `abcd`：不相等；
-        + `abcab` 与 `cabcd`：不相等；
-        + `abcabc` 与 `bcabcd`：不相等；
-        + 最大长度为 $2$，因此 $\pi[6] = 0$．
-    
-    综上，字符串 `abcabcd` 的前缀函数为 $[0,0,0,1,2,3,0]$．
+> [!example]- 例
+>
+> 想要让真前后缀相等，那么必要条件是真前后缀的长度要相等．对于长度为 $n$ 的字符串，其长度相等的前后缀共有 $n-1$ 对．
+> 对于字符串 `abcabcd`：
+>
+> + $\pi[0]$：取长度为 $1$ 的子串，即 `a`．该子串不存在真前缀、真后缀，因此 $\pi[0] = 0$．
+> + $\pi[1]$：取长度为 $2$ 的子串，即 `ab`．该子串有一组长度相等真前后缀：
+>     + `a` 与 `b`：不相等；
+>     + 最大长度为 $0$，因此 $\pi[1] = 0$．
+> + $\pi[2]$：`abc` 有两组长度相等的真前后缀：
+>     + `a` 与 `b`：不相等；
+>     + `ab` 与 `bc`：不相等；
+>     + 最大长度为 $0$，因此 $\pi[2] = 0$．
+> + $\pi[3]$：`abca` 有三组长度相等的真前后缀：
+>     + `a` 与 `a`：相等，长度为 $1$；
+>     + `ab` 与 `ca`：不相等；
+>     + `abc` 与 `bca`：不相等；
+>     + 最大长度为 $1$，因此 $\pi[3] = 1$．
+> + $\pi[4]$：`abcab` 有四组长度相等的真前后缀：
+>     + `a` 与 `b`：不相等；
+>     + `ab` 与 `ab`：相等，长度为 $2$；
+>     + `abc` 与 `cab`：不相等；
+>     + `abca` 与 `bcab`：不相等；
+>     + 最大长度为 $2$，因此 $\pi[4] = 2$．
+> + $\pi[5]$：`abcabc` 有五组长度相等的真前后缀：
+>     + `a` 与 `c`：不相等；
+>     + `ab` 与 `bc`：不相等；
+>     + `abc` 与 `abc`：相等，长度为 $3$；
+>     + `abca` 与 `cabc`：不相等；
+>     + `abcab` 与 `bcabc`：不相等；
+>     + 最大长度为 $2$，因此 $\pi[5] = 3$．
+> + $\pi[6]$：`abcabcd` 有六组长度相等的真前后缀：
+>     + `a` 与 `d`：不相等；
+>     + `ab` 与 `cd`：不相等；
+>     + `abc` 与 `bcd`：不相等；
+>     + `abca` 与 `abcd`：不相等；
+>     + `abcab` 与 `cabcd`：不相等；
+>     + `abcabc` 与 `bcabcd`：不相等；
+>     + 最大长度为 $2$，因此 $\pi[6] = 0$．
+>
+> 综上，字符串 `abcabcd` 的前缀函数为 $[0,0,0,1,2,3,0]$．
 
 用公式表示：$\pi[i]$ 是在 $s[0\dots i]$ 中寻找的，每次匹配真前后缀的长度为 $k$（其中 $k=1, 2, \dots i$），那么前缀范围就是 $s[0\dots k -1]$，后缀范围就是 $s[i - k + 1,i]$．则有
 
@@ -60,46 +60,46 @@ $$
 
 特别地，当 $k=0$ 时前缀为 $[0,-1] $，后缀为 $[i+ 1,i]$，表示为空串，其匹配长度恒为 $0$．由于此处我们写的是闭区间，而 C++ 中 `substr` 方法为左闭右开，因此我们的 $[0, -1]$ 相当于 C++ 中的 `substr[0, 0]`．
 
-???+ code "代码实现"
+> [!code]+ 代码实现
+>
+> 代码实现如下，时间复杂度为 $O(n^3)$．
+> ```cpp
+> std::vector<int> prefix_function(const std::string &s) {
+>     int n = s.size();
+>     std::vector<int> pi(n);
+>     for (int i = 1; i < n; i++) {
+>         int mx = 0;
+>         // k 最大值为 i，即取 0 ~ i - 1
+>         for (int k = 0; k <= i; k++) {
+>             if (s.substr(0, k) == s.substr(i - k + 1, k)) {
+>                 mx = std::max(mx, k);
+>             }
+>         }
+>         pi[i] = mx;
+>     }
+>     return pi;
+> }
+> ```
 
-    代码实现如下，时间复杂度为 $O(n^3)$．
-    ```cpp
-    std::vector<int> prefix_function(const std::string &s) {
-        int n = s.size();
-        std::vector<int> pi(n);
-        for (int i = 1; i < n; i++) {
-            int mx = 0;
-            // k 最大值为 i，即取 0 ~ i - 1
-            for (int k = 0; k <= i; k++) {
-                if (s.substr(0, k) == s.substr(i - k + 1, k)) {
-                    mx = std::max(mx, k);
-                }
-            }
-            pi[i] = mx;
-        }
-        return pi;
-    }
-    ```
-
-??? tip "简化"
-
-    对于给定的 $i$，如果出现了长度为 $k$ 的匹配真前后缀，那么长度小于 $k$ 的永远不会成为答案，因此我们可以倒着求解剪枝，当得到匹配真前后缀后立即返回．虽然时间复杂度还是 $O(n^3)$，但比原方法快．
-    ```cpp
-    std::vector<int> prefix_function(const std::string &s) {
-        int n = s.size();
-        std::vector<int> pi(n);
-        for (int i = 1; i < n; i++) {
-            // k 最大值为 i，即取 0 ~ i - 1
-            for (int k = i; k >= 0; k--) {
-                if (s.substr(0, k) == s.substr(i - k + 1, k)) {
-                    pi[i] = k;
-                    break;
-                }
-            }
-        }
-        return pi;
-    }
-    ```
+> [!tip]- 简化
+>
+> 对于给定的 $i$，如果出现了长度为 $k$ 的匹配真前后缀，那么长度小于 $k$ 的永远不会成为答案，因此我们可以倒着求解剪枝，当得到匹配真前后缀后立即返回．虽然时间复杂度还是 $O(n^3)$，但比原方法快．
+> ```cpp
+> std::vector<int> prefix_function(const std::string &s) {
+>     int n = s.size();
+>     std::vector<int> pi(n);
+>     for (int i = 1; i < n; i++) {
+>         // k 最大值为 i，即取 0 ~ i - 1
+>         for (int k = i; k >= 0; k--) {
+>             if (s.substr(0, k) == s.substr(i - k + 1, k)) {
+>                 pi[i] = k;
+>                 break;
+>             }
+>         }
+>     }
+>     return pi;
+> }
+> ```
 
 ### 计算前缀函数的高效算法
 #### 第一个优化
@@ -110,32 +110,32 @@ $$
 
 观察上图，当确定 $\pi[i] = 3$ 时，我们有 ${s_0 ~ s_1 ~ s_2}={s_{i-2} ~ s_{i-1} ~ s_{i}}$．若 $s_3=s_{i+1}$，则此时 $\pi[i+1] = 1+\pi[i] = 4$．反之，若 $s_3 \ne s_{i +1}$，必有 $\pi[i+1]<4$．因此我们可以得到： 移动到下一个位置时，前缀函数值至多增加 $1$．
 
-???+ code "代码实现"
-
-	此时的简化算法为：
-	
-	```cpp
-	std::vector<int> prefix_function(const std::string &s) {
-	    int n = s.size();
-	    std::vector<int> pi(n);
-	    for (int i = 1; i < n; i++) {
-	        for (int k = pi[i - 1] + 1; k >= 0; k--) {
-	            if (s.substr(0, k) == s.substr(i - k + 1, k)) {
-	                pi[i] = k;
-	                break;
-	            }
-	        }
-	    }
-	    return pi;
-	}
-	```
-	
-	!!! question "时间复杂度分析"
-	
-	    定义势能函数 $\Phi$：令第 $i$ 次外层循环结束时的势能 $\Phi_i = \pi[i]$，显然 $\Phi_i \ge 0$ 且 $\Phi_0 = 0$．第 $i$ 次循环开始时，$k=\pi[i-1]+1$，相当于势能增加了 $1$ 个单位；而内层循环每执行一次 `k--`，势能减少一个单位，同时触发一次字符串比较．
-
-
-        在整个循环中，$\Phi$ 总增加量为 $n$（每次 $+1$，循环 $n$ 次）；由于势能 $\Phi\ge 0$，其总减少量必然小于等于 $n$；也就是说字符串比较次数为 $O(n)$ 级别．每次比较是 $O(k)$ 复杂度，在最坏情况下 $k$ 会随着 $n$ 一起线性增长，使得整体复杂度变为 $O(n^2)$．
+> [!code]+ 代码实现
+>
+> 此时的简化算法为：
+>
+> ```cpp
+> std::vector<int> prefix_function(const std::string &s) {
+>     int n = s.size();
+>     std::vector<int> pi(n);
+>     for (int i = 1; i < n; i++) {
+>         for (int k = pi[i - 1] + 1; k >= 0; k--) {
+>             if (s.substr(0, k) == s.substr(i - k + 1, k)) {
+>                 pi[i] = k;
+>                 break;
+>             }
+>         }
+>     }
+>     return pi;
+> }
+> ```
+>
+> > [!question] 时间复杂度分析
+> >
+> > 定义势能函数 $\Phi$：令第 $i$ 次外层循环结束时的势能 $\Phi_i = \pi[i]$，显然 $\Phi_i \ge 0$ 且 $\Phi_0 = 0$．第 $i$ 次循环开始时，$k=\pi[i-1]+1$，相当于势能增加了 $1$ 个单位；而内层循环每执行一次 `k--`，势能减少一个单位，同时触发一次字符串比较．
+> >
+> >
+> > 在整个循环中，$\Phi$ 总增加量为 $n$（每次 $+1$，循环 $n$ 次）；由于势能 $\Phi\ge 0$，其总减少量必然小于等于 $n$；也就是说字符串比较次数为 $O(n)$ 级别．每次比较是 $O(k)$ 复杂度，在最坏情况下 $k$ 会随着 $n$ 一起线性增长，使得整体复杂度变为 $O(n^2)$．
 
 #### 第二个优化
 在第一个优化中，我们讨论了 $\pi[i] = 3$ 时 $s_3=s_{i+1}$ 的情况．转化成一般情况就是：$\pi[i]$ 表示长度为 $i+1$ 的子串 $s[0\dots i]$ 的前缀 $s[0\dots \pi[i] - 1]$ 与后缀的 $\pi[i]$ 个字母相等．如果有 $s[i+1] = s[\pi[i]]$，此时就会有 $\pi[i+1] = \pi[i] + 1$．
@@ -156,23 +156,23 @@ $$
 
 接下来转化到代码中，我们要求的是 $\pi[i]$ 而不是 $\pi[i+1]$，很简单，用 $i$ 代替 $i+1$ 即可．初始 $j=\pi[i-1]$（即前一段的最长匹配），若 $s[j]\ne s[i]$，将其变为第二长匹配 $j=\pi[j-1]$ 继续判断直到 $j=0$．退出循环时若 $s[i]=s[j]$，此时 $\pi[i]=j+1$；或者是因为 $j=0$ 而退出循环，并且此时 $s[j]\ne s[i]$，则 $\pi[j]=0$，为默认值不需要操作．
 
-???+ code "代码实现"
-    ```cpp
-    std::vector<int> prefix_function(const std::string &s) {
-        int n = s.size();
-        std::vector<int> pi(n);
-        for (int i = 1; i < n; i++) {
-            int j = pi[i - 1];
-            while (j > 0 && s[j] != s[i]) {
-                j = pi[j - 1];
-            }
-            if (s[i] == s[j]) {
-                pi[i] = j + 1;
-            }
-        }
-        return pi;
-    }
-    ```
+> [!code]+ 代码实现
+> ```cpp
+> std::vector<int> prefix_function(const std::string &s) {
+>     int n = s.size();
+>     std::vector<int> pi(n);
+>     for (int i = 1; i < n; i++) {
+>         int j = pi[i - 1];
+>         while (j > 0 && s[j] != s[i]) {
+>             j = pi[j - 1];
+>         }
+>         if (s[i] == s[j]) {
+>             pi[i] = j + 1;
+>         }
+>     }
+>     return pi;
+> }
+> ```
 
 其时间复杂度可以类比上一段证明，$j$ 的减少次数在 $O(n)$ 级别．而现在每次比较只需要单个字符 $O(1)$ 时间，因此总复杂度为 $O(n)$．
 
@@ -207,44 +207,44 @@ std::vector<int> kmp(const std::string &pattern, const std::string &text) {
 }
 ```
 
-??? success "实战"
-
-    [P3375 【模板】KMP](https://www.luogu.com.cn/problem/P3375)
-    参考代码：
-    ```cpp
-    #include <cstring>
-    #include <iostream>
-    #include <vector>
-    
-    std::vector<int> prefix_function(const std::string &s) {
-        int n = s.size();
-        std::vector<int> pi(n);
-        for (int i = 1; i < n; i++) {
-            int j = pi[i - 1];
-            while (j > 0 && s[j] != s[i]) {
-                j = pi[j - 1];
-            }
-            if (s[i] == s[j]) {
-                pi[i] = j + 1;
-            }
-        }
-        return pi;
-    }
-    
-    int main() {
-        std::string text, pattern;
-        std::cin >> text >> pattern;
-        int n = pattern.size(), m = text.size();
-        std::string join = pattern + "#" + text;
-        std::vector<int> res;
-        std::vector<int> pi = prefix_function(join);
-        for (int i = n + 1; i <= n + m; i++) {
-            if (pi[i] == n) {
-                std::cout << i - 2 * n + 1 << '\n';
-            }
-        }
-        for (int i = 0; i < n; i++) {
-            std::cout << pi[i] << ' ';
-        }
-    }
-    ```
+> [!success]- 实战
+>
+> [P3375 【模板】KMP](https://www.luogu.com.cn/problem/P3375)
+> 参考代码：
+> ```cpp
+> #include <cstring>
+> #include <iostream>
+> #include <vector>
+>
+> std::vector<int> prefix_function(const std::string &s) {
+>     int n = s.size();
+>     std::vector<int> pi(n);
+>     for (int i = 1; i < n; i++) {
+>         int j = pi[i - 1];
+>         while (j > 0 && s[j] != s[i]) {
+>             j = pi[j - 1];
+>         }
+>         if (s[i] == s[j]) {
+>             pi[i] = j + 1;
+>         }
+>     }
+>     return pi;
+> }
+>
+> int main() {
+>     std::string text, pattern;
+>     std::cin >> text >> pattern;
+>     int n = pattern.size(), m = text.size();
+>     std::string join = pattern + "#" + text;
+>     std::vector<int> res;
+>     std::vector<int> pi = prefix_function(join);
+>     for (int i = n + 1; i <= n + m; i++) {
+>         if (pi[i] == n) {
+>             std::cout << i - 2 * n + 1 << '\n';
+>         }
+>     }
+>     for (int i = 0; i < n; i++) {
+>         std::cout << pi[i] << ' ';
+>     }
+> }
+> ```

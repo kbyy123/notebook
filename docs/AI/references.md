@@ -1,8 +1,8 @@
 # References
 
-!!! abstract "概要"
-
-    这里统一收集 AI 笔记的课程、文档、教材和论文来源．
+> [!abstract] 概要
+>
+> 这里统一收集 AI 笔记的课程、文档、教材和论文来源．
 
 ## Courses
 

@@ -4,9 +4,9 @@ hide:
 ---
 
 # 计算机系统
-!!! abstract "概要"
-
-    与计算机系统相关的笔记．
+> [!abstract] 概要
+>
+> 与计算机系统相关的笔记．
 
 ## Table of Contents
 
