@@ -100,9 +100,9 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 操作数可以为立即数、寄存器、内存寻址．
 
-+ 立即数前要加 `$`
++ 立即数前要加 `$`，若不加 `$` 则表示寻址
 
-+ 寻址模式为 $Imm(r_b, r_i,s)$ 表示 $Imm+R[r_b]+R[r_i]\cdot s$，其中 $R[]$ 表示寄存器里的数，$s$ 只能为 1, 2, 4, 8．可以当作是数组来使用，$R[r_b]$ 为基址，$s$ 为数组数据类型大小，$R[r_i]$ 为数组下标．立即数 $Imm$ 可以是一个数组名（也就是地址）．
++ 寻址模式为 $Imm(r_b, r_i,s)$ 表示 $Imm+R[r_b]+R[r_i]\cdot s$，其中 $R[]$ 表示寄存器里的数，$s$ 只能为 1, 2, 4, 8．可以当作是数组来使用，$R[r_b]$ 为基址，$s$ 为数组数据类型大小，$R[r_i]$ 为数组下标．立即数 $Imm$ 可以是一个数组名（也就是地址）
 
 + 一般而言，操作符（如move）的两个操作数不能都是内存寻址；以及一些想得到的不合法操作（如 `moveq %rax, $3` 修改立即数）
 
@@ -124,10 +124,11 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 <div style="text-align: center; margin-top: 15px;">
 <img src="Chap3.assets/image-20260601083656279.png" alt="image-20260601083656279" style="zoom:50%;" />
 </div>
+`mov` 指令与 `leaq` 指令不同之处：前者遇到寻址会进入内存地址，取出对应地址的数并做相应的操作；后者不进入内存，计算出寻址后将得到的地址做相应的操作（实际上是为了指针设计的，让一个变量存另一个的地址）．因此，编译器常用 `leaq` 完成一些乘法操作，如 `leaq (%rdi, %rdi, 2), %rax` 等同于 `%rax = %rdi + 2 * %rdi`．
 
-`move` 指令与 `leaq` 指令不同之处：前者遇到寻址会进入内存地址，取出对应地址的数并做相应的操作；后者不进入内存，计算出寻址后将得到的地址做相应的操作（实际上是为了指针设计的，让一个变量存另一个的地址）．因此，编译器常用 `leaq` 完成一些乘法操作，如 `leaq (%rdi, %rdi, 2), %rax` 等同于 `%rax = %rdi + 2 * %rdi`．
+`movzbl` 是使用零扩展（z，s对应符号扩展）将数据从 b（byte）扩展到 l（long）．由于对低 4 字节操作，因此该命令会把高 4 字节清零．注意没有 `movzlq`，因为 `movl` 会把高 4 字节清零．
 
-移位操作的移位量为立即数，或者放在 `%cl` 中；对于 w 位长的数据，其移位量为 `%cl` 里的数对 w 取模．
+移位操作的第一个操作数只能是立即数或 `%cl`；对于 w 位长的数据，其移位量为 `%cl` 里的数对 w 取模．
 
 ### Control 
 
@@ -136,6 +137,12 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 <div style="text-align: center; margin-top: 15px;">
 <img src="Chap3.assets/image-20260601090658413.png" alt="image-20260601090658413" style="zoom:50%;" />
 </div>
+以 8 位为例：
+
++ CF：无符号进位 / 借位时为 1，如 `0xFFu + 0x01u = 0x00`（进位）或 `0x00u - 0x01u = 0xFF`（借位）
++ ZF：运算结果为 0 时为 1
++ SF：运算结果为负数时为 1
++ OF：有符号运算溢出时为 1，包括加法（正+正=负，负+负=正）和减法（正-负=负，负-正=正）
 
 `cmp` 和 `test` 都是对两个操作数进行运算（前者是减法，后者是按位与），并根据运算结果设置条件码，但不更新其他寄存器．注意 `cmp` 的操作数顺序：如果想用 `jle` 判断 `x <= y`，应该用`cmp y, x`．
 
@@ -154,9 +161,8 @@ int gt(long x, long y)
 }
 ```
 
-`movzbl` 是将 b 用 z（零扩展）到 l，并且高 32 位会自动清零，得到 `%rax` 只有一个 1．
 
-```bash
+```assemble
 comp	%rsi, 	%rdi # x in %rdi, y in %rsi
 setg	%al			 # set when >
 movzbl	%al,	%eax # zero rest of %rax
@@ -344,9 +350,9 @@ long call_proc()
       <thead>
         <tr>
           <th rowspan="2">Decl</th>
-          <th colspan="3"><em>A<sub>n</sub></em></th>
-          <th colspan="3"><em>*A<sub>n</sub></em></th>
-          <th colspan="3"><em>**A<sub>n</sub></em></th>
+          <th colspan="3"><code>A<sub>n</sub></code></th>
+          <th colspan="3"><code>&ast;A<sub>n</sub></code></th>
+          <th colspan="3"><code>&ast;&ast;A<sub>n</sub></code></th>
         </tr>
         <tr>
           <th>Cmp</th>
@@ -374,7 +380,7 @@ long call_proc()
           <td>-</td>
         </tr>
         <tr>
-          <td><code>int *A2[3]</code>指针数组</td>
+          <td><code>int &ast;A2[3]</code>指针数组</td>
           <td>Y</td>
           <td>N</td>
           <td>24</td>
@@ -386,7 +392,7 @@ long call_proc()
           <td>4</td>
         </tr>
         <tr>
-          <td><code>int (*A3)[3]</code>数组指针</td>
+          <td><code>int (&ast;A3)[3]</code>数组指针</td>
           <td>Y</td>
           <td>N</td>
           <td>8</td>
@@ -398,7 +404,7 @@ long call_proc()
           <td>4</td>
         </tr>
         <tr>
-          <td><code>int (*A4[3])</code>指针数组</td>
+          <td><code>int (&ast;A4[3])</code>指针数组</td>
           <td>Y</td>
           <td>N</td>
           <td>24</td>
@@ -496,28 +502,28 @@ char *gets(char *dest)
 
 其中 `dest` 为分配的缓冲区．但这个函数并不能判断是否填满缓冲区，如果读入内容比缓冲区大，就会出现**缓冲区溢出**问题．类似的函数还有 `strcpy`、`strcat`．
 
-???+ example "例"
-
-看下方的程序：
-
-```C
-void echo()
-{
-    char buf[4]; /* Way too small! */
-    gets(buf);
-    puts(buf);
-}
-
-void call_echo() {
-    echo();
-}
-```
-
-编译器会给 `buf` 开 24 字节的空间（尽管我们只写了 4 字节），当输入了 24 个字符时，程序会将空间全部填满，同时最后一个 `'\0'` 会破坏栈其他数据．此处它将 `call_echo` 压入栈的返回地址破坏，导致返回到奇怪的地方，出现问题．  
-
-<div style="text-align: center; margin-top: 15px;">
-<img src="Chap3.assets/image-20260602160303852.png" alt="image-20260602160303852" style="zoom: 50%;" />
-</div>
+> [!example]+ 例
+>
+> 看下方的程序：
+>
+> ```C
+> void echo()
+> {
+>     char buf[4]; /* Way too small! */
+>     gets(buf);
+>     puts(buf);
+> }
+> 
+> void call_echo() {
+>     echo();
+> }
+> ```
+>
+> 编译器会给 `buf` 开 24 字节的空间（尽管我们只写了 4 字节），当输入了 24 个字符时，程序会将空间全部填满，同时最后一个 `'\0'` 会破坏栈其他数据．此处它将 `call_echo` 压入栈的返回地址破坏，导致返回到奇怪的地方，出现问题．  
+>
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="Chap3.assets/image-20260602160303852.png" alt="image-20260602160303852" style="zoom: 50%;" />
+> </div>
 
 ### Avoid Attack
 

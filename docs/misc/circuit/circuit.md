@@ -66,7 +66,9 @@
 ???+ example "例"
 
 	<div style="text-align: center">
+	  <div style="text-align: center; margin-top: 15px;">
 	  <img src="circuit.assets/image-20260325163641589.png" alt="image-20260325163641589" style="zoom:50%;" />
+	  </div>
 	</div>
 	
 	$$
@@ -82,13 +84,17 @@
 **实际电压源**：看作是理想电压源串联电阻 $R_{s}$​．
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325164412007.png" alt="image-20260325164412007" style="zoom: 50%;" />
+  </div>
 </div>
 
 **实际电流源**：看作是理想电流源并联电阻 $R_{s}$．
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325164435006.png" alt="image-20260325164435006" style="zoom:50%;" />
+  </div>
 </div>
 
 ### 等效
@@ -107,8 +113,12 @@
 + 电压源与二端网络并联/电流源与二端网络串联：当作其不存在
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325165100516.png" alt="image-20260325165100516" style="zoom: 50%;" />
+  </div>
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325165110873.png" alt="image-20260325165110873" style="zoom: 50%;" />
+  </div>
 </div>
 
 + 实际电压源与实际电流源的等效替换：电阻串改并，并改串；注意方向不要变，此时电流方向为电压的负 $\to$ 正方向．
@@ -116,7 +126,9 @@
     + 电流 $\to$ 电压：电压大小 $u_{s}=i_{s}R_{s}$．
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325165346506.png" alt="image-20260325165346506" style="zoom:60%;" />
+  </div>
 </div>
 
 受控电源的等效也要乘以或除以 $R_{s}$．
@@ -132,7 +144,9 @@
 以该题为例：
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325170648247.png" alt="image-20260325170648247" style="zoom:67%;" />
+  </div>
 </div>
 
 先对电路进行处理：
@@ -162,7 +176,9 @@ $$
 $$
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325172342865.png" alt="image-20260325172342865" style="zoom:50%;" />
+  </div>
 </div>
 
 对节点 $1$，与其有互电导的为：节点 $2$，节点 $3$（等效为电流源并联 $R_{2}$）．流入的电流源为 $i_{1}$ 与 $\dfrac{U_{s2}}{R_{2}}$，无流出，因此方程为
@@ -216,7 +232,9 @@ $$
 简单的例子：
 
 <div style="text-align: center">
+  <div style="text-align: center; margin-top: 15px;">
   <img src="circuit.assets/image-20260325194230144.png" alt="image-20260325194230144" style="zoom: 50%;" />
+  </div>
 </div>
 
 **线性含源单口网络的化简**：
@@ -270,7 +288,9 @@ $$
 
 ???+ example "例题"
 
+	<div style="text-align: center; margin-top: 15px;">
 	<img src="circuit.assets/image-20260410091248746.png" alt="image-20260410091248746" style="zoom: 80%;" />
+	</div>
 
 ### 零输入响应
 电路无外加激励（无独立电源），仅由动态元件的非零初始状态引起的响应（只考虑电容电感放电）称为**零输入相应（zir）**．
@@ -285,9 +305,13 @@ $\tau$ 的单位是秒，常取 $t=(3\sim 5)\tau$ 作为放电完毕所需时间
 
 ???+ example "例题"
 
+	<div style="text-align: center; margin-top: 15px;">
 	<img src="circuit.assets/image-20260410092131500.png" alt="image-20260410092131500" style="zoom:80%;" />
+	</div>
 	
+	<div style="text-align: center; margin-top: 15px;">
 	<img src="circuit.assets/image-20260410092149845.png" alt="image-20260410092149845" style="zoom:80%;" />
+	</div>
 
 ### 零状态响应
 在零初始状态下，仅由外加激励源产生的响应（电容电感充电过程）称为**零状态响应（zsr）**．
@@ -309,9 +333,13 @@ $$
 
 ???+ example "例题"
 
+	<div style="text-align: center; margin-top: 15px;">
 	<img src="circuit.assets/image-20260410092807780.png" alt="image-20260410092807780" style="zoom: 80%;" />
+	</div>
 	
+	<div style="text-align: center; margin-top: 15px;">
 	<img src="circuit.assets/image-20260410092828714.png" alt="image-20260410092828714" style="zoom:80%;" />
+	</div>
 
 ### 全响应
 全响应 = 零输入响应（忽略电源）+ 零状态响应（忽略初始储能）．
@@ -330,6 +358,8 @@ $$
 $$
 y(t)=y(\infty) + [y(0^+)-y(\infty)]e^{-\frac{1}{\tau}t}
 $$
+
+其中 $y(\infty)$ 称为稳态响应，$[y(0^+)-y(\infty)]e^{-\frac{1}{\tau}t}$ 称为暂态响应．
 
 ## 正弦稳态电路分析
 
@@ -459,7 +489,9 @@ $S=UI$，为电压、电流有效值的乘积．
 
     $S=UI$，$P=UI\cos\phi$，$Q=UI\sin\phi$，$S=\sqrt{P^2+Q^2}$．
     
+    <div style="text-align: center; margin-top: 15px;">
     <img src="circuit.assets/image-20260522104349333.png" alt="image-20260522104349333" style="zoom:33%;" />
+    </div>
 
 #### 最大功率传输
 
@@ -517,5 +549,51 @@ $$
 
 > 同理虽然外部输入电流小，但电感支路和电容支路中的电流可能很大．
 
+## 半导体
 
+### 二极管
 
++ 理想二极管：正向导通视为短路，反向视为断路
++ 恒压降模型：硅管正向导通视为 0.7V 的恒压源，经过后电压降低；反向视为断路
+
+判断二极管状态：假设断开，计算两侧电压判断是否导通；若导通视为 0.7V 恒压源参与后续计算．
+
+### 稳压管
+
+稳压管的参数：稳定电压、最大（小）稳定电流．稳压管工作条件是两端电压大于最大稳定电压，即被反向击穿．
+
+与稳压管相关题目：将稳压管两端电压固定为为稳定电压，再计算通过稳压管的电流，判断其是否处于正常工作状态．
+
+> [!example]+ 例
+> <div style="text-align: center; margin-top: 15px;">
+> <img src="circuit.assets/image_1783079189622.png" style="zoom:50%;">
+> </div>
+
+### 三极管
+
+考试常考 PNP 型三极管，分别为基极 b、集电极 c、发射极 e．基极一般接电阻 $R_{B}$，流经其电流为 $I_{B}$；集电极一般接电阻 $R_{C}$，流经其电流为 $I_{C}=\beta I_{B}$．三极管正常工作时，将 b 到 e 视为恒压降，即 $U_{BE}=0.7V$；且需要 $U_{C}>U_{B}$，即 $U_{CE}>U_{BE}$．
+
+判断三极管处于 截止区 / 放大区 / 饱和区：
+
++ 若 $U_{BE}<0.7V$，截止；
++ 根据共射放大电路公式计算 $U_{CE}$，比较其与 $U_{BE}$ 大小，若大于则为放大区，反之为饱和区．
+
+## 共射放大电路
+放大电路会要求计算：
+
++ 直流通路时的静态工作点，包括 $I_{B},I_{C},U_{CE}$；此时将电容断开，输入 $U_{i}$ 视为短路
++ 交流通路时的交流信号如何放大，包括放大倍数 $A_{u}$，输入电阻 $R_{i}$、输出电阻 $R_{o}$；此时将电容视为短路，$V_{CC}$ 视为接地
+### 直接耦合 & 阻容耦合
+<div style="text-align: center; margin-top: 15px;">
+<img src="circuit.assets/image_1783080071975.png" style="zoom:40%;">
+<img src="circuit.assets/image_1783080816206.png" style="zoom:40%;">
+</div>
+直流通路：
+$$
+\begin{cases}
+I_{B}=\dfrac{V_{CC}- U_{BE}}{R_{B}}\\
+I_{C}=\beta I_{B} \\
+U_{BE}=0.7V \\
+U_{CE}=V_{CC}-I_{C}R_{C}
+\end{cases}
+$$

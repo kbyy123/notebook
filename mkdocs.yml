@@ -107,6 +107,7 @@ plugins:
         - misc/index.md
         - LeetCode/
         - AI/index.md
+  - callouts
   # - enumerate-headings:
   #     increment_across_pages: false
   #     toc_depth: 6
