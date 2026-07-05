@@ -162,7 +162,7 @@ int gt(long x, long y)
 ```
 
 
-```assemble
+```assembly
 comp	%rsi, 	%rdi # x in %rdi, y in %rsi
 setg	%al			 # set when >
 movzbl	%al,	%eax # zero rest of %rax
@@ -548,4 +548,3 @@ gcc 默认开启栈保护，编译时加入 `-fstack-protector` 可以将栈保�
 400768: add 	$0x18,%rsp
 40076c: retq
 ```
-
