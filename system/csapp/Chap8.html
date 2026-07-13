@@ -1,0 +1,2296 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+        <link rel="prev" href="Chap7.html">
+      
+      
+        <link rel="next" href="Chap10.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Chap 8: Exceptional Control Flow - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12.04%202.5%209.53%205h5zM4%207v13h16V7zm8-7%205%205h3a2%202%200%200%201%202%202v13a2%202%200%200%201-2%202H4a2%202%200%200%201-2-2V7a2%202%200%200%201%202-2h3zM7%2018v-4h5v4zm7-1v-7h4v7zm-8-5V9h5v3z%22/%3E%3C/svg%3E');--md-admonition-icon--proof:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22m368.5%2018.3-50.1%2050.1%20125.3%20125.3%2050.1-50.1c21.9-21.9%2021.9-57.3%200-79.2l-46.1-46.1c-21.9-21.9-57.3-21.9-79.2%200m-89.2%2078.9-.5.1-144.1%2043.2c-19.9%206-35.7%2021.2-42.3%2041L3.8%20445.8c-2.9%208.7-1.9%2018.2%202.5%2026l155.4-155.4c-1.1-4-1.6-8.1-1.6-12.4%200-26.5%2021.5-48%2048-48s48%2021.5%2048%2048-21.5%2048-48%2048c-4.3%200-8.5-.6-12.4-1.6L40.3%20505.7c7.8%204.4%2017.2%205.4%2026%202.5l264.3-88.6c19.7-6.6%2035-22.4%2041-42.3l43.2-144.1.1-.5L279.4%2097.2z%22/%3E%3C/svg%3E');--md-admonition-icon--code:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M360.8%201.2c-17-4.9-34.7%205-39.6%2022l-128%20448c-4.9%2017%205%2034.7%2022%2039.6s34.7-5%2039.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6%20136.1c-12.5%2012.5-12.5%2032.8%200%2045.3l73.4%2073.4-73.4%2073.4c-12.5%2012.5-12.5%2032.8%200%2045.3s32.8%2012.5%2045.3%200l96-96c12.5-12.5%2012.5-32.8%200-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3%200zm-274.7%200c-12.5-12.5-32.8-12.5-45.3%200l-96%2096c-12.5%2012.5-12.5%2032.8%200%2045.3l96%2096c12.5%2012.5%2032.8%2012.5%2045.3%200s12.5-32.8%200-45.3L77.3%20256l73.3-73.4c12.5-12.5%2012.5-32.8%200-45.3z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css?v=20260328">
+    
+      <link rel="stylesheet" href="../../css/copyright.css">
+    
+      <link rel="stylesheet" href="../../css/icon.css?v=20260322">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chap-8-exceptional-control-flow" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chap 8: Exceptional Control Flow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../LeetCode/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔥LeetCode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💻计算机系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../AI/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🤖人工智能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../misc/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📦杂项
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../math/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../LeetCode/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻计算机系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻计算机系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 2: Representing and Manipulating Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap2ext.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 2 Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 3: Machine-Level Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 7: Linking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 8: Exceptional Control Flow
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Chap8.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 8: Exceptional Control Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Processes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-program-vs-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Program vs Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-logical-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Logical Control Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Context Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Exceptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-basic-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Basic Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-exception-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Exception Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Interrupts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Traps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Faults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-aborts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Aborts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-process-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Process Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Process Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-process-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Process States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 fork
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-reaping-children" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Reaping Children
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-execve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 execve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Signals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-signal-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Signal Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-common-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Common Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sending-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Sending Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-receiving-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Receiving Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nonlocal-jumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Nonlocal Jumps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap10.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap10: System-Level I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Attacklab.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attack lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../AI/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖人工智能
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../misc/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📦杂项
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-processes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Processes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Processes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-program-vs-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Program vs Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-logical-control-flow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Logical Control Flow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-context-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Context Switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Exceptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Exceptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-basic-mechanism" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Basic Mechanism
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-exception-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Exception Classes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-interrupts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Interrupts
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-traps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Traps
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-faults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Faults
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-aborts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Aborts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-process-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Process Control
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Process Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-process-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Process States
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 fork
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-reaping-children" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Reaping Children
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-execve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 execve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Signals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Signals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-signal-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Signal Model
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-common-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Common Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-sending-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Sending Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-receiving-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Receiving Signals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-nonlocal-jumps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Nonlocal Jumps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏫主页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    💻计算机系统
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    计算机系统导论
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook/blob/main/docs/system/csapp/Chap8.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook/raw/main/docs/system/csapp/Chap8.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"></path></svg>
+    </a>
+  
+
+
+<h1 id="chap-8-exceptional-control-flow">Chap 8: Exceptional Control Flow</h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 3175 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 37 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 17 分钟</p>
+</div>
+<p>CPU 执行的指令地址序列称为 <strong>control flow</strong>．正常控制流主要由两类机制形成：</p>
+<ul>
+<li>顺序执行下一条指令．</li>
+<li>通过 <code>call</code>、<code>ret</code>、<code>jmp</code>、条件跳转等指令改变下一条指令地址．</li>
+</ul>
+<p>但程序并不总是只沿着这些显式指令转移执行．当内部异常、外部中断、进程上下文切换、信号等事件打断原来的执行序列时，就形成了 <strong>Exceptional Control Flow, ECF</strong>．</p>
+<p>ECF 可以分布在不同层次：</p>
+<ul>
+<li><strong>硬件层</strong>：异常和中断．</li>
+<li><strong>操作系统层</strong>：进程调度与上下文切换．</li>
+<li><strong>应用层</strong>：信号、非本地跳转．</li>
+</ul>
+<p>本章的主线是：操作系统如何借助硬件异常机制，在进程之间切换控制流，并向用户进程暴露 <code>fork</code>、<code>execve</code>、<code>waitpid</code>、<code>signal</code> 等接口．</p>
+<h2 id="1-processes">1. Processes</h2>
+<h3 id="11-program-vs-process">1.1 Program vs Process</h3>
+<p><strong>Program</strong> 是代码和数据的静态集合，通常对应一个可执行文件．</p>
+<p><strong>Process</strong> 是程序的一次运行过程，是操作系统对正在执行的程序的抽象．同一个程序可以被加载运行多次，对应多个不同进程．</p>
+<p>进程提供两个重要假象：</p>
+<ul>
+<li><strong>独立的逻辑控制流</strong>：每个进程看起来像独占 CPU．</li>
+<li><strong>私有的虚拟地址空间</strong>：每个进程看起来像独占内存．</li>
+</ul>
+<p>这些假象让程序员可以按顺序程序的方式编写代码，而把真正的 CPU 分时复用、地址空间隔离、资源回收交给操作系统处理．</p>
+<h3 id="12-logical-control-flow">1.2 Logical Control Flow</h3>
+<p>对于给定输入，一个进程执行过的指令地址序列称为它的 <strong>logical control flow</strong>．</p>
+<p>在单处理器系统中，多个进程的逻辑控制流会在时间上交错执行．这种交错称为 <strong>concurrency</strong>（并发）．如果多个控制流在同一时刻真正运行在不同处理器核上，则称为 <strong>parallelism</strong>（并行）．</p>
+<p>逻辑控制流被打断后，只要操作系统保存并恢复好现场，进程仍然可以回到原来的断点继续执行．</p>
+<h3 id="13-context-switch">1.3 Context Switch</h3>
+<p>进程的 <strong>context</strong> 是恢复该进程运行所需的全部状态，主要包括：</p>
+<ul>
+<li><strong>User-level context</strong>：代码、数据、堆、用户栈、共享库等用户地址空间内容．</li>
+<li><strong>System-level context</strong>：进程描述符、页表、内核栈、打开文件表等内核维护的信息．</li>
+<li><strong>Register context</strong>：通用寄存器、程序计数器、栈指针、状态寄存器等硬件现场．</li>
+</ul>
+<p><strong>Context switch</strong> 指操作系统保存当前进程的上下文，恢复另一个进程的上下文，让 CPU 改为运行另一个进程．</p>
+<p>需要区分两件事：</p>
+<ul>
+<li>异常或中断处理时，CPU 进入内核态，执行的是当前进程的一段 <strong>kernel control path</strong>．此时不一定切换到另一个进程．</li>
+<li>上下文切换后，CPU 执行的是另一个用户进程．这才是真正从一个进程切换到另一个进程．</li>
+</ul>
+<h2 id="2-exceptions">2. Exceptions</h2>
+<h3 id="21-basic-mechanism">2.1 Basic Mechanism</h3>
+<p>从处理器视角看，<strong>exception</strong> 是控制流中的突变．当处理器检测到某个事件后，会通过异常表跳转到操作系统内核中的处理程序．</p>
+<p>基本流程：</p>
+<ol>
+<li>CPU 检测到事件，并确定对应的异常号或中断向量号．</li>
+<li>CPU 根据异常表或 IDT 找到对应 handler 的入口地址．</li>
+<li>CPU 保存断点和处理器状态，必要时从用户态切换到内核态并切换到内核栈．</li>
+<li>内核 handler 处理事件．</li>
+<li>handler 根据事件类型选择返回当前指令、返回下一条指令，或者终止当前进程．</li>
+</ol>
+<h3 id="22-exception-classes">2.2 Exception Classes</h3>
+<p>异常类别的核心区别在于：事件是否由当前指令引起，以及 handler 结束后返回到哪里．</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>来源</th>
+<th>同步性</th>
+<th>典型例子</th>
+<th>返回行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>中断 Interrupt</td>
+<td>外部 I/O 设备事件</td>
+<td>异步</td>
+<td>定时器、网络包到达、键盘输入、DMA 完成</td>
+<td>返回下一条指令</td>
+</tr>
+<tr>
+<td>陷阱 Trap</td>
+<td>当前指令有意触发</td>
+<td>同步</td>
+<td>系统调用、断点、单步调试</td>
+<td>返回下一条指令</td>
+</tr>
+<tr>
+<td>故障 Fault</td>
+<td>当前指令导致错误</td>
+<td>同步</td>
+<td>缺页、保护违例、除零、非法指令</td>
+<td>可恢复则返回当前指令重新执行，否则终止进程</td>
+</tr>
+<tr>
+<td>终止 Abort</td>
+<td>严重硬件错误</td>
+<td>同步</td>
+<td>机器检查、内存硬件故障</td>
+<td>不返回，通常终止进程或重启系统</td>
+</tr>
+</tbody>
+</table>
+<p>异步和同步的区别是异常产生的原因来自 CPU 外部还是内部．</p>
+<ul>
+<li><strong>Interrupt</strong> 和当前正在执行的指令无关，处理完后继续执行下一条指令．</li>
+<li><strong>Trap</strong> 是程序主动“陷入”内核，常用于系统调用和调试，处理完后也继续执行下一条指令．</li>
+<li><strong>Fault</strong> 是当前指令执行不下去了，内核若能补救，就回到同一条指令重新执行．</li>
+<li><strong>Abort</strong> 表示系统已经无法可靠恢复，断点通常没有意义．</li>
+</ul>
+<h3 id="23-interrupts">2.3 Interrupts</h3>
+<p>Interrupt 由 CPU 外部事件触发，因此是异步的．典型事件包括定时器中断、键盘输入、网络数据到达、打印机缺纸、DMA 传输完成等．</p>
+<p>每执行完一条指令，CPU 会检查是否存在外部中断请求．如果需要响应中断，CPU 会保存下一条指令地址和当前状态，转入对应的中断服务程序．服务程序完成后，控制流回到原程序的下一条指令．</p>
+<h3 id="24-traps">2.4 Traps</h3>
+<p>Trap 是程序主动执行某条特殊指令触发的异常，也叫自陷．它像普通函数调用一样，为用户程序提供进入内核的受控入口．</p>
+<p>最典型的 trap 是 <strong>system call</strong>．例如用户程序调用 <code>open</code>、<code>read</code>、<code>fork</code>、<code>execve</code> 时，库函数会把系统调用号和参数放到约定寄存器中，然后执行 <code>syscall</code>、<code>sysenter</code> 或旧式 <code>int $0x80</code> 指令，陷入内核执行系统调用服务例程．</p>
+<p>Trap 的返回点是 trap 指令的下一条指令．</p>
+<p>调试器中的断点和单步也依赖 trap：</p>
+<ul>
+<li>断点通常通过插入特殊 trap 指令实现．</li>
+<li>单步跟踪可以让每条指令执行后都触发调试异常．</li>
+</ul>
+<h3 id="25-faults">2.5 Faults</h3>
+<p>Fault 是当前指令执行过程中产生的异常．它的断点是发生 fault 的那条指令．</p>
+<p>Fault 的关键是是否可恢复：</p>
+<ul>
+<li><strong>可恢复 fault</strong>：内核补救后，返回发生 fault 的指令重新执行．典型例子是缺页．</li>
+<li><strong>不可恢复 fault</strong>：内核无法补救，通常向进程发送信号并终止进程．典型例子是访问越权、非法指令、除零等．</li>
+</ul>
+<p>Page fault 是最重要的 fault 例子．如果访问的虚拟页合法但当前不在主存，内核可以把页面从磁盘调入内存，然后让引起缺页的指令重新执行．如果地址非法或权限不匹配，内核通常向进程发送 <code>SIGSEGV</code>，默认行为是终止进程并显示 <code>Segmentation fault</code>．</p>
+<p>需要注意：C 语言数组越界本身不一定立刻触发 fault．如果越界地址仍然落在进程可访问页面内，硬件不会知道这是数组越界，只会按普通内存访问执行．</p>
+<h3 id="26-aborts">2.6 Aborts</h3>
+<p>Abort 表示严重且通常不可恢复的错误，例如机器检查、内存硬件错误等．这类事件发生后，handler 不会把控制流交还给应用程序，系统通常会终止当前进程，严重时需要重启操作系统．</p>
+<p>Abort 的特点是：它不一定能精确对应到某条可恢复指令，因此“返回到哪里”通常没有意义．</p>
+<h2 id="3-process-control">3. Process Control</h2>
+<h3 id="31-process-states">3.1 Process States</h3>
+<p>从程序员视角看，进程通常处于三种状态之一：</p>
+<ul>
+<li><strong>Running</strong>：正在 CPU 上运行，或等待被调度运行．</li>
+<li><strong>Stopped</strong>：执行被挂起，不会被调度，直到收到 <code>SIGCONT</code> 等信号．</li>
+<li><strong>Terminated</strong>：进程已经终止，但可能还没被父进程回收．</li>
+</ul>
+<p>进程终止的常见原因：</p>
+<ul>
+<li>从 <code>main</code> 返回．</li>
+<li>调用 <code>exit</code>．</li>
+<li>收到默认行为为终止进程的信号．</li>
+</ul>
+<h3 id="32-fork">3.2 fork</h3>
+<p>见 <a href="Chap10.html#32-fork">fork</a></p>
+<h3 id="33-reaping-children">3.3 Reaping Children</h3>
+<p>子进程终止后不会立刻从系统中完全消失．内核会保留它的退出状态，直到父进程回收它．</p>
+<ul>
+<li><strong>Zombie process</strong>：已经终止但尚未被父进程回收的子进程．</li>
+<li><strong>Orphan process</strong>：父进程先终止，子进程被 <code>init</code> 或系统服务进程接管．</li>
+</ul>
+<p>父进程使用 <code>waitpid</code> 回收子进程：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/wait.h&gt;</span>
+
+<span class="kt">pid_t</span><span class="w"> </span><span class="nf">waitpid</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">wstatus</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">options</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>常见用法：</p>
+<ul>
+<li><code>waitpid(-1, &amp;status, 0)</code>：等待任意一个子进程终止．</li>
+<li><code>waitpid(pid, &amp;status, 0)</code>：等待指定 PID 的子进程终止．</li>
+<li><code>WNOHANG</code>：没有子进程结束时立即返回，不阻塞．</li>
+</ul>
+<p>常用状态宏：</p>
+<ul>
+<li><code>WIFEXITED(status)</code>：子进程是否正常终止．</li>
+<li><code>WEXITSTATUS(status)</code>：正常终止时的退出状态．</li>
+<li><code>WIFSIGNALED(status)</code>：子进程是否因为未捕获信号而终止．</li>
+<li><code>WTERMSIG(status)</code>：导致子进程终止的信号编号．</li>
+<li><code>WIFSTOPPED(status)</code>：子进程是否被信号挂起．</li>
+<li><code>WSTOPSIG(status)</code>：导致子进程挂起的信号编号．</li>
+</ul>
+<h3 id="34-execve">3.4 execve</h3>
+<p><code>execve</code> 在当前进程上下文中加载并运行一个新程序．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">execve</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">filename</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">argv</span><span class="p">[],</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">envp</span><span class="p">[]);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>如果 <code>execve</code> 成功，它不会返回到调用点，而是直接开始执行新程序的 <code>main</code>．如果失败，返回 <code>-1</code> 并设置 <code>errno</code>．</p>
+<p>Shell 执行命令时通常是：</p>
+<ol>
+<li>解析命令行，构造 <code>argv</code> 和 <code>envp</code>．</li>
+<li>调用 <code>fork</code> 创建子进程．</li>
+<li>子进程调用 <code>execve</code> 加载目标程序．</li>
+<li>父进程用 <code>waitpid</code> 回收前台子进程．</li>
+</ol>
+<h2 id="4-signals">4. Signals</h2>
+<h3 id="41-signal-model">4.1 Signal Model</h3>
+<p>Signal 是一种更高层的 ECF 机制，用于通知进程某类事件已经发生．</p>
+<p>信号可能来自：</p>
+<ul>
+<li>内核检测到的异常，例如除零产生 <code>SIGFPE</code>，非法地址访问产生 <code>SIGSEGV</code>．</li>
+<li>外部事件，例如按下 <code>Ctrl-C</code> 产生 <code>SIGINT</code>，定时器到期产生 <code>SIGALRM</code>．</li>
+<li>其他进程调用 <code>kill</code> 请求内核发送信号．</li>
+</ul>
+<p>信号模型中有几个基本概念：</p>
+<ul>
+<li><strong>Sending</strong>：内核向目标进程发送信号．</li>
+<li><strong>Pending signal</strong>：信号已经发送但尚未被接收．</li>
+<li><strong>Blocked signal</strong>：进程暂时屏蔽某类信号，使其保持 pending．</li>
+<li><strong>Receiving</strong>：进程对某个未阻塞 pending signal 采取动作．</li>
+</ul>
+<p>对于传统 Unix 信号，同一种信号在一个进程中通常最多只保留一个 pending 实例．后续同类信号可能被合并，不会排队保存每一次发生．</p>
+<h3 id="42-common-signals">4.2 Common Signals</h3>
+<table>
+<thead>
+<tr>
+<th>信号</th>
+<th>典型原因</th>
+<th>默认行为</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SIGINT</code></td>
+<td>键盘 <code>Ctrl-C</code></td>
+<td>终止进程</td>
+</tr>
+<tr>
+<td><code>SIGTSTP</code></td>
+<td>键盘 <code>Ctrl-Z</code></td>
+<td>挂起进程</td>
+</tr>
+<tr>
+<td><code>SIGCONT</code></td>
+<td>恢复被挂起进程</td>
+<td>继续运行</td>
+</tr>
+<tr>
+<td><code>SIGKILL</code></td>
+<td>强制终止</td>
+<td>终止进程，不能捕获或忽略</td>
+</tr>
+<tr>
+<td><code>SIGSTOP</code></td>
+<td>强制挂起</td>
+<td>挂起进程，不能捕获或忽略</td>
+</tr>
+<tr>
+<td><code>SIGCHLD</code></td>
+<td>子进程终止或停止</td>
+<td>默认忽略</td>
+</tr>
+<tr>
+<td><code>SIGSEGV</code></td>
+<td>非法内存访问</td>
+<td>终止进程</td>
+</tr>
+<tr>
+<td><code>SIGFPE</code></td>
+<td>算术异常，如整数除零</td>
+<td>终止进程</td>
+</tr>
+<tr>
+<td><code>SIGALRM</code></td>
+<td><code>alarm</code> 定时器到期</td>
+<td>终止进程</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-sending-signals">4.3 Sending Signals</h3>
+<p><code>kill</code> 可以请求内核向进程或进程组发送信号：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">kill</span><span class="p">(</span><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">sig</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>pid &gt; 0</code>：发送给指定 PID 的进程．</li>
+<li><code>pid == 0</code>：发送给调用进程所在进程组中的所有进程．</li>
+<li><code>pid &lt; 0</code>：发送给进程组 ID 为 <code>|pid|</code> 的所有进程．</li>
+</ul>
+<p><code>alarm</code> 会在指定秒数后向调用进程发送 <code>SIGALRM</code>：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">alarm</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">seconds</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Shell 中也可以用 <code>/bin/kill</code> 发送信号，例如 <code>kill -9 pid</code> 发送 <code>SIGKILL</code>．</p>
+<h3 id="44-receiving-signals">4.4 Receiving Signals</h3>
+<p>内核通常在从内核态返回用户态前，检查当前进程是否有未阻塞的 pending signal．如果存在，内核会让进程接收其中一个信号，并执行相应动作：</p>
+<ul>
+<li>忽略该信号．</li>
+<li>终止进程．</li>
+<li>挂起进程．</li>
+<li>调用用户注册的 signal handler．</li>
+</ul>
+<p><code>signal</code> 可以为某个信号注册 handler：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;signal.h&gt;</span>
+
+<span class="k">typedef</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="kt">sighandler_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">);</span>
+<span class="kt">sighandler_t</span><span class="w"> </span><span class="nf">signal</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">signum</span><span class="p">,</span><span class="w"> </span><span class="kt">sighandler_t</span><span class="w"> </span><span class="n">handler</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>handler</code> 可以是：</p>
+<ul>
+<li><code>SIG_IGN</code>：忽略该信号．</li>
+<li><code>SIG_DFL</code>：恢复默认行为．</li>
+<li>自定义函数地址：捕获信号并执行该 handler．</li>
+</ul>
+<p><code>SIGKILL</code> 和 <code>SIGSTOP</code> 不能被捕获，也不能被忽略．</p>
+<div class="admonition warning">
+<p class="admonition-title">Signal Handler</p>
+<p>Signal handler 会异步打断主程序控制流，因此应尽量短小，并避免调用不可重入或非 async-signal-safe 的函数．复杂逻辑通常应该通过设置全局标志位，让主控制流之后再处理．</p>
+</div>
+<h2 id="5-nonlocal-jumps">5. Nonlocal Jumps</h2>
+<p>普通函数调用遵循 call-return 结构，而 <strong>nonlocal jump</strong> 可以直接从一个函数跳到另一个正在执行的函数位置，不按正常返回链逐层返回．</p>
+<p>C 语言提供 <code>setjmp</code> 和 <code>longjmp</code>：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;setjmp.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">setjmp</span><span class="p">(</span><span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">longjmp</span><span class="p">(</span><span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retval</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>setjmp</code> 保存当前调用环境，并第一次返回 <code>0</code>．之后如果调用 <code>longjmp(env, retval)</code>，控制流会回到对应的 <code>setjmp</code> 位置，此时 <code>setjmp</code> 返回非零值 <code>retval</code>．如果 <code>retval</code> 为 <code>0</code>，实际返回值会被改成 <code>1</code>．</p>
+<p>基本结构：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">jmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">setjmp</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* normal path */</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* path reached by longjmp */</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>在信号处理中，应该使用可以保存信号屏蔽状态的版本：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;setjmp.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">sigsetjmp</span><span class="p">(</span><span class="n">sigjmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">savesigs</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">siglongjmp</span><span class="p">(</span><span class="n">sigjmp_buf</span><span class="w"> </span><span class="n">env</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retval</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>一个常见用法是：主程序用 <code>sigsetjmp</code> 建立恢复点，信号处理程序在捕获 <code>SIGFPE</code>、<code>SIGSEGV</code> 等信号后调用 <code>siglongjmp</code>，让控制流跳出出错位置，回到主程序的恢复分支．</p>
+<p>但 nonlocal jump 会跳过中间函数的正常返回过程，因此也会跳过这些函数本该执行的清理逻辑．使用时需要非常克制．</p>
+<h2 id="6-summary">6. Summary</h2>
+<p>本章的核心可以压缩成一条链：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>exception event
+    -&gt; exception table / IDT
+    -&gt; kernel handler
+    -&gt; return to current instruction / return to next instruction / terminate
+</code></pre></div></td></tr></tbody></table></div>
+<p>最重要的分类是：</p>
+<ul>
+<li><strong>Interrupt</strong>：外部异步事件，返回下一条指令．</li>
+<li><strong>Trap</strong>：主动陷入内核，返回下一条指令．</li>
+<li><strong>Fault</strong>：当前指令出错，可恢复则重试当前指令，不可恢复则终止进程．</li>
+<li><strong>Abort</strong>：严重不可恢复错误，不返回．</li>
+</ul>
+<p>进程、信号和非本地跳转都是建立在这套异常控制流思想上的更高层抽象．</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月13日 16:09:34 CST">2026年7月13日 16:09:34</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月13日 16:09:34 CST">2026年7月13日 16:09:34</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
+        
+          
+          <a href="Chap7.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Chap 7: Linking">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Chap 7: Linking
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="Chap10.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Chap10: System-Level I/O">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Chap10: System-Level I/O
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="md-copyright__highlight">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+      <span>本站内容遵循 CC BY-SA 4.0 协议</span>
+    </a>
+  </div>
+  © 2026 kbyy123
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+        <script src="../../js/mermaid.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,0 +1,2573 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+        <link rel="prev" href="Chap8.html">
+      
+      
+        <link rel="next" href="Attacklab.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Chap10: System-Level I/O - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12.04%202.5%209.53%205h5zM4%207v13h16V7zm8-7%205%205h3a2%202%200%200%201%202%202v13a2%202%200%200%201-2%202H4a2%202%200%200%201-2-2V7a2%202%200%200%201%202-2h3zM7%2018v-4h5v4zm7-1v-7h4v7zm-8-5V9h5v3z%22/%3E%3C/svg%3E');--md-admonition-icon--proof:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22m368.5%2018.3-50.1%2050.1%20125.3%20125.3%2050.1-50.1c21.9-21.9%2021.9-57.3%200-79.2l-46.1-46.1c-21.9-21.9-57.3-21.9-79.2%200m-89.2%2078.9-.5.1-144.1%2043.2c-19.9%206-35.7%2021.2-42.3%2041L3.8%20445.8c-2.9%208.7-1.9%2018.2%202.5%2026l155.4-155.4c-1.1-4-1.6-8.1-1.6-12.4%200-26.5%2021.5-48%2048-48s48%2021.5%2048%2048-21.5%2048-48%2048c-4.3%200-8.5-.6-12.4-1.6L40.3%20505.7c7.8%204.4%2017.2%205.4%2026%202.5l264.3-88.6c19.7-6.6%2035-22.4%2041-42.3l43.2-144.1.1-.5L279.4%2097.2z%22/%3E%3C/svg%3E');--md-admonition-icon--code:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M360.8%201.2c-17-4.9-34.7%205-39.6%2022l-128%20448c-4.9%2017%205%2034.7%2022%2039.6s34.7-5%2039.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6%20136.1c-12.5%2012.5-12.5%2032.8%200%2045.3l73.4%2073.4-73.4%2073.4c-12.5%2012.5-12.5%2032.8%200%2045.3s32.8%2012.5%2045.3%200l96-96c12.5-12.5%2012.5-32.8%200-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3%200zm-274.7%200c-12.5-12.5-32.8-12.5-45.3%200l-96%2096c-12.5%2012.5-12.5%2032.8%200%2045.3l96%2096c12.5%2012.5%2032.8%2012.5%2045.3%200s12.5-32.8%200-45.3L77.3%20256l73.3-73.4c12.5-12.5%2012.5-32.8%200-45.3z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css?v=20260328">
+    
+      <link rel="stylesheet" href="../../css/copyright.css">
+    
+      <link rel="stylesheet" href="../../css/icon.css?v=20260322">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chap10-system-level-io" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chap10: System-Level I/O
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../LeetCode/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔥LeetCode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💻计算机系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../AI/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🤖人工智能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../misc/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📦杂项
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../math/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../LeetCode/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻计算机系统
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    💻计算机系统
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="index.html" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机系统导论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机系统导论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap2.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 2: Representing and Manipulating Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap2ext.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 2 Extension
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap3.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 3: Machine-Level Programming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap7.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 7: Linking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Chap8.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap 8: Exceptional Control Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap10: System-Level I/O
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="Chap10.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chap10: System-Level I/O
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-unix-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Unix I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Unix I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-file-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 File Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 File Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-directories-and-pathnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Directories and Pathnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-file-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 File Descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-basic-unix-io-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Basic Unix I/O Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Basic Unix I/O Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-lseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 lseek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-short-counts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Short Counts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-kernel-representation-of-open-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Kernel Representation of Open Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Kernel Representation of Open Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-file-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 File Sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dup-dup2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 dup &amp; dup2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 fork
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-standard-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Standard I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Standard I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-stream-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Stream Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-standard-io-vs-unix-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Standard I/O vs Unix I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-device-level-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Device-Level I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Device-Level I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-programmed-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Programmed I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-interrupt-driven-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Interrupt Driven I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Direct Memory Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-three-types-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Three Types Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Attacklab.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attack lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../AI/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖人工智能
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../misc/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📦杂项
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#1-unix-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Unix I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Unix I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-file-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 File Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 File Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-directories-and-pathnames" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Directories and Pathnames
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-file-descriptors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 File Descriptors
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-basic-unix-io-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Basic Unix I/O Operations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Basic Unix I/O Operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-close" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 close
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-read" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 read
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-write" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 write
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-lseek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 lseek
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-short-counts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Short Counts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-kernel-representation-of-open-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Kernel Representation of Open Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Kernel Representation of Open Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-file-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 File Sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-dup-dup2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 dup &amp; dup2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 fork
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-standard-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Standard I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Standard I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-stream-abstraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Stream Abstraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Buffering
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-standard-io-vs-unix-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Standard I/O vs Unix I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-device-level-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Device-Level I/O
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Device-Level I/O">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-programmed-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Programmed I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-interrupt-driven-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Interrupt Driven I/O
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-direct-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Direct Memory Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-three-types-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Three Types Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏">
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../index.html" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    🏫主页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    💻计算机系统
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="index.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    计算机系统导论
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook/blob/main/docs/system/csapp/Chap10.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook/raw/main/docs/system/csapp/Chap10.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"></path></svg>
+    </a>
+  
+
+
+<h1 id="chap10-system-level-io">Chap10: System-Level I/O</h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 3319 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 100 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 2 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 19 分钟</p>
+</div>
+<p>系统级 I/O 的主线可以分成三层：</p>
+<ul>
+<li><strong>Unix I/O</strong>：操作系统导出的低级接口，以文件描述符为中心，如 <code>open</code>、<code>read</code>、<code>write</code>、<code>close</code>、<code>lseek</code> 等．</li>
+<li><strong>Standard I/O</strong>：C 标准库提供的高级接口，以 <code>FILE *</code> stream 为中心，如 <code>fopen</code>、<code>fread</code>、<code>fprintf</code>、<code>fclose</code> 等，底层仍然通过 Unix I/O 实现．</li>
+<li><strong>设备级 I/O</strong>：CPU、内存和 I/O 设备之间真正传输数据的方式，主要包括 Programmed I/O、Interrupt driven I/O 和 DMA．</li>
+</ul>
+<h2 id="1-unix-io">1. Unix I/O</h2>
+<h3 id="11-file-abstraction">1.1 File Abstraction</h3>
+<p>Unix 的核心抽象是：<strong>所有 I/O 设备都被表示为文件，所有文件都可以看作字节序列</strong>．</p>
+<p>对于一个长度为 <span class="arithmatex">\(m\)</span> 字节的文件，可以表示为</p>
+<div class="arithmatex">\[
+B_0,B_1,\cdots,B_k,\cdots,B_{m-1}
+\]</div>
+<p>内核会为打开的文件维护一个 <strong>current file position</strong>，表示下一次 <code>read</code> 或 <code>write</code> 开始的位置．如果当前位置为 <span class="arithmatex">\(k\)</span>，那么下一次顺序读写会从 <span class="arithmatex">\(B_k\)</span> 开始，完成后文件位置随之更新．</p>
+<h3 id="12-file-types">1.2 File Types</h3>
+<p>每个文件都有一个类型，表示它在系统中的作用：</p>
+<ul>
+<li><strong>Regular file</strong>：普通文件，包含任意数据．</li>
+<li><strong>Directory</strong>：目录，保存一组文件名到文件的映射．</li>
+<li><strong>Socket</strong>：套接字，用于和另一台机器或本机其他进程通信．</li>
+</ul>
+<p>普通文件本身只是字节序列，内核并不知道文本文件和二进制文件的区别．所谓文本文件，是应用层约定的一种普通文件，其内容由 ASCII 或 Unicode 字符组成，文本行通常以换行符 <code>\n</code> 结尾．</p>
+<div class="admonition warning">
+<p class="admonition-title">文本与二进制文件</p>
+<p>处理二进制文件时，不应该使用 <code>fgets</code>、<code>scanf</code> 这类文本导向函数，也不应该使用 <code>strlen</code>、<code>strcpy</code>、<code>strcat</code> 这类字符串函数．因为二进制数据中的字节 <code>0</code> 会被字符串函数解释成字符串结束符．</p>
+</div>
+<h3 id="13-directories-and-pathnames">1.3 Directories and Pathnames</h3>
+<p>目录可以看作一个 link 数组，每个 link 将一个文件名映射到一个文件．每个目录至少包含两个特殊项：</p>
+<ul>
+<li><code>.</code>：指向目录自身．</li>
+<li><code>..</code>：指向父目录．</li>
+</ul>
+<p>所有文件组织成一棵以 <code>/</code> 为根的层次结构．内核会为每个进程维护一个 <strong>current working directory</strong>，相对路径就是从当前工作目录出发解释的路径．</p>
+<ul>
+<li><strong>Absolute pathname</strong>：以 <code>/</code> 开头，从根目录开始定位，例如 <code>/home/bryant/hello.c</code>．</li>
+<li><strong>Relative pathname</strong>：从当前工作目录开始定位，例如 <code>../droh/hello.c</code>．</li>
+</ul>
+<h3 id="14-file-descriptors">1.4 File Descriptors</h3>
+<p><code>open</code> 成功后会返回一个非负整数，称为 <strong>file descriptor</strong>，后续 Unix I/O 调用都通过这个整数标识打开的文件．</p>
+<p>每个由 shell 启动的进程默认已经打开了三个文件：</p>
+<ul>
+<li><code>0</code>：standard input，标准输入，对应宏 <code>STDIN_FILENO</code>．</li>
+<li><code>1</code>：standard output，标准输出，对应宏 <code>STDOUT_FILENO</code>．</li>
+<li><code>2</code>：standard error，标准错误，对应宏 <code>STDERR_FILENO</code>．</li>
+</ul>
+<p>文件描述符只在当前进程的描述符表中有意义，本质上是一个小整数索引．</p>
+<h2 id="2-basic-unix-io-operations">2. Basic Unix I/O Operations</h2>
+<h3 id="21-open">2.1 open</h3>
+<p><code>open</code> 告诉内核：当前进程准备访问某个文件．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sys/stat.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;fcntl.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">"/etc/hosts"</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fd</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"open"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>常见 flags：</p>
+<ul>
+<li><code>O_RDONLY</code>：只读</li>
+<li><code>O_WRONLY</code>：只写</li>
+<li><code>O_RDWR</code>：读写</li>
+<li><code>O_CREAT</code>：如果文件不存在则创建，通常需要第三个参数 <code>mode</code> 指定权限</li>
+<li><code>O_TRUNC</code>：打开时将已有内容截断为 0</li>
+<li><code>O_APPEND</code>：每次写入都追加到文件末尾</li>
+</ul>
+<p><code>open</code> 返回值小于 0 表示错误，成功时返回当前进程可用的最小文件描述符．</p>
+<h3 id="22-close">2.2 close</h3>
+<p><code>close</code> 告诉内核：当前进程不再访问这个打开文件．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">(</span><span class="n">fd</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"close"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>即使 <code>close</code> 看起来很简单，也应该检查返回值．在多线程程序中关闭一个已经关闭的描述符尤其危险，因为同一个整数编号可能已经被别的线程重新分配给另一个打开文件．</p>
+<h3 id="23-read">2.3 read</h3>
+<p><code>read</code> 从当前文件位置开始，将最多 <code>n</code> 个字节复制到内存缓冲区，并更新文件位置．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="n">nbytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nbytes</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"read"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>read</code> 的返回值含义：</p>
+<ul>
+<li><code>nbytes &gt; 0</code>：实际读到的字节数．</li>
+<li><code>nbytes == 0</code>：遇到 EOF．</li>
+<li><code>nbytes &lt; 0</code>：发生错误．</li>
+</ul>
+<p>注意返回类型是 <code>ssize_t</code>，它是有符号整数，因为需要用负数表示错误．</p>
+<h3 id="24-write">2.4 write</h3>
+<p><code>write</code> 从内存缓冲区复制最多 <code>n</code> 个字节到当前文件位置，并更新文件位置．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">char</span><span class="w"> </span><span class="n">buf</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+<span class="kt">ssize_t</span><span class="w"> </span><span class="n">nbytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">write</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="n">buf</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">buf</span><span class="p">));</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nbytes</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"write"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>write</code> 的返回值是实际写入的字节数．返回负数表示错误，返回小于请求字节数的非负值则属于 short count，不一定是错误．</p>
+<h3 id="25-lseek">2.5 lseek</h3>
+<p><code>lseek</code> 用于显式修改当前文件位置．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;unistd.h&gt;</span>
+
+<span class="kt">off_t</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lseek</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">SEEK_SET</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">perror</span><span class="p">(</span><span class="s">"lseek"</span><span class="p">);</span>
+<span class="w">    </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>常见基准：</p>
+<ul>
+<li><code>SEEK_SET</code>：从文件开头计算偏移．</li>
+<li><code>SEEK_CUR</code>：从当前位置计算偏移．</li>
+<li><code>SEEK_END</code>：从文件末尾计算偏移．</li>
+</ul>
+<p>套接字、管道、终端这类文件通常不支持随机定位．</p>
+<h3 id="26-short-counts">2.6 Short Counts</h3>
+<p><strong>Short count</strong> 指 <code>read</code> 或 <code>write</code> 返回的字节数小于请求的字节数．它不是错误，而是 Unix I/O 编程必须显式处理的正常情况．</p>
+<p>可能出现 short count 的场景：</p>
+<ul>
+<li><code>read</code> 遇到 EOF</li>
+<li>从终端读取文本行</li>
+<li>读写网络套接字</li>
+<li>被信号打断或底层设备暂时只能完成一部分传输</li>
+</ul>
+<h2 id="3-metadata">3. Metadata</h2>
+<p><strong>Metadata</strong> 是关于文件数据的数据，例如文件类型、大小、inode、链接数、拥有者、时间戳等．内核为每个文件维护 metadata，用户程序可以通过 <code>stat</code> 和 <code>fstat</code> 获取．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cm">/* Metadata returned by the stat and fstat functions */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">stat</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">dev_t</span><span class="w">         </span><span class="n">st_dev</span><span class="p">;</span><span class="w">      </span><span class="cm">/* Device */</span>
+<span class="w">    </span><span class="kt">ino_t</span><span class="w">         </span><span class="n">st_ino</span><span class="p">;</span><span class="w">      </span><span class="cm">/* inode */</span>
+<span class="w">    </span><span class="kt">mode_t</span><span class="w">        </span><span class="n">st_mode</span><span class="p">;</span><span class="w">     </span><span class="cm">/* Protection and file type */</span>
+<span class="w">    </span><span class="n">nlink_t</span><span class="w">       </span><span class="n">st_nlink</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Number of hard links */</span>
+<span class="w">    </span><span class="kt">uid_t</span><span class="w">         </span><span class="n">st_uid</span><span class="p">;</span><span class="w">      </span><span class="cm">/* User ID of owner */</span>
+<span class="w">    </span><span class="kt">gid_t</span><span class="w">         </span><span class="n">st_gid</span><span class="p">;</span><span class="w">      </span><span class="cm">/* Group ID of owner */</span>
+<span class="w">    </span><span class="kt">dev_t</span><span class="w">         </span><span class="n">st_rdev</span><span class="p">;</span><span class="w">     </span><span class="cm">/* Device type (if inode device) */</span>
+<span class="w">    </span><span class="kt">off_t</span><span class="w">         </span><span class="n">st_size</span><span class="p">;</span><span class="w">     </span><span class="cm">/* Total size, in bytes */</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">st_blksize</span><span class="p">;</span><span class="w">  </span><span class="cm">/* Blocksize for filesystem I/O */</span>
+<span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">st_blocks</span><span class="p">;</span><span class="w">   </span><span class="cm">/* Number of blocks allocated */</span>
+<span class="w">    </span><span class="kt">time_t</span><span class="w">        </span><span class="n">st_atime</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Time of last access */</span>
+<span class="w">    </span><span class="kt">time_t</span><span class="w">        </span><span class="n">st_mtime</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Time of last modification */</span>
+<span class="w">    </span><span class="kt">time_t</span><span class="w">        </span><span class="n">st_ctime</span><span class="p">;</span><span class="w">    </span><span class="cm">/* Time of last change */</span>
+<span class="p">};</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>stat</code> 根据路径名查询文件，<code>fstat</code> 根据已经打开的文件描述符查询文件．</p>
+<h2 id="4-kernel-representation-of-open-files">4. Kernel Representation of Open Files</h2>
+<p>Linux 内核打开文件主要使用三张表：</p>
+<ul>
+<li><strong>Descriptor table</strong>：每个进程一张，文件描述符是这张表的索引．表项指向 open file table 中的某一项．</li>
+<li><strong>Open file table</strong>：所有进程共享，表项表示一次打开文件的实例，保存当前文件位置、引用计数、打开状态等．</li>
+<li><strong>v-node table</strong>：所有进程共享，表项表示文件本身，保存文件类型、大小、权限等 metadata．</li>
+</ul>
+<p>current file position 维护在 open file table entry 中，而不是维护在 descriptor table entry 中．</p>
+<ul>
+<li><code>fork</code> 后，子进程继承父进程打开文件描述符的副本，但这些副本仍然指向原来的 open file table entry，因此父子进程共享文件位置．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="Chap10.assets/image_1783231512364.png" data-desc-position="bottom"><img src="Chap10.assets/image_1783231512364.png" style="zoom:50%;"></a>
+</div>
+
+<h3 id="41-file-sharing">4.1 File Sharing</h3>
+<p>同一个进程两次 <code>open</code> 同一个文件，会得到两个不同的 open file table entry，它们的文件位置相互独立．</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<p>假设同一个文件内容为 <code>abcde</code>，连续执行三次 <code>open</code>：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fd1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">fd2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">fd3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>此时 <code>fd1</code>、<code>fd2</code>、<code>fd3</code> 分别指向三个不同的 open file table entry．即使它们最终对应同一个磁盘文件，三个 current file position 也是独立的．</p>
+<p>执行：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">Read</span><span class="p">(</span><span class="n">fd1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>三个读到的内容均为 <code>'a'</code>．</p>
+</details>
+<h3 id="42-dup-dup2">4.2 dup &amp; dup2</h3>
+<p><code>dup</code> 会复制一个已有文件描述符，并返回当前进程中最小的未使用描述符．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">newfd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dup</span><span class="p">(</span><span class="n">oldfd</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>dup2(oldfd, newfd)</code> 会把 <code>newfd</code> 变成 <code>oldfd</code> 的副本．如果 <code>newfd</code> 已经打开，内核会先关闭它，再让它指向 <code>oldfd</code> 对应的 open file table entry．</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">dup2</span><span class="p">(</span><span class="n">oldfd</span><span class="p">,</span><span class="w"> </span><span class="n">newfd</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>dup2</code> 复制文件描述符时，两个描述符会指向同一个 open file table entry，因此共享同一个文件位置．</p>
+<details class="example" open="open">
+<summary>Example</summary>
+<p>考虑同上代码，但是在之前加一句 <code>dup2(fd2, fd3)</code>：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">dup2</span><span class="p">(</span><span class="n">fd2</span><span class="p">,</span><span class="w"> </span><span class="n">fd3</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd2</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>dup2(fd2, fd3)</code> 会让 <code>fd3</code> 指向 <code>fd2</code> 指向的同一个 open file table entry，所以：</p>
+<ul>
+<li><code>fd1</code> 独立读取第一个字节，<code>c1 = 'a'</code>． </li>
+<li><code>fd2</code> 从自己的共享文件位置读取第一个字节，<code>c2 = 'a'</code>，共享位置前进到 1．</li>
+<li><code>fd3</code> 和 <code>fd2</code> 共享位置，因此继续读取第二个字节，<code>c3 = 'b'</code>．</li>
+</ul>
+</details>
+<details class="info">
+<summary>实现 I/O 重定向</summary>
+<p>dup2 是 shell 实现 I/O redirection 的基础．例如：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>linux&gt;<span class="w"> </span>ls<span class="w"> </span>&gt;<span class="w"> </span>foo.txt
+</code></pre></div></td></tr></tbody></table></div>
+<ol>
+<li><code>STDOUT_FILENO</code> 对应的文件描述符打开终端；再打开 <code>foo.txt</code>，假设得到文件描述符 <code>4</code>．</li>
+<li>子进程执行 <code>dup2(4, STDOUT_FILENO)</code>，让描述符 <code>1</code> 指向 <code>foo.txt</code>．</li>
+<li>子进程执行 <code>execve</code> 启动 <code>ls</code>．</li>
+</ol>
+<p><code>execve</code> 默认不会关闭已经打开的文件描述符，所以 <code>ls</code> 中对标准输出的写入会落到 <code>foo.txt</code> 中．</p>
+</details>
+<h3 id="43-fork">4.3 fork</h3>
+<p><code>fork</code> 调用一次，返回两次：</p>
+<ul>
+<li>在子进程中返回 <code>0</code>．</li>
+<li>在父进程中返回子进程 PID．</li>
+</ul>
+<p>子进程几乎复制了父进程的执行状态：</p>
+<ul>
+<li>子进程拥有父进程虚拟地址空间的一份独立副本</li>
+<li>子进程拥有父进程打开文件描述符表的一份副本</li>
+<li>子进程 PID 与父进程不同</li>
+</ul>
+<p>文件描述符表被复制，但表项指向的 open file table entry 没有复制，只是引用计数加 1，父子进程会共享打开文件的当前文件位置．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="Chap10.assets/image_1783233215110.png" data-desc-position="bottom"><img src="Chap10.assets/image_1783233215110.png" style="zoom:50%;"></a>
+</div>
+
+<p>考虑下面程序，文件内容为 <code>abcde</code>：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">fd1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="n">Read</span><span class="p">(</span><span class="n">fd1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fork</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Read</span><span class="p">(</span><span class="n">fd1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Parent: c1 = %c, c2 = %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Read</span><span class="p">(</span><span class="n">fd1</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Child: c1 = %c, c2 = %c</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>第一次 <code>Read</code> 在 <code>fork</code> 之前执行，所以父子进程的 <code>c1</code> 都是 <code>'a'</code>．<code>fork</code> 之后父子进程共享同一个 open file table entry，返回值非 0 则为父进程，反之则为子进程．</p>
+<p>文件位置已经是 1．接下来谁先执行 <code>Read</code>，谁读到 <code>'b'</code>，另一个读到 <code>'c'</code>．</p>
+<p>输出顺序无法预测，因为父子进程是并发执行的；输出会是二者其一：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Parent: c1 = a, c2 = b
+Child: c1 = a, c2 = c
+</code></pre></div></td></tr></tbody></table></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Child: c1 = a, c2 = b
+Parent: c1 = a, c2 = c
+</code></pre></div></td></tr></tbody></table></div>
+<h2 id="5-standard-io">5. Standard I/O</h2>
+<h3 id="51-stream-abstraction">5.1 Stream Abstraction</h3>
+<p>C 标准库中的 Standard I/O 是比 Unix I/O 更高一层的接口．它把打开文件抽象成 <strong>stream</strong>，对应类型是 <code>FILE *</code>．</p>
+<p>一个 stream 通常包含：</p>
+<ul>
+<li>底层文件描述符．</li>
+<li>用户态缓冲区．</li>
+<li>缓冲区当前位置、错误标志、EOF 标志等状态．</li>
+</ul>
+<p>C 程序启动时默认已经打开三个 stream：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stdin</span><span class="p">;</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stdout</span><span class="p">;</span>
+<span class="k">extern</span><span class="w"> </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">stderr</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>常见 Standard I/O 函数：</p>
+<ul>
+<li><code>fopen</code>、<code>fclose</code>：打开和关闭 stream．</li>
+<li><code>fread</code>、<code>fwrite</code>：读写二进制数据．</li>
+<li><code>fgets</code>、<code>fputs</code>：读写文本行．</li>
+<li><code>fscanf</code>、<code>fprintf</code>：格式化输入输出．</li>
+<li><code>fflush</code>：刷新输出缓冲区．</li>
+<li><code>fseek</code>：移动 stream 的文件位置．</li>
+</ul>
+<h3 id="52-buffering">5.2 Buffering</h3>
+<p>Standard I/O 的核心优势是缓冲．很多程序会一个字符一个字符地处理输入输出，如果每次都调用 <code>read</code> 或 <code>write</code>，就会频繁陷入内核，开销很大．</p>
+<p>缓冲读的思想是：</p>
+<ol>
+<li>底层通过一次 <code>read</code> 从内核读取一大块数据到用户态缓冲区．</li>
+<li><code>getc</code>、<code>fgets</code> 等函数从用户态缓冲区中逐字节或逐行取数据．</li>
+<li>缓冲区用完后再通过下一次 <code>read</code> 补充．</li>
+</ol>
+<p>缓冲写的思想类似：</p>
+<ol>
+<li><code>printf</code>、<code>putc</code> 等函数先把数据放入用户态缓冲区．</li>
+<li>满足刷新条件时，再通过一次 <code>write</code> 写入底层文件描述符．</li>
+</ol>
+<p>常见刷新条件：</p>
+<ul>
+<li>输出缓冲区满．</li>
+<li>调用 <code>fflush</code>．</li>
+<li>调用 <code>fclose</code> 或正常 <code>exit</code>．</li>
+<li><code>main</code> 返回．</li>
+<li>连接到终端的行缓冲 stream 遇到换行符．</li>
+</ul>
+<p>例如多次调用：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">printf</span><span class="p">(</span><span class="s">"h"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"e"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"l"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"l"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"o"</span><span class="p">);</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>底层可能只产生一次：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>write(1, "hello\n", 6)
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="53-standard-io-vs-unix-io">5.3 Standard I/O vs Unix I/O</h3>
+<p>Standard I/O 底层仍然用 Unix I/O 实现：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>fopen, fread, fwrite, fprintf, fflush, fclose
+                 |
+                 v
+open, read, write, lseek, stat, close
+</code></pre></div></td></tr></tbody></table></div>
+<p>两者的主要区别如下：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Unix I/O</th>
+<th>Standard I/O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抽象对象</td>
+<td><code>int fd</code></td>
+<td><code>FILE *stream</code></td>
+</tr>
+<tr>
+<td>所在层次</td>
+<td>操作系统系统调用接口</td>
+<td>C 标准库接口</td>
+</tr>
+<tr>
+<td>缓冲</td>
+<td>通常需要程序员自己处理</td>
+<td>库自动维护用户态缓冲区</td>
+</tr>
+<tr>
+<td>short count</td>
+<td>需要程序员显式处理</td>
+<td>很多情况下由库函数自动处理</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>支持 <code>stat</code>、<code>fstat</code></td>
+<td>不直接提供 metadata 接口</td>
+</tr>
+<tr>
+<td>信号处理</td>
+<td>async-signal-safe，可用于信号处理函数</td>
+<td>不是 async-signal-safe</td>
+</tr>
+<tr>
+<td>网络套接字</td>
+<td>适合使用</td>
+<td>不推荐直接使用</td>
+</tr>
+</tbody>
+</table>
+<details class="info" open="open">
+<summary>选择原则</summary>
+<p>一般原则是：尽量使用能满足需求的最高层 I/O 接口．</p>
+<ul>
+<li>处理磁盘文件或终端文件时，优先使用 Standard I/O，因为缓冲和文本处理更方便．</li>
+<li>在信号处理函数中使用 Unix I/O，因为 Standard I/O 不是异步信号安全的．</li>
+<li>需要访问 metadata 时使用 Unix I/O 的 <code>stat</code>、<code>fstat</code>．</li>
+<li>处理网络套接字时通常使用 Unix I/O 或专门的 robust I/O 包，不直接依赖 Standard I/O stream．</li>
+</ul>
+</details>
+<p>Standard I/O 的优点：</p>
+<ul>
+<li>缓冲机制减少 <code>read</code> 和 <code>write</code> 系统调用次数，提高效率．</li>
+<li>文本行、格式化输入输出等操作更方便．</li>
+<li>很多 short count 情况可以由库函数自动处理．</li>
+</ul>
+<p>Standard I/O 的缺点：</p>
+<ul>
+<li>不提供访问文件 metadata 的函数．</li>
+<li>不是 async-signal-safe，不适合在信号处理函数中使用．</li>
+<li>stream 的缓冲规则和套接字的半双工限制容易发生复杂交互，因此不推荐用于网络套接字．</li>
+</ul>
+<p>Unix I/O 的优点：</p>
+<ul>
+<li>最通用、开销最低，其他 I/O 包通常都构建在它之上．</li>
+<li>可以访问文件 metadata．</li>
+<li>async-signal-safe，可以安全用于信号处理函数．</li>
+<li>适合网络套接字、管道等非普通文件．</li>
+</ul>
+<p>Unix I/O 的缺点：</p>
+<ul>
+<li>short count 需要手动处理，容易出错．</li>
+<li>高效读取文本行需要自己实现缓冲．</li>
+<li>格式化输入输出不如 Standard I/O 方便．</li>
+</ul>
+<h2 id="6-device-level-io">6. Device-Level I/O</h2>
+<p>从硬件角度看，在 CPU、设备和内存之间搬运数据时，常见方式有三种．</p>
+<h3 id="61-programmed-io">6.1 Programmed I/O</h3>
+<p>Programmed I/O 也叫 Polling I/O，核心思想是 CPU 主动轮询设备状态寄存器，直到设备 ready，再读写数据寄存器．CPU 并不是停下来，而是在反复读取和判断状态寄存器．</p>
+<p>Programmed I/O 的特点：</p>
+<ul>
+<li>实现简单，外设控制逻辑少．</li>
+<li>适合低速设备或很短的数据传输．</li>
+<li>CPU 与外设串行工作，CPU 需要持续关注设备状态．</li>
+<li>查询开销很大，设备慢时 CPU 大量时间浪费在忙等待上．</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">忙等待</p>
+<p>Polling 期间 CPU 用 100% 的执行时间为 I/O 服务，即使它只是反复检查设备是否 ready．这也是 Programmed I/O 的主要效率问题．</p>
+</div>
+<h3 id="62-interrupt-driven-io">6.2 Interrupt Driven I/O</h3>
+<p>Interrupt driven I/O 的核心思想是：CPU 启动 I/O 后不再持续轮询，而是去执行其他进程；设备完成当前工作后通过中断通知 CPU．</p>
+<p>Interrupt driven I/O 的特点：</p>
+<ul>
+<li>CPU 不需要一直忙等，设备工作期间可以运行其他进程．</li>
+<li>每完成一个字符或一个小块数据就可能触发一次中断，中断频繁时开销很大．</li>
+<li>CPU 仍然参与每次数据搬运或每个阶段的启动工作．</li>
+</ul>
+<h3 id="63-direct-memory-access">6.3 Direct Memory Access</h3>
+<p>Direct Memory Access，简称 DMA，核心思想是：由 DMA 控制器直接在高速外设和主存之间搬运数据，CPU 不参与每个字节或每个字的数据传输．</p>
+<p>DMA 的基本流程：</p>
+<ol>
+<li>CPU 将源地址、目的地址、传输长度、方向等参数写入 DMA 控制器．</li>
+<li>CPU 向 DMA 控制器发送 <code>START</code> 命令．</li>
+<li>DMA 控制器申请总线使用权，在设备和主存之间连续或分批传输数据．</li>
+<li>传输完成后，DMA 控制器发出 DMA 结束中断．</li>
+<li>CPU 进入中断服务程序，完成确认、校验、解除阻塞等收尾工作．</li>
+</ol>
+<p>DMA 的特点：</p>
+<ul>
+<li>适合磁盘、网卡等高速设备，以及成批数据交换．</li>
+<li>CPU 只在初始化 DMA 和处理 DMA 结束中断时介入，I/O 开销很小．</li>
+<li>DMA 控制器需要占用总线，因此可能和 CPU 访存产生竞争．</li>
+<li>需要考虑 cache consistency，否则 DMA 改写主存后 CPU cache 可能仍然保存旧数据．</li>
+<li>对很小的数据传输，初始化 DMA 的固定开销可能不划算．</li>
+</ul>
+<h3 id="64-three-types-comparison">6.4 Three Types Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>数据搬运者</th>
+<th>CPU 是否忙等</th>
+<th>通知方式</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Programmed I/O</td>
+<td>CPU</td>
+<td>是</td>
+<td>CPU 轮询状态寄存器</td>
+<td>低速设备、小数据量</td>
+</tr>
+<tr>
+<td>Interrupt driven I/O</td>
+<td>CPU 和设备驱动</td>
+<td>否</td>
+<td>设备完成后中断 CPU</td>
+<td>中低速设备、分散事件</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>DMA 控制器</td>
+<td>否</td>
+<td>DMA 完成后中断 CPU</td>
+<td>高速设备、成批数据</td>
+</tr>
+</tbody>
+</table>
+<p>从效率角度看，Programmed I/O 最简单但 CPU 占用最高；Interrupt driven I/O 避免了长时间忙等，但频繁中断仍然有开销；DMA 将大批量数据搬运交给专门硬件，是高速 I/O 的主要方式．</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月13日 16:09:34 CST">2026年7月13日 16:09:34</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月5日 13:25:13 CST">2026年7月5日 13:25:13</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚">
+        
+          
+          <a href="Chap8.html" class="md-footer__link md-footer__link--prev" aria-label="上一页: Chap 8: Exceptional Control Flow">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                Chap 8: Exceptional Control Flow
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="Attacklab.html" class="md-footer__link md-footer__link--next" aria-label="下一页: Attack lab">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                Attack lab
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="md-copyright__highlight">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+      <span>本站内容遵循 CC BY-SA 4.0 协议</span>
+    </a>
+  </div>
+  © 2026 kbyy123
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+        <script src="../../js/mermaid.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

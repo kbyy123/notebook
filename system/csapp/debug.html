@@ -1,0 +1,2918 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="空白阴影">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Design and Debugging - 空白阴影的笔记本</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--example:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12.04%202.5%209.53%205h5zM4%207v13h16V7zm8-7%205%205h3a2%202%200%200%201%202%202v13a2%202%200%200%201-2%202H4a2%202%200%200%201-2-2V7a2%202%200%200%201%202-2h3zM7%2018v-4h5v4zm7-1v-7h4v7zm-8-5V9h5v3z%22/%3E%3C/svg%3E');--md-admonition-icon--proof:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22m368.5%2018.3-50.1%2050.1%20125.3%20125.3%2050.1-50.1c21.9-21.9%2021.9-57.3%200-79.2l-46.1-46.1c-21.9-21.9-57.3-21.9-79.2%200m-89.2%2078.9-.5.1-144.1%2043.2c-19.9%206-35.7%2021.2-42.3%2041L3.8%20445.8c-2.9%208.7-1.9%2018.2%202.5%2026l155.4-155.4c-1.1-4-1.6-8.1-1.6-12.4%200-26.5%2021.5-48%2048-48s48%2021.5%2048%2048-21.5%2048-48%2048c-4.3%200-8.5-.6-12.4-1.6L40.3%20505.7c7.8%204.4%2017.2%205.4%2026%202.5l264.3-88.6c19.7-6.6%2035-22.4%2041-42.3l43.2-144.1.1-.5L279.4%2097.2z%22/%3E%3C/svg%3E');--md-admonition-icon--code:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20576%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M360.8%201.2c-17-4.9-34.7%205-39.6%2022l-128%20448c-4.9%2017%205%2034.7%2022%2039.6s34.7-5%2039.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6%20136.1c-12.5%2012.5-12.5%2032.8%200%2045.3l73.4%2073.4-73.4%2073.4c-12.5%2012.5-12.5%2032.8%200%2045.3s32.8%2012.5%2045.3%200l96-96c12.5-12.5%2012.5-32.8%200-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3%200zm-274.7%200c-12.5-12.5-32.8-12.5-45.3%200l-96%2096c-12.5%2012.5-12.5%2032.8%200%2045.3l96%2096c12.5%2012.5%2032.8%2012.5%2045.3%200s12.5-32.8%200-45.3L77.3%20256l73.3-73.4c12.5-12.5%2012.5-32.8%200-45.3z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeline.css">
+    
+      <link rel="stylesheet" href="../../css/custom.css?v=20260602">
+    
+      <link rel="stylesheet" href="../../css/timestamp.css">
+    
+      <link rel="stylesheet" href="../../css/home.css">
+    
+      <link rel="stylesheet" href="../../css/font.css?v=20260328">
+    
+      <link rel="stylesheet" href="../../css/copyright.css">
+    
+      <link rel="stylesheet" href="../../css/icon.css?v=20260322">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#design-and-debugging" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-header__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            空白阴影的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Design and Debugging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../index.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏫主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📊数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../LeetCode/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🔥LeetCode
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  💻计算机系统
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../AI/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  🤖人工智能
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../misc/index.html" class="md-tabs__link">
+          
+  
+  
+    
+  
+  📦杂项
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="空白阴影的笔记本" class="md-nav__button md-logo" aria-label="空白阴影的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    空白阴影的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/kbyy123/notebook" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    kbyy123/notebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏫主页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../math/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📊数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../LeetCode/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🔥LeetCode
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    💻计算机系统
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../AI/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🤖人工智能
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../misc/index.html" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    📦杂项
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Debugging
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Debugging">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defecterror-failure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defect、Error 和 Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        显式调试：先把问题说清楚
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        科学调试流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bug-fibonacci" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例子：有 bug 的 Fibonacci
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="例子：有 bug 的 Fibonacci">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：构造假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：做出预测
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：实验和观察
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        编译器警告：最便宜的第一道防线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        为什么不同优化级别输出不同
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valgrind" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valgrind
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valgrind-gdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Valgrind 和 GDB 组合使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        观察程序状态时要小心
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        诊断、修复和学习
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quick-and-dirty" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick and Dirty 调试时间盒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-smells" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        常见 Code Smells
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Design">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计的目标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        管理复杂性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cache-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例子：cache access 如何拆成可测试组件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing 和 Contract 都是设计活动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trust-the-compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trust the Compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        代码是在和谁沟通
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        命名就是理解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="命名就是理解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        不要故意使用无意义名称
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        单字母名要谨慎
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        控制名字长度和词数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用领域术语
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        精确使用反义词
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注释：不要解释代码在做什么，要解释为什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注释：不要解释代码在做什么，要解释为什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        魔数注释
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-by-commenting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Code by commenting
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commit Message
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件可靠性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件可靠性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可靠性的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#faulterrorfailure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        硬件和软件中的 Fault、Error、Failure
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障来源
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="故障模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        逻辑级故障模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数据结构级故障
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件故障和软件差错
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        系统级故障模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependability 可信属性
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        可靠度计算
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="可靠度计算">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#14000-mtbf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例题 1：4000 个元件的 MTBF
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#299" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例题 2：99% 可靠度能运行多久
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        高可信应用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fault-avoidance-fault-tolerance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fault Avoidance 和 Fault Tolerance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件复杂性和路径爆炸
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件复杂性和路径爆炸">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件和硬件有什么不同
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        例子：软件路径问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        经典事故和案例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="经典事故和案例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dijkstra 的提醒
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ariane-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例一：Ariane 5 火箭
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#therac-25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例二：Therac-25 辐射治疗仪
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例三：错误释放栈上数组
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例四：调试消息框遗留到上线系统
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例五：广州商业银行 ATM 取款
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例六：Debug 版日志导致多线程异常
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例七：挪威网银账号截断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例八：ATM 异地取现导致负余额
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        案例九：证券行权“提交成功”不等于“交易成功”
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件测试
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="软件测试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        软件测试的定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七条测试原则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试层次
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试和开发的关系：V 模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黑盒测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        白盒测试
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        黑盒和白盒的比较
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        测试工具
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/kbyy123/notebook/blob/main/docs/system/csapp/debug.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/kbyy123/notebook/raw/main/docs/system/csapp/debug.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"></path></svg>
+    </a>
+  
+
+
+<h1 id="design-and-debugging">Design and Debugging</h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 10759 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M360.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6m64.6 136.1c-12.5 12.5-12.5 32.8 0 45.3l73.4 73.4-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3l-96-96c-12.5-12.5-32.8-12.5-45.3 0zm-274.7 0c-12.5-12.5-32.8-12.5-45.3 0l-96 96c-12.5 12.5-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l73.3-73.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg></span> 95 行代码 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 19 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 56 分钟</p>
+</div>
+<p>这份课件的主线不是“会用几个调试命令”这么简单，而是训练一种工程思维：程序一定会有缺陷，人脑一定会被复杂性压垮，所以我们要用系统化调试、可测试设计、清晰沟通和可靠性测试来降低风险．</p>
+<p>从零基础角度看，本章可以分成四层：</p>
+<ul>
+<li><strong>Debugging</strong>：程序出错后，怎样一步一步定位缺陷．</li>
+<li><strong>Design</strong>：写代码时，怎样提前降低调试难度．</li>
+<li><strong>Reliability</strong>：怎样理解故障、错误、失效和可靠度．</li>
+<li><strong>Testing</strong>：怎样用测试尽早暴露问题，而不是等上线后出事故．</li>
+</ul>
+<h2 id="debugging">Debugging</h2>
+<h3 id="defecterror-failure">Defect、Error 和 Failure</h3>
+<p>调试之前，先区分三个词：</p>
+<table>
+<thead>
+<tr>
+<th>英文</th>
+<th>常见译法</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Defect / Fault</td>
+<td>缺陷 / 故障</td>
+<td>程序员写进代码或设计里的错误原因</td>
+<td>忘记初始化变量，把 64 位浮点数强转成 16 位整数</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>错误状态</td>
+<td>缺陷被触发后，程序内部数据或控制流变错</td>
+<td>某个变量变成垃圾值，程序跳到了不该跳的分支</td>
+</tr>
+<tr>
+<td>Failure</td>
+<td>失效</td>
+<td>错误状态继续传播，最终在系统边界表现为不符合规格的行为</td>
+<td>输出错误结果，系统崩溃，交易金额扣错</td>
+</tr>
+</tbody>
+</table>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-004-defects.png" data-desc-position="bottom"><img src="debug.assets/slide-004-defects.png" style="zoom:55%;"></a>
+</div>
+
+<p>这三个概念之间的关系是：<strong>缺陷不一定触发错误，错误不一定造成失效，但失效一定说明某处已经有错误状态暴露出来</strong>．</p>
+<details class="info" open="open">
+<summary>为什么错误不一定变成失效</summary>
+<p>比如内存中某一位翻转，如果 ECC 内存及时检测并纠正，系统对外仍然给出正确结果，这时内部出现过错误状态，但没有变成用户可见的失效．</p>
+</details>
+<p>课件还强调一点：<strong>不是所有缺陷都会马上表现出来</strong>．有些缺陷是 latent defect，也就是潜伏缺陷．它可能藏在很少执行的分支里，也可能只在某个特殊输入、特殊时序、特殊平台上被触发．</p>
+<h3 id="_1">显式调试：先把问题说清楚</h3>
+<p>很多调试失败不是因为工具不够强，而是因为一开始没有说清楚“到底哪里错了”．</p>
+<p>显式调试的第一步是把问题写下来或说出来：</p>
+<ul>
+<li>我运行了什么程序．</li>
+<li>输入是什么．</li>
+<li>我期望得到什么．</li>
+<li>实际得到了什么．</li>
+<li>为什么实际结果违反了规格．</li>
+</ul>
+<p>这就是常说的 rubber duck debugging，也就是把问题讲给一个“不会打断你”的对象听．真正有用的不是对象，而是你被迫把模糊感觉整理成清晰描述．</p>
+<details class="tip" open="open">
+<summary>调试时最重要的问题</summary>
+<p>不要一上来问“代码哪里错了”，先问“根据规格，它本来应该怎样”．如果不知道正确行为，就无法判断输出是不是 failure．</p>
+</details>
+<h3 id="_2">科学调试流程</h3>
+<p>课件推荐的调试方法类似科学实验：</p>
+<ol>
+<li><strong>构造假设</strong>：提出一个可能的缺陷，并解释它为什么能导致当前失效．</li>
+<li><strong>做出预测</strong>：如果这个假设成立，在某个新条件下程序应该出现什么现象．</li>
+<li><strong>设计实验</strong>：只改变一个条件，运行程序或观察状态．</li>
+<li><strong>记录观察</strong>：只记录事实，不急着解释．</li>
+<li><strong>形成诊断</strong>：如果多个实验支持假设，就把假设升级成 diagnosis．</li>
+<li><strong>修复并确认</strong>：修改代码后，确认原失效消失，而且没有引入新失效．</li>
+<li><strong>总结学习</strong>：把这次条件加入测试集，反思自己常犯的缺陷类型．</li>
+</ol>
+<p>这里最容易犯的错是“同时改很多东西”．如果你一次改了三处，程序好了，你无法知道是哪一处真正修复了失效．</p>
+<details class="warning" open="open">
+<summary>不要越过第一个 bug</summary>
+<p>如果当前已经发现一个确定的缺陷，先修它并验证．不要一边修一边继续猜别的 bug，否则实验条件会混在一起，后面所有观察都变得不可靠．</p>
+</details>
+<h3 id="bug-fibonacci">例子：有 bug 的 Fibonacci</h3>
+<p>课件中的核心调试例子是 Fibonacci 函数．先看有缺陷的版本：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>主程序从大到小打印 <code>fib(9)</code> 到 <code>fib(1)</code>，可能得到：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>fib(9)=55
+fib(8)=34
+...
+fib(2)=2
+fib(1)=134513905
+</code></pre></div></td></tr></tbody></table></div>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-011-fib-bug.png" data-desc-position="bottom"><img src="debug.assets/slide-011-fib-bug.png" style="zoom:55%;"></a>
+</div>
+
+<p>为什么我们知道 <code>fib(1)=134513905</code> 是 failure？因为规格定义第一个 Fibonacci 数是 <code>1</code>，程序输出违反了规格．</p>
+<h4 id="_3">第一步：构造假设</h4>
+<p>读代码后可以提出三个候选假设：</p>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>假设</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main</code> 从 <code>9</code> 调到 <code>1</code></td>
+<td>结果依赖调用顺序，可能是上一次调用留下的状态影响下一次</td>
+</tr>
+<tr>
+<td><code>while (n &gt; 1)</code></td>
+<td>循环条件可能错了，<code>n=1</code> 时没有进入循环</td>
+</tr>
+<tr>
+<td><code>int f;</code></td>
+<td><code>f</code> 没有初始化，<code>n=1</code> 时直接返回了垃圾值</td>
+</tr>
+</tbody>
+</table>
+<p>对零基础读者来说，最关键的是理解第三点：在 C 语言里，函数内部的普通局部变量如果没有初始化，它的值是未定义的．<code>int f;</code> 只是告诉编译器“栈上有一个 int 位置叫 f”，但没有说这个位置里应该放什么．</p>
+<p>当 <code>n=1</code> 时，<code>while (n &gt; 1)</code> 为假，循环体一次都不执行，于是 <code>f = f0 + f1</code> 从来没有发生，最后 <code>return f;</code> 返回了一个未初始化变量．</p>
+<h4 id="_4">第二步：做出预测</h4>
+<p>每个假设都要能产生可检查的预测：</p>
+<ul>
+<li>如果结果依赖调用顺序，那么单独先调用 <code>fib(1)</code> 应该可能返回正确值．</li>
+<li>如果循环条件错了，把条件改成 <code>n &gt;= 1</code> 后应该修复问题．</li>
+<li>如果 <code>f</code> 未初始化，把它改成 <code>int f = 1;</code> 后应该修复问题．</li>
+</ul>
+<h4 id="_5">第三步：实验和观察</h4>
+<p>课件里的实验结果是：</p>
+<ul>
+<li>先调用 <code>fib(1)</code>，仍然失败，说明“只由调用顺序导致”的假设站不住．</li>
+<li>把条件改成 <code>n &gt;= 1</code>，<code>fib(1)</code> 变成 <code>2</code>，反而不符合规格，说明循环条件不是正确修复点．</li>
+<li>把 <code>int f;</code> 改成 <code>int f = 1;</code>，结果符合规格．</li>
+</ul>
+<p>于是诊断是：<strong>当 <code>n &lt;= 1</code> 时，循环不会给 <code>f</code> 赋值，函数返回未初始化局部变量，导致未定义行为</strong>．</p>
+<p>可以这样修：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>如果规格还要求处理 <code>fib(0)</code> 或负数，就应该额外写清楚输入合同，例如 <code>n &gt;= 1</code>，或者显式处理非法输入．</p>
+<details class="example" open="open">
+<summary>这个例子真正想教什么</summary>
+<p>不要只记“变量要初始化”．更重要的是：先用规格确认 failure，再提出多个假设，然后用只改变一个条件的实验排除错误假设．这就是科学调试．</p>
+</details>
+<h3 id="_6">编译器警告：最便宜的第一道防线</h3>
+<p>课件要求编译时必须加：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>gcc<span class="w"> </span>-Wall<span class="w"> </span>-Werror<span class="w"> </span>-O3<span class="w"> </span>-o<span class="w"> </span>badfib<span class="w"> </span>badfib.c
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>-Wall</code> 打开常见警告．</li>
+<li><code>-Werror</code> 把警告当成错误，让有风险的代码不能继续混过去．</li>
+<li><code>-O3</code> 是高优化级别，会暴露一些优化相关问题．</li>
+</ul>
+<p>对上面的 Fibonacci 代码，编译器可能报：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>error: 'f' may be used uninitialized in this function [-Werror=maybe-uninitialized]
+</code></pre></div></td></tr></tbody></table></div>
+<p>这其实已经把问题指到 <code>return f;</code> 附近了．</p>
+<details class="warning" open="open">
+<summary>不要忽略 warning</summary>
+<p>很多 C 语言 bug 在运行前已经被编译器提醒了．把 warning 当成“黄色装饰”会让后续调试成本暴涨．</p>
+</details>
+<h3 id="_7">为什么不同优化级别输出不同</h3>
+<p>课件展示了同一份代码在不同优化级别下的不同结果：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>gcc -O3 -o badfib badfib.c
+fib(2)=2
+fib(1)=0
+fib(0)=0
+
+gcc -O1 -o badfib badfib.c
+fib(2)=2
+fib(1)=9
+fib(0)=9
+
+gcc -O0 -o badfib badfib.c
+fib(2)=2
+fib(1)=2
+fib(0)=2
+</code></pre></div></td></tr></tbody></table></div>
+<p>这不是编译器“随机坏了”，而是 C 语言的未定义行为给了编译器很大自由．未初始化变量的值没有语义保证，优化器可以基于自己的假设重排、删减或复用寄存器，所以不同优化级别会得到不同输出．</p>
+<p>调试时至少试 <code>-O0</code> 和 <code>-O3</code>：</p>
+<ul>
+<li><code>-O0</code> 更贴近源代码，方便 GDB 单步和看变量．</li>
+<li><code>-O3</code> 更接近最终提交或运行环境，能暴露优化下才出现的问题．</li>
+</ul>
+<h3 id="valgrind">Valgrind</h3>
+<p>Valgrind 是 Linux 下常用的 C/C++ 内存调试工具集．从使用者角度看，它会把程序放到一个受监控的虚拟执行环境里，检查内存访问、未初始化值、泄漏等问题．</p>
+<p>常用编译方式：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>gcc<span class="w"> </span>-g<span class="w"> </span>-O0<span class="w"> </span>-o<span class="w"> </span>badfib<span class="w"> </span>badfib.c
+valgrind<span class="w"> </span>./badfib
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>-g</code> 生成调试信息，让工具能把错误定位到源代码行．</li>
+<li><code>-O0</code> 让源码行和机器行为更容易对应．</li>
+</ul>
+<p>课件展示了一个重要现象：在 <code>-O3</code> 下，Valgrind 对这个 Fibonacci 程序可能没有报错；在 <code>-O0</code> 下，它报告了未初始化值被 <code>printf</code> 使用．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-019-valgrind-o0.png" data-desc-position="bottom"><img src="debug.assets/slide-019-valgrind-o0.png" style="zoom:55%;"></a>
+</div>
+
+<p>这说明 Valgrind 很有用，但不是完美神谕．它只能观察实际执行路径上的问题，而且会受优化、编译方式、运行条件影响．</p>
+<p>更详细追踪未初始化值来源时，可以加：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>valgrind<span class="w"> </span>--track-origins<span class="o">=</span>yes<span class="w"> </span>./badfib
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="valgrind-gdb">Valgrind 和 GDB 组合使用</h3>
+<p>Valgrind 擅长发现“这里发生了内存错误”，GDB 擅长让你停下来查看变量、栈帧和控制流．两者可以组合：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>valgrind<span class="w"> </span>--vgdb<span class="o">=</span>yes<span class="w"> </span>--vgdb-error<span class="o">=</span><span class="m">0</span><span class="w"> </span>./my_program
+</code></pre></div></td></tr></tbody></table></div>
+<p>含义是：</p>
+<ul>
+<li><code>--vgdb=yes</code>：打开 Valgrind 与 GDB 的连接能力．</li>
+<li><code>--vgdb-error=0</code>：程序一启动就暂停，等待 GDB 连接．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-023-valgrind-gdb.png" data-desc-position="bottom"><img src="debug.assets/slide-023-valgrind-gdb.png" style="zoom:55%;"></a>
+</div>
+
+<p>一般流程是：</p>
+<ol>
+<li>用 Valgrind 启动程序并暂停．</li>
+<li>另开终端启动 GDB．</li>
+<li>在 GDB 里连接 Valgrind 提供的目标．</li>
+<li>等 Valgrind 报错时，用 GDB 查看当前调用栈、局部变量和内存内容．</li>
+</ol>
+<details class="tip" open="open">
+<summary>工具分工</summary>
+<p>Valgrind 更像自动巡检员，告诉你“这里有可疑内存行为”．GDB 更像显微镜，让你在可疑点附近逐步观察程序状态．</p>
+</details>
+<h3 id="_8">观察程序状态时要小心</h3>
+<p>课件提醒：观察本身可能改变程序行为．</p>
+<p>最常见例子是 <code>printf</code> 调试．<code>printf</code> 会改变时序、栈布局、寄存器使用和 I/O 行为．对于并发 bug、未初始化变量 bug、内存越界 bug，加入 <code>printf</code> 后 bug 可能消失，这不是 bug 被修好了，而是实验条件变了．</p>
+<p>更稳妥的做法是：</p>
+<ul>
+<li>每次只改变一个条件．</li>
+<li>把实验条件写下来．</li>
+<li>不要把“打印后正常”当成修复．</li>
+<li>对并发和内存问题优先用 GDB、Valgrind、sanitizer、日志级别控制等工具．</li>
+</ul>
+<h3 id="_9">诊断、修复和学习</h3>
+<p>当一个假设解释了已有观察，并能预测新实验结果时，它就变成诊断．修复时要避免一个常见逻辑错误：post hoc, ergo propter hoc，也就是“改了之后好了，所以一定是这个改动修好的”．这不一定成立，因为你可能同时改了别的条件．</p>
+<p>修复后要做三件事：</p>
+<ul>
+<li>重跑原来失败的场景，确认 failure 消失．</li>
+<li>跑相关场景，确认没有破坏原本正确的行为．</li>
+<li>把这次 failure 对应的输入加入测试集，防止以后回归．</li>
+</ul>
+<p>断言和不变量也很重要．例如某个函数要求 <code>n &gt;= 1</code>，可以在入口处写：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">assert</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>但是断言不能有副作用：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">assert</span><span class="p">(</span><span class="n">i</span><span class="o">++</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">);</span><span class="w">   </span><span class="c1">// 不推荐</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>因为发布构建里可能定义 <code>NDEBUG</code>，此时 <code>assert</code> 会被移除，<code>i++</code> 也会消失，程序行为就变了．</p>
+<h3 id="quick-and-dirty">Quick and Dirty 调试时间盒</h3>
+<p>课件给了一个实用时间分配：</p>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 分钟</td>
+<td>先加 <code>-Wall</code>、<code>-Werror</code>，跑 Valgrind</td>
+</tr>
+<tr>
+<td>1 到 10 分钟</td>
+<td>做非正式调试，快速检查 obvious mistake</td>
+</tr>
+<tr>
+<td>10 到 60 分钟</td>
+<td>进入科学调试流程，写假设、预测、实验</td>
+</tr>
+<tr>
+<td>超过 60 分钟</td>
+<td>休息或找人帮助</td>
+</tr>
+</tbody>
+</table>
+<p>这不是说 60 分钟后一定不能继续，而是提醒你：长时间盯着同一个错误时，大脑会陷入局部循环．换一个人或换一种表达方式，常常能打破盲点．</p>
+<h3 id="code-smells">常见 Code Smells</h3>
+<p>课件列出的典型坏味道包括：</p>
+<ul>
+<li>未初始化变量．</li>
+<li>计算出来但没有使用的值．</li>
+<li>不可达代码．</li>
+<li>内存泄漏．</li>
+<li>接口误用．</li>
+<li>空指针．</li>
+</ul>
+<p>这些不一定都是已发生的 failure，但都是缺陷高发区．</p>
+<h2 id="design">Design</h2>
+<h3 id="_10">设计的目标</h3>
+<p>好设计要同时考虑性能、可用性、可修改性、可移植性、可扩展性、安全性、可测试性、易用性、构建成本和运行成本．</p>
+<p>但课件强调：<strong>最重要的是 readable</strong>．不可读的代码会让所有目标都变难：</p>
+<ul>
+<li>性能问题难定位．</li>
+<li>安全问题难审计．</li>
+<li>功能修改难评估影响范围．</li>
+<li>测试用例难设计．</li>
+<li>未来的你也会看不懂．</li>
+</ul>
+<p>所以好设计的两个核心任务是：</p>
+<ul>
+<li><strong>Complexity Management</strong>：管理复杂性．</li>
+<li><strong>Communication</strong>：和机器、同事、评审者、未来的自己沟通．</li>
+</ul>
+<h3 id="_11">管理复杂性</h3>
+<p>人脑能同时处理的细节很有限．程序一旦变大，就不能靠“我记得住所有情况”来写代码．常见复杂性管理方法包括：</p>
+<ul>
+<li>Separation of concerns：把不同关注点分开．</li>
+<li>Modularity：模块化．</li>
+<li>Reusability：复用可测试的小块．</li>
+<li>Extensibility：未来容易扩展．</li>
+<li>DRY：不要重复自己．</li>
+<li>Abstraction：抽象出稳定接口．</li>
+<li>Information hiding：隐藏内部细节．</li>
+</ul>
+<p>这些词听起来抽象，但落地到代码就是：<strong>函数只做一件明确的事，模块通过接口交流，测试能直接覆盖每个小块</strong>．</p>
+<h3 id="cache-access">例子：cache access 如何拆成可测试组件</h3>
+<p>课件用 cache simulator 举例．一次 cache access 看起来只是“访问一下地址”，但里面其实有很多步骤：</p>
+<ol>
+<li>把地址拆成 tag、set index、block offset．</li>
+<li>用 set index 找到对应 set．</li>
+<li>在 set 中检查是否有 line 的 tag 匹配．</li>
+<li>如果匹配，就是 hit．</li>
+<li>如果不匹配，就是 miss．</li>
+<li>miss 时找到 LRU line．</li>
+<li>必要时驱逐 LRU line．</li>
+<li>从内存读入新 line．</li>
+<li>更新 LRU 信息．</li>
+<li>如果操作是 store，还要更新 dirty 标记．</li>
+</ol>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-046-cache-access.png" data-desc-position="bottom"><img src="debug.assets/slide-046-cache-access.png" style="zoom:55%;"></a>
+</div>
+
+<p>如果把这些步骤全写在一个大函数里，调试会很痛苦．更好的拆法是：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">AddressParts</span><span class="w"> </span><span class="nf">split_address</span><span class="p">(</span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">address</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">set_bits</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">block_bits</span><span class="p">);</span>
+<span class="n">CacheLine</span><span class="w"> </span><span class="o">*</span><span class="nf">find_matching_line</span><span class="p">(</span><span class="n">CacheSet</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">tag</span><span class="p">);</span>
+<span class="n">CacheLine</span><span class="w"> </span><span class="o">*</span><span class="nf">select_victim_line</span><span class="p">(</span><span class="n">CacheSet</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">update_lru</span><span class="p">(</span><span class="n">CacheSet</span><span class="w"> </span><span class="o">*</span><span class="n">set</span><span class="p">,</span><span class="w"> </span><span class="n">CacheLine</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">mark_dirty_if_store</span><span class="p">(</span><span class="n">CacheLine</span><span class="w"> </span><span class="o">*</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">AccessType</span><span class="w"> </span><span class="n">type</span><span class="p">);</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>这样每个函数都能单独测试．比如 <code>split_address</code> 只关心位运算，完全不需要真实 cache．<code>select_victim_line</code> 只关心 LRU 规则，也不需要知道地址怎么拆．</p>
+<details class="example" open="open">
+<summary>cache hit 测试 trace</summary>
+<p>课件给出一个最小 trace：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>L 50, 1
+L 50, 1
+</code></pre></div></td></tr></tbody></table></div>
+<p>第一次读取地址 <code>50</code> 时，如果 cache 为空，应该是 miss 并把对应 block 放入 cache．第二次读取同一地址，应该命中同一 line，所以应该是 hit．</p>
+</details>
+<details class="example" open="open">
+<summary>dirty byte 测试 trace</summary>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>S 100, 1
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>S</code> 表示 store．store 不只是访问 cache，还会把对应 line 标成 dirty，因为 cache 中的数据比下层内存更新．如果 simulator 最后要统计 dirty bytes，这种单独 trace 就能专门验证 dirty 逻辑．</p>
+</details>
+<h3 id="testing-contract">Testing 和 Contract 都是设计活动</h3>
+<p>课件说 testing 和 contracts 不是只在最后验证代码，而是设计的一部分．</p>
+<p>Contract 是接口承诺，例如：</p>
+<ul>
+<li>输入必须满足什么前置条件．</li>
+<li>函数会返回什么结果．</li>
+<li>函数会不会修改传入对象．</li>
+<li>出错时如何报告．</li>
+</ul>
+<p>测试是 executable documentation，也就是可执行文档．读测试的人能看出函数应该怎样用，应该怎样响应边界条件．</p>
+<h3 id="trust-the-compiler">Trust the Compiler</h3>
+<p>课件说要信任编译器：</p>
+<ul>
+<li>多用临时变量．</li>
+<li>多用小函数．</li>
+<li>让编译器做优化计算．</li>
+</ul>
+<p>这句话的意思不是“随便写低效代码”，而是不要为了手工省一两个变量，把逻辑写成读不懂的表达式．现代编译器很擅长消除不必要的临时变量和内联小函数，但它不能帮你把混乱设计变清楚．</p>
+<h2 id="communication">Communication</h2>
+<h3 id="_12">代码是在和谁沟通</h3>
+<p>写代码时，你同时在和四类对象沟通：</p>
+<ul>
+<li>机器：编译器和 CPU 要执行你的指令．</li>
+<li>其他开发者：他们要维护你的代码．</li>
+<li>code reviewer：他们要判断代码是否正确．</li>
+<li>未来的自己：几周后你可能已经忘了当初为什么这样写．</li>
+</ul>
+<p>沟通手段包括测试、命名、注释、commit message、code review 和设计模式．</p>
+<h3 id="_13">命名就是理解</h3>
+<p>课件引用了一句话：如果你不知道一个东西应该叫什么，你就不知道它是什么；如果你不知道它是什么，你就写不出正确代码．</p>
+<p>好命名的原则：</p>
+<ol>
+<li>从含义和意图出发．</li>
+<li>使用精确词汇，少用 <code>data</code>、<code>info</code>、<code>perform</code> 这类泛词．</li>
+<li>名字少而准，不堆长短语．</li>
+<li>避免随意缩写．</li>
+<li>借助 code review 改名．</li>
+<li>把代码读出来，检查是否顺口．</li>
+<li>真的去重命名，不要怕改．</li>
+</ol>
+<h4 id="_14">不要故意使用无意义名称</h4>
+<p><code>a</code>、<code>foo</code>、<code>blah</code>、<code>tmp</code> 大多数时候都不好，因为它们不给读者任何语义．</p>
+<p>但也有合理例外：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">swap</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">tmp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>这里 <code>a</code>、<code>b</code> 是对称的两个参数，<code>tmp</code> 的生命期很短，作用就是临时交换．这种情况下短名反而清楚．</p>
+<h4 id="_15">单字母名要谨慎</h4>
+<p>单字母不可搜索，也没有语义．循环计数器 <code>i</code>、<code>j</code> 是例外，C/Unix 里还有一些传统短名也可以接受，例如：</p>
+<ul>
+<li><code>fd</code> 表示 file descriptor．</li>
+<li><code>str</code> 表示 string 参数．</li>
+<li><code>fp</code> 表示 file pointer．</li>
+</ul>
+<p>关键是：<strong>遵循已有风格，并确保读者能立刻知道含义</strong>．</p>
+<h4 id="_16">控制名字长度和词数</h4>
+<p>课件给出对比：</p>
+<ul>
+<li><code>arraysOfSetsOfLinesOfBlocks</code> vs <code>cache</code>．</li>
+<li><code>evictedData</code> vs <code>evictedDataBytes</code>．</li>
+</ul>
+<p>第一个名字把实现细节都塞进变量名，读者反而抓不住抽象．如果这个对象在业务上就是一个 cache，那么叫 <code>cache</code> 更好．</p>
+<p>第二组里，如果变量单位是 bytes，<code>evictedDataBytes</code> 比 <code>evictedData</code> 更精确．</p>
+<h4 id="_17">用领域术语</h4>
+<p>在 cache lab 里，<code>line</code>、<code>set</code>、<code>tag</code>、<code>block offset</code> 是领域术语．如果作业说明里叫 line，就不要自己改叫 element，否则读者会怀疑你是不是指另一个概念．</p>
+<h4 id="_18">精确使用反义词</h4>
+<p>常见成对词要统一：</p>
+<ul>
+<li><code>first</code> / <code>last</code>．</li>
+<li><code>begin</code> / <code>end</code>．</li>
+<li><code>min</code> / <code>max</code>．</li>
+<li><code>open</code> / <code>close</code>．</li>
+<li><code>push</code> / <code>pop</code>．</li>
+</ul>
+<p>不要写 <code>first</code> / <code>end</code> 这种混搭，除非项目已有固定约定．</p>
+<h3 id="_19">注释：不要解释代码在做什么，要解释为什么</h3>
+<p>坏注释有三类：</p>
+<ul>
+<li>重复代码已经表达的事实．</li>
+<li>替难懂逻辑打补丁，而不是重构逻辑．</li>
+<li>注释太多，后来过期．</li>
+</ul>
+<p>课件给了一个非常典型的可读性例子：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="p">)((</span><span class="o">*</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="p">)(</span><span class="n">bp</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DSIZE</span><span class="p">))</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="p">)(</span><span class="n">bp</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DSIZE</span><span class="p">));</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>这行代码也许在操作隐式空闲链表，但读者几乎不可能一眼看懂．如果结构体和字段抽象得好，同样状态更新可以写成：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bp</span><span class="o">-&gt;</span><span class="n">prev</span><span class="o">-&gt;</span><span class="n">next</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bp</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-069-awkward-code.png" data-desc-position="bottom"><img src="debug.assets/slide-069-awkward-code.png" style="zoom:55%;"></a>
+</div>
+
+<p>这两行可能更新的是同一个程序状态，但第二行把“前一个节点的 next 指向当前节点的 next”说清楚了．这比写一大段注释解释第一行更可靠．</p>
+<details class="tip" open="open">
+<summary>写注释前先问</summary>
+<p>我是不是能通过改名、拆函数、引入结构体或中间变量，让代码本身更清楚？如果可以，先改代码，再写必要注释．</p>
+</details>
+<p>好注释回答这些问题：</p>
+<ul>
+<li>为什么这段代码存在．</li>
+<li>什么时候应该用它．</li>
+<li>什么时候不应该用它．</li>
+<li>有没有替代方案．</li>
+</ul>
+<h4 id="_20">魔数注释</h4>
+<p>例如：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Each address is 64-bit, which is 16 hex digits plus '\0'.</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_ADDRESS_LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>这里注释不是说“定义了一个常量”，而是解释为什么是 <code>17</code>．这就是有价值的注释．</p>
+<h4 id="code-by-commenting">Code by commenting</h4>
+<p>课件建议先写短注释帮助设计，再写代码，再修订注释和代码．例如快速排序可以先写：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Initialize locals.</span>
+<span class="c1">// Pick a pivot value.</span>
+<span class="c1">// Reorder array around the pivot.</span>
+<span class="c1">// Recurse on the partitions.</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>然后分别实现每一步．如果某一步代码变得很长或注释很难写，就说明可能需要继续拆函数．</p>
+<h3 id="commit-message">Commit Message</h3>
+<p>commit 不只是保存代码，也是工作记录．它能防止系统故障和误操作，也能让未来的你知道当时做了什么．</p>
+<p>好的 commit message 至少要一行说明变化，例如：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Parse command line arguments
+Fix unique test bug, race condition not solved
+Finish segregated list implementation
+</code></pre></div></td></tr></tbody></table></div>
+<p>如果一个 commit 同时改了很多无关事情，message 就会变得很难写．这通常说明 commit 粒度太大．</p>
+<h2 id="_21">软件可靠性</h2>
+<h3 id="_22">可靠性的定义</h3>
+<p>课件给了两个定义角度：</p>
+<ul>
+<li>IEEE 1983：在规定条件下、规定时间内，软件不引起系统失效的概率．</li>
+<li>GB/T-11457：在规定时间周期内、规定条件下，程序执行所要求功能的能力．</li>
+</ul>
+<p>简单说，可靠性关心的是：<strong>在给定环境和时间里，系统持续正确工作的能力</strong>．</p>
+<h3 id="faulterrorfailure">硬件和软件中的 Fault、Error、Failure</h3>
+<p>在可靠性语境里也要区分：</p>
+<ul>
+<li>Fault：故障或缺陷，是潜在原因．</li>
+<li>Error：错误，是故障在程序状态或数据结构中的表现．</li>
+<li>Failure：失效，是系统没有按规格提供服务．</li>
+</ul>
+<p>软件故障通常来自设计错误、实现错误、需求理解错误和操作失误．硬件故障还会来自元器件老化、环境应力和物理损坏．</p>
+<h3 id="_23">故障来源</h3>
+<p>课件列出三类主要来源：</p>
+<ul>
+<li><strong>元器件失效</strong>：硬件老化、损耗、制造缺陷．电子元件常见失效率曲线包括早期失效、中期稳定、晚期磨损三个阶段．</li>
+<li><strong>环境因素</strong>：温度、湿度、冲击、振动、电磁场、辐射、盐雾、霉菌等．</li>
+<li><strong>设计故障</strong>：硬件或软件设计与规格不一致，软件规模越大越常见．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-081-bathtub.png" data-desc-position="bottom"><img src="debug.assets/slide-081-bathtub.png" style="zoom:55%;"></a>
+</div>
+
+<h3 id="_24">故障模型</h3>
+<p>故障表现非常多，工程上会用模型抽象它们．一个模型越广泛，越能覆盖真实问题，但也越难处理；一个模型越简单，越容易检测和容忍，但覆盖范围可能有限．</p>
+<h4 id="_25">逻辑级故障模型</h4>
+<ul>
+<li>固定型故障：某条线或某个输出固定为 <code>0</code> 或 <code>1</code>．</li>
+<li>短路或开路故障：元件输出线短路、悬空或异常连接．</li>
+<li>桥接故障：两条不应相连的线被连在一起．</li>
+</ul>
+<p>这些模型更接近硬件逻辑电路．</p>
+<h4 id="_26">数据结构级故障</h4>
+<ul>
+<li>独立差错：一个二进制位改变．</li>
+<li>算术差错：某个数据值增加或减少 <span class="arithmatex">\(2^i\)</span>．</li>
+<li>单项差错：二进制向量中某些位朝同一方向改变，例如都从 <code>0</code> 变 <code>1</code>．</li>
+</ul>
+<h4 id="_27">软件故障和软件差错</h4>
+<p>软件故障是设计或实现与说明不一致．它在运行中可能表现为：</p>
+<ul>
+<li>非法转移．</li>
+<li>误转移．</li>
+<li>死循环．</li>
+<li>空间溢出．</li>
+<li>把数据当代码执行．</li>
+<li>无意义或不合理数据．</li>
+</ul>
+<h4 id="_28">系统级故障模型</h4>
+<p>系统级关注的是功能错误，即系统输出与设计说明不一致．按持续时间可以分为：</p>
+<ul>
+<li>永久性：连续稳定存在的故障或错误．</li>
+<li>间歇性：由不稳定硬件或变化的软件状态引起，偶然出现．</li>
+<li>瞬时性：由临时环境条件引起，出现后可能消失．</li>
+</ul>
+<h3 id="dependability">Dependability 可信属性</h3>
+<p>Dependability 指系统提供“有理由被信任”的服务能力．常见属性包括：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Availability</td>
+<td>需要时能提供正确服务</td>
+</tr>
+<tr>
+<td>Reliability</td>
+<td>正确服务能持续不中断</td>
+</tr>
+<tr>
+<td>Safety</td>
+<td>不造成灾难性后果</td>
+</tr>
+<tr>
+<td>Integrity</td>
+<td>系统不被不当修改</td>
+</tr>
+<tr>
+<td>Maintainability</td>
+<td>能被修改和修复</td>
+</tr>
+<tr>
+<td>Confidentiality</td>
+<td>信息不被未授权泄露</td>
+</tr>
+</tbody>
+</table>
+<p>这些属性不是完全独立的．例如一个银行系统可能可用性很高，但如果完整性差，交易金额会错，那仍然不可接受．</p>
+<h3 id="_29">可靠度计算</h3>
+<p>如果假设系统失效率为常数 <span class="arithmatex">\(\lambda\)</span>，可靠度可以写成 <span class="arithmatex">\(R(t)=e^{-\lambda t}\)</span>．这里 <span class="arithmatex">\(R(t)\)</span> 表示系统在时间 <span class="arithmatex">\(t\)</span> 内不失效的概率．</p>
+<p>可维修系统常用 MTBF，Mean Time Between Failures，平均系统失效间隔时间．不可维修系统常用 MTTF，Mean Time To Failure，平均无故障运行时间．在常数失效率模型下，<span class="arithmatex">\(MTBF=\int_0^\infty e^{-\lambda t}\,dt=\frac{1}{\lambda}\)</span>．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-104-mtbf.png" data-desc-position="bottom"><img src="debug.assets/slide-104-mtbf.png" style="zoom:55%;"></a>
+</div>
+
+<p>因为 <span class="arithmatex">\(MTBF=\frac{1}{\lambda}\)</span>，所以也可以写 <span class="arithmatex">\(R(t)=e^{-t/MTBF}\)</span>．当 <span class="arithmatex">\(t=MTBF\)</span> 时，<span class="arithmatex">\(R(t)=e^{-1}\approx36.8\%\)</span>．这常常让初学者意外：平均寿命不是“到这个时间还大概率正常”，而是可靠度已经降到约三分之一．</p>
+<p>当 <span class="arithmatex">\(\lambda t\)</span> 很小时，可以用近似 <span class="arithmatex">\(R(t)\approx1-\lambda t\)</span>．因为 <span class="arithmatex">\(\lambda=\frac{1}{MTBF}\)</span>，所以 <span class="arithmatex">\(R(t)\approx1-\frac{t}{MTBF}\)</span>，也就是 <span class="arithmatex">\(MTBF\approx\frac{t}{1-R(t)}\)</span>．</p>
+<h4 id="14000-mtbf">例题 1：4000 个元件的 MTBF</h4>
+<p>题目：一个系统由 4000 个元件组成，每个元件的失效率为每 1000 小时 <span class="arithmatex">\(0.02\%\)</span>，求系统 MTBF．</p>
+<p>逐步算：</p>
+<ul>
+<li>每个元件每 1000 小时失效率是 <span class="arithmatex">\(0.02\%=0.0002\)</span>．</li>
+<li>换成每小时失效率：<span class="arithmatex">\(\lambda=\frac{0.0002}{1000}=2\times10^{-7}\)</span> 每小时．</li>
+<li>4000 个元件近似串联系统，总失效率 <span class="arithmatex">\(\lambda_s=4000\times2\times10^{-7}=8\times10^{-4}\)</span> 每小时．</li>
+<li>所以 <span class="arithmatex">\(MTBF=\frac{1}{\lambda_s}=\frac{1}{8\times10^{-4}}=1250\)</span> 小时．</li>
+</ul>
+<h4 id="299">例题 2：99% 可靠度能运行多久</h4>
+<p>题目：一台计算机由 10000 个元件组成，每个元件的失效率为每 1000 小时 <span class="arithmatex">\(0.05\%\)</span>，要求系统可靠度为 <span class="arithmatex">\(99\%\)</span>，系统能运行多久．</p>
+<p>逐步算：</p>
+<ul>
+<li>每个元件每小时失效率 <span class="arithmatex">\(\lambda=\frac{0.0005}{1000}=5\times10^{-7}\)</span>．</li>
+<li>系统总失效率 <span class="arithmatex">\(\lambda_s=10000\times5\times10^{-7}=5\times10^{-3}\)</span> 每小时．</li>
+<li>要求 <span class="arithmatex">\(R(t)=0.99\)</span>，用近似 <span class="arithmatex">\(R(t)\approx1-\lambda_s t\)</span>．</li>
+<li>所以 <span class="arithmatex">\(0.99\approx1-5\times10^{-3}t\)</span>，得到 <span class="arithmatex">\(t=\frac{0.01}{5\times10^{-3}}=2\)</span> 小时．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-107-reliability-example.png" data-desc-position="bottom"><img src="debug.assets/slide-107-reliability-example.png" style="zoom:55%;"></a>
+</div>
+
+<p>这个例子说明：元件很多时，即使单个元件看起来很可靠，系统总失效率也会快速上升．</p>
+<h3 id="_30">高可信应用</h3>
+<p>高可信应用包括航空、航天、核电站、银行、证券、制造、物流、交通等需要长时间连续运行的系统．课件提到 <span class="arithmatex">\(99.999\%\)</span> 可用性，也就是常说的 five nines．一年有 <span class="arithmatex">\(365\times24\times60=525600\)</span> 分钟，<span class="arithmatex">\(0.001\%\)</span> 的不可用时间约为 <span class="arithmatex">\(5.256\)</span> 分钟，所以 five nines 大约意味着一年故障时间只有 5 分钟左右．</p>
+<h3 id="fault-avoidance-fault-tolerance">Fault Avoidance 和 Fault Tolerance</h3>
+<p>可靠性技术可以分成两条路：</p>
+<ul>
+<li>Fault avoidance：避错，努力减少故障进入系统，例如元器件筛选、严格设计评审、静态检查、规范开发．</li>
+<li>Fault tolerance：容错，承认故障可能发生，并让系统检测、隔离、恢复或降级，例如冗余、表决、纠错码、主备切换．</li>
+</ul>
+<p>容错的基本方法是冗余：</p>
+<ul>
+<li>硬件冗余：用多个硬件单元抵抗元器件老化或损坏．</li>
+<li>时间冗余：重复执行或重试，抵抗瞬时错误．</li>
+<li>信息冗余：加入校验码、纠错码，抵抗数据错误．</li>
+<li>软件冗余：用多版本实现、独立检查、监控恢复等方式抵抗设计错误．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-113-redundancy.png" data-desc-position="bottom"><img src="debug.assets/slide-113-redundancy.png" style="zoom:55%;"></a>
+</div>
+
+<p>软件容错的问题描述可以概括为：设计、老化、环境和操作都可能导致软件失效，所以系统需要自我诊断与恢复，技术手段包括冗余、检测、表决、屏蔽、切换和降级．</p>
+<h2 id="_31">软件复杂性和路径爆炸</h2>
+<h3 id="_32">软件和硬件有什么不同</h3>
+<p>硬件会老化，软件本身不会像电容、电阻那样物理磨损．但软件有另一个更难的问题：复杂性．</p>
+<p>课件列出一些源代码规模例子，比如操作系统、数据库、Office、浏览器和大型互联网项目都可能有数百万到数千万行代码．代码超过一定规模后，靠人脑完整枚举所有路径已经不现实．</p>
+<h3 id="_33">例子：软件路径问题</h3>
+<p>课件给出一个控制流图：循环体中有 5 条可能路径，循环最多重复 20 次．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-128-paths.png" data-desc-position="bottom"><img src="debug.assets/slide-128-paths.png" style="zoom:55%;"></a>
+</div>
+
+<p>如果循环执行 1 次后退出，路径数约为 <span class="arithmatex">\(5^1\)</span>．执行 2 次后退出，路径数约为 <span class="arithmatex">\(5^2\)</span>．一直到执行 20 次后退出，路径数约为 <span class="arithmatex">\(5^{20}\)</span>．总路径数是等比和 <span class="arithmatex">\(5^{20}+5^{19}+\cdots+5^1=\frac{5^{21}-5}{4}\)</span>，数量级约为 <span class="arithmatex">\(10^{14}\)</span>．</p>
+<p>如果每条路径只用 1 毫秒测试，按 <span class="arithmatex">\(5^{21}\)</span> 这个粗略量级估算，也需要约 15120 年．即使用更精确的等比和估算，也远远超出任何项目周期．</p>
+<details class="warning" open="open">
+<summary>穷举测试不可行</summary>
+<p>这个例子说明，测试不能靠“把所有路径跑一遍”．真实项目必须基于风险、边界、等价类、业务场景和代码结构来选测试用例．</p>
+</details>
+<h2 id="_34">经典事故和案例</h2>
+<h3 id="dijkstra">Dijkstra 的提醒</h3>
+<p>课件引用 Dijkstra 的观点：Testing can only show the presence of defects, not their absence．</p>
+<p>意思是：测试能证明“这里有缺陷”，但不能证明“软件没有缺陷”．即使所有测试都通过，也只能说明这些测试覆盖的条件下没有暴露问题．</p>
+<h3 id="ariane-5">案例一：Ariane 5 火箭</h3>
+<p>1996 年 6 月 4 日，Ariane 5 火箭升空约 40 秒后偏离轨道、解体并爆炸，造成巨大损失．课件强调这是软件工程中著名的复用和数值转换事故．</p>
+<p>事故相关代码可抽象成：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">double</span><span class="w"> </span><span class="n">d_bh</span><span class="p">;</span>
+<span class="kt">short</span><span class="w"> </span><span class="n">s_bh</span><span class="p">;</span>
+
+<span class="n">sense_horizontal_velocity</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_bh</span><span class="p">);</span>
+<span class="n">s_bh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d_bh</span><span class="p">;</span><span class="w">   </span><span class="c1">// Operand Error</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-136-ariane-cause.png" data-desc-position="bottom"><img src="debug.assets/slide-136-ariane-cause.png" style="zoom:55%;"></a>
+</div>
+
+<p>问题是：飞行过程中水平速度产生了一个很大的浮点值，超过了 16 位有符号整数能表示的范围．从 64 位浮点数转换到 16 位整数时发生溢出，触发 Operand Error，而这个异常没有被捕获和保护．</p>
+<p>为什么测试没有发现？</p>
+<ul>
+<li>测试数据来自 Ariane 4 的实际轨道数据．</li>
+<li>Ariane 5 的飞行指标与 Ariane 4 差异很大，测试中没有出现会溢出的数据．</li>
+<li>类似转换代码共有 7 处，其中 4 处有异常保护，3 处没有．</li>
+<li>程序员认为这处数据“不可能”达到溢出范围．</li>
+</ul>
+<details class="example" open="open">
+<summary>Ariane 5 的教训</summary>
+<p>代码复用时，旧系统中的前提条件可能已经失效．“以前没出过事”不等于“在新环境里仍然安全”．对数值范围、单位、边界和异常处理的假设必须写成合同、测试和保护代码．</p>
+</details>
+<h3 id="therac-25">案例二：Therac-25 辐射治疗仪</h3>
+<p>Therac-25 是一种辐射治疗设备，1985 年到 1987 年间发生多起严重医疗事故，造成患者死亡或严重灼伤．课件把它作为时序、资源冲突和系统级测试失败的案例．</p>
+<p>Therac-25 有两种模式：</p>
+<ul>
+<li>低能量模式：可以直接照射病人．</li>
+<li>高能量模式：需要屏蔽过滤装置．</li>
+</ul>
+<p>事故条件大致是：</p>
+<ol>
+<li>操作员先选择高能量模式，机器开始配置．</li>
+<li>机器配置需要 8 秒，并且这段时间内相关任务不接受新命令．</li>
+<li>熟练操作员在 8 秒内撤销前面选择，改选低能量模式，并启动放射．</li>
+<li>系统其他部分没有收到新设置，仍按高能量方式照射．</li>
+</ol>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-140-therac-race.png" data-desc-position="bottom"><img src="debug.assets/slide-140-therac-race.png" style="zoom:55%;"></a>
+</div>
+
+<p>这本质上是用户界面、设备配置、控制器之间的竞态和状态同步问题．</p>
+<p>测试教训：</p>
+<ul>
+<li>有严格时序关系的流程必须设计时序测试．</li>
+<li>系统要分析资源冲突和状态切换条件．</li>
+<li>操作熟练用户可能比测试人员更快触发极端时序．</li>
+<li>改进型产品不能因为前代组件用过就默认整体安全．</li>
+</ul>
+<h3 id="_35">案例三：错误释放栈上数组</h3>
+<p>课件给出一个 C 语言例子：</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">someFunction</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">someString</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="w">    </span><span class="cm">/* use someString */</span>
+<span class="w">    </span><span class="n">free</span><span class="p">(</span><span class="n">someString</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><code>someString</code> 是栈上数组，不是 <code>malloc</code> 得到的堆内存．<code>free</code> 只能释放堆上动态分配的内存，所以 <code>free(someString)</code> 会破坏运行时内存管理结构，导致程序莫名崩溃．</p>
+<p>正确理解：</p>
+<ul>
+<li>栈内存由函数调用和返回自动管理．</li>
+<li>堆内存由 <code>malloc</code> / <code>calloc</code> / <code>realloc</code> 分配，必须用 <code>free</code> 释放．</li>
+<li>谁申请，谁释放；没有申请，就不能释放．</li>
+</ul>
+<p>这类问题用代码扫描、编译器 warning、Valgrind、AddressSanitizer 都可能提前发现．如果拖到系统测试，现象往往只是“偶发崩溃”，定位成本极高．</p>
+<h3 id="_36">案例四：调试消息框遗留到上线系统</h3>
+<p>课件讲了一个无人值守数字录音系统的例子．开发者为了定位数据库超过 10 万条记录后的错误，在程序中加入“每增加一定数量记录就弹出消息框”的调试逻辑．上线时消息框没有去掉，程序弹框后停住等待用户点击，但系统无人值守，于是录音功能停止工作．</p>
+<p>这个案例有两层问题：</p>
+<ul>
+<li>调试代码进入生产环境，说明发布前测试和配置管理失败．</li>
+<li>第三方数据库在大数据量下确实有问题，说明依赖组件也要测试．</li>
+</ul>
+<details class="warning" open="open">
+<summary>调试功能也要可控</summary>
+<p>调试日志、弹框、断言、诊断开关都可能改变系统行为．生产环境中必须通过配置、构建类型和发布检查控制它们．</p>
+</details>
+<h3 id="atm">案例五：广州商业银行 ATM 取款</h3>
+<p>课件中的 ATM 案例是：某 ATM 升级后出现异常，1000 元以上取款交易中，每取款 1000 元只按 1 元形成交易报文发送给银行主机．也就是 ATM 出钞 1000 元，但账户只扣 1 元．</p>
+<p>问题不是一个函数算错这么简单，而是多系统集成失败：</p>
+<ul>
+<li>ATM 终端软件把交易额缩小了 1000 倍．</li>
+<li>ATM 服务端、银行前置机、核心系统没有再次核查渠道业务规则．</li>
+<li>变更直接上线，缺少版本管理和回归测试．</li>
+</ul>
+<p>应该怎样测：</p>
+<ul>
+<li>对升级后的交易报文做字段级校验．</li>
+<li>对 100、999、1000、1001 等边界金额做测试．</li>
+<li>在核心系统侧验证 ATM 渠道金额规则．</li>
+<li>做端到端集成测试，而不是只测单台 ATM．</li>
+</ul>
+<h3 id="debug">案例六：Debug 版日志导致多线程异常</h3>
+<p>课件描述：多线程程序在 Debug 版中会向同一个日志文件输出状态信息，Release 版关闭日志．测试现象是 Release 版稳定，Debug 版总出问题．</p>
+<p>根因是多个线程竞争同一个文件资源．如果没有互斥量、队列或专门日志线程，多个线程同时打开、写入、关闭同一文件，就可能产生异常或数据交错．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-151-log-race.png" data-desc-position="bottom"><img src="debug.assets/slide-151-log-race.png" style="zoom:55%;"></a>
+</div>
+
+<p>这个例子说明：调试代码不是“无害附属品”．日志会改变时序，也会引入共享资源．多线程程序里，任何共享资源都要明确同步策略．</p>
+<h3 id="_37">案例七：挪威网银账号截断</h3>
+<p>某用户转账时多输入了一个数字．标准账号是 11 位，最后 1 位是校验和；用户输入了 12 位，系统自动截断为前 11 位．巧合的是，截断后的账号通过校验，并且属于另一个人．</p>
+<p>系统缺陷在于：<strong>对非法输入做了静默修正，而不是明确报错</strong>．</p>
+<p>正确策略应该是：</p>
+<ul>
+<li>输入长度不等于 11 位时直接拒绝．</li>
+<li>明确提示用户账号位数错误．</li>
+<li>不要在资金交易中自动截断关键字段．</li>
+<li>确认页要展示收款人姓名或其他强校验信息．</li>
+</ul>
+<h3 id="atm_1">案例八：ATM 异地取现导致负余额</h3>
+<p>某银行核心系统测试发现：本地 ATM 可以取出全部余额；异地 ATM 取出全部余额时，由于手续费在取款后扣收，账户出现负值．</p>
+<p>缺陷不是“扣费公式不会写”，而是业务规则处理顺序错了．正确逻辑应该在出钞前检查：余额是否足够覆盖取款金额和所有手续费．</p>
+<p>测试启发：</p>
+<ul>
+<li>业务规则是测试设计的一部分．</li>
+<li>本地、异地、跨行、手续费、最低留存余额都要组合覆盖．</li>
+<li>系统测试和验收测试更容易发现这类业务语义缺陷．</li>
+</ul>
+<h3 id="_38">案例九：证券行权“提交成功”不等于“交易成功”</h3>
+<p>课件讲了一个认购权证行权案例．用户根据交易系统显示的“可买数量”提交行权，系统提示“委托已成功提交”，但后续交易因为数量超过实际权证数量而失败，导致损失．</p>
+<p>根因：</p>
+<ul>
+<li>券商端和交易所端各自业务逻辑可能都正确，但端到端提示误导用户．</li>
+<li>系统是异步处理，提交成功只表示请求发出，不表示交易成功．</li>
+<li>券商端没有在提交前检查实际可行权数量．</li>
+<li>开发和测试对业务理解不足．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-161-securities.png" data-desc-position="bottom"><img src="debug.assets/slide-161-securities.png" style="zoom:55%;"></a>
+</div>
+
+<details class="warning" open="open">
+<summary>异步系统的提示语要精确</summary>
+<p>“提交成功”不能写成或暗示“交易成功”．凡是需要后端确认、交易所撮合、银行清算的流程，都必须区分 accepted、processing、confirmed、failed 等状态．</p>
+</details>
+<h2 id="_39">软件测试</h2>
+<h3 id="_40">软件测试的定义</h3>
+<p>软件测试是为了发现错误而执行软件的过程．更完整地说，测试是根据需求说明、设计说明和程序内部结构，精心设计测试用例，执行软件并发现错误的过程．</p>
+<p>测试不是为了证明程序员厉害，也不是为了证明软件完美．测试的目标是尽早、尽可能低成本地暴露缺陷．</p>
+<h3 id="_41">七条测试原则</h3>
+<p>课件列出 ISTQB 常见原则：</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测试显示存在缺陷</td>
+<td>测试能证明有 bug，不能证明没有 bug</td>
+</tr>
+<tr>
+<td>穷尽测试不可能</td>
+<td>除极小程序外，不可能覆盖所有输入和路径</td>
+</tr>
+<tr>
+<td>早期测试</td>
+<td>需求阶段就应开始测试设计，也叫测试左移</td>
+</tr>
+<tr>
+<td>缺陷集群性</td>
+<td>大量缺陷常集中在少数模块中</td>
+</tr>
+<tr>
+<td>杀虫剂悖论</td>
+<td>一直跑同一批测试会越来越难发现新缺陷</td>
+</tr>
+<tr>
+<td>测试背景依赖性</td>
+<td>医疗软件、游戏、银行系统测试重点不同</td>
+</tr>
+<tr>
+<td>无缺陷谬论</td>
+<td>即使没有发现缺陷，如果不满足用户需求也不是好软件</td>
+</tr>
+</tbody>
+</table>
+<p>实施指导原则包括：</p>
+<ul>
+<li>独立测试：尽量让独立角色测试，避免作者盲点．</li>
+<li>追溯用户需求：测试应能对应到需求．</li>
+<li>严格执行计划：避免随意测试．</li>
+<li>保存文档：便于回归测试、审计和维护．</li>
+</ul>
+<h3 id="_42">测试层次</h3>
+<p>软件测试过程通常包括：</p>
+<table>
+<thead>
+<tr>
+<th>层次</th>
+<th>目标</th>
+<th>典型问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单元测试</td>
+<td>检查最小模块是否正确</td>
+<td>函数边界、内存释放、局部算法</td>
+</tr>
+<tr>
+<td>集成测试</td>
+<td>检查模块接口和组合</td>
+<td>参数约定不一致、资源冲突、协议误解</td>
+</tr>
+<tr>
+<td>确认测试</td>
+<td>确认产品满足需求</td>
+<td>功能是否符合需求规格</td>
+</tr>
+<tr>
+<td>系统测试</td>
+<td>对完整系统做综合检验</td>
+<td>性能、可靠性、兼容性、端到端流程</td>
+</tr>
+<tr>
+<td>验收测试</td>
+<td>向用户证明系统按预期工作</td>
+<td>真实业务流程、用户可接受标准</td>
+</tr>
+</tbody>
+</table>
+<p>集成测试有两种：</p>
+<ul>
+<li>非增式集成：先分别单元测试，再把模块一次性连起来整体测试．</li>
+<li>增式集成：不断把待测模块接入已测模块集合，边集成边测．</li>
+</ul>
+<h3 id="v">测试和开发的关系：V 模型</h3>
+<p>V 模型把开发阶段和测试阶段对应起来：</p>
+<ul>
+<li>需求分析对应系统测试．</li>
+<li>概要设计对应集成测试．</li>
+<li>详细设计对应单元测试．</li>
+<li>编码位于 V 的底部．</li>
+</ul>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-176-v-model.png" data-desc-position="bottom"><img src="debug.assets/slide-176-v-model.png" style="zoom:55%;"></a>
+</div>
+
+<p>V 模型的优点是清晰说明不同测试层次和开发产物之间的关系．但它容易让人误以为测试只在编码后发生．所以后来还有 W 模型，强调测试活动应贯穿需求、设计、编码全过程．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-177-w-model.png" data-desc-position="bottom"><img src="debug.assets/slide-177-w-model.png" style="zoom:55%;"></a>
+</div>
+
+<h3 id="_43">黑盒测试</h3>
+<p>黑盒测试也叫功能测试或基于规格说明的测试．它把程序看作从输入定义域到输出值域的映射，只关心输入和输出，不关心内部实现．</p>
+<p>课件用一个简单图示说明：如果只从外部观察输入输出，我们可能不知道里面是 <span class="arithmatex">\(y=2x\)</span>，还是 <span class="arithmatex">\(y=x^2\)</span>，除非选到能区分它们的测试点．比如输入 <span class="arithmatex">\(x=2\)</span> 时两者都输出 <code>4</code>，但输入 <span class="arithmatex">\(x=3\)</span> 时分别输出 <code>6</code> 和 <code>9</code>．</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-179-black-box.png" data-desc-position="bottom"><img src="debug.assets/slide-179-black-box.png" style="zoom:55%;"></a>
+</div>
+
+<p>黑盒测试关注：</p>
+<ul>
+<li>功能是否符合需求．</li>
+<li>是否有功能遗漏．</li>
+<li>人机交互是否合理．</li>
+<li>数据库、文件、外部接口是否正确．</li>
+<li>性能和行为是否满足要求．</li>
+<li>初始化和终止是否正确．</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>与具体实现无关，代码重构后测试仍可能复用．</li>
+<li>测试设计可以和实现并行，从需求阶段开始．</li>
+</ul>
+<p>常用方法：</p>
+<ul>
+<li>等价类划分：把输入分成行为相同的类别，每类选代表值．</li>
+<li>边界值分析：重点测边界附近，例如 <code>0</code>、<code>1</code>、最大值、最小值．</li>
+<li>决策表测试：适合多条件组合业务规则．</li>
+<li>因果图：把输入条件和输出结果的逻辑关系画出来．</li>
+<li>正交法：用较少用例覆盖多因素组合．</li>
+<li>状态图：适合状态机和流程系统．</li>
+<li>场景法：从真实用户流程设计端到端测试．</li>
+</ul>
+<h3 id="_44">白盒测试</h3>
+<p>白盒测试也叫透明盒测试或逻辑驱动测试．它根据程序内部逻辑结构设计用例，目标是覆盖代码、分支、条件和路径等．</p>
+<p>白盒测试常见策略：</p>
+<ul>
+<li>Desk Check：程序员在单元测试前自己桌前检查代码．</li>
+<li>Peer Review：程序员和测试人员组成评审小组阅读、讨论代码．</li>
+<li>Walkthrough：走查代码执行流程，检查逻辑问题．</li>
+</ul>
+<p>白盒测试内容包括：</p>
+<ul>
+<li>静态测试：结构分析、质量度量、代码检查．</li>
+<li>动态测试：逻辑覆盖、功能验证、插桩、变异测试、性能分析．</li>
+</ul>
+<h3 id="_45">黑盒和白盒的比较</h3>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="debug.assets/slide-184-black-white.png" data-desc-position="bottom"><img src="debug.assets/slide-184-black-white.png" style="zoom:55%;"></a>
+</div>
+
+<p>简化对比如下：</p>
+<table>
+<thead>
+<tr>
+<th>角度</th>
+<th>白盒测试</th>
+<th>黑盒测试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>是否需要源代码</td>
+<td>需要</td>
+<td>不需要，但需要可执行程序和规格</td>
+</tr>
+<tr>
+<td>关注点</td>
+<td>内部结构、逻辑、可维护性</td>
+<td>外部功能、用户行为、非功能表现</td>
+</tr>
+<tr>
+<td>常见阶段</td>
+<td>编码、单元测试、集成测试</td>
+<td>确认测试、系统测试、验收测试</td>
+</tr>
+<tr>
+<td>优势</td>
+<td>能发现内部路径和结构问题</td>
+<td>更贴近用户和需求</td>
+</tr>
+<tr>
+<td>局限</td>
+<td>不容易发现遗漏需求和外部体验问题</td>
+<td>不容易定位内部根因</td>
+</tr>
+</tbody>
+</table>
+<p>真正项目里两者要结合使用．例如 Ariane 5 的数值转换适合白盒检查和单元边界测试；ATM 金额扣错和证券状态提示误导，则更依赖系统级黑盒测试和业务场景测试．</p>
+<h3 id="_46">测试工具</h3>
+<p>测试工具是通过自动化或管理手段检测缺陷的辅助工具．可以粗略分成：</p>
+<ul>
+<li>自动化测试工具：模拟用户操作、运行单元测试、接口测试、性能测试等，提高执行效率．</li>
+<li>测试管理工具：管理用例、缺陷、版本、测试计划和报告．</li>
+<li>静态分析工具：不运行程序就检查代码坏味道、潜在缺陷和规范问题．</li>
+<li>动态分析工具：运行时检查内存、线程、覆盖率和性能，例如 Valgrind、sanitizer、profiler．</li>
+</ul>
+<p>工具不能替代测试思维．工具擅长重复执行和机械检查，但测试人员仍要理解需求、业务规则、架构约束和风险优先级．</p>
+<h2 id="_47">总结</h2>
+<p>这份课件把调试、设计、可靠性和测试连成了一条线：</p>
+<ul>
+<li>程序一定会有缺陷，所以调试要系统化．</li>
+<li>人脑处理复杂性有限，所以设计要可读、模块化、可测试．</li>
+<li>失效可能来自代码、硬件、环境、业务规则和人机交互，所以可靠性要从系统角度看．</li>
+<li>测试不能证明没有缺陷，只能不断提高我们对系统的信心．</li>
+</ul>
+<p>最实用的行动清单是：</p>
+<ol>
+<li>编译时打开 <code>-Wall -Werror</code>．</li>
+<li>内存相关 C/C++ 程序优先跑 Valgrind 或 sanitizer．</li>
+<li>遇到复杂 bug 时写下假设、预测、实验和观察．</li>
+<li>把每个修复过的 failure 加入回归测试．</li>
+<li>写代码时优先让它可读、可拆、可测．</li>
+<li>对业务系统做端到端测试，不只测单个函数．</li>
+<li>对“不会发生”的假设保持警惕，把假设写进合同、断言和测试．</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最后更新">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月13日 16:09:34 CST">2026年7月13日 16:09:34</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="创建日期">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="2026年7月13日 16:09:34 CST">2026年7月13日 16:09:34</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  <div class="md-copyright__highlight">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 8px; justify-content: center;">
+      <span>本站内容遵循 CC BY-SA 4.0 协议</span>
+    </a>
+  </div>
+  © 2026 kbyy123
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.annotate", "content.footnote.tooltips", "navigation.footer", "navigation.indexes", "navigation.path", "navigation.prune", "navigation.tabs", "navigation.top", "navigation.tracking", "search.share", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js"></script>
+      
+        <script src="../../js/typed.js"></script>
+      
+        <script src="../../js/mermaid.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

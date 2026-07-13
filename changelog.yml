@@ -1,4 +1,18 @@
 - "2026":
+  - "2026-07-05":
+    - function: 完善 CSAPP 笔记导航与目录
+    - newpage:
+        text: Chap 8 Exceptional Control Flow
+        href: /system/csapp/Chap8.html
+    - pageupdate:
+        text: Chap 3 Machine-Level Programming
+        href: /system/csapp/Chap3.html
+    - pageupdate:
+        text: Chap 7 Linking
+        href: /system/csapp/Chap7.html
+    - pageupdate:
+        text: Chap 10 System-Level I/O
+        href: /system/csapp/Chap10.html
   - "2026-06-22":
     - newpage:
         text: Generative Models
