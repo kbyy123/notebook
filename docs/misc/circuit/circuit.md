@@ -583,12 +583,26 @@ $$
 
 + 直流通路时的静态工作点，包括 $I_{B},I_{C},U_{CE}$；此时将电容断开，输入 $U_{i}$ 视为短路
 + 交流通路时的交流信号如何放大，包括放大倍数 $A_{u}$，输入电阻 $R_{i}$、输出电阻 $R_{o}$；此时将电容视为短路，$V_{CC}$ 视为接地
-### 直接耦合 & 阻容耦合
++ 微变等效电路：将三极管更换为等效电路，$I_{C}=\beta I_{B}$ 用受控源模拟，$r_{be}$ 题目会给出．两边是独立的回路，下方是发射极，图上对应发射极接地．直接将此图记下来即可，注意 $i_{b}$ 是流经 $r_{be}$ 电流，$i_{c}$ 是流经受控源电流．
+
 <div style="text-align: center; margin-top: 15px;">
-<img src="circuit.assets/image_1783080071975.png" style="zoom:40%;">
-<img src="circuit.assets/image_1783080816206.png" style="zoom:40%;">
+<img src="circuit.assets/image_1783603184646.png" style="zoom:50%;">
 </div>
-直流通路：
+
++ 放大倍数 $\dot{A_{u}}=\dfrac{u_{o}}{u_{i}}$ 求法较为固定，可以现场求，注意是负数
++ 输入电阻 $R_{i}$ 一般为左侧所有电阻的等效电阻
++ 输出电阻 $R_{o}$ 直接写 $R_{C}$，考试没见到不相等的
+
+
+### 直接计算
+来自 24-25-2 期末题：
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="circuit.assets/image_1783602852115.png" style="zoom:50%;">
+</div>
+
+**直流通路**：
+
 $$
 \begin{cases}
 I_{B}=\dfrac{V_{CC}- U_{BE}}{R_{B}}\\
@@ -597,3 +611,36 @@ U_{BE}=0.7V \\
 U_{CE}=V_{CC}-I_{C}R_{C}
 \end{cases}
 $$
+
+**交流通路**：电容视为短路， $V_{CC}$ 接地，那么 $R_{B}$ 的两端电势分别于基集和发射极相等，可以看作和 $r_{be}$ 并联；同理 $R_{C}$ 和 $R_{L}$ 也可以看作和受控源并联．
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="circuit.assets/image_1783603288869.png" style="zoom:50%;">
+</div>
+
++ 放大倍数 $\dot{A_{u}}=\dfrac{u_{o}}{u_{i}}=\dfrac{-\beta i_{b}(R_{C}\parallel R_{L})}{i_{b}r_{be}}=\dfrac{-\beta (R_{C}\parallel R_{L})}{r_{be}}$
+	+ $i_{b}$ 是流经 $r_{be}$ 的电流，所以 $u_{i}$ 显然
+	+ $i_{c}$ 可以看作流经 $R_{C}$ 和 $R_{L}$ 并联电阻的电流，由于非关联参考方向所以要加负号
++ 输入电阻 $R_{i}=R_{B} \parallel r_{be}$
++ 输出电阻 $R_{o}=R_{C}$
+
+### 估算法
+来自 23-24-2 期末题：
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="circuit.assets/image_1783603928553.png" style="zoom:50%;">
+</div>
+
+**直流通路**：直接用 $R_{B1}$ 和 $R_{B2}$ 中间点电压估计 $U_{BQ}$，即 $U_{BQ}=\dfrac{R_{B2}}{R_{B1}+R_{B2}}$．
+
+$$
+\begin{cases}
+U_{BQ}=\dfrac{R_{B2}}{R_{B1}+R_{B2}} \\
+U_{EQ}=U_{BQ} - U_{BE} = U_{BQ} - 0.7V \\
+I_{E}=\dfrac{U_{EQ}}{R_{E}} \\
+I_{B}=\dfrac{I_{E}}{1+\beta} \\
+I_{C} = \beta I_{B}=\dfrac{\beta I_{E}}{1+\beta}\\
+U_{CE}=V_{CC}-I_{C}R_{C}-U_{EQ}
+\end{cases}
+$$
+

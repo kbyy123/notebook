@@ -1,4 +1,4 @@
-# Chap2: Representing and Manipulating Information
+# Chap 2: Representing and Manipulating Information
 ## Base
 
 通俗地来讲，进制就是“满几进一”的“几”．对于一个在 $m$ 进制下有 $w$ 位的数 $x$，我们可以把这个数的各位看作位向量

@@ -18,5 +18,10 @@
 
 > [!success] 目录
 >
-> + [X] [Chap 3: Machine-Level Programming](Chap3.md)
+> + [X] [Chap 2: Representing and Manipulating Information](Chap2.md)
 > + [X] [Chap 2 Extension](Chap2ext.md)
+> + [X] [Chap 3: Machine-Level Programming](Chap3.md)
+> + [X] [Chap 7: Linking](Chap7.md)
+> + [X] [Chap 8: Exceptional Control Flow](Chap8.md)
+> + [X] [Chap 10: System-Level I/O](Chap10.md)
+> + [X] [Attack Lab](Attacklab.md)

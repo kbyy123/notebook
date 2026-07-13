@@ -170,8 +170,12 @@ nav:
     - system/index.md
     - 计算机系统导论:
       - system/csapp/index.md
-      - system/csapp/Chap3.md
+      - system/csapp/Chap2.md
       - system/csapp/Chap2ext.md
+      - system/csapp/Chap3.md
+      - system/csapp/Chap7.md
+      - system/csapp/Chap8.md
+      - system/csapp/Chap10.md
       - system/csapp/Attacklab.md
     # - 计算机组成与体系结构:
     #   - system/computer-architecture/index.md

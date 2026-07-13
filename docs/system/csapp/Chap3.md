@@ -141,7 +141,7 @@ x86-64 有 16 个通用寄存器，每个寄存器为 8 字节大小．
 
 + CF：无符号进位 / 借位时为 1，如 `0xFFu + 0x01u = 0x00`（进位）或 `0x00u - 0x01u = 0xFF`（借位）
 + ZF：运算结果为 0 时为 1
-+ SF：运算结果为负数时为 1
++ SF：运算结果最高位
 + OF：有符号运算溢出时为 1，包括加法（正+正=负，负+负=正）和减法（正-负=负，负-正=正）
 
 `cmp` 和 `test` 都是对两个操作数进行运算（前者是减法，后者是按位与），并根据运算结果设置条件码，但不更新其他寄存器．注意 `cmp` 的操作数顺序：如果想用 `jle` 判断 `x <= y`，应该用`cmp y, x`．
@@ -161,7 +161,6 @@ int gt(long x, long y)
 }
 ```
 
-
 ```assembly
 comp	%rsi, 	%rdi # x in %rdi, y in %rsi
 setg	%al			 # set when >
@@ -173,7 +172,7 @@ ret
 <img src="Chap3.assets/image-20260601092137177.png" alt="image-20260601092137177" style="zoom:50%;" />
 </div>
 
-**`j` 类指令**：相当于修改 program counter `%rip` 的值到 label 的地址
+**`j` 类指令**：相当于修改 program counter `%rip` 的值到 label 的地址，具有和 `set` 类相同的变体：
 
 <div style="text-align: center; margin-top: 15px;">
 <img src="Chap3.assets/image-20260601093701454.png" alt="image-20260601093701454" style="zoom: 50%;" />
@@ -211,6 +210,12 @@ absdiff:
 ```
 
 如果条件分支的计算很复杂、有可能导致危险（如解引用空指针）、有副作用，那么编译器将不会使用 Conditional Move．
+
+`cmov` 也有和 `set` 相同的变体：
+
+<div style="text-align: center; margin-top: 15px;">
+<img src="Chap3.assets/image_1783258819561.png" style="zoom:44%;">
+</div>
 
 **Loop**：
 
@@ -283,15 +288,17 @@ test:
 
 **`push & pop`**：
 
-+ `pushq src`：栈指针减小 8 字节，取 src 的操作数（可以是立即数、寄存器、内存）写入栈指针指向的地址
-+ `popq dest`：取栈指针指向地址的值写入 dest（必须是寄存器），栈指针增大 8 字节
++ `pushq src`：栈指针减小 8 字节，取 `src` 的操作数（可以是立即数、寄存器、内存）写入栈指针指向的地址
+	+ `subq $8, %rsp; movq src, (%rsp)` 的语法糖
++ `popq dest`：取栈指针指向地址的值写入 `dest`（必须是寄存器），栈指针增大 8 字节
+	+ `movq (%rsp), dest; addq $8, %rsp` 的语法糖
 
 **`call & ret`**：
 
 + `call label`：将返回地址（为 `call` 的下一条指令地址）压栈，跳到 label 处
 + `ret`：将返回地址弹出栈，跳回返回地址
 
-> 虽然 call 和 ret 相当于 push、pop、jump 的组合，但无法用它们替代，因为我们无法修改 `%rip` 的值．
+> 虽然 `call` 和 `ret` 相当于 `push、pop、jump` 的组合，但无法用它们替代，因为我们无法修改 `%rip` 的值．
 
 **栈帧**：每次调用函数所占用的栈空间，如返回地址、超过 6 个的参数、保存的寄存器、局部变量等．
 
