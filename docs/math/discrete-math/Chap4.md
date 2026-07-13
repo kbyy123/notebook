@@ -1,4 +1,4 @@
-# Chap4 Number Theory
+# Chap 4: Number Theory
 
 ## Divisibility and Modular Arithmetic
 

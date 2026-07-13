@@ -1,4 +1,4 @@
-# Chap1 Logic and Proofs
+# Chap 1: Logic and Proofs
 
 ## Propositional Logic
 ### Propositions
@@ -1031,7 +1031,7 @@ Assume that we need to prove implication $p\to q$.
 
 > [!quote] Mathematical Induction
 >
-> Not included in the textbook and the slides, but a good way to prove theorem of natural numbers. See [induction](induction.md).
+> Not included in the textbook and the slides, but a good way to prove theorem of natural numbers. See [Chap5](Chap5.md).
 
 ### Proof Methods for Quantified Statements
 #### Existence Proofs

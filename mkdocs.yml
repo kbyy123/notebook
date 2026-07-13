@@ -141,7 +141,8 @@ nav:
       - math/discrete-math/Chap2.md
       - math/discrete-math/Chap3.md
       - math/discrete-math/Chap4.md
-      - math/discrete-math/induction.md
+      - math/discrete-math/Chap5.md
+      - math/discrete-math/Chap6.md
     # - 概率论:
     #   - math/probability/index.md
     #   - math/probability/counting.md

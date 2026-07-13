@@ -1,4 +1,4 @@
-# Chap3 Algorithms
+# Chap 3: Algorithms
 
 ## Algorithms
 

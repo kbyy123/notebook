@@ -22,7 +22,5 @@
 > + [x] [Chap2 Basic Structures: Sets, Functions, Sequences, Sums, and Matrices](Chap2.md)
 > + [x] [Chap3 Algorithms](Chap3.md)
 > + [x] [Chap4 Number Theory](Chap4.md)
->
-> 课外补充：
->
-> + [x] [归纳法](induction.md)
+> + [x] [Chap5 Mathematical Induction and Recursion](Chap5.md)
+> + [x] [Chap6 Counting](Chap6.md)
